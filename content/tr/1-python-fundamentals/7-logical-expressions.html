@@ -1,0 +1,156 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Mantıksal ifadeler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Mantıksal ifadeler</h1>
+<p>Şimdiye kadar gördüğümüz kod ve işlevlerde, tüm kod satırları yürütülür. Ancak çoğu zaman programlamada, yalnızca bazı koşullar doğruysa kodu yürütmek isteriz ve aksi takdirde hiçbir şey yapmayız veya başka bir kod biti yürütürüz. <bold>Mantığın</bold> programlarımıza eklenmesi, çok daha güçlü programlar, gerçekten karar verebilen programlar oluşturmamızı sağlar. Mantık eklemek için şunu öğrenmeliyiz:</p>
+<ul><li><p><bold>Doğru veya yanlış olarak değerlendiren mantıksal ifadeler.</bold></p></li>
+<li><p><bold>Bir şey doğru olduğunda hangi kodun yürütüleceğini belirten koşullular (if deyimleri).</bold></p></li></ul>
+<h3>Booleler</h3>
+<p><bold>Boole</bold> değeri, or <code>False</code>olan ve bilgisayar bilimlerinde sıklıkla kullanılan bir veri <code>True</code> türüdür.</p>
+<p>Bir kullanıcı olarak, muhtemelen Boolean'ları her zaman görüyorsunuz. Örneğin, Google Haritalar, yol tariflerinde otoyollardan kaçınıp kaçınmamaya karar vermek için bir Boolean kullanır. (Onlardan <italic>her zaman</italic> kaçınırım!)</p>
+<pre><code>avoid_highways = True</code></pre>
+<p>Twitter, kullanıcının kişiselleştirilmiş reklamlara nerede izin verdiğini hatırlamak için bir Boolean kullanır. (Reklamlardan nefret ediyorum!)</p>
+<pre><code>personalized_ads = False</code></pre>
+<aside><p>Booleans, kendi kendini yetiştiren bir mantıkçı olan George Boole'un adını almıştır. 1854 tarihli bir kitapta, kendi kendini yetiştiren bir başka mantıkçı olan karısı Mary Everest Boole tarafından düzenlenen Düşünce Yasaları'nda bir mantık sistemini tanımladı. Mary'ye göre George <link>, MÖ 500'e kadar uzanan Hint mantık sistemlerinden ilham aldı. Aslında birçok "modern" bilgisayar bilimi kavramının kökenlerini Hindistan, Afrika veya Akdeniz'in eski sistemlerinde bulabiliriz.</p></aside>
+<p><bold>Mantıksal ifade</bold>, Boole değeri olarak değerlendirilen herhangi bir ifadedir. Mantıksal ifadeler karşılaştırma işleçlerini, mantıksal işleçleri veya her ikisinin bir karışımını kullanır.</p>
+<p>Bu ifade, daha büyük işleç olan bir karşılaştırma işleci kullanır:</p>
+<pre><code>passed_class = grade > 65</code></pre>
+<p>Sonraki ifade mantıksal bir işleç kullanır, or işleci:</p>
+<pre><code>wear_jacket = is_raining or is_windy</code></pre>
+<h3>Karşılaştırma işleçleri</h3>
+<p>Bu tabloda, her birini kullanan tüm karşılaştırma işleçleri ve doğru ifadelerin örnekleri gösterilmektedir:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Operatör</p>
+<th>
+<p>Anlam</p>
+<th>
+<p>Doğru ifadeler</p>
+<tbody>
+<tr>
+<td>
+<p><code>==</code></p>
+<td>
+<p>Eşitlik</p>
+<td>
+<p><code>32 == 32</code></p>
+<tr>
+<td>
+<p><code>!=</code></p>
+<td>
+<p>Eşitsizlik</p>
+<td>
+<p><code>30 != 32</code></p>
+<tr>
+<td>
+<p><code>></code></p>
+<td>
+<p>Daha büyük</p>
+<td>
+<p><code>60 > 32</code></p>
+<tr>
+<td>
+<p><code>>=</code></p>
+<td>
+<p>Büyük veya eşit</p>
+<td>
+<p><code>60 >= 32</code>, <code>32 >= 32</code></p>
+<tr>
+<td>
+<p><code></code></p>
+<td>
+<p>Daha az</p>
+<td>
+<p><code>20 <></code></p>
+<tr>
+<td>
+<p><code><></code></p>
+<td>
+<p>Daha küçük veya eşit</p>
+<td>
+<p><code>20 <></code>, <code>32 <=></=></code></p>
+</td></td></td></tr></td></td></td></tr></td></td></td></tr></td></td></td></tr></td></td></td></tr></td></td></td></tr></tbody></th></th></th></tr></thead></table>
+<p>⚠️ Çok yaygın bir hataya dikkat edin: (eşitlik operatörü) ile <code>=</code> (atama operatörü) karıştırmak <code>==</code> . Bazı programlama dilleri eşitlik işleci olarak <italic>kullanıldığından</italic> <code>=</code> bu hatayı yapmak özellikle kolaydır. Python'da, en azından iki farklı işleçtir, bu nedenle bir değerin başka bir değere eşit olup olmadığını kontrol etmek istediğinizde kullandığınızdan <code>==</code> emin olmanız gerekir.</p>
+<h3>Mantıksal işleçler</h3>
+<p>Bu tabloda mantıksal işleçler açıklanmaktadır:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Operatör</p>
+<th>
+<p>Doğru ifadeler</p>
+<th>
+<p>Anlam</p>
+<tbody>
+<tr>
+<td>
+<p><code>and</code></p>
+<td>
+<p><code>4 > 0 and 2 <></code></p>
+<td>
+<p><code>True</code> Her iki koşulun da doğru olup olmadığını değerlendirir; aksi takdirde<code>False.</code></p>
+<tr>
+<td>
+<p><code>or</code></p>
+<td>
+<p><code>4 > 0 or 2 > 4</code></p>
+<td>
+<p>Her iki koşulun <code>True</code> da doğru olup olmadığını değerlendirir; yalnızca her ikisi de yanlışsa değerlendirir <code>False</code> .</p>
+<tr>
+<td>
+<p><code>not</code></p>
+<td>
+<p><code>not (5 == 0)</code></p>
+<td>
+<p>Koşulun yanlış olup olmadığını değerlendirir; koşulun doğru olup olmadığını değerlendirir <code>True</code> <code>False</code> .</p>
+</td></td></td></tr></td></td></td></tr></td></td></td></tr></tbody></th></th></th></tr></thead></table>
+<p>Unutulmaması <code>or</code> gereken bir şey, her iki koşul da doğru olsa bile doğru olduğudur; bu, bazen doğal dilde "veya" yı nasıl kullandığımızdan farklı olabilir.</p>
+<p>Aslında daha sonra "doğruluk" ve "yanlışlık" konusunu tartıştığımızda gireceğimiz / gireceğimiz biraz daha karmaşıklık <code>and</code><code>or</code> var, ancak şimdilik, her ifade olduğu <code>True</code> sürece veya <code>False</code>, yukarıdaki açıklama doğrudur.</p>
+<h3>Bileşik Boole ifadeleri</h3>
+<p>Yukarıdaki işleçlerden herhangi birini bileşik Boole ifadesiyle karıştırıp eşleştirebiliriz (yalnızca bir işleç kullanan basit bir ifadeye karşı).</p>
+<pre><code>< 2)="" or="" age=""> 90</code></pre>
+<p>Bu ifade, aşağıdakilerden biri için de geçerlidir:</p>
+<ul><li><p>her iki yaşın da 0'dan büyük veya 0'a eşit olduğu ve yaşın 2'den küçük olduğu doğrudur.</p></li>
+<li><p>yaşın 90'dan büyük olduğu doğrudur</p></li></ul>
+<p>Temel olarak, birinin yürümeye başlayan bir çocuk veya yaşlı olması doğrudur! (0 yaşından küçük insanlar ya yoktur ya da sıcak bir rahme mutlu bir şekilde sarılırlar).</p>
+<h3>İşlevlerdeki Boole ifadeleri</h3>
+<p>Boolean döndüren bir işlev oluşturmak için, return deyiminde bir Boole ifadesi kullanın. Bunun gibi en basit işlevler, parametrelerin değerlerine dayanan bir Boolean döndürür.</p>
+<pre><code>def passed_class(grade):
+    return grade > 65</code></pre>
+<p>O zaman işlevi şöyle adlandırırız:</p>
+<pre><code>passed_class(0)  # Returns: False
+passed_class(65) # Returns: False
+passed_class(66) # Returns: True</code></pre>
+<p>Şimdi şu örneği ele alalım:</p>
+<pre><code>def should_wear_jacket(is_rainy, is_windy):
+    return is_rainy or is_windy</code></pre>
+<p>TODO: Sınav</p>
+<hr>
+
+
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

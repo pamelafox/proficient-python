@@ -1,0 +1,63 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Polimorfizm</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Polimorfizm</h1>
+<p>Nesne yönelimli programlamanın en büyük faydalarından biri <bold>polimorfizmdir</bold>: aynı arayüzü paylaşan farklı nesne türleri.</p>
+<h3>Kalıtımdan polimorfizm</h3>
+<p>Zaten birçok polimorfik nesne gördük, çünkü kalıtım neredeyse her zaman polimorfizme yol açar.</p>
+<p>Örneğin, yöntemi hem nesne <code>Lion</code> hem de <code>Panda</code> nesneler üzerinde aynı bağımsız değişkende geçirerek çağırabiliriz<code>eat</code>:</p>
+<pre><code>broc = Meal("Broccoli", "veggie")
+pandey = Panda("Pandeybear", 6)
+mufasa = Lion("Mufasa", 12)
+
+pandey.eat(broc)
+mufasa.eat(broc)</code></pre>
+<p>Şimdi, iki nesne farklı uygulamalar nedeniyle bu yönteme farklı tepki verebilir. Panda "Mmm nefis" diyebilir ve aslan "Brüt, sebzeler!" diyebilir. Ancak polimorfizmin amacı, arayüzün aynı olmasıdır - yöntem adı ve argüman türleri - bu, altta yatan uygulamanın tam ayrıntılarını bilmeden bu arayüzü arayabileceğimiz anlamına gelir.</p>
+<p>Polimorfik nesnelerin bir listesine sahip olduğumuzda, tam olarak ne tür bir nesne olduklarını bilmesek bile, her nesnede aynı yöntemi çağırabiliriz.</p>
+<p>Bir hayvan partisi düzenleyen, bir listedeki her hayvanı listedeki <code>interact_with</code> diğer hayvanlar yapan bu işlevi düşünün:</p>
+<pre><code>def partytime(animals):
+    for i in range(len(animals)):
+        for j in range(i + 1, len(animals)):
+            animals[i].interact_with(animals[j])</code></pre>
+<p>Bu liste <code>animals</code> herhangi bir <code>Animal</code> örneği içerebilir, çünkü hepsi bir şekilde uygulanır <code>interact_with</code> .</p>
+<pre><code>jane_doe = Rabbit("Jane Doe", 2)
+scar = Lion("Scar", 12)
+elly = Elephant("Elly", 5)
+pandy = Panda("PandeyBear", 4)
+partytime([jane_doe, scar, elly, pandy])</code></pre>
+<p>İşte tam da bu noktada polimorfizmin gücü var.</p>
+<h3>Yöntem arayüzlerinden polimorfizm</h3>
+<p>Ayrıca, yerleşik Python nesne türlerinde çok fazla polimorfizm gördük, buna böyle dememiş olsak da.</p>
+<p>Örneğin, işleve kaç tür geçirebileceğimizi <code>len</code> düşünün:</p>
+<pre><code>len([1, 2, 3])
+len("ahoy there!")
+len({"CA": "Sacramento", "NY": "Albany"})
+len(range(5))</code></pre>
+<p>İşlev <code>len()</code> , listelerin, dizelerin, diktelerin ve aralıkların uzunluğunu raporlayabilir. Bunların hepsi , 'den <code>object</code>miras alır, ancak <code>len()</code> herhangi bir eski nesne üzerinde çalışmaz. Peki neden bu tipler için çalışıyor?</p>
+<p>Aslında bunun nedeni, ve <code>range</code> sınıfların her birinin<code>list</code>, <code>str</code><code>dict</code>çeşitli mekanizmalar kullanarak uzunluklarını bildiren adlandırılmış <code>__len__</code> bir yöntem tanımlamasıdır. Global işlev, <code>len()</code> bir yöntemi tanımlayan ve bir sayı döndüren <italic>herhangi</italic> bir <code>__len__</code> nesne üzerinde çalışır. Bu, kendi kullanıcı tanımlı sınıflarımız üzerinde bile <code>len()</code> çalışabileceğimiz anlamına gelir.</p>
+<p>Bir dildeki bu tür polimorfizm, ördek yazma olarak da bilinir: eğer bir ördek gibi yürürse ve bir ördek gibi şarlatanlarsa, o zaman bir <bold>ördek</bold> olmalıdır. İşlev <code>len()</code> , tam olarak ne tür bir nesnenin geçtiğini umursamaz: bir <code>__len__</code> yöntemi varsa ve bu yöntem 0 argüman alırsa, bu Python için yeterince iyidir.</p>
+<p>Birçok dil Python'dan daha katıdır ve muhtemelen iyi bir nedenden dolayı, çünkü gevşek kaz ördeği yazma ile başınızı belaya sokabilirsiniz. Ancak son derece esnek kod da yazabilirsiniz. Bu polimorfik sularda dikkatli bir şekilde yürüyün!</p>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

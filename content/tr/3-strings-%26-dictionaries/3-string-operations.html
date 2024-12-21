@@ -1,0 +1,138 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Dize işlemleri</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Dize işlemleri</h1>
+<p>Python'da hem listeler hem de dizeler dizi türleri olarak kabul edilir. Bu, listelerde çalışan işlemlerin çoğunun dizeler üzerinde de çalıştığı anlamına gelir.</p>
+<p>İşlev <code>len()</code> , bir dizenin ne kadar uzun olduğunu bildirir (aşağıdaki örnekte, şimdiye kadarki en uzun İngilizce kelimenin uzunluğu!):</p>
+<pre><code>illness = 'pneumonoultramicroscopicsilicovolcanoconiosis'
+longest_word_record_length = len(illness)</code></pre>
+<p>İşleç <code>in</code> , bir alt dizenin daha büyük bir dizenin içinde olup olmadığını kontrol eder:</p>
+<pre><code>if 'pneumo' in illness:
+  print("Uh oh, your poor lungs :(")</code></pre>
+<p>Dizelerde kullanıldığında, her karakter boyunca bir <code>for</code> döngü yinelenir:</p>
+<pre><code>alphabet = 'abcdefghijklmnopqrstuvwxyz'
+for letter in alphabet:
+    print(letter)</code></pre>
+<h3>Köşeli ayraç gösterimi</h3>
+<p>Bir dize içindeki tek karakterlere erişmek için parantez gösterimini kullanabiliriz:</p>
+<pre><code>illness = 'pneumonoultramicroscopicsilicovolcanoconiosis'
+
+true_start_sound = illness[1]   # Stores 'n'
+last_letter = illness[-1]       # Stores 's'</code></pre>
+<p>Ancak, dizeler <bold>değişmez</bold> olmaları nedeniyle listelerden farklıdır, yani oluşturulduktan sonra değiştirilemezler. Bir karakteri değiştirmeye çalışmak için ayraç gösterimini kullanmak hataya neden olur.</p>
+<pre><code>illness[0] = "n"   # 🚫 Error!</code></pre>
+<p>Dizenin parçalarını bir başlangıçtan (hemen önce) bir bitiş dizinine kadar dilimlemek için parantez gösterimini de kullanabiliriz:</p>
+<pre><code>how_small = illness[13:24]      # Stores 'microscopic'
+from_where = illness[30:37]     # Stores 'volcano'</code></pre>
+<h3>Alıştırma: Parantez gösterimi</h3>
+<p>Sonraki üç soru için bu dize değişkenini kullanın:</p>
+<pre><code>author_name = 'P S Fox'</code></pre>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<h3>Dize yöntemleri</h3>
+<p>Python dizeye özgü işlevsellik için birçok yöntem sunar. Ancak dizeler değişmez olduğundan, yöntemlerin <italic>hiçbiri</italic> özgün dizeyi değiştirmez. Tamamen yeni bir dize döndürürler veya boolean, sayı veya liste gibi başka bir sonuç döndürürler.</p>
+<p>Örneğin, yöntem bir dizenin <code>upper()</code> büyük harfli sürümünü döndürür.</p>
+<pre><code>request = "Please wash the dishes from your cookie disaster."
+demand = request.upper()</code></pre>
+<p>Bu kod çalıştığında, hala "Lütfen kurabiye felaketinizdeki bulaşıkları yıkayın." ifadesidir, <code>request</code> ancak <code>demand</code> "LÜTFEN KURABIYE FELAKETINIZDEKI BULAŞIKLARI YIKAYIN." (Gerçek bir hikayeye dayanan kod, ama felakete neden olan bendim.. )</p>
+<p>En yararlı dize yöntemlerinden bazıları şunlardır:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Yöntem</p>
+<th>
+<p>Tarif</p>
+<tbody>
+<tr>
+<td>
+<p><code>lower()</code></p>
+<td>
+<p>Tüm karakterlerin küçük harfe dönüştürüldüğü dizenin bir kopyasını döndürür.</p>
+<tr>
+<td>
+<p><code>replace(old, new)</code></p>
+<td>
+<p>Eski oluşumlarının yeniyle değiştirildiği yeni bir dize döndürür.</p>
+<tr>
+<td>
+<p><code>find(substring)</code></p>
+<td>
+<p>Alt dizenin bulunduğu dizedeki en düşük dizini döndürür.</p>
+<tr>
+<td>
+<p><code>startswith(prefix)</code></p>
+<td>
+<p>Dize önekle başlıyorsa True, aksi takdirde False değerini döndürür.</p>
+<tr>
+<td>
+<p><code>endswith(suffix)</code></p>
+<td>
+<p>Dizeler sonekle bitiyorsa True, aksi takdirde False değerini döndürür.</p>
+<tr>
+<td>
+<p><code>strip([chars])</code></p>
+<td>
+<p>Dizenin, başında ve sonunda karakterler kaldırılmış bir kopyasını döndürür ve varsayılan olarak boşluk karakterlerine dönüşür.</p>
+<tr>
+<td>
+<p><code>split(separator)</code></p>
+<td>
+<p>Sınırlayıcı olarak ayırıcıyı kullanarak dizedeki alt dizelerin listesini döndürür.</p>
+<tr>
+<td>
+<p><code>join(iterable)</code></p>
+<td>
+<p>Yinelenebilir nesnedeki dizelerin birleşimi olan bir dize döndürür.</p>
+</td></td></tr></td></td></tr></td></td></tr></td></td></tr></td></td></tr></td></td></tr></td></td></tr></td></td></tr></tbody></th></th></tr></thead></table>
+<p>Python belgelerinde <link>daha fazla yöntem açıklanmıştır.</p>
+<p>Bunların işlevler değil, yöntemler olduğunu unutmayın, bu nedenle bunları kullanırken her zaman önce değişken adını, sonra noktayı, sonra yöntem adını yazarsınız.</p>
+<p>TODO: Sınav</p>
+<h3>Bölme ve birleştirme</h3>
+<p>Daha fazla zaman harcamak istediğim iki dize yöntemi var, çünkü bunlar çok kullanışlı, ama aynı zamanda kullanımı biraz zor olabilir: <code>split</code> ve <code>join</code>.</p>
+<ul><li><p><code>split(separator)</code>: Sınırlayıcı olarak ayırıcıyı kullanarak dizedeki alt dizelerin listesini döndürür.</p></li>
+<li><p><code>join(iterable)</code>: Yinelenebilir nesnedeki dizelerin birleşimi olan bir dize döndürür.</p></li></ul>
+<p>Bu <code>split</code> yöntem, virgül, iki nokta üst üste, boru, boşluk veya sekme gibi belirli bir karakterle ayrılmış parçalara sahip bir metin dizeniz olduğunda kullanışlıdır.</p>
+<p>Örneğin, virgülle ayrılmış bir sözcük listesi depolayan bir dizeyi bölebiliriz:</p>
+<pre><code>my_groceries = 'apples,bananas,carrots'
+grocery_items = my_groceries.split(',')   # Stores ["apples", "bananas", "carrots"]</code></pre>
+<p>Şimdi bu listeyi tekrarlayabiliriz - ya da genellikle bir listeyle yapabileceğimiz başka bir şey.</p>
+<pre><code>for item in grocery_items:
+    print(item)</code></pre>
+<p>Yöntem <code>join</code> tam tersidir: bir öğe listesini tek bir dizede birleştirir ve her öğeyi belirtilen ayırıcıyla ayırır.</p>
+<p>Ayırıcı olarak virgül kullanarak bir listeyi şu şekilde birleştirebiliriz:</p>
+<pre><code>address_parts = ["123 Pining St", "Nibbsville", "OH"]
+",".join(address_parts) # '123 Pining St, Nibbsville, OH'</code></pre>
+<p>Dizeleri bir araya getirmek istiyorsak, boş dizeyi ayırıcı olarak da kullanabiliriz:</p>
+<pre><code>names = ["Gray", "Fox"]
+"".join(names)   # 'GrayFox'</code></pre>
+<h3>Alıştırma: Bir şiir yazın</h3>
+<p>Yeni satırlarla ayrılmış öğelerle bir dize oluşturmak için, ayırıcı olarak "\n" kaçış dizisini belirtebiliriz.</p>
+<p>Aşağıda kendi favori şiiriniz, haiku veya şarkı dizenizle deneyin.</p>
+<pre><code>poem_lines = ["Forgive me", "they were delicious", "so sweet", "and so cold"]
+"\n".join(poem_lines)</code></pre>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

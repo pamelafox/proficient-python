@@ -1,0 +1,38 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Nesne yönelimli programlama</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Nesne yönelimli programlama</h1>
+<p>Şimdiye kadarki programlarımız değişkenlerle karıştırılmış fonksiyonlardan oluşuyordu. Bu, küçük olduklarında ve hesaplama işlevlerine odaklandıklarında program yazmanın yaygın bir yoludur, ancak programlar büyüdükçe ve veri etrafında daha fazla döndükçe, Python programcıları genellikle <bold>nesne yönelimli programlama (OOP</bold>) olarak bilinen bir yaklaşım kullanır.</p>
+<p>Nesne yönelimli programlama şunları içerir:</p>
+<ul><li><p>İlişkili bir hesap sahibine sahip bir banka hesabı, cari bakiye, para yatırma / çekme geçmişi vb. gibi bir tür karmaşık veriyi tanımlamanın bir yolu.</p></li>
+<li><p>Verileri ilgili işlevlerle bir araya getirmenin bir yolu. Bir banka hesabı için, para çekmek, para yatırmak, hesabı kapatmak, hesaplar arasında transfer yapmak vb. İçin işlevlere ihtiyaç duyabilir.</p></li></ul>
+<p>Her veri türünün birden fazla örneğine sahip olabiliriz ve her birini bir nesne olarak kabul <bold>ederiz</bold>. Örneğin, tasarruf hesabım bir nesne olabilir ve çek hesabım başka bir nesne olabilir. Her ikisi de banka hesabı olduğundan, ikisine de para yatırabilir ve transfer edebilirim.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv8ybf00131498cg8i5e52/Intro to Python OOP diagrams (1).png"></p>
+<p>Çek hesaplarına karşı tasarruf hesaplarına özgü bazı işlevler olabilir ve nesne yönelimli programlama bize belirli bir nesne türünün başka bir türe benzediğini, ancak bazı yönlerden farklı olduğunu bildirmenin bir yolunu da verir.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv96l500151498asbm12el/OOP_inheritance.png"></p>
+<p>Görünüşe göre, tüm bu zaman boyunca nesneleri kullanıyoruz: Python'daki <italic>her</italic> veri parçası belirli bir türde bir nesnedir. Tamsayılar türdür<code>int</code>, kayan nokta sayıları türdür, dizeler türdür, listeler türdür, sözlükler türdür<code>dict</code><code>float</code><code>string</code><code>list</code>. Türlerin her birinin ilişkili işlevleri (<bold>yöntemleri</bold>) vardır ve bu nedenle herhangi bir dize nesnesini çağırabilir veya herhangi bir liste nesnesini çağırabiliriz <code>split()</code> <code>pop()</code>.</p>
+<p>Bu hafta öğreneceğimiz şey, <bold>sınıflar</bold> adı verilen bir mekanizma sayesinde kendi nesne türlerimizi nasıl ilan edebileceğimizdir. Haydi dalış yapalım!</p>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

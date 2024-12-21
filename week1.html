@@ -1,0 +1,605 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Week 1 Lecture</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.2.1/dist/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="https://cs61a.org/assets/css/mono-blue.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <style>
+    :root {
+      --r-heading-font: "Roboto", sans-serif;
+      --r-heading-color: #0072c1;
+
+      --r-main-font: "Work Sans", sans-serif;
+
+      --r-link-color: #0066cc;
+      --r-link-color-hover: #0066cc;
+    }
+
+    .reveal .controls {
+      color: var(--r-main-color);
+    }
+
+    .reveal .progress {
+      color: var(--r-main-color);
+    }
+
+    .reveal .slides section {
+      text-align: left;
+      font-size: smaller;
+    }
+
+    .reveal pre {
+      background-color: #f5f5f5;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: none;
+    }
+
+    .reveal h3 {
+      margin-bottom: 40px;
+    }
+
+    .reveal section.heading-only {
+      text-align:center;
+      padding-top:20%;
+    }
+
+    .no-code-badge .code-badge {
+        display: none;
+    }
+
+    .code-badge-language {
+        display: none;
+    }
+
+    .python-tutor-link {
+      font-size: smaller;
+    }
+
+    .python-tutor-link:before {
+      content: "";
+      display: block;
+      background: url("http://pythontutor.com/favicon.ico") no-repeat;
+      width: 48px;
+      height: 48px;
+      float: left;
+      margin: 0 6px 0 0;
+    }
+
+    .smaller {
+      font-size: smaller;
+    }
+
+    code {
+      padding: 2px 4px;
+      font-size: 90%;
+      color: #0072c1;
+      background-color: #f9f2f4;
+      border-radius: 4px;
+    }
+
+    p.padded {
+      margin-top: 32px;
+    }
+
+    section .row {
+      display: flex;
+    }
+
+    section .column {
+      flex: 48%;
+      margin: 10px;
+    }
+
+    @media print {
+      .no-print, .no-print * {
+        display: none !important;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="heading-only" style="padding-top:5%">
+          <h1>Expressions & Functions
+          </h1>
+
+          <div class="no-print" style="text-align: left; margin-top: 100px; font-size: 70%;">
+            Tips for navigating the slides:
+            <ul>
+              <li>Press O or Escape for overview mode.</li>
+              <li>Visit <a href="?print-pdf" target="_blank">this link</a> for a nice printable version</li>
+              <li>Press the copy icon on the upper right of code blocks to copy the code</li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section class="heading-only">
+            <h2>Python setup</h2>
+        </section>
+
+        <section>
+            <h3>Where to program Python?</h3>
+
+            <p>You can complete our coursework entirely in the browser:</p>
+            <p>
+                <img src="media/screenshot_exercise.png" alt="Screenshot of CoRise exercise" height="200" style="float:right">
+                <strong>Exercises</strong> can be coded in embedded Python widgets on CoRise.com<br>
+            </p>
+            <br style="clear:right">
+            <p>
+                <img src="media/screenshot_colab.png" alt="Screenshot of Google CoLab" height="150" style="float:left; border: 1px solid #ccc; margin-right: 25px;">
+                <strong>Projects</strong> will be coded in Google CoLab (Browser-based Jupyter notebooks)
+            </p>
+            <br>
+            <p>...but you may still want a place to play with Python.</p>
+        </section>
+
+        <section>
+            <h3>Python on your desktop</h3>
+
+            <p>Download the latest Python from
+                <a target="_blank" href="https://www.python.org/downloads/">python.org/downloads</a>.
+            </p>
+
+            <p class="padded">Start a Python REPL:</p>
+
+            <pre style="font-size:0.9em"><code data-trim data-noescape class="shell">
+            $ python3
+            Python 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23)
+            >>> 2 + 2
+            4
+            </code></pre>
+
+            <p class="padded">Run a Python program:</p>
+
+            <pre style="font-size:0.9em"><code data-trim data-noescape class="shell">
+            $ python3 file.py
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Python code editors</h3>
+
+            <p>A code editor is a text editor with support for syntax highlighting, linting, refactoring,
+                and other helpful tools.
+            </p>
+
+            <p class="padded">The two most popular editors for Python:</p>
+            <ul>
+                <li>
+                    <a target="_blank" href="https://code.visualstudio.com/">
+                    Microsoft VS Code
+                    </a>
+                    <br>
+                    Recommended extensions:
+                    <a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">
+                    MS Python</a>,
+                    <a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=NoahSyn10.pydoctestbtn">
+                        Python Doctest
+                    </a>
+                    <p>Learn more about using <a target="_blank" href="https://code.visualstudio.com/docs/languages/python">Python in VS Code</a>
+                    </p>
+                <li><a target="_blank" href="https://www.jetbrains.com/pycharm/">JetBrains PyCharm</a>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Python in the browser</h3>
+
+            <ul>
+                <li><a href="https://replit.com/new/python3" target="_blank">Repl.it</a>: An online IDE
+                <li><a href="https://github.com/pamelafox/python-3.11-playground" target="_blank">Github Codespaces</a>: A way to run any repo in an online VS Code.
+            </ul>
+        </section>
+
+        <section class="heading-only">
+            <h2>Python Building Blocks
+                <br>
+                (Values & Expressions)
+            </h2>
+
+        </section>
+
+      <section>
+          <h3>Values</h3>
+
+          <p>Programs manipulate <strong>values</strong>.</p>
+          <p>Each value has a certain <strong>data type</strong>.</p>
+
+          <table>
+              <thead>
+                  <tr>
+                      <th>Data type
+                      <th>Example values
+              <tbody>
+                  <tr>
+                      <td>Integers
+                      <td><code>2</code> <code>44</code> <code>-3</code>
+                  <tr>
+                      <td>Floats
+                      <td><code>3.14</code> <code>4.5</code> <code>-2.0</code>
+                  <tr>
+                      <td>Booleans
+                      <td><code>True</code> <code>False</code>
+                  <tr>
+                      <td>Strings
+                      <td><code>'¡hola!'</code> <code>'its python time!'</code>
+          </table>
+
+      </section>
+
+      <section>
+          <h3>Expressions <span class="smaller">(with operators)</span></h3>
+
+          <p class="smaller">An expression describes a computation and evaluates to a value.</p>
+
+          <p class="smaller">Some expressions use operators:</p>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          18 + 69
+          </code></pre>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          6/23
+          </code></pre>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          2 * 100
+          </code></pre>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          2 ** 100
+          </code></pre>
+      </section>
+
+      <section>
+          <h3>Expressions <span class="smaller">(with function calls)</span></h3>
+
+          <p class="smaller">Many expressions use function calls:</p>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          pow(2, 100)
+          </code></pre>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          max(50, 300)
+          </code></pre>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          min(-1, -300)
+          </code></pre>
+
+          <p>See <a target="_blank" href="https://docs.python.org/3/library/functions.html">all built-in global functions</a>.</p>
+
+      </section>
+
+      <section class="heading-only">
+          <h2>Variables</h2>
+      </section>
+
+      <section>
+          <h3>Variables</h3>
+
+          <img src="media/name_value.png" alt="Name bound to value" width="200" style="float:right;">
+
+          <p>A variable binds a name to a value.
+          </p>
+
+          <table class="anatomy_of_call">
+              <tr>
+                  <td>x
+                  <td>=
+                  <td>7
+              <tr>
+                  <td class="anatomy_of_call_operator">Name
+                  <td>
+                  <td class="anatomy_of_call_operand">Value
+          </table>
+
+          <div class="fragment">
+          <p>The value can be any expression:</p>
+
+          <table class="anatomy_of_call">
+              <tr>
+                  <td>x
+                  <td>=
+                  <td>1 + 2 * 3 - 4 // 5
+              <tr>
+                  <td class="anatomy_of_call_operator">Name
+                  <td>
+                  <td class="anatomy_of_call_operand">Expression
+          </table>
+          </div>
+
+      </section>
+
+      <section>
+          <h3>Using variables</h3>
+
+          <p>A variable can be referenced multiple times:</p>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          x = 10
+          y = 3
+
+          result1 = x * y
+          result2 = x + y
+          </code></pre>
+
+      </section>
+
+      <section>
+          <h3>Re-assigning variables</h3>
+
+          <p>A particular name can only be bound to a single value.</p>
+
+          <pre style="font-size:0.9em"><code data-trim data-noescape class="python">
+          my_name = 'Pamela'
+
+          my_name = my_name + 'ela'
+          </code></pre>
+
+          <p>💬  Will that code error? If not, what will <code>my_name</code> store? <br>
+              <span class="fragment">It will not error (similar code in other languages might, however).
+              The name <code>my_name</code> is now bound to the value 'Pamelaela'.
+          </p>
+      </section>
+
+
+        <section class="heading-only">
+          <h2>Functions</h2>
+        </section>
+
+        <section>
+            <h3>What is a function?</h3>
+
+            <p>A <strong>function</strong> is a sequence of code that performs a particular task
+                and can be easily reused. ♻️
+            </p>
+
+            <p>We've already used functions:</p>
+
+            <pre style="font-size:1.0em"><code data-trim data-noescape class="python">
+            abs(-1)
+            pow(2, 10)
+            add(18, 69)
+            mul(60, sub(5, 4))
+            </code></pre>
+
+            <div class="fragment">
+            <p>A function takes in an input (the <strong>arguments</strong>) and returns an output (the <strong>return value</strong>).</p>
+
+            <p style="font-family:monospace">2, 10 → <span style="display:inline-block; padding: 10px; border-radius: 2px; background: rgb(195, 212, 233)">pow</span> → 1024
+            </p>
+            </div>
+        </section>
+
+
+        <section>
+            <h3>Why functions?</h3>
+
+            <p>Consider this function-less code:</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            greeting1 = "Hello, Jackson, how are you?";
+            greeting2 = "Hello, Dr. Biden, how are you?";
+            greeting3 = "Hello, Stranger, how are you?";
+            </code></pre>
+
+            <p>Functions help when code has <strong>repetition</strong>.</p>
+
+            <p>Function parameters/arguments help when repetitive code has <strong>variation</strong>.</p>
+        </section>
+
+        <section>
+            <h3>Building a function</h3>
+
+            <p>First identify the repetitive parts:</p>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def say_greeting():
+                return "Hello, how are you?"
+            </code></pre>
+
+            <p>Then use parameters for the parts that vary:</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def say_greeting(name):
+                return "Hello, " + name + ", how are you?"
+            </code></pre>
+
+            <p>Finally, test it with different arguments:</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            say_greeting("Jackson")
+            say_greeting("Dr. Biden")
+            say_greeting("Stranger")
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Function definition</h3>
+
+            <p>The most common way to define functions is Python is the <code>def</code> statement.</p>
+
+            <pre style="font-size:1.0em"><code data-trim data-noescape class="python">
+            def &lt;name&gt;(&lt;parameters&gt;):
+                return &lt;return expression&gt;
+            </code></pre>
+
+            <p>Example:</p>
+            <pre style="font-size:1.0em"><code data-trim data-noescape class="python">
+            def add(num1, num2):
+                return num1 + num2
+            </code></pre>
+
+            <p>Once defined, we can call it:</p>
+            <pre style="font-size:1.0em"><code data-trim data-noescape class="python">
+            add(2, 2)
+            add(18, 69)
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Anatomy of a function definition</h3>
+
+            <p>The first line is called the <strong>function signature</strong>,
+                all lines after are considered the <strong>function body</strong>.</p>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def &lt;name&gt;(&lt;parameters&gt;):        # ← Function signature
+                return &lt;return expression&gt;   # ← Function body
+            </code></pre>
+
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):             # ← Function signature
+                return num1 + num2           # ← Function body
+            </code></pre>
+
+            <div class="fragment">
+            <p>The function body can have multiple lines:</p>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):             # ← Function signature
+                sum = num1 + num2            # ← Function body
+                return sum                   # ← Function body
+            </code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Function arguments</h3>
+
+            <p>We can pass in any expressions as arguments.</p>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):
+                return num1 + num2
+            </code></pre>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            x = 1
+            y = 2
+            add(x, y)
+            </code></pre>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            x = 3
+            add(x * x, x + x)
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Return values</h3>
+
+            <p>The return keyword returns a value to whoever calls the function (and exits the function).</p>
+
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):
+                return num1 + num2
+
+            sum = add(2, 4)
+            </code></pre>
+
+            <p>Reminder: You can use function calls in expressions:</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            big_sum = add(200, 412) + add(312, 256)
+            </code></pre>
+
+            <p>...and nest function calls inside function calls:</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            huge_sum = add(add(200, 412), add(312, 256))
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Spot the bug #1</h3>
+
+            <p>What's wrong with this code?</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):
+                return sum
+                sum = num1 + num2
+
+            sum = add(2, 4)
+            </code></pre>
+
+            <p class="fragment">The code after the return statement will not be executed,
+            that line belongs before the return.</p>
+        </section>
+
+        <section>
+            <h3>Spot the bug #2</h2>
+            <p>What's wrong with this code?</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add():
+                return num1 + num2
+
+            sum = add(2, 4)
+            </code></pre>
+            <p class="fragment">The function body is referring to variables
+                that don't seem to exist. Most likely, they should be parameters
+                in the function signature.</p>
+        </section>
+
+        <section>
+            <h3>Spot the bug #3</h2>
+
+            <p>What's wrong with this code?</p>
+            <pre style="font-size:0.8em"><code data-trim data-noescape class="python">
+            def add(num1, num2):
+                sum = num1 + num2
+
+            sum = add(2, 4)
+            </code></pre>
+            <p class="fragment">The function body does not return any value.
+                However, the code that calls it tries to use the result of the expression.
+                It should have a return statement that returns the sum.
+            </p>
+        </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-badge@0.1.9/highlightjs-badge.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.js"></script>
+    <script>
+        const srcUrlPrefix = "https://cdn.jsdelivr.net/npm/reveal.js@4.1.0/";
+        Reveal.initialize({
+            hash: true,
+            center: false,
+            slideNumber: true,
+            showNotes: false,
+            margin: 0.1,
+            preloadIframes: true,
+            plugins: [ RevealHighlight, RevealMenu ],
+            transition: "none"
+        });
+
+        // add HighlightJS-badge (options are optional)
+        var options = {
+            copyIconContent: "📄",
+            checkIconContent: "✅"
+        };
+        window.highlightJsBadge();
+
+        if (window.location.search == "?print-pdf") {
+            var uncounted = document.querySelectorAll("[data-visibility='uncounted']");
+            uncounted.forEach(node => {
+                node.parentNode.classList.add("no-print")
+            })
+        }
+
+    </script>
+    </body>
+</html>

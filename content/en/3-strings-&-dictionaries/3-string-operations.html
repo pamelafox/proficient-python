@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: String operations</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>String operations</h1>
+<p>In Python, both lists and strings are considered types of sequences. That means that many of the operations that work on lists also work on strings.</p>
+<p>The <code>len()</code> function reports how long a string is (which is, in the example below, the length of the longest English word ever!):</p>
+<pre><code>illness = 'pneumonoultramicroscopicsilicovolcanoconiosis'
+longest_word_record_length = len(illness)</code></pre>
+<p>The <code>in</code> operator checks to see if a substring is inside a larger string:</p>
+<pre><code>if 'pneumo' in illness:
+  print("Uh oh, your poor lungs :(")</code></pre>
+<p>When used on strings, a <code>for</code> loop iterates through each character:</p>
+<pre><code>alphabet = 'abcdefghijklmnopqrstuvwxyz'
+for letter in alphabet:
+    print(letter)</code></pre>
+<h3>Bracket notation</h3>
+<p>We can use bracket notation to access single characters inside a string:</p>
+<pre><code>illness = 'pneumonoultramicroscopicsilicovolcanoconiosis'
+
+true_start_sound = illness[1]   # Stores 'n'
+last_letter = illness[-1]       # Stores 's'</code></pre>
+<p>However, strings are different from lists in that they are <bold>immutable</bold>, meaning they cannot be changed after they're created. Using bracket notation to try to change a character will result in an error.</p>
+<pre><code>illness[0] = "n"   # 🚫 Error!</code></pre>
+<p>We can also use bracket notation to slice parts of the string, from a start to (just before) an end index:</p>
+<pre><code>how_small = illness[13:24]      # Stores 'microscopic'
+from_where = illness[30:37]     # Stores 'volcano'</code></pre>
+<h3>Exercise: Bracket notation</h3>
+<p>Use this string variable for the next three questions:</p>
+<pre><code>author_name = 'P S Fox'</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>String methods</h3>
+<p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <italic>none</italic> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
+<p>For example, the <code>upper()</code> method returns an uppercase version of a string.</p>
+<pre><code>request = "Please wash the dishes from your cookie disaster."
+demand = request.upper()</code></pre>
+<p>When that code runs, <code>request</code> is still "Please wash the dishes from your cookie disaster." but <code>demand</code> stores "PLEASE WASH THE DISHES FROM YOUR COOKIE DISASTER." (Code based on a true story, but I was the one who caused the disaster.. 🍪)</p>
+<p>Here are some of the most helpful string methods:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Method</p>
+<th>
+<p>Description</p>
+<tbody>
+<tr>
+<td>
+<p><code>lower()</code></p>
+<td>
+<p>Returns a copy of the string with all characters converted to lowercase.</p>
+<tr>
+<td>
+<p><code>replace(old, new)</code></p>
+<td>
+<p>Returns a new string where occurrences of old are replaced with new.</p>
+<tr>
+<td>
+<p><code>find(substring)</code></p>
+<td>
+<p>Returns the lowest index in the string where substring is found.</p>
+<tr>
+<td>
+<p><code>startswith(prefix)</code></p>
+<td>
+<p>Returns True if the string starts with the prefix, and False otherwise.</p>
+<tr>
+<td>
+<p><code>endswith(suffix)</code></p>
+<td>
+<p>Returns True if the strings ends with the suffix, and False otherwise.</p>
+<tr>
+<td>
+<p><code>strip([chars])</code></p>
+<td>
+<p>Returns a copy of the string with leading and trailing characters removed, defaulting to whitespace characters.</p>
+<tr>
+<td>
+<p><code>split(separator)</code></p>
+<td>
+<p>Returns a list of substrings in the string, using separator as the delimiter.</p>
+<tr>
+<td>
+<p><code>join(iterable)</code></p>
+<td>
+<p>Returns a string which is the concatenation of strings in the iterable object.</p>
+</table>
+<p>More methods are described in the <link>Python documentation</link>.</p>
+<p>Remember that these are methods, not functions, so when using them, you always write the variable name first, then the dot, then the method name.</p>
+<p>TODO: Quiz</p>
+<h3>Splitting and joining</h3>
+<p>There are two string methods that I want to spend more time on, because they're just so dang useful, but can also be a little tricky to use: <code>split</code> and <code>join</code>.</p>
+<ul><li><p><code>split(separator)</code>: Returns a list of substrings in the string, using separator as the delimiter.</p></li>
+<li><p><code>join(iterable)</code>: Returns a string which is the concatenation of strings in the iterable object.</p></li></ul>
+<p>The <code>split</code> method is handy whenever you have a string of text with parts separated by a particular character, like a comma, colon, pipe, space, or tab.</p>
+<p>For example, we can split a string that stores a comma-separated list of words:</p>
+<pre><code>my_groceries = 'apples,bananas,carrots'
+grocery_items = my_groceries.split(',')   # Stores ["apples", "bananas", "carrots"]</code></pre>
+<p>Now we can iterate through that list - or anything else we can usually do with a list.</p>
+<pre><code>for item in grocery_items:
+    print(item)</code></pre>
+<p>The <code>join</code> method is the opposite: it joins a list of items into a single string, separating each item with the specified separator.</p>
+<p>Here's how we can join together a list using a comma as the separator:</p>
+<pre><code>address_parts = ["123 Pining St", "Nibbsville", "OH"]
+",".join(address_parts) # '123 Pining St, Nibbsville, OH'</code></pre>
+<p>We can also use the empty string as the separator, if we just want to mash strings together:</p>
+<pre><code>names = ["Gray", "Fox"]
+"".join(names)   # 'GrayFox'</code></pre>
+<h3>Exercise: Write a poem</h3>
+<p>In order to create a string with items separated by new lines, we can specify the escape sequence "\n" as the separator.</p>
+<p>Try it out below with your own favorite poem, haiku, or song verse.</p>
+<pre><code>poem_lines = ["Forgive me", "they were delicious", "so sweet", "and so cold"]
+"\n".join(poem_lines)</code></pre>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

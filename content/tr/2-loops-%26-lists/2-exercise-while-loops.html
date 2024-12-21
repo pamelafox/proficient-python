@@ -1,0 +1,106 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Egzersiz: Döngüler sırasında</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Egzersiz: Döngüler sırasında</h1>
+<p>Bu alıştırmalarda döngüler sırasında pratik yapın ve kodunuzun çalıştığını düşündüğünüzde doctest'leri çalıştırın. Unutmayın, hataları tek tek kodlamak çok kolaydır (ve deneyimli mühendisler için bile yaygındır), bu nedenle bunlar için gözlerinizi dört açın.   Ayrıca, yanlışlıkla sonsuz bir döngü yazarsanız, büyük olasılıkla tarayıcı sekmesini çökerteceksiniz. Eğer bu olursa, tebrikler, bu bir programcı geçiş törenidir! Sadece sayfayı yeniden yükleyin ve bunun yerine sonlu bir döngü yazmaya çalışın.</p>
+<p> ♀️ ♂️ Alıştırmalar üzerinde çalışırken herhangi bir sorunuz varsa, Slack'teki #exercises kanalına göndermeniz yeterlidir. Örneğin, "Count Evens alıştırmasıyla ilgili yardım arıyorum." mesajını gönderebilir ve ardından kodunuzu konuya gönderebilirsiniz (henüz üzerinde çalışmamış olanlar için cevabı açıklamamak için). Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+<h3>Çiftleri Sayma</h3>
+<p>Implement <code>count_evens</code>, belirli bir sayı ile belirli <code>start</code> <code>end</code> bir sayı arasındaki çift sayıların sayısını sayan bir işlevdir. Sayım, <code>start</code> eğer eşitlerse veya <code>end</code> sayıları içermelidir.</p>
+<p><italic>İpucu: Bir sayının eşit olup olmadığını kontrol etmek için </italic><code>%</code> operatörü, bir sayıyı başka bir sayıya böldükten sonra geri kalanını bildirir. 2'ye bölünen çift sayının kalan değeri 0'dır.</p>
+<p> Bu sorunu bir videoda gözden geçirmemi <link>izleyebilirsiniz. Çözümü görmek istemiyorsanız, başlamak için yeterince şey gördüğünüzü hissettiğinizde duraklattığınızdan emin olun.</p>
+<pre><code>def count_evens(start, end):
+    """
+    Counts the number of even numbers between a given start number and given end number.
+    Count should include the start or end if they are even.
+
+    >>> count_evens(2, 2)
+    1
+    >>> count_evens(-2, 52)
+    28
+    >>> count_evens(237, 500)
+    132
+    """
+    # YOUR CODE HERE</code></pre>
+<h3>Katları Sayma</h3>
+<p>Implement <code>count_multiples</code>, belirli <code>divisor</code> bir fonksiyonun kaç katının ve <code>end</code> sayılar arasında olduğunu sayan <code>start</code> bir işlevdir. Veya <code>start</code> <code>end</code> eğer onlar da bir katıysa <code>divisor</code>içermelidir.</p>
+<p><italic>İpucu: </italic><code>%</code> operatör, bir sayının diğerinin katı olup olmadığını belirlemek için burada bir kez daha yararlıdır. Aslında, önceki kodunuzdan başlamak ve bu işlevin doğru bir şekilde uygulanması için ne kadar az değişiklik yapmanız gerektiğini görmek isteyebilirsiniz.</p>
+<pre><code>def count_multiples(start, end, divisor):
+    """
+    Counts the number of multiples of divisor between the start and end numbers.
+    It should include the start or end if they are a multiple.
+     
+    >>> count_multiples(2, 2, 1)       # 2 is a multiple of 1
+    1
+    >>> count_multiples(2, 2, 2)       # 2 is a multiple of 2
+    1
+    >>> count_multiples(2, 2, 3)       # 2 is not a multiple of 3
+    0
+    >>> count_multiples(1, 12, 3)      # 3, 6, 9, 12
+    4
+    >>> count_multiples(237, 500, 10)
+    27
+    """
+    # YOUR CODE HERE</code></pre>
+<h3>Toplam Katları</h3>
+<p>Implement <code>sum_multiples</code>, verilen <code>start</code> ve <code>end</code> sayılar arasında verilen <code>divisor</code> bir verinin katlarının toplamını döndüren bir işlevdir. <code>start</code> Veya <code>end</code> sayıları da katlarsa, bunlar da toplamın içine dahil edilmelidir.</p>
+<p><italic>İpucu: Bu alıştırma ile önceki alıştırma arasındaki temel fark, saymaya karşı toplamadır. Bunun yerine dönüş değerini toplam yapmak için önceki kodunuzdan neyi değiştirmeniz gerekiyor?</italic></p>
+<pre><code>def sum_multiples(start, end, divisor):
+    """Returns the sum of the multiples of a given divisor between start and end.
+    If the start or end numbers are multiples, they should be included in the sum.
+
+    >>> sum_multiples(1, 12, 4)
+    24
+    >>> sum_multiples(1, 12, 13)
+    0
+    >>> sum_multiples(2, 2, 2)
+    2
+    >>> sum_multiples(2, 2, 3)
+    0
+    >>> sum_multiples(23, 81, 13)
+    260
+    """
+    # YOUR CODE HERE</code></pre>
+<h3>Bunun hatalarını ayıklayın! </h3>
+<p>Bir sonraki işlevin kodu zaten yazılmıştır, ancak birkaç hatası vardır.</p>
+<p>Hata ayıklama için ipuçları:</p>
+<ul><li><p>Kodu okuyun ve küçük girişler için kağıt üzerinde izleyin</p></li>
+<li><p>Testleri çalıştırmayı deneyin ve çıktıyı gözlemleyin</p></li>
+<li><p>Bir önseziniz varsa, kodu değiştirmeyi ve çıktının nasıl değiştiğini görmeyi deneyin</p></li></ul>
+<pre><code>def product_of_numbers(end):
+    """Returns the product of all the numbers from 1 to the end number,
+    including the end number.
+
+    >>> product_of_numbers(1)
+    1
+    >>> product_of_numbers(2)
+    2
+    >>> product_of_numbers(3)
+    6
+    >>> product_of_numbers(10)
+    3628800
+    """
+    result = 1
+    counter = 0
+    < end:="" result="" *="counter" counter="" +="2" return=""></code></pre>
+</div>
+</body>
+</html>

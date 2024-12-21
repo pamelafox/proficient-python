@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Egzersiz: Koşullular</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Egzersiz: Şartlı</h1>
+<p>Bu alıştırmada, tamamen bileşik koşullulardan (<code>if</code>//<code>elif</code><code>else</code>) oluşan işlevleri tanımlayacaksınız. Koşullarınızın sırasını dikkatlice düşünün; bazen siparişin büyük bir etkisi olabilir!</p>
+<p> ♀️ ♂️ Alıştırmalar üzerinde çalışırken herhangi bir sorunuz varsa, Slack'teki #exercises kanalına göndermeniz yeterlidir. Örneğin, "Merhaba Dünya alıştırmasıyla ilgili yardım arıyorum." mesajını gönderebilir ve ardından kodunuzu ileti dizisine gönderebilirsiniz (henüz üzerinde çalışmamış olanlar için cevabı açıklamamak için). Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+
+<h3>Daha Az Sayı</h3>
+<p>  Bu konuda başlamak için yardıma mı ihtiyacınız var? Bu videoda benzer bir sorundan <link>geçtiğimi izleyin.</p>
+<pre><code>def lesser_num(num1, num2):
+    """ Returns whichever number is lowest of the two supplied numbers.
+
+    >>> lesser_num(45, 10)
+    10
+    >>> lesser_num(-1, 30)
+    -1
+    >>> lesser_num(20, 20)
+    20
+    """
+    # YOUR CODE HERE</code></pre>
+
+<h3>Merhaba Dünya</h3>
+<p>Bu alıştırmada, bir ifadeyi üç farklı dile çevirmek için koşulluları kullanacaksınız. Testleri geçtikten sonra, bildiğiniz başka bir dili eklemenizi öneririm!</p>
+<pre><code>def hello_world(language_code):
+    """ Returns the translation of "Hello, World" into the language
+    specified by the language code (e.g. "es", "pt", "en"),
+    defaulting to English if an unknown language code is specified.
+    >>> hello_world("en")
+    'Hello, World'
+    >>> hello_world("es")
+    'Hola, Mundo'
+    >>> hello_world("pt")
+    'Olá, Mundo'
+    """
+    # YOUR CODE HERE</code></pre>
+
+<h3>Not Veren</h3>
+<pre><code>def assign_grade(score):
+    """ Returns a letter grade for the numeric score based on the grade bins of:
+     "A" (90-100), "B" (80-89), "C" (70-79), "D" (65-69), or "F" (0-64)
+
+    >>> assign_grade(95)
+    'A'
+    >>> assign_grade(90)
+    'A'
+    >>> assign_grade(85)
+    'B'
+    >>> assign_grade(80)
+    'B'
+    >>> assign_grade(77)
+    'C'
+    >>> assign_grade(70)
+    'C'
+    >>> assign_grade(68)
+    'D'
+    >>> assign_grade(65)
+    'D'
+    >>> assign_grade(64)
+    'F'
+    >>> assign_grade(0)
+    'F'
+    """
+    return ''</code></pre>
+</div>
+</body>
+</html>

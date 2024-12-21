@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Exercise: String formatting</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Exercise: String formatting</h1>
+<p>Use f strings to complete these functions that return strings based on the input parameters.</p>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Location exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+<h3>Solar system</h3>
+<pre><code>def solar_system(num_planets):
+  """Returns a string like
+   "There are NUM planets in the solar system"
+   where NUM is provided as an argument.
+
+  >>> solar_system(8)
+  'There are 8 planets in the solar system'
+  >>> solar_system(9)
+  'There are 9 planets in the solar system'
+  """
+  return "" # REPLACE THIS LINE</code></pre>
+
+<h3>Location</h3>
+<pre><code>def location(place, lat, lng):
+  """Returns a string which starts with the provided PLACE,
+  then has an @ sign, then the comma-separated LAT and LNG
+  
+  >>> location("Tilden Farm", 37.91, -122.29)
+  'Tilden Farm @ 37.91, -122.29'
+  >>> location("Salton Sea", 33.309,-115.979)
+  'Salton Sea @ 33.309, -115.979'
+  """
+  return "" # REPLACE THIS LINE</code></pre>
+
+<h3>Fancy date</h3>
+<pre><code>def fancy_date(month, day, year):
+  """Returns a string of the format 
+   "On the DAYth day of MONTH in the year YEAR"
+   where DAY, MONTH, and YEAR are provided. 
+   For simplicity, "th" is always the suffix, not "rd" or "nd".
+
+  >>> fancy_date("July", 8, 2019)
+  'On the 8th day of July in the year 2019'
+  >>> fancy_date("June", 24, 1984)
+  'On the 24th day of June in the year 1984'
+  """ 
+  return "" # REPLACE THIS LINE</code></pre>
+
+<h3>Dr. Evil</h3>
+<pre><code>def dr_evil(amount):
+  """Returns '<amount> dollars', adding '(pinky)' at the end
+  if the amount is 1 million or more.
+   
+  >>> dr_evil(10)
+  '10 dollars'
+  >>> dr_evil(1000000)
+  '1000000 dollars (pinky)'
+  >>> dr_evil(2000000)
+  '2000000 dollars (pinky)'
+  """
+  # YOUR CODE HERE</code></pre>
+
+
+</div>
+</body>
+</html>

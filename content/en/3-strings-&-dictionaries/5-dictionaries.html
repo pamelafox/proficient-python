@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Dictionaries</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Dictionaries</h1>
+<p>Another data type in Python (and my personal favorite) is the dictionary. Similar to how an actual dictionary maps words to definitions, a Python dictionary maps keys to values.</p>
+<p>Here's how we could make a mini slang dictionary using a Python dictionary:</p>
+<pre><code>slang_dictionary = {
+   "yeet": "An expression of excitement or a verb signifying throwing something",
+   "flex": "A verb, meaning to show off something",
+   "slay": "A verb indicating someone did something very well in something",
+   "sus": "Abbreviation for 'suspicious'",
+   "salty": "Angry, upset, or bitter"
+}</code></pre>
+<p>It's very easy to look up the value in a dictionary when we know the key, using another kind of bracket notation. Instead of specifying an index in the square brackets like we did for lists, we instead specify the key:</p>
+<pre><code>slang_dictionary["flex"]   # 'A verb, meaning to show off something'</code></pre>
+<p>You might be wondering why we don't just use a list or nested list, perhaps like this:</p>
+<pre><code>slang_dictionary = [
+   ["yeet", "An expression of excitement or a verb signifying throwing something"],
+   ["flex", "A verb, meaning to show off something"]
+]</code></pre>
+<p>We could certainly find the definition of "flex" in that nested list, by either iterating through and checking values or by using a list method like <code>find()</code>. However, it would be a much slower operation, due to the differences in the ways Python lists and dictionaries are stored. If there were 10,000 sublists in that nested list, and the word we're looking for was at the end of the list, the computer would have to search through every single sublist. However, if there were 10,000 keys in a dictionary, and we looked up a word, the computer can find it immediately.</p>
+<p>In conclusion: if you think that you are going to be frequently looking up something according to its key, a dictionary is typically the right data type to use.</p>
+<h3>Dictionary access</h3>
+<p>Let's dive more into how we can retrieve values from a dictionary (or <code>dict</code>, as it's formally known in Python).</p>
+<p>Consider this dict that maps Spanish words to their English translations:</p>
+<pre><code>words = {
+    "más": "more",
+    "otro": "other",
+    "agua": "water"
+}</code></pre>
+<p>We can retrieve a value by using bracket notation with the key inside the brackets, as shown above:</p>
+<pre><code>words["otro"]  # 'other'</code></pre>
+<p>However, we might sometimes have the key inside a variable. In that case, the variable name would go inside the brackets:</p>
+<pre><code>first_word = "agua"
+words[first_word]  # 'water'</code></pre>
+<p>Basically, any expression can go inside those square brackets, as long as it eventually evaluates into a valid key.</p>
+<p>If we ask for a key that's not there, we'll get a big old error.</p>
+<pre><code>words["pavo"]  # 🚫 Error!</code></pre>
+<p>Fortunately, there's another approach if we're not sure about a key's existence. Python dicts have a <code>get</code> method that will retrieve a value if the key exists, and will otherwise default to whatever value you specify.</p>
+<p>In this example, the default is a thinking face emoji:</p>
+<pre><code>words.get("pavo", "🤔")  # '🤔'</code></pre>
+<p>If we specify no default, then <code>None</code> is returned:</p>
+<pre><code>words.get("pavo") # None</code></pre>
+<h3>Dictionary mutation</h3>
+<p>Just like lists, dictionaries are <bold>mutable</bold> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
+<p>A common way to use dictionaries is to start with an empty dict like so:</p>
+<pre><code>users = {}</code></pre>
+<p>And then add a value to it, using bracket notation:</p>
+<pre><code>users["pamelafox"] = "b3stp@ssEvErDontHackMe"</code></pre>
+<p>We can keep re-assigning a key to new values in the same way:</p>
+<pre><code>users["pamelafox"] = "EV3Nb3tt3Rp@ssw0rd!"</code></pre>
+<p>We can even use the <code>+=</code> operator to add to an existing value, as long as it's a number or a string:</p>
+<pre><code>users["pamelafox"] += "itsLongerSoItsMoreSecure!!"</code></pre>
+<p>TODO: Quiz</p>
+<h3>What's in a dict?</h3>
+<p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <italic>any</italic> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
+<p>Consider this dict that maps years to the Pixar movie that came out that year:</p>
+<pre><code>pixar_by_year = {
+   1995: "Toy Story",
+   1998: "A Bug's Life",
+   1999: "Toy Story 2",
+   2001: "Monsters, Inc",
+   2003: "Finding Nemo"
+}</code></pre>
+<p>The values can be any type at all, including mutable types like lists.</p>
+<p>Here's a dict for more recent Pixar films, where the values need to be lists since multiple films are released in some years:</p>
+<pre><code>pixar_by_year = {
+   2017: ["Coco", "Cars 3"],
+   2018: ["Incredibles 2"],
+   2019: ["Toy Story 4"],
+   2020: ["Soul", "Onward"]
+}</code></pre>
+<p>We could mix-and-match, and have some values be strings and other values be lists, but it's usually better to stick with a consistent schema.</p>
+<p>The values can even be nested dictionaries, making dicts an ideal way to store hierarchical data.</p>
+<p>Here's a dict of my favorite spiders, with some properties of each one inside nested dicts:</p>
+<pre><code>spiders = {
+  "smeringopus": {
+      "name": "Pale Daddy Long-leg",
+      "length": 7
+  },
+  "holocnemus pluchei": {
+      "name": "Marbled cellar spider",
+      "length": (5, 7)
+  }
+}</code></pre>
+<p>TODO: Quiz</p>
+<h3>Dictionary iteration</h3>
+<p>A Python dict is an iterable object, which means it can be iterated over using a <code>for</code> loop. In each iteration of the loop, the loop variable is assigned to the current key, and the loop body can choose what to do with that key.</p>
+<p>For example, this loop prints out each value by doing dictionary a lookup with the key:</p>
+<pre><code>insects = {"spiders": 8, "centipedes": 100, "bees": 6}
+for name in insects:
+    print(insects[name])</code></pre>
+<p>What will be the order of the keys during the iteration? In younger versions of Python, the order was not defined, so the iteration might go through the keys in any order. However, in modern Python, the order is always according to when the keys were added to the dictionary.</p>
+<p>In the example above, the order would be "spiders", then "centipedes", then "bees", so the loop would print 8, then 100, then 6.</p>
+<h3>Dictionary operations</h3>
+<p>Dictionaries support some of the same operators and functions as strings and lists.</p>
+<p>Starting with this dict that maps US state codes to states:</p>
+<pre><code>states = {
+    "CA": "California",
+    "DE": "Delaware",
+    "NY": "New York",
+    "TX": "Texas",
+    "WY": "Wyoming"
+}</code></pre>
+<p>The <code>len()</code> function reports how many key/value pairs are the dict.</p>
+<pre><code>len(states)  # 5</code></pre>
+<p>The <code>in</code> operator reports whether or not a particular key is in a dict (it will <italic>not</italic> look for values):</p>
+<pre><code>"CA" in states  # True
+"ZZ" in states  # False</code></pre>
+<p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <link>Python dict documentation</link>.</p>
+<h3>Exercise: Make a recipe</h3>
+<p>In the code editor below, create a dict to hold information on your favorite recipe. It should have keys for:</p>
+<ul><li><p>title (a string)</p></li>
+<li><p>servings (a number)</p></li>
+<li><p>ingredients (a list of strings).</p></li></ul>
+<p>Once the dict is created, use bracket notation to pull value back out of the dict and print them out.</p>
+<pre><code>recipe = {
+  # Put title key/value here - value should be a string
+  # Put servings key/value here - value should be a number
+  # Put ingredients key/value here - value should be a list
+}
+
+# Store the recipe's title in this variable
+# by using bracket notation on the recipe variable
+title = ''
+print(title)
+
+# Store the recipe's servings # in this variable
+# by using bracket notation on the recipe variable
+servings = -1
+print(servings)
+
+# Store the recipe's ingredients list in this variable
+# by using bracket notation on the recipe variable
+ingredients = []
+print(ingredients)</code></pre>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

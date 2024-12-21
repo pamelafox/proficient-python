@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Sınıflar hakkında daha fazla bilgi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Sınıflar hakkında daha fazla bilgi</h1>
+<h3>Sınıf değişkenleri</h3>
+<p><bold>Sınıf değişkeni, sınıfın</bold> tüm örnekleri (bu türdeki tüm nesneler) arasında paylaşılan bir veri özniteliğidir.</p>
+<p>Yöntemlerden önce sınıf tanımının içine bir atama deyimi yazarak bir sınıf değişkeni bildiririz:</p>
+<pre><code>class Product:
+    </code></pre>
+<p>Not tüm sınıfa ait olduğu için hiçbir şey yoktur <code>self</code> , belirli bir nesneye değil.</p>
+<p>Ancak, bir yöntemin içindeki class değişkenine erişirken, şunları kullanabiliriz <code>self</code>:</p>
+<pre><code>class Product:
+    sales_tax = 0.07
+    
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+
+</code></pre>
+<p>İfade <code>self.sales_tax</code> çalışır, çünkü nokta gösterimi bu ada sahip bir örnek değişkeni arayarak başlar ve sonra herhangi bir değişkeni bulamazsa, bunun yerine bu adın bir sınıf değişkenini arar.</p>
+<p>Nokta gösteriminde sınıf adını kullanarak class değişkenine başvurmak da mümkündür, örneğin <code>Product.sales_tax</code>. Sınıf değişkenine bu şekilde erişmek, kodunuzun yanlışlıkla aynı ada sahip bir örnek değişkenine başvurmamasını sağlar. Ancak, özellikle örnek değişkeninin sınıf değişkenini geçersiz kılmasını istemediğiniz sürece, hem sınıf değişkenleri hem de örnek değişkenleri için aynı adı kullanmak kötü bir fikirdir.</p>
+<h3>Alıştırma: Öznitelik türleri</h3>
+<p>Çikolata dükkanı için müşteriyi temsil eden bu sınıfı düşünün:</p>
+<pre><code>class Customer:
+
+    salutation = "Dear"
+
+    def __init__(self, name, address):
+        self.name = name
+        self.address = address
+
+    def get_greeting(self):
+        return f"{self.salutation} {self.name},"
+
+    def get_formatted_address(self):
+        return "\n".join(self.address)
+
+cust1 = Customer("Coco Lover",
+    ["123 Pining St", "Nibbsville", "OH"])</code></pre>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<h3>Sınıf yöntemleri</h3>
+<p><bold>Sınıf yöntemi</bold>, bir sınıfta çağrılan ve ilk bağımsız değişken olarak bir nesne <italic>almayan</italic> bir yöntemdir. Bunun yerine, sınıfın kendisini ilk argüman olarak alır.</p>
+<p>Bir sınıf yöntemi tanımlamak için, satırı <code>@classmethod</code> işlev tanımından önce koymalı ve kurala göre, ilk bağımsız değişkeni <code>cls</code> <code>self</code>:</p>
+<pre><code>class Product:
+    sales_tax = 0.07
+    
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+
+</code></pre>
+<p>Bu yönteme sınıf üzerinde diyoruz ve ilk argüman dışında her şeyi geçiyoruz:</p>
+<pre><code>free_dark = Product.make_free_bars("Super Dark", ["200 cals", "5 g sugar"])</code></pre>
+<p>Bu kod satırı, verilen ad, beslenme bilgileri ve 0,00 ABD doları fiyatla sınıfın yeni bir örneğini oluşturacaktır. Çünkü <code>cls</code> , olarak ayarlanır <code>Product</code>, ile <code>cls(name, 0.00, nutrition_info)</code> aynıdır<code>Product(name, 0.00, nutrition_info)</code>. Bunun <code>Product</code>yerine yazmak <code>cls</code> aptalca görünebilir, ancak nesne yönelimli programlamanın daha fazla özelliğini öğrendiğimizde, kullanmanın <code>cls</code> kodlamadan <code>Product</code>daha fazla esneklik sağladığını keşfedeceğiz.</p>
+<p>Sınıf yöntemleri genellikle "fabrika yöntemleri" oluşturmak için kullanılır: tıpkı yukarıdaki örnekte olduğu gibi, işi sınıfın yeni bir örneğini oluşturmak ve döndürmek olan yöntemler. Bununla birlikte, bununla sınırlı değiller; bir sınıfın birden çok örneğini oluşturmak veya belki de sınıf değişkenleri üzerinde bazı hesaplamalar yapmak için de kullanılabilirler.</p>
+<p>Yöntemlerinizin çoğu büyük olasılıkla örnek yöntemler olacaktır, ancak <code>@classmethod</code> OO araç kutunuz için iyi bir araçtır.</p>
+<h3>Genel ve özel</h3>
+<p>Nesne yönelimli programlamayı destekleyen birçok dilde, hangi kodun bir nesnenin özniteliklerine erişebileceği ve bunları değiştirebileceği konusunda katı kurallar vardır. Python o kadar katı değil (ya da genellikle söylediğim gibi, oldukça gevşek-goosey!).</p>
+<p>Örneğin, bir nesneye başvurusu olan herhangi bir kod, o nesnenin örnek değişkenlerini değiştirebilir:</p>
+<pre><code>pina_bar = Product("Piña Chocolotta", 7.99,
+    ["200 calories", "24 g sugar"])
+
+pina_bar.inventory = -5000</code></pre>
+<p>Diğer diller, özniteliğin yöntem tanımlarının <code>inventory</code> dışında ayarlanamayacağına dair şikayetleri ayarlayan satırda hata yapar.</p>
+<p>Aslında, yepyeni örnek değişkenleri bile atayabiliriz:</p>
+<pre><code>pina_bar.brand_new_attribute_haha = "instanception"</code></pre>
+<p>Şimdi, sorumlu programcılar olarak, muhtemelen böyle bir şeyi bilerek yapmayacağız. Ancak hatalar olur ve diller kendimizi kendimizden kurtarmamız için bir yol sağladığında güzel olabilir.</p>
+<p>Python'un yaklaşımı, öznitelik adları için bir adlandırma kuralı kullanmaktır:</p>
+<ul><li><p>Bir özellik adının önünde <bold>alt çizgi yoksa</bold> (örneğin, , gibi), <code>inventory</code>bu özellik herkese açık olarak kabul edilir ve her yerden serbestçe erişilebilir ve değiştirilebilir.</p></li>
+<li><p>Önünde , gibi <code>_inventory</code>tek bir <bold>alt çizgi</bold> varsa, sınıf tanımında yalnızca dahili olarak kullanılması gereken bir öznitelik olarak kabul edilir. Yine de yazabiliriz<code>pina_bar._inventory = 500</code>, ancak bunu yaparak sözleşmeye meydan okuyor olacağız ve korkunç hataların kodumuza düşmesine hazırlıklı olmalıyız.</p></li>
+<li><p>Önünde , gibi <code>__inventory</code>bir <bold>çift alt çizgi</bold> varsa, Python sınıf tanımının dışında kullanıldığında farklı bir ad vererek bu özniteliğe erişmeyi zorlaştırmaya çalışacaktır. Aslında bu ismin ne olacağını anlamak ve hala bu niteliğe erişmek mümkündür, ancak burada size söylemeyeceğim, çünkü bir programcının gerçekten tamamen özel olmak istediği niteliklere erişmeye çalışmak kötü bir fikirdir.</p></li></ul>
+<p>İşte envanteri <code>Product</code> tamamen özel bir özniteliğe (veya en azından Python'da mümkün olduğunca özel) dönüştürmek için sınıfı nasıl yeniden yazabileceğimizi.</p>
+<pre><code>class Product:
+
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+</code></pre>
+<p>Bu değişiklikle, sınıf tanımının dışındaki kodun envanter özniteliğini azaltması çok daha zordur. Envanter özelliği önündeki çift alt çizgi ile korunmuyorsa, başka bir programcı kod tabanının başka bir bölümündeki envanteri yanlışlıkla güncelleştirebilir ve bunların da güncelleştirilmesi <code>needs_restocking</code> gerektiğini fark etmeyebilir. Bu değişiklik, tüm stok güncellemelerinin yeniden stoklama kontrolünden geçmesini sağlamaya çalışır.</p>
+<p>Özel örnek değişkenleri genellikle bu örnekte olduğu gibi hata denetimi eklemek veya diğer uygulama ayrıntılarını gizlemek için kullanılır.</p>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

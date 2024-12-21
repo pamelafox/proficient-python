@@ -1,0 +1,67 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: İç içe çağrı ifadeleri</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>İç içe çağrı ifadeleri</h1>
+<h3>Bir çağrı ifadesinin anatomisi</h3>
+<p>Daha karmaşık çağrı ifadelerine dalmadan önce, önce basit bir çağrı ifadesini daha derinden anlayalım. Unutmayın, çağrı ifadesi, <code>pow(2, 100)</code>. Aşağıdaki diyagram, işlevi kullanan <code>add</code> bir çağrı ifadesi içindir.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl1135hu9013s116mfug4183d/Screen Shot 2022-03-21 at 12.12.39 PM.png">Python bu çağrı ifadesini şu şekilde değerlendirir:</p>
+<ol><li><p>Önce <bold>operatörü</bold> değerlendirir. Bu durumda, adlandırılmış <code>add</code>bir işlev olduğunu görür , bir <code>add</code> işlevin geçerli ortamda erişilebilir olup olmadığını denetler ve bulduğu işlev tanımını hatırlar.</p></li>
+<li><p>Daha sonra <bold>işlenenleri</bold> sırayla değerlendirir. Yukarıda, her ikisi de basit sayılardır, bu yüzden önce 18 sayısını ve sonra 69 sayısını değerlendirir. Bunlar basit sayı değerleri olduğundan ve ifadelerin kendileri olmadığından, burada fazla iş yapmak zorunda değildir!</p></li>
+<li><p>Son olarak, işleci (bir işlev) işlev tanımına göre işlenenlere (değerlere) <bold>uygular</bold> . Yukarıdaki ifade, 18 ve 69 değerlerindeki add işlevini çağırır ve bu işlev tarafından hesaplanan her şeyi döndürür.</p></li></ol>
+<p>TODO: Sınav</p>
+<h3>İç içe çağrı ifadeleri</h3>
+<p>Şimdi <bold>iç içe geçmiş bir çağrı ifadesine bakalım: ifadelerin</bold> kendilerinin <italic>de</italic> çağrı ifadeleri olduğu bir çağrı ifadesi.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvlz8u001d146653rz69u0/Screen Shot 2021-12-20 at 1.11.32 PM (2).png"></p>
+<p>Bunu bir insan olarak değerlendirmemiz istenseydi, mantıksal olarak, işlenenleri bilmeden dış <code>add</code> işlevi hesaplayamayacağımızı ve ilk <code>mul</code> işlemin sonucunu bilene kadar bu iç <code>add</code> işlevi bile hesaplayamayacağımızı fark ederdik.</p>
+<p>Bu yüzden içten dışa doğru başlayabiliriz, hesaplamaya şöyle başlayabiliriz:</p>
+<pre><code>add(add(6, mul(4, 6)), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       ,    15    )
+add(        30       ,    15    )
+45</code></pre>
+<p>Bilgisayar da benzer bir yaklaşım benimseyerek bir <bold>ifade ağacı</bold> oluşturur. Aynı 3 adımlı işlemi, ağaçtaki her çağrı ifadesine, en alttaki ifadelerden başlayarak, son hesaplamayı nihayet yapana kadar uygular.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl1138lc3013u116mb1s4axov/Screen Shot 2022-03-21 at 12.15.20 PM.png">  Burada, çağrıların <link>sırasını ve dönüş değerlerini gösteren bu çağrı ifade ağacının bir video izlenecek yolu verilmiştir.</p>
+<p>TODO: Sınav</p>
+<h3>Alıştırma: İşleç ifadeleri</h3>
+<p>Aşağıdaki ifadeler tamamen aritmetik işleçlerle yazılmıştır. Modülden aşağıdaki işlevleri kullanarak bunları yeniden <code>operator</code> yazın: <code>add</code>, , , <code>truediv</code>, , <code>floordiv</code><code>sub</code><code>mul</code>ve <code>mod</code>. İşleçleri işlevlerle eşleyen bu <link>tabloyu özellikle yararlı bulabilirsiniz.</p>
+<ul><li><p><code>30 + 2</code></p></li>
+<li><p><code>30 - 2</code></p></li>
+<li><p><code>30 * 2</code></p></li>
+<li><p><code>30 / 2</code></p></li>
+<li><p><code>30 // 2</code></p></li>
+<li><p><code>30 % 2</code></p></li>
+<li><p><code>30 + (2 * 4)</code></p></li>
+<li><p><code>3 * (10 - 2)</code></p></li>
+<li><p><code>(3 ** (365/52)) - 1</code></p></li>
+<li><p><code>(25 // 4) - (25 / 4)</code></p></li></ul>
+<pre><code>from operator import add, sub, mul, truediv, floordiv, mod
+
+# After adding a call expression, run code to see if its correct
+add(30, 2)</code></pre>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Sözlükler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Sözlük</h1>
+<p>Python'daki bir başka veri türü (ve kişisel favorim) sözlüktür. Gerçek bir sözlüğün kelimeleri tanımlarla eşleştirmesine benzer şekilde, Python sözlüğü anahtarları değerlerle eşler.</p>
+<p>Python sözlüğü kullanarak mini bir argo sözlüğü nasıl yapabiliriz:</p>
+<pre><code>slang_dictionary = {
+   "yeet": "An expression of excitement or a verb signifying throwing something",
+   "flex": "A verb, meaning to show off something",
+   "slay": "A verb indicating someone did something very well in something",
+   "sus": "Abbreviation for 'suspicious'",
+   "salty": "Angry, upset, or bitter"
+}</code></pre>
+<p>Anahtarı bildiğimizde başka bir parantez gösterimi kullanarak bir sözlükteki değeri aramak çok kolaydır. Listeler için yaptığımız gibi köşeli parantez içinde bir dizin belirtmek yerine, anahtarı belirtiriz:</p>
+<pre><code>slang_dictionary["flex"]   # 'A verb, meaning to show off something'</code></pre>
+<p>Neden sadece bir liste veya iç içe geçmiş liste kullanmadığımızı merak ediyor olabilirsiniz, belki de şöyle:</p>
+<pre><code>slang_dictionary = [
+   ["yeet", "An expression of excitement or a verb signifying throwing something"],
+   ["flex", "A verb, meaning to show off something"]
+]</code></pre>
+<p>Bu iç içe geçmiş listede "esnek" tanımını, değerleri yineleyerek ve kontrol ederek veya gibi <code>find()</code>bir liste yöntemi kullanarak kesinlikle bulabiliriz. Bununla birlikte, Python listelerinin ve sözlüklerin depolanma biçimlerindeki farklılıklar nedeniyle çok daha yavaş bir işlem olacaktır. Bu iç içe geçmiş listede 10.000 alt liste varsa ve aradığımız sözcük listenin sonundaysa, bilgisayarın her bir alt listede arama yapması gerekir. Ancak, bir sözlükte 10.000 anahtar varsa ve bir kelimeyi aradıysak, bilgisayar onu hemen bulabilir.</p>
+<p>Sonuç olarak: Bir şeyi anahtarına göre sık sık arayacağınızı düşünüyorsanız, sözlük genellikle kullanılacak doğru veri türüdür.</p>
+<h3>Sözlük erişimi</h3>
+<p>Bir sözlükten (veya <code>dict</code>Python'da resmi olarak bilindiği gibi) değerleri nasıl alabileceğimize daha fazla dalalım.</p>
+<p>İspanyolca kelimeleri İngilizce çevirileriyle eşleştiren bu dikteyi düşünün:</p>
+<pre><code>words = {
+    "más": "more",
+    "otro": "other",
+    "agua": "water"
+}</code></pre>
+<p>Yukarıda gösterildiği gibi, parantez içindeki anahtarla parantez gösterimini kullanarak bir değer alabiliriz:</p>
+<pre><code>words["otro"]  # 'other'</code></pre>
+<p>Ancak, bazen anahtarı bir değişkenin içinde tutabiliriz. Bu durumda, değişken adı parantez içine girer:</p>
+<pre><code>first_word = "agua"
+words[first_word]  # 'water'</code></pre>
+<p>Temel olarak, herhangi bir ifade, sonunda geçerli bir anahtara dönüştüğü sürece bu köşeli parantezlerin içine girebilir.</p>
+<p>Orada olmayan bir anahtar istersek, büyük bir eski hata alırız.</p>
+<pre><code>words["pavo"]  # 🚫 Error!</code></pre>
+<p>Neyse ki, bir anahtarın varlığından emin değilsek başka bir yaklaşım daha var. Python dikteleri, anahtar varsa bir değer alacak bir yönteme sahiptir <code>get</code> ve aksi takdirde belirttiğiniz değeri varsayılan olarak alır.</p>
+<p>Bu örnekte, varsayılan değer bir düşünen yüz emojisidir:</p>
+<pre><code>words.get("pavo", "🤔")  # '🤔'</code></pre>
+<p>Varsayılan değerini belirtmezsek, döndürülür <code>None</code> :</p>
+<pre><code>words.get("pavo") # None</code></pre>
+<h3>Sözlük mutasyonu</h3>
+<p>Tıpkı listeler gibi, sözlükler de <bold>değiştirilebilir</bold> veri türleridir. Bu, başlangıçta çeşitli operatörler ve yöntemler kullanarak içeriklerini oluşturduktan sonra değiştirmeye devam edebileceğimiz anlamına gelir.</p>
+<p>Sözlükleri kullanmanın yaygın bir yolu, aşağıdaki gibi boş bir dikteyle başlamaktır:</p>
+<pre><code>users = {}</code></pre>
+<p>Ve sonra parantez gösterimini kullanarak ona bir değer ekleyin:</p>
+<pre><code>users["pamelafox"] = "b3stp@ssEvErDontHackMe"</code></pre>
+<p>Bir anahtarı yeni değerlere aynı şekilde yeniden atamaya devam edebiliriz:</p>
+<pre><code>users["pamelafox"] = "EV3Nb3tt3Rp@ssw0rd!"</code></pre>
+<p>Bir sayı veya dize olduğu sürece mevcut bir değere eklemek için işleci bile kullanabiliriz <code>+=</code> :</p>
+<pre><code>users["pamelafox"] += "itsLongerSoItsMoreSecure!!"</code></pre>
+<p>TODO: Sınav</p>
+<h3>Bir diktede ne var?</h3>
+<p>Şimdiye kadarki tüm örnek diktelerimiz dize anahtarları ve dize değerleri kullanıyordu. Bununla birlikte, <italic>herhangi bir</italic> değişmez türü anahtar olarak kullanmak mümkündür - bu nedenle anahtarlar aslında sayılar olabilir! Neredeyse o kadar yaygın değil, ama mümkün.</p>
+<p>Yılları o yıl çıkan Pixar filmiyle eşleştiren şu dikteyi düşünün:</p>
+<pre><code>pixar_by_year = {
+   1995: "Toy Story",
+   1998: "A Bug's Life",
+   1999: "Toy Story 2",
+   2001: "Monsters, Inc",
+   2003: "Finding Nemo"
+}</code></pre>
+<p>Değerler, listeler gibi değiştirilebilir türler de dahil olmak üzere herhangi bir tür olabilir.</p>
+<p>İşte bazı yıllarda birden fazla film yayınlandığı için değerlerin listelenmesi gereken daha yeni Pixar filmleri için bir dikte:</p>
+<pre><code>pixar_by_year = {
+   2017: ["Coco", "Cars 3"],
+   2018: ["Incredibles 2"],
+   2019: ["Toy Story 4"],
+   2020: ["Soul", "Onward"]
+}</code></pre>
+<p>Karıştırıp eşleştirebiliriz ve bazı değerlerin dizeler ve diğer değerlerin listeler olmasını sağlayabiliriz, ancak tutarlı bir şemaya bağlı kalmak genellikle daha iyidir.</p>
+<p>Değerler iç içe geçmiş sözlükler bile olabilir, bu da dikteleri hiyerarşik verileri depolamak için ideal bir yol haline getirir.</p>
+<p>İşte en sevdiğim örümceklerin bir diktesi, her birinin iç içe geçmiş diktelerin içindeki bazı özellikleri:</p>
+<pre><code>spiders = {
+  "smeringopus": {
+      "name": "Pale Daddy Long-leg",
+      "length": 7
+  },
+  "holocnemus pluchei": {
+      "name": "Marbled cellar spider",
+      "length": (5, 7)
+  }
+}</code></pre>
+<p>TODO: Sınav</p>
+<h3>Sözlük yinelemesi</h3>
+<p>Python diktesi yinelenebilir bir nesnedir, yani bir <code>for</code> döngü kullanılarak yinelenebilir. Döngünün her yinelemesinde, döngü değişkeni geçerli anahtara atanır ve döngü gövdesi bu anahtarla ne yapılacağını seçebilir.</p>
+<p>Örneğin, bu döngü sözlükte anahtarla arama yaparak her değeri yazdırır:</p>
+<pre><code>insects = {"spiders": 8, "centipedes": 100, "bees": 6}
+for name in insects:
+    print(insects[name])</code></pre>
+<p>Yineleme sırasında anahtarların sırası ne olacak? Python'un daha eski sürümlerinde, sıra tanımlanmamıştır, bu nedenle yineleme anahtarlardan herhangi bir sırayla geçebilir. Bununla birlikte, modern Python'da, sıralama her zaman anahtarların sözlüğe ne zaman eklendiğine göredir.</p>
+<p>Yukarıdaki örnekte, sıra "örümcekler", sonra "kırkayaklar", sonra "arılar" olacaktır, böylece döngü 8, sonra 100, sonra 6 yazdıracaktır.</p>
+<h3>Sözlük işlemleri</h3>
+<p>Sözlükler, dizeler ve listelerle aynı işleçlerden ve işlevlerden bazılarını destekler.</p>
+<p>ABD eyalet kodlarını eyaletlerle eşleştiren bu dikteyle başlayarak:</p>
+<pre><code>states = {
+    "CA": "California",
+    "DE": "Delaware",
+    "NY": "New York",
+    "TX": "Texas",
+    "WY": "Wyoming"
+}</code></pre>
+<p>İşlev <code>len()</code> , dikte kaç anahtar/değer çifti olduğunu bildirir.</p>
+<pre><code>len(states)  # 5</code></pre>
+<p>İşleç <code>in</code> , belirli bir anahtarın bir diktede olup olmadığını bildirir (değerleri <italic>aramaz</italic> ):</p>
+<pre><code>"CA" in states  # True
+"ZZ" in states  # False</code></pre>
+<p>Burada dalmayacağımız ek işlevler, operatörler ve dikteler için yöntemler de vardır. Python dikte belgelerinde <link>daha fazla bilgi edinebilirsiniz.</p>
+<h3>Egzersiz: Bir tarif yapın</h3>
+<p>Aşağıdaki kod düzenleyicisinde, en sevdiğiniz tarifle ilgili bilgileri tutmak için bir dikte oluşturun. Aşağıdakiler için anahtarlara sahip olmalıdır:</p>
+<ul><li><p>title (bir dize)</p></li>
+<li><p>porsiyonlar (bir sayı)</p></li>
+<li><p>malzemeler (dizelerin listesi).</p></li></ul>
+<p>Dikte oluşturulduktan sonra, değeri dikteden geri çekmek ve yazdırmak için parantez gösterimini kullanın.</p>
+<pre><code>recipe = {
+  # Put title key/value here - value should be a string
+  # Put servings key/value here - value should be a number
+  # Put ingredients key/value here - value should be a list
+}
+
+# Store the recipe's title in this variable
+# by using bracket notation on the recipe variable
+title = ''
+print(title)
+
+# Store the recipe's servings # in this variable
+# by using bracket notation on the recipe variable
+servings = -1
+print(servings)
+
+# Store the recipe's ingredients list in this variable
+# by using bracket notation on the recipe variable
+ingredients = []
+print(ingredients)</code></pre>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

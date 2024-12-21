@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Logical expressions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Logical expressions</h1>
+<p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <bold>logic</bold> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
+<ul><li><p><bold>Logical expressions</bold> that evaluate to either true or false.</p></li>
+<li><p><bold>Conditionals</bold> (if statements) that specify which code to execute when something is true.</p></li></ul>
+<h3>Booleans</h3>
+<p>A <bold>Boolean</bold> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
+<p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <italic>always</italic> avoid them!)</p>
+<pre><code>avoid_highways = True</code></pre>
+<p>Twitter uses a Boolean to remember where the user allows personalized ads. (I hate ads!)</p>
+<pre><code>personalized_ads = False</code></pre>
+<aside><p>Booleans are named after George Boole, a self-taught logician. He described a system of logic in an 1854 book, The Laws of Thought, that was edited by his wife Mary Everest Boole, another self-taught logician. According to Mary, George was <link>inspired by Indian logic systems</link> dating back to 500 BCE. We can actually find the origins of many "modern" computer science concepts in ancient systems of India, Africa, or the Mediterranean.</p></aside>
+<p>A <bold>logical expression</bold> is any expression that evaluates to a Boolean value. Logical expressions use comparison operators, logical operators, or a mix of both.</p>
+<p>This expression uses a comparison operator, the greater-than operator:</p>
+<pre><code>passed_class = grade > 65</code></pre>
+<p>The next expression uses a logical operator, the or operator:</p>
+<pre><code>wear_jacket = is_raining or is_windy</code></pre>
+<h3>Comparison operators</h3>
+<p>This table shows all the comparison operators and examples of true expressions using each:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Operator</p>
+<th>
+<p>Meaning</p>
+<th>
+<p>True expressions</p>
+<tbody>
+<tr>
+<td>
+<p><code>==</code></p>
+<td>
+<p>Equality</p>
+<td>
+<p><code>32 == 32</code></p>
+<tr>
+<td>
+<p><code>!=</code></p>
+<td>
+<p>Inequality</p>
+<td>
+<p><code>30 != 32</code></p>
+<tr>
+<td>
+<p><code>></code></p>
+<td>
+<p>Greater than</p>
+<td>
+<p><code>60 > 32</code></p>
+<tr>
+<td>
+<p><code>>=</code></p>
+<td>
+<p>Greater than or equal</p>
+<td>
+<p><code>60 >= 32</code>, <code>32 >= 32</code></p>
+<tr>
+<td>
+<p><code><</code></p>
+<td>
+<p>Less than</p>
+<td>
+<p><code>20 < 32</code></p>
+<tr>
+<td>
+<p><code><=</code></p>
+<td>
+<p>Less than or equal</p>
+<td>
+<p><code>20 < 32</code>, <code>32 <= 32</code></p>
+</table>
+<p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <italic>do</italic> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
+<h3>Logical operators</h3>
+<p>This table describes the logical operators:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Operator</p>
+<th>
+<p>True expressions</p>
+<th>
+<p>Meaning</p>
+<tbody>
+<tr>
+<td>
+<p><code>and</code></p>
+<td>
+<p><code>4 > 0 and 2 < 4</code></p>
+<td>
+<p>Evaluates to <code>True</code> if both conditions are true; otherwise evaluates to <code>False.</code></p>
+<tr>
+<td>
+<p><code>or</code></p>
+<td>
+<p><code>4 > 0 or 2 > 4</code></p>
+<td>
+<p>Evaluates to <code>True</code> if either condition is true; evaluates to <code>False</code> only if both are false.</p>
+<tr>
+<td>
+<p><code>not</code></p>
+<td>
+<p><code>not (5 == 0)</code></p>
+<td>
+<p>Evaluates to <code>True</code> if condition is false; evaluates to <code>False</code> if condition is true.</p>
+</table>
+<p>One thing to note about <code>or</code> is that it's true even when both conditions are true, which might be different from how we sometimes use "or" in natural language.</p>
+<p>There is actually a bit more complexity to <code>and</code>/<code>or</code> that we'll get into later when we discuss "truthiness" and "falsiness", but for now, as long as each expression is <code>True</code> or <code>False</code>, the description above is correct.</p>
+<h3>Compound Boolean expressions</h3>
+<p>We can mix and match any of the above operators into compound Boolean expression (versus a simple expression that uses only one operator).</p>
+<pre><code>may_have_mobility_issues = (age >= 0 and age < 2)  or age > 90</code></pre>
+<p>That expression is true if either:</p>
+<ul><li><p>it's true that both age is greater than or equal to 0 and age is less than 2</p></li>
+<li><p>it's true that age is greater than 90</p></li></ul>
+<p>Basically, it's true if someone's a toddler or an elder! (People that are less than 0 years old are either non-existent or happily snuggled in a warm womb 🤰🏽).</p>
+<h3>Boolean expressions in functions</h3>
+<p>To make a function that returns a Boolean, use a Boolean expression in the return statement. The simplest functions like this just return a Boolean based on the values of the parameters.</p>
+<pre><code>def passed_class(grade):
+    return grade > 65</code></pre>
+<p>Then we'd call the function like so:</p>
+<pre><code>passed_class(0)  # Returns: False
+passed_class(65) # Returns: False
+passed_class(66) # Returns: True</code></pre>
+<p>Now consider this example:</p>
+<pre><code>def should_wear_jacket(is_rainy, is_windy):
+    return is_rainy or is_windy</code></pre>
+<p>TODO: Quiz</p>
+<hr>
+
+
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

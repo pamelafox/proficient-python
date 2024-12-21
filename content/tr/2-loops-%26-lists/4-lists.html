@@ -1,0 +1,75 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Listeler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Liste</h1>
+<p><bold>Liste</bold>, ilgili veri parçalarının bir dizisini tutan bir veri türüdür. Listeler birçok programlama dilinde diziler olarak da bilinir.</p>
+<p>En kısa liste, iki köşeli parantez içinde oluşturabileceğimiz boş listedir:</p>
+<pre><code>members = []</code></pre>
+<p>Boş bir liste ilk başta çok kullanışlı görünmüyor, ancak yakında boş listelere nasıl daha fazla öğe ekleyeceğimizi öğreneceğiz.</p>
+<p>İçinde veri bulunan listeler oluşturmak için, değerleri parantez arasına koyun ve değerleri virgülle ayırın:</p>
+<pre><code>members = ["Pamela", "Tinu", "Brenda", "Kaya"]
+
+ages_of_kids = [1, 2, 7]
+
+prices = [79.99, 49.99, 89.99]</code></pre>
+<p>Bu örneklerden de görebileceğiniz gibi, listeler herhangi bir Python veri türünü tutabilir. Aslında, Python veri türlerini karıştırmanıza ve eşleştirmenize bile izin verir:</p>
+<pre><code>remixed = ["Pamela", 7, 79.99]</code></pre>
+<p>Kişisel olarak, bir listenin ilgili veri dizilerini içermesi gerektiğinden ve bu öğelerin nasıl bir dizi oluşturduğu veya nasıl ilişkili oldukları belli olmadığından bunu tavsiye etmem. Ancak yararlı olduğu bazı durumlar olabilir.</p>
+<h3>Liste öğelerine erişme</h3>
+<p><bold>Köşeli ayraç gösterimini</bold> kullanarak listedeki belirli bir öğeye başvurmak mümkündür: değişkenin adı, ardından içinde öğe dizini bulunan köşeli parantezler.</p>
+<pre><code>list_name[index]</code></pre>
+<p>Bir listedeki öğelerin dizini 0'dan başlar:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:   0     1     2     3     4</code></pre>
+<p>Bu, 5 maddelik bir listedeki son öğenin 5 değil, 4 dizinine sahip olduğu anlamına gelir. Bu listedeki öğelerin her birine şu şekilde erişiriz:</p>
+<pre><code>temps[0]  # 48.0
+temps[1]  # 30.5
+temps[2]  # 20.2
+temps[3]  # 99.0
+temps[4]  # 52.0</code></pre>
+<p>Dizin 5'te öğe yoktur, bu nedenle çalıştırılması <code>temps[5]</code> "IndexError: liste dizini aralık dışı" hatasına neden olur. Sıfır dizin oluşturma şeması genellikle bir karışıklık kaynağıdır, özellikle de dizin 1'deki öğeleri listelemeye başlayan birkaç dil olduğundan, bu da bir başka yaygın hata kaynağıdır. </p>
+<p>Python ayrıca listenin sonundan geriye doğru giden negatif indekslemeye de izin verir:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:  -5    -4   -3    -2    -1</code></pre>
+<p>Endekslerin kullanılması şöyle görünür:</p>
+<pre><code>temps[-1]  # 52.0
+temps[-2]  # 99.0</code></pre>
+<p>Bir kez daha, çok ileri gitmek bir hataya neden olacaktır. Bu durumda, negatif endeksler -1'den başladığından (-0 değil, görünüşe göre negatif sıfır bir şey olmadığından!), İlk sınır dışı endeks <code>temps[-6]</code>.</p>
+<h3>Kendi kendini kontrol et: Favori şarkıcılar</h3>
+<p>En sevdiğim müzik sanatçılarının listesini düşünün:</p>
+<pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<h3>Liste uzunluğu</h3>
+<p>Python, bir listenin (veya herhangi bir dizinin) uzunluğunu bulmak için genel işlevi <code>len()</code> sağlar.</p>
+<pre><code>attendees = ["Tammy", "Shonda", "Tina"]
+
+len(attendees) # Evaluates to: 3</code></pre>
+<p>Listenin uzunluğu, listede kaç öğe bulunduğudur ve bu öğe listedeki maksimum dizinden farklıdır. 3'lü bir <code>len()</code> listenin dizini en fazla 2 olacaktır.</p>
+<p>Python bir dizeyi bir dizi türü olarak gördüğünden, dizeler üzerinde de kullanabilirsiniz <code>len()</code> :</p>
+<pre><code>len("Supercalifragilisticexpialidocious")  # Evaluates to: 34</code></pre>
+<p>Bir dizenin uzunluğu genellikle karakter sayısıdır. Gerçekte, bir dizedeki Unicode kod noktalarının sayısını bildiriyor ve Batı alfabesi harfleri yalnızca bir kod noktası gerektiriyor. Bununla birlikte, birçok modern emoji, , gibi ♀️ birden fazla Unicode kod noktası gerektirir, bu nedenle <code>len("🤷🏽‍♀️")</code> aslında 5'i rapor edecektir. Emojileri seviyorum, ama dang, onlarla programlama yapmak bir acı.</p>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

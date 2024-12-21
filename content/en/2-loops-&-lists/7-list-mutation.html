@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: List mutation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>List mutation</h1>
+<p>A list in Python is a <bold>mutable</bold> data type, which means you can change the values stored inside them.</p>
+<p>The following code initializes a list of 5 numbers, and then changes the contents at two indices.</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+temps[2] = 22.22
+temps[-1] = 55.55</code></pre>
+<p>Just like we used bracket notation to access items in a list, we can use it to change items in a list. All the indexing rules are the same, so the code above changes the third item (20.2 -> 22.22) and the final item (52.0 -> 55.55).</p>
+<p>Our code is subject to the same off-by-one errors, too. Trying to change an item past the final index results in an error:</p>
+<pre><code>temps[5] = 111.11  # 🚫 Error!</code></pre>
+<h3>Mutation vs. re-assignment</h3>
+<p>You might think that all the data types we've seen so far are mutable, since we could write code like:</p>
+<pre><code>x = 5
+x = 10</code></pre>
+<p>However, re-assignment isn't the same as mutation. That re-assignment of <code>x</code> creates a brand new number, probably storing it somewhere else in computer memory, and points <code>x</code> at that new number. That's different from mutation, which will change parts of an existing object in memory, keeping the name pointing at the same object in memory.</p>
+<p>For lists, we can also do re-assignment, to point a variable at a whole new list object in memory. That looks like:</p>
+<pre><code>nums = [1, 2, 3]
+nums = [-1, -2, -3]</code></pre>
+<p>Even though it appears similar, that's fundamentally different from using mutation:</p>
+<pre><code>nums = [1, 2, 3]
+nums[0] = -1
+nums[1] = -2
+nums[2] = -3</code></pre>
+<p>It may seem like a subtle point, but once you're programming with mutable data types, your program is subject to more kinds of bugs than before. There are some languages that don't even allow mutable data types at all, to avoid those kinds of bugs.</p>
+<h3>List mutation methods</h3>
+<p>Using bracket notation is only one way to mutate a list, and it only allows us to change items at existing indices. Fortunately, there are a large number of <bold>methods</bold> that can mutate a list. A method is any function that belongs to a particular kind of object, and we call it in a slightly different way.</p>
+<p>For example, this call appends an item to the end of a list:</p>
+<pre><code>temps.append(98.6)</code></pre>
+<p>To call a method, we first write the name of the object (<code>temps</code>), then a dot, the the name of the method (<code>append</code>), and the arguments in parentheses. If <code>append</code> was instead a global built-in function, we'd call it like <code>append(temps, 98.6)</code>. But it's not! Since the <code>append</code> method is a function that belongs to list objects, we instead use dot notation whenever we want to call it on a list.</p>
+<p>Here are some particularly useful list methods:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Method</p>
+<th>
+<p>Description</p>
+<tbody>
+<tr>
+<td>
+<p><code>append(item)</code></p>
+<td>
+<p>Adds item to the end of the list. This increases list length by one.</p>
+<tr>
+<td>
+<p><code>insert(index, item)</code></p>
+<td>
+<p>Inserts item at the specified index. This increases the list length by one and shifts all items after the specified index forward by one index.</p>
+<tr>
+<td>
+<p><code>remove(item)</code></p>
+<td>
+<p>Remove the first item from the list whose value is equal to item. It raises a ValueError if there is no such item.</p>
+<tr>
+<td>
+<p><code>index(item)</code></p>
+<td>
+<p>Returns the index of the first occurrence of an item whose value is equal to item. It raises a <code>ValueError</code> if there is no such item.</p>
+<tr>
+<td>
+<p><code>pop([index])</code></p>
+<td>
+<p>If no index is specified, it removes the last item from the list and returns it. Otherwise, it removes the item at the specified index and returns it.</p>
+</table>
+<p>A list of all the possible list methods is available in the <link>Python list documentation</link>.</p>
+<p>Here's a program that uses all of those methods to modify a grocery list:</p>
+<pre><code>groceries = ["apples", "bananas"]
+
+groceries.append("peanut butter")
+groceries.insert(0, "applesauce")
+groceries.insert(3, "cheerios")
+groceries.remove("bananas")
+
+bought_food = groceries.pop()
+bought_food2 = groceries.pop(1)
+i = groceries.index("cheerios")
+bought_food3 = groceries.pop(i)</code></pre>
+<p>To watch for yourself how those methods mutate the original list, step through the code <link>on PythonTutor</link>.</p>
+<h3>Exercise: Cities</h3>
+<p>Start from this code:</p>
+<pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>Exercise: Planets</h3>
+<p>Start from this code:</p>
+<pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
+    'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
+<p>TODO: Quiz</p>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

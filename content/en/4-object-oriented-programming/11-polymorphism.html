@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Polymorphism</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Polymorphism</h1>
+<p>One of the great benefits of object-oriented programming is <bold>polymorphism</bold>: different types of objects sharing the same interface.</p>
+<h3>Polymorphism from inheritance</h3>
+<p>We've already seen many polymorphic objects, since inheritance almost always leads to polymorphism.</p>
+<p>For example, we can call the <code>eat</code> method on both <code>Panda</code> object and <code>Lion</code> objects, passing in the same argument:</p>
+<pre><code>broc = Meal("Broccoli", "veggie")
+pandey = Panda("Pandeybear", 6)
+mufasa = Lion("Mufasa", 12)
+
+pandey.eat(broc)
+mufasa.eat(broc)</code></pre>
+<p>Now, the two objects may react differently to that method, due to differing implementations. The panda might say "Mmm yummy" and the lion might say "Gross, veggies!". But the point of polymorphism is that the interface was the same - the method name and argument types - which meant we could call that interface without knowing the exact details of the underlying implementation.</p>
+<p>When we have a list of polymorphic objects, we can call the same method on each object even if we don't know exactly what type of object they are.</p>
+<p>Consider this function that throws an animal party, making each animal in a list <code>interact_with</code> the other animals in the list:</p>
+<pre><code>def partytime(animals):
+    for i in range(len(animals)):
+        for j in range(i + 1, len(animals)):
+            animals[i].interact_with(animals[j])</code></pre>
+<p>That list of <code>animals</code> can contain any <code>Animal</code> instance, since they all implement <code>interact_with</code> in some way.</p>
+<pre><code>jane_doe = Rabbit("Jane Doe", 2)
+scar = Lion("Scar", 12)
+elly = Elephant("Elly", 5)
+pandy = Panda("PandeyBear", 4)
+partytime([jane_doe, scar, elly, pandy])</code></pre>
+<p>That right there is the power of polymorphism.</p>
+<h3>Polymorphism from method interfaces</h3>
+<p>We've also seen a lot of polymorphism in the built-in Python object types, even though we haven't called it that.</p>
+<p>For example, consider how many types we can pass to the <code>len</code> function:</p>
+<pre><code>len([1, 2, 3])
+len("ahoy there!")
+len({"CA": "Sacramento", "NY": "Albany"})
+len(range(5))</code></pre>
+<p>The <code>len()</code> function is able to report the length of lists, strings, dicts, and ranges. All of those inherit from <code>object</code>, but <code>len()</code> doesn't work on any old object. So why does it work for those types?</p>
+<p>It's actually because the <code>list</code>, <code>str</code>, <code>dict</code>, and <code>range</code> classes each define a method named <code>__len__</code> that reports their length using various mechanisms. The global <code>len()</code> function works on <italic>any</italic> object that defines a <code>__len__</code> method and returns a number. That means we can even make <code>len()</code> work on our own user-defined classes.</p>
+<p>This type of polymorphism in a language is also known as <bold>duck typing</bold>: if it walks like a duck and quacks like a duck, then it must be a duck. 🦆The <code>len()</code> function doesn't care exactly what kind of object it's passed: if it has a <code>__len__</code> method and that method takes 0 arguments, then that's good enough for Python.</p>
+<p>Many languages are more strict than Python, and possibly for good reason, since you can get yourself in trouble with loosey-goosey duck typing. But you can also write highly flexible code. Tread carefully in these polymorphic waters!</p>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

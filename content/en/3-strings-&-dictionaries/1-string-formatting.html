@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: String formatting</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>String formatting</h1>
+<p>Let's start off with a reminder of what we already know about the string data type in Python:</p>
+<p>To create a string value, we wrap characters inside quotes, either double quotes or single quotes. Either is fine, as long as we're consistent with what we use for each string.</p>
+<pre><code>singer = 'Janelle Monáe'
+play_song("Older", "Ben Platt")</code></pre>
+<p>To concatenate two strings together, we use the <code>+</code> operator. That works as long as both operands are strings, even if one of them is a variable containing a string.</p>
+<pre><code>lyric = "If you're happy and you know it, " + "clap your hands!"
+start = "If you're happy and you know it, "
+lyric1 = start + "clap your hands!"
+lyric2 = start + "wiggle your toes!"
+lyric3 = start + "hug a friend!"</code></pre>
+<h3>Escape sequences</h3>
+<p>If the string contains the same quote character that is being used to surround the string, then that quote character <italic>must</italic> be <bold>escaped</bold>. That means we must use a special character to let Python know to not treat the quote character normally (since treating it normally would end the string).</p>
+<p>This string is broken and results in a syntax error:</p>
+<pre><code>greeting = 'how're you doing?'</code></pre>
+<p>To fix it, insert a backslash right before the single quote:</p>
+<pre><code>greeting = 'how\'re you doing?'</code></pre>
+<p>The backslash is what is known as the <bold>escape character</bold>, and is used as the escape character in many languages. That means if you do want an actual backslash in a string, you need to escape the backslash with yet another backslash:</p>
+<pre><code>path = "C:\\My Documents"</code></pre>
+<p>There are also a few special escape sequences that produce something other than a standard character. The most useful sequence is <code>"\n"</code>, which creates a new line in the string once it's printed out.</p>
+<p>Here's a string storing a famous haiku by Matsuo Bashō:</p>
+<pre><code>haiku = "An old silent pond\nA frog jumps into the pond—\nSplash! Silence again."</code></pre>
+<p>Calling <code>print(haiku)</code> results in:</p>
+<pre><code>An old silent pond
+A frog jumps into the pond—
+Splash! Silence again.</code></pre>
+<p>The other most useful escape sequence is <code>"\t"</code> for inserting a tab character into a string.</p>
+<h3>String conversion</h3>
+<p>The code below attempts to concatenate a string with a number:</p>
+<pre><code>count = 3
+noun = 'cat'
+plural = 'I have ' + count + ' ' + noun + 's'</code></pre>
+<p>Sadly, that's en error! Python lets you use the <code>+</code> operator between two numbers and between two strings, but <italic>not</italic> between a number and a string.</p>
+<p>One approach is to convert the number to a string, by calling the globally available <code>str()</code> on it.</p>
+<pre><code>plural = 'I have ' + str(count) + ' ' + noun + 's'</code></pre>
+<p>You can use <code>str()</code> in any situation where a function or operator expects a string but all you have is a number or some other data type.</p>
+<h3>F strings</h3>
+<p>Since programmers very often need to create new strings from a mish-mash of strings, numbers, and other variables, Python offers multiple ways to do string formatting. The most modern technique, and my own personal favorite, is <bold>f strings</bold>.</p>
+<p>An f string starts with an "f" in front of the quotes, and then uses curly brackets to surround Python expressions inside the string. See this example:</p>
+<pre><code>greeting = "Ahoy"
+noun = "Boat"
+
+sentence = f"{greeting}, {noun}yMc{noun}Face"</code></pre>
+<p>Python evaluates the expressions inside each curly bracket, turning that whole string into "Ahoy, BoatyMcBoatFace".</p>
+<p>If the expression results in a numeric value, Python will take care of the string conversion for you:</p>
+<pre><code>month = "June"
+day = "24"
+year = "1984"
+
+sentence = f"I was born {month} {day}th {year}"</code></pre>
+<p>The coolest thing about f strings is that you can put <italic>any</italic> valid expression inside those curly brackets - not just variable names.</p>
+<pre><code>quantity = 3
+price = 9.99
+
+cashier_says = f"The total for your {quantity} meals will be {quantity * price}"</code></pre>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

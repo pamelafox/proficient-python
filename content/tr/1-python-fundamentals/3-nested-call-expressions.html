@@ -1,0 +1,32 @@
+﻿<h3 dir="ltr">Bir çağrı ifadesinin anatomisi</h3>
+<p dir="ltr">Daha karmaşık çağrı ifadelerine dalmadan önce, önce basit bir çağrı ifadesini daha derinden anlayalım. Unutmayın, çağrı ifadesi, <code>pow(2, 100)</code>. Aşağıdaki diyagram, işlevi kullanan <code>add</code> bir çağrı ifadesi içindir.</p>
+<p dir="ltr"><img src="https://corise.com/static/course/python-crash-course/assets/cl1135hu9013s116mfug4183d/Screen Shot 2022-03-21 at 12.12.39 PM.png" width="949" height="200">Python bu çağrı ifadesini şu şekilde değerlendirir:</p>
+<ol dir="ltr"><li><p>Önce <bold>operatörü</bold> değerlendirir. Bu durumda, adlandırılmış <code>add</code>bir işlev olduğunu görür , bir <code>add</code> işlevin geçerli ortamda erişilebilir olup olmadığını denetler ve bulduğu işlev tanımını hatırlar.</p></li>
+<li><p>Daha sonra <bold>işlenenleri</bold> sırayla değerlendirir. Yukarıda, her ikisi de basit sayılardır, bu yüzden önce 18 sayısını ve sonra 69 sayısını değerlendirir. Bunlar basit sayı değerleri olduğundan ve ifadelerin kendileri olmadığından, burada fazla iş yapmak zorunda değildir!</p></li>
+<li><p>Son olarak, işleci (bir işlev) işlev tanımına göre işlenenlere (değerlere) <bold>uygular</bold> . Yukarıdaki ifade, 18 ve 69 değerlerindeki add işlevini çağırır ve bu işlev tarafından hesaplanan her şeyi döndürür.</p></li></ol>TODO: Sınav<h3 dir="ltr">İç içe çağrı ifadeleri</h3>
+<p dir="ltr">Şimdi <bold>iç içe geçmiş bir çağrı ifadesine bakalım: ifadelerin</bold> kendilerinin <italic>de</italic> çağrı ifadeleri olduğu bir çağrı ifadesi.</p>
+<p dir="ltr"><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvlz8u001d146653rz69u0/Screen Shot 2021-12-20 at 1.11.32 PM (2).png" width="1884" height="294"></p>
+<p dir="ltr">Bunu bir insan olarak değerlendirmemiz istenseydi, mantıksal olarak, işlenenleri bilmeden dış <code>add</code> işlevi hesaplayamayacağımızı ve ilk <code>mul</code> işlemin sonucunu bilene kadar bu iç <code>add</code> işlevi bile hesaplayamayacağımızı fark ederdik.</p>
+<p dir="ltr">Bu yüzden içten dışa doğru başlayabiliriz, hesaplamaya şöyle başlayabiliriz:</p>
+<pre dir="ltr"><code>add(add(6, mul(4, 6)), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       ,    15    )
+add(        30       ,    15    )
+45</code></pre>
+<p dir="ltr">Bilgisayar da benzer bir yaklaşım benimseyerek bir <bold>ifade ağacı</bold> oluşturur. Aynı 3 adımlı işlemi, ağaçtaki her çağrı ifadesine, en alttaki ifadelerden başlayarak, son hesaplamayı nihayet yapana kadar uygular.</p>
+<p dir="ltr"><img src="https://corise.com/static/course/python-crash-course/assets/cl1138lc3013u116mb1s4axov/Screen Shot 2022-03-21 at 12.15.20 PM.png" width="861" height="672">  Burada, çağrıların <link>sırasını ve dönüş değerlerini gösteren bu çağrı ifade ağacının bir video izlenecek yolu verilmiştir.</p>TODO: Sınav<h3 dir="ltr">Alıştırma: İşleç ifadeleri</h3>
+<p dir="ltr">Aşağıdaki ifadeler tamamen aritmetik işleçlerle yazılmıştır. Modülden aşağıdaki işlevleri kullanarak bunları yeniden <code>operator</code> yazın: <code>add</code>, , , <code>truediv</code>, , <code>floordiv</code><code>sub</code><code>mul</code>ve <code>mod</code>. İşleçleri işlevlerle eşleyen bu <link>tabloyu özellikle yararlı bulabilirsiniz.</p>
+<ul dir="ltr"><li><p><code>30 + 2</code></p></li>
+<li><p><code>30 - 2</code></p></li>
+<li><p><code>30 * 2</code></p></li>
+<li><p><code>30 / 2</code></p></li>
+<li><p><code>30 // 2</code></p></li>
+<li><p><code>30 % 2</code></p></li>
+<li><p><code>30 + (2 * 4)</code></p></li>
+<li><p><code>3 * (10 - 2)</code></p></li>
+<li><p><code>(3 ** (365/52)) - 1</code></p></li>
+<li><p><code>(25 // 4) - (25 / 4)</code></p></li></ul>TÜMÜ: WASM<hr dir="ltr">
+<p dir="ltr"> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>

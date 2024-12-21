@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Dize biçimlendirme</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Dize biçimlendirme</h1>
+<p>Python'daki dize veri türü hakkında zaten bildiklerimizi hatırlatarak başlayalım:</p>
+<p>Bir dize değeri oluşturmak için, karakterleri tırnak işaretleri içine çift tırnak veya tek tırnak şeklinde sararız. Her dize için kullandıklarımızla tutarlı olduğumuz sürece her ikisi de iyidir.</p>
+<pre><code>singer = 'Janelle Monáe'
+play_song("Older", "Ben Platt")</code></pre>
+<p>İki dizeyi bir araya getirmek için işleci <code>+</code> kullanırız. Bu, her iki işlenen de dize olduğu sürece, bunlardan biri dize içeren bir değişken olsa bile çalışır.</p>
+<pre><code>lyric = "If you're happy and you know it, " + "clap your hands!"
+start = "If you're happy and you know it, "
+lyric1 = start + "clap your hands!"
+lyric2 = start + "wiggle your toes!"
+lyric3 = start + "hug a friend!"</code></pre>
+<h3>Kaçış dizileri</h3>
+<p>Dize, dizeyi çevrelemek için kullanılan tırnak karakterinin aynısını içeriyorsa, bu <italic>tırnak karakterinden</italic> <bold>çıkış</bold> yapılmalıdır. Bu, Python'un tırnak karakterine normal davranmamasını bildirmek için özel bir karakter kullanmamız gerektiği anlamına gelir (çünkü normal olarak ele almak dizeyi sona erdirir).</p>
+<p>Bu dize bozuk ve bir sözdizimi hatasına neden oluyor:</p>
+<pre><code>greeting = 'how're you doing?'</code></pre>
+<p>Bunu düzeltmek için, tek bir alıntının hemen önüne ters eğik çizgi ekleyin:</p>
+<pre><code>greeting = 'how\'re you doing?'</code></pre>
+<p>Ters eğik çizgi, kaçış karakteri olarak bilinen şeydir ve birçok dilde <bold>kaçış karakteri</bold> olarak kullanılır. Bu, bir dizede gerçek bir ters eğik çizgi istiyorsanız, ters eğik çizgiden başka bir ters eğik çizgiyle kaçmanız gerektiği anlamına gelir:</p>
+<pre><code>path = "C:\\My Documents"</code></pre>
+<p>Standart bir karakterden başka bir şey üreten birkaç özel kaçış dizisi de vardır. En kullanışlı sıra, yazdırıldıktan sonra dizede yeni bir satır oluşturan , 'dir <code>"\n"</code>.</p>
+<p>İşte Matsuo Bashō'nun ünlü bir haiku'sunu saklayan bir dize:</p>
+<pre><code>haiku = "An old silent pond\nA frog jumps into the pond—\nSplash! Silence again."</code></pre>
+<p>Arama <code>print(haiku)</code> şu sonuçlarla sonuçlanır:</p>
+<pre><code>An old silent pond
+A frog jumps into the pond—
+Splash! Silence again.</code></pre>
+<p>Diğer en kullanışlı kaçış sırası, <code>"\t"</code> bir dizeye sekme karakteri eklemek içindir.</p>
+<h3>Dize dönüştürme</h3>
+<p>Aşağıdaki kod, bir dizeyi bir sayı ile birleştirmeye çalışır:</p>
+<pre><code>count = 3
+noun = 'cat'
+plural = 'I have ' + count + ' ' + noun + 's'</code></pre>
+<p>Ne yazık ki, bu en büyük hata! Python, işleci <code>+</code> iki sayı arasında ve iki dize arasında kullanmanıza izin verir, ancak bir sayı ile bir dize arasında <italic>kullanamaz</italic> .</p>
+<p>Bir yaklaşım, üzerinde genel olarak kullanılabilir <code>str()</code> olanı çağırarak sayıyı bir dizeye dönüştürmektir.</p>
+<pre><code>plural = 'I have ' + str(count) + ' ' + noun + 's'</code></pre>
+<p>Bir işlevin veya işlecin bir dize beklediği, ancak sahip olduğunuz tek şeyin bir sayı veya başka bir veri türü olduğu herhangi bir durumda kullanabilirsiniz <code>str()</code> .</p>
+<h3>F dizeleri</h3>
+<p>Programcıların çoğu zaman dizeler, sayılar ve diğer değişkenlerden oluşan bir karmaşadan yeni dizeler oluşturmaları gerektiğinden, Python dize biçimlendirmesi yapmak için birden fazla yol sunar. En modern teknik ve benim kişisel favorim <bold>f strings</bold>.</p>
+<p>Bir f dizesi, tırnakların önünde bir "f" ile başlar ve daha sonra dizenin içindeki Python ifadelerini çevrelemek için kıvırcık parantezler kullanır. Şu örneğe bakın:</p>
+<pre><code>greeting = "Ahoy"
+noun = "Boat"
+
+sentence = f"{greeting}, {noun}yMc{noun}Face"</code></pre>
+<p>Python her bir kıvırcık parantez içindeki ifadeleri değerlendirir ve tüm bu dizeyi "Ahoy, BoatyMcBoatFace" e dönüştürür.</p>
+<p>İfade sayısal bir değerle sonuçlanırsa, Python sizin için dize dönüşümünü halleder:</p>
+<pre><code>month = "June"
+day = "24"
+year = "1984"
+
+sentence = f"I was born {month} {day}th {year}"</code></pre>
+<p>f dizeleriyle ilgili en havalı şey, yalnızca değişken adlarını değil, bu kıvırcık parantezlerin içine <italic>herhangi bir</italic> geçerli ifadeyi koyabilmenizdir.</p>
+<pre><code>quantity = 3
+price = 9.99
+
+cashier_says = f"The total for your {quantity} meals will be {quantity * price}"</code></pre>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

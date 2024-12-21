@@ -1,0 +1,166 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Alıştırma: Sözlükler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Alıştırma: Sözlükler</h1>
+<p>Bu alıştırmalar, son birkaç hafta içinde öğrendiğiniz becerilerin ve veri türlerinin çoğunu birleştirir, böylece kendinizi önceki makalelere veya alıştırmalara danışırken bulabilirsiniz. Örneğin, ilk alıştırma f dizeleri ve dize yöntemleri ile güzel bir şekilde çözülebilir.</p>
+<p> ♀️ ♂️ Alıştırmalar üzerinde çalışırken herhangi bir sorunuz varsa, Slack'teki #exercises kanalına göndermeniz yeterlidir. Örneğin, "Film özetleyici alıştırmasıyla ilgili yardım arıyorum." mesajını gönderebilir ve ardından kodunuzu ileti dizisine gönderebilirsiniz (henüz üzerinde çalışmamış olanlar için cevabı açıklamamak için). Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+<h3>Film özeti</h3>
+<pre><code>def movie_summary(movie):
+    """
+    Accepts movie, a dictionary with three keys-
+    title (string), duration (number), actors (list of strings),
+    and returns a string of the form
+    "<title> lasts for <duration> minutes. Stars: <actor, ...="">"
+    
+    >>> puff = {
+    ...     "title": "Puff the Magic Dragon",
+    ...     "duration": 30,
+    ...     "actors": ["Puff", "Jackie", "Living Sneezes"]
+    ... }
+    >>> movie_summary(puff)
+    'Puff the Magic Dragon lasts for 30 minutes. Stars: Puff, Jackie, Living Sneezes.'
+    >>> arrival = {
+    ...     "title": "Arrival",
+    ...     "duration": "118",
+    ...     "actors": ["Amy Adams", "Jeremy Renner"]
+    ... }
+    >>> movie_summary(arrival)
+    'Arrival lasts for 118 minutes. Stars: Amy Adams, Jeremy Renner.'
+    """
+    return "" # REPLACE THIS LINE
+</actor,></duration></title></code></pre>
+<h3>Dikte listeleri</h3>
+<p>Bir sonraki alıştırmalar, aşağıdaki gibi diktelerin bir listesiyle ilgilidir:</p>
+<pre><code>coords = [
+   {"x": 1, "y": 2},
+   {"x": 5, "y": 8}
+]</code></pre>
+<p>Daha önce listelerle ve daha önce diktelerle uğraştınız, böylece ne tür veri türünden veri aldığınızı hatırladığınız sürece aynı kuralları uygulayabilirsiniz. Örneğin, bir dikte listesinde, ilk dikteye erişmek için dizinli ayraç gösterimini kullanırsınız ve ardından dikte içindeki değerlere erişmek için bir anahtarla ayraç gösterimini kullanırsınız.</p>
+<h3>Alıştırma: Kitap listesi</h3>
+<p>Bu liste, kitaplarla ilgili bilgileri iç içe geçmiş diktelerin içinde depolar:</p>
+<pre><code>books = [
+  {"title": "Uncanny Valley",
+  "author": "Anna Wiener",
+  "read": False
+  },
+  {"title": "Parable of the Sower",
+  "author": "Octavia E. Butler",
+  "read": True
+  }
+]</code></pre>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<p>Şimdi uygula <code>count_unread_books</code>, bu formun bir listesini işleyen ve listedeki okunmamış kitapların sayısını döndüren bir işlev.</p>
+<pre><code>def count_unread_books(books):
+    """ Accepts a list of dicts describing books
+    and returns the number of unread books in the list.
+    
+    >>> books = [{
+    ...     "title": "Uncanny Valley",
+    ...     "author": "Anna Wiener",
+    ...     "read": False
+    ...   }, {
+    ...     "title": "Parable of the Sower",
+    ...     "author": "Octavia E. Butler",
+    ...     "read": True
+    ...   }]
+    >>> count_unread_books(books)
+    1
+    """
+    # Initialize a count to 0
+    # Iterate through the books
+    # If a book is not read, increment count
+    # Return count
+</code></pre>
+<p>Bu alıştırmalar, son birkaç hafta içinde öğrendiğiniz becerilerin ve veri türlerinin çoğunu birleştirir, böylece kendinizi önceki makalelere veya alıştırmalara danışırken bulabilirsiniz. Örneğin, ilk alıştırma f dizeleri ve dize yöntemleri ile güzel bir şekilde çözülebilir.</p>
+<p> ♀️ ♂️ Alıştırmalar üzerinde çalışırken herhangi bir sorunuz varsa, Slack'teki #exercises kanalına göndermeniz yeterlidir. Örneğin, "Film özetleyici alıştırmasıyla ilgili yardım arıyorum." mesajını gönderebilir ve ardından kodunuzu ileti dizisine gönderebilirsiniz (henüz üzerinde çalışmamış olanlar için cevabı açıklamamak için). Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+<h3>Film özeti</h3>
+<pre><code>def movie_summary(movie):
+    """
+    Accepts movie, a dictionary with three keys-
+    title (string), duration (number), actors (list of strings),
+    and returns a string of the form
+    "<title> lasts for <duration> minutes. Stars: <actor, ...="">"
+    
+    >>> puff = {
+    ...     "title": "Puff the Magic Dragon",
+    ...     "duration": 30,
+    ...     "actors": ["Puff", "Jackie", "Living Sneezes"]
+    ... }
+    >>> movie_summary(puff)
+    'Puff the Magic Dragon lasts for 30 minutes. Stars: Puff, Jackie, Living Sneezes.'
+    >>> arrival = {
+    ...     "title": "Arrival",
+    ...     "duration": "118",
+    ...     "actors": ["Amy Adams", "Jeremy Renner"]
+    ... }
+    >>> movie_summary(arrival)
+    'Arrival lasts for 118 minutes. Stars: Amy Adams, Jeremy Renner.'
+    """
+    return "" # REPLACE THIS LINE
+</actor,></duration></title></code></pre>
+<h3>Dikte listeleri</h3>
+<p>Bir sonraki alıştırmalar, aşağıdaki gibi diktelerin bir listesiyle ilgilidir:</p>
+<pre><code>coords = [
+   {"x": 1, "y": 2},
+   {"x": 5, "y": 8}
+]</code></pre>
+<p>Daha önce listelerle ve daha önce diktelerle uğraştınız, böylece ne tür veri türünden veri aldığınızı hatırladığınız sürece aynı kuralları uygulayabilirsiniz. Örneğin, bir dikte listesinde, ilk dikteye erişmek için dizinli ayraç gösterimini kullanırsınız ve ardından dikte içindeki değerlere erişmek için bir anahtarla ayraç gösterimini kullanırsınız.</p>
+<h3>Alıştırma: Kitap listesi</h3>
+<p>Bu liste, kitaplarla ilgili bilgileri iç içe geçmiş diktelerin içinde depolar:</p>
+<pre><code>books = [
+  {"title": "Uncanny Valley",
+  "author": "Anna Wiener",
+  "read": False
+  },
+  {"title": "Parable of the Sower",
+  "author": "Octavia E. Butler",
+  "read": True
+  }
+]</code></pre>
+<p>TODO: Sınav</p>
+<p>TODO: Sınav</p>
+<p>Şimdi uygula <code>count_unread_books</code>, bu formun bir listesini işleyen ve listedeki okunmamış kitapların sayısını döndüren bir işlev.</p>
+<pre><code>def count_unread_books(books):
+    """ Accepts a list of dicts describing books
+    and returns the number of unread books in the list.
+    
+    >>> books = [{
+    ...     "title": "Uncanny Valley",
+    ...     "author": "Anna Wiener",
+    ...     "read": False
+    ...   }, {
+    ...     "title": "Parable of the Sower",
+    ...     "author": "Octavia E. Butler",
+    ...     "read": True
+    ...   }]
+    >>> count_unread_books(books)
+    1
+    """
+    # Initialize a count to 0
+    # Iterate through the books
+    # If a book is not read, increment count
+    # Return count
+</code></pre>
+</div>
+</body>
+</html>

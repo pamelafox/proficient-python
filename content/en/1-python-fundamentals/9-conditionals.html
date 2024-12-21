@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Conditionals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Conditionals</h1>
+<p>Now that we know how to write Boolean expressions, we can use them inside <bold>conditional statements</bold> to tell our programs to <italic>conditionally</italic> execute one block of code versus another.</p>
+<h3>Conditional statements</h3>
+<p>In Python, conditional statements always start with <code>if</code>. Here's the basic template:</p>
+<pre><code>if <condition>:
+    <statement>
+    <statement>
+    ...</code></pre>
+<p>If <code><condition></code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <italic>required</italic> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
+<p>Here's a simple <code>if</code> statement that re-assigns a variable based on a condition:</p>
+<pre><code>clothing = "shirt"
+
+if temperature < 32:
+    clothing = "jacket"</code></pre>
+<p>TODO: Quiz</p>
+<h3>Compound conditionals</h3>
+<p>A conditional statement can include any number of <code>elif</code> statements to check other conditions and execute different blocks of code. Other languages use <code>else if</code>, but Python decided that was just too dang long and shortened it to <code>elif</code>. 🤷🏼‍♀️</p>
+<p>Here's a template with three conditional paths:</p>
+<pre><code>if <condition>:
+    <statement>
+    ...
+elif <condition>:
+    <statement>
+    ...
+elif <condition>:
+    <statement>
+    ...</code></pre>
+<p>Here's an extension of the earlier example with one more path:</p>
+<pre><code>clothing = "shirt"
+
+if temperature < 0:
+    clothing = "snowsuit"
+elif temperature < 32:
+    clothing = "jacket"</code></pre>
+<p>One way to make sure we understand a conditional is to make a table showing possible values of program state and the result.</p>
+<p>For example:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>temperature</p>
+<th>
+<p>clothing</p>
+<tbody>
+<tr>
+<td>
+<p>-50</p>
+<td>
+<p>"snowsuit"</p>
+<tr>
+<td>
+<p>-1</p>
+<td>
+<p>"snowsuit"</p>
+<tr>
+<td>
+<p>0</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>1</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>31</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>32</p>
+<td>
+<p>"shirt"</p>
+<tr>
+<td>
+<p>50</p>
+<td>
+<p>"shirt"</p>
+</table>
+<p>It's a good idea to be doubly sure of what happens at the boundary conditions- sometimes you might realize, "uh oh! I wanted >=, not >, my bad!". 🙀When writing tests for a function that uses a conditional function, make sure to test those boundary conditions.</p>
+<p>Finally, a conditional statement can include an <code>else</code> clause to specify what code should be executed if none of the preceding conditions were true.</p>
+<pre><code>if <condition>:
+    <statement>
+    ...
+elif <condition>:
+    <statement>
+    ...
+else <condition>:
+    <statement>
+    ...</code></pre>
+<p>Here's a way to rewrite the earlier example using <code>if</code>/<code>elif</code>/<code>else</code>:</p>
+<pre><code>if temperature < 0:
+    clothing = "snowsuit"
+elif temperature < 32:
+    clothing = "jacket"
+else:
+    clothing = "shirt"</code></pre>
+<p>That code would result in the same values for <code>clothing</code> as shown in the table below, but reads more clearly.</p>
+<p>In summary, a conditional statement:</p>
+<ul><li><p>always starts with an <code>if</code> clause</p></li>
+<li><p>can have 0 or more <code>elif</code> clauses</p></li>
+<li><p>can optionally end with an <code>else</code> clause</p></li></ul>
+<h3>Using conditionals in functions</h3>
+<p>A conditional statement could be just one part of a longer function, or it could be the entire function. It's common to write a function that uses a conditional to compare the input parameters and return values based on what was passed in.</p>
+<p>For example:</p>
+<pre><code>def get_number_sign(num):
+    if num < 0:
+        sign = "negative"
+    elif num > 0:
+        sign = "positive"
+    else:
+        sign = "neutral"
+    return sign</code></pre>
+<p>We'd call that function like this:</p>
+<pre><code>get_number_sign(50)  # Returns: "positive"
+get_number_sign(-1)  # Returns: "negative"
+get_number_sign(0)   # Returns: "neutral"</code></pre>
+<p>We could also end each branch of the conditional with a return, rewriting the above function like so:</p>
+<pre><code>def get_number_sign(num):
+    if num < 0:
+        return "negative"
+    elif num > 0:
+        return "positive"
+    else:
+        return "neutral"</code></pre>
+<p>That makes it very clear that the function won't be doing anything else besides returning that value, since a return statement exits a function immediately.</p>
+<p>There's one more way we might write this function, leaving off the <code>else</code> of the conditional:</p>
+<pre><code>def get_number_sign(num):
+    if num < 0:
+        return "negative"
+    elif num > 0:
+        return "positive"
+    return "neutral"</code></pre>
+<p>When that function receives a <code>num</code> of 0, it doesn't execute either of the return statements inside the conditional, since neither condition is true. It continues on, discovers the next statement is a return statement, and executes that statement instead.</p>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

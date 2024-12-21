@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Lists</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Lists</h1>
+<p>A <bold>list</bold> is a data type that holds a sequence of related pieces of data. Lists are also known as arrays in many programming languages.</p>
+<p>The shortest list is the empty list, which we can construct with two square brackets:</p>
+<pre><code>members = []</code></pre>
+<p>An empty list doesn't seem very useful at first, but we'll soon learn how to add more items to empty lists.</p>
+<p>To construct lists with data inside, put the values between the brackets and separate the values by commas:</p>
+<pre><code>members = ["Pamela", "Tinu", "Brenda", "Kaya"]
+
+ages_of_kids = [1, 2, 7]
+
+prices = [79.99, 49.99, 89.99]</code></pre>
+<p>As you can see from those examples, lists can hold any Python data type. In fact, Python even lets you mix and match data types:</p>
+<pre><code>remixed = ["Pamela", 7, 79.99]</code></pre>
+<p>I wouldn't recommend that, personally, since a list should hold sequences of related data, and it's unclear how those items form a sequence or how they are related. But there may be some situations where it's helpful.</p>
+<h3>Accessing list items</h3>
+<p>It's possible to reference a specific item in a list by using <bold>bracket notation</bold>: the name of the variable, followed by square brackets with the item index inside.</p>
+<pre><code>list_name[index]</code></pre>
+<p>The index of items in a list starts at 0:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:   0     1     2     3     4</code></pre>
+<p>That means that the final item in a 5-item list has an index of 4, not 5. Here's how we would access each of the items in that list:</p>
+<pre><code>temps[0]  # 48.0
+temps[1]  # 30.5
+temps[2]  # 20.2
+temps[3]  # 99.0
+temps[4]  # 52.0</code></pre>
+<p>There is no item at index 5, so running <code>temps[5]</code> would result in the error "IndexError: list index out of range". The zero-indexing scheme is often a source of confusion, especially since there are a few languages that start list items at index 1, so this is another common source of off-by-one errors. 😱</p>
+<p>Python also allows for negative indexing, which goes backwards from the end of the list:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:  -5    -4   -3    -2    -1</code></pre>
+<p>Using the indices looks like this:</p>
+<pre><code>temps[-1]  # 52.0
+temps[-2]  # 99.0</code></pre>
+<p>Once again, going too far will result in an error. In this case, since the negative indices start from -1 (not -0, since apparently negative zero is not a thing!), the first out-of-bounds index is <code>temps[-6]</code>.</p>
+<h3>Self-check: Favorite singers</h3>
+<p>Consider this list of my favorite musical artists:</p>
+<pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>List length</h3>
+<p>Python provides the global function <code>len()</code> to find out the length of a list (or any sequence).</p>
+<pre><code>attendees = ["Tammy", "Shonda", "Tina"]
+
+len(attendees) # Evaluates to: 3</code></pre>
+<p>The length of a list is how many items are in the list, which is different from the maximum index in a list. A list with a <code>len()</code> of 3 will have a maximum index of 2.</p>
+<p>You can also use <code>len()</code> on strings, since Python considers a string to be a type of sequence:</p>
+<pre><code>len("Supercalifragilisticexpialidocious")  # Evaluates to: 34</code></pre>
+<p>The length of a string is typically the number of characters. In actuality, it's reporting the number of Unicode code points in a string, and Western alphabet letters require only one code point. However, many modern emojis require multiple Unicode code points, like 🤷🏽‍♀️, so <code>len("🤷🏽‍♀️")</code> will actually report 5. I love emojis, but dang, programming with them is a pain.</p>
+<hr>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
+</div>
+</body>
+</html>

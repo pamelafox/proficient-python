@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Kursu: Rastgelelik</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Randomness</h1>
+<p>Çoğu zaman, programlarımızın çok öngörülebilir olmasını isteriz; aynı girdiler verildiğinde her zaman aynı çıktıyı vermek.</p>
+<p>Ancak, sanat, grafik veya eğlence üretmek için programlar yazıyorsak, her seferinde farklı çıktılara sahip kullanıcıları memnun etmek için programlarımızdan değişkenlik isteyebiliriz. Kurtarmaya rastgelelik!</p>
+<p>Ne demek istediğimi görmek için aşağıdaki programı deneyin:</p>
+<pre><code>import random
+
+rand_num = random.randint(1, 10000)
+rand_char = chr(rand_num)
+
+print(rand_char)</code></pre>
+<p>Bu program ilk önce <link>rastgelelik oluşturmak için bir dizi işlev içeren Python rasgele modülünü içe aktarır. Daha sonra başlangıç ve bitiş tamsayıları arasında bir tamsayı oluşturmak için kullanır <code>random.randint(start, end)</code> (hem başlangıç hem de bitiş dahil). Son olarak, bu sayıyı Unicode karaktere dönüştürmek için genel işlevi <code>chr(int)</code> çağırır. Merak ediyorsanız, bir karaktere dönüştürülmeden önce sayının ne olduğunu görmek için oluşturulan <code>rand_num</code> sayının çıktısını da alabilirsiniz.</p>
+<h3>İşlevlerin içinde rastgeleliği kullanma</h3>
+<p>Bazen rastgele bir renk, rastgele bir x, y noktası veya hatta karıştırılmış bir kart destesinin tamamı gibi rastgele bir sonuç üretebilen işlevler yazarız.</p>
+<p>Aşağıdaki işlevi birkaç kez çalıştırmayı deneyin:</p>
+<pre><code>def random_rgb():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return [r, g, b]
+
+random_rgb()</code></pre>
+<p>Rastgele animasyonlu piksel demosu yapmak <link>için yukarıdaki işlevi kullandım. Bu demonun kodu aynı zamanda Python'da oyun yapmak için popüler bir kütüphane olan Pygame' <link>e de dayanıyor.</p>
+<p>Aşağıda bir ekran görüntüsü verilmiştir, ancak kodu ve demoyu görmek için yukarıdaki bağlantıya göz atın. Pygame, makalelerde kullanılan gömülü kod düzenleyicisinde çalışmadığı için demo Repl.it'de barındırılıyor.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvby1300181498ctx3d181/Screen Shot 2022-01-07 at 12.40.21 PM.png"></p>
+<h3>Rastgeleliği test etme</h3>
+<p>Rastgelelikten önce, tüm fonksiyonlarımız <bold>deterministikti</bold>: belirli bir girdi için öngörülebilir bir çıktı var.</p>
+<p>Şimdi, belirli bir giriş (veya hiç giriş yok) her seferinde çok farklı sonuçlarla sonuçlanabilir. Bu, testi zorlaştırır, çünkü kesin çıktıları test edemeyiz; çıktının yalnızca makul bir aralıkta olduğundan emin olabiliriz.</p>
+<p>İşte bu rastgele renk işlevi için nasıl testler yazabileceğimiz:</p>
+<pre><code>def random_rgb():
+    """Returns a list of random R, G, B color values.
+    
+    >>> color = random_rgb()
+    >>> len(color) == 3
+    True
+    <= 255="" true="">>> color[1] >= 0 and color[1] <= 255="" true="">>> color[2] >= 0 and color[2] <= 255="" true="" """="" r="random.randint(0," 255)="" g="random.randint(0," 255)="" b="random.randint(0," 255)="" return="" [r,="" g,=""></=></=></=></code></pre>
+<p>En azından Python'da, rastgeleliğe dayanan bir işlevi test etmenin başka bir yolu vardır. Rasgele sayı üretecini belirli bir tohum kullanarak başlatabilirsiniz ve bu <bold>tohum</bold> her zaman aynı rastgele değerler dizisiyle sonuçlanır. Tipik olarak, tohum mevcut sistem saatine göre başlatılır, bu da çıktının her seferinde farklı görünmesini sağlar, ancak testlerimizde sabit bir sayıya ayarlayabiliriz.</p>
+<p>Tohumu ayarladıktan sonra, standart bir giriş / çıkış testi yazabiliriz:</p>
+<pre><code>def random_rgb():
+    """Returns a list of random R, G, B color values.
+    
+    >>> random.seed(1)
+    >>> random_rgb()
+    [106, 184, 0]
+    """
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return [r, g, b]</code></pre>
+<p>Çekirdeği işlev kodunun kendisinde ayarlamadığınızdan emin olun, aksi takdirde çok rastgele olmayan bir çıktıyla sonuçlanırsınız.</p>
+<h3>Rastgele liste öğeleri</h3>
+<p>Rastgele tebrik mesajlarının bu listesini göz önünde bulundurun:</p>
+<pre><code>yays = ["You got it!", "Congrats!", "Well done!", "Nice one!"]</code></pre>
+<p>co:rise mühendisleri, bir öğrenci bir test yanıtını her doğru aldığında rastgele bir mesaj oluşturmak isteyebilir.</p>
+<p>Bunu yapmanın bir yolu, önceki işlevi kullanmak <code>randint</code> ve bunu bir dizin oluşturmak için kullanmaktır:</p>
+<pre><code>yays[random.randint(0, len(yays)-1)]</code></pre>
+<p>Ve bu tamamen işe yarayacaktı! Ancak bu o kadar yaygın bir ihtiyaçtır ki, <code>random.choice(sequence)</code>Python sadece bunun için bir işlev ekledi.</p>
+<p>Bu işlev sayesinde, kod çok daha temiz ve özlü hale gelebilir:</p>
+<pre><code>random.choice(yays)</code></pre>
+<h3>Sözde rastgelelik</h3>
+<p>Pekala, şimdi gerçek bir konuşma zamanı: bu rastgeleliklerin hiçbiri gerçekten rastgele değil. Pardon! Sorun şu ki, bilgisayarlar gerçekten rastgele olamazlar: 0'ları ve 1'leri hesaplayan mantıksal devrelerden inşa edilirler, bir hevesle nasıl hareket edeceklerini bilmezler.</p>
+<p><bold>Bilgisayarlar bunun yerine, bir dizi matematiksel hesaplama kullanarak görünüşte rastgele sayılar üreten sözde rasgele sayı üreteçleri (PRNG'ler)</bold> kullanır.</p>
+<p>Herhangi bir nedenden dolayı bir bilgisayar programı gerçekten rastgele verilere ihtiyaç duyuyorsa, doğada rastgele bir süreç bulması ve buna dayanarak sayılar üretmesi gerekir. Web sitesi <link>random.org, atmosferik gürültüyü örnekleyerek aslında rastgele sayılar ürettiğini iddia ediyor ve nesilleri hakkında çok fazla ayrıntıya giriyor ve sonuçların gerçek rastgeleliğini kanıtlamaya çalışıyor. Büyüleyici!</p>
+<p>Neyse ki, PRNG'lerin sonuçları genellikle çoğu kullanım örneğini karşılayacak kadar rastgeledir. Sayıları bin kez 1-3 üreten ve sonuçların sıklığını ölçen yukarıdaki programa göz atın. Sizin için yeterince rastgele görünüyor mu?</p>
+<pre><code>import random
+
+num_experiments = 10000
+
+one_called = 0
+two_called = 0
+three_called = 0
+
+for _ in range(num_experiments):
+  random_num = random.randint(1, 3)
+  if random_num == 1:
+    one_called += 1
+  elif random_num == 2:
+    two_called += 1
+  elif random_num == 3:
+    three_called += 1
+
+def report_frequency(num, call_count, total_count):
+  percentage = call_count/total_count
+  print(f"{num} called {call_count} times: {percentage}")
+
+report_frequency(1, one_called, num_experiments)
+report_frequency(2, two_called, num_experiments)
+report_frequency(3, three_called, num_experiments)</code></pre>
+<hr>
+<p> ♀️ ♂️ Bu makaledeki içerikle ilgili herhangi bir sorunuz varsa, Slack'teki #questions kanalına göndermeniz yeterlidir. Sorularınız olduğunda lütfen gönderin, size yardımcı olmak için buradayız!</p>
+</div>
+</body>
+</html>

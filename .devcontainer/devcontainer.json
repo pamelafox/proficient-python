@@ -1,0 +1,24 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.fontSize": 18
+        },
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "noahsyn10.pydoctestbtn"
+        ]
+      }
+    },
+    "forwardPorts": [8000],
+    "portsAttributes": {
+      "8000": {
+        "label": "Slides",
+        "onAutoForward": "openPreview"
+      }
+    },
+    "postAttachCommand": "python3 -m http.server 8000"
+  }
+  
