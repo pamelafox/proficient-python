@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Dictionaries</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Dictionaries{% endblock %}
+{% block content %}
 <h1>Dictionaries</h1>
 <p>Another data type in Python (and my personal favorite) is the dictionary. Similar to how an actual dictionary maps words to definitions, a Python dictionary maps keys to values.</p>
 <p>Here's how we could make a mini slang dictionary using a Python dictionary:</p>
@@ -153,8 +134,4 @@ print(servings)
 # by using bracket notation on the recipe variable
 ingredients = []
 print(ingredients)</code></pre>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Randomness</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Randomness{% endblock %}
+{% block content %}
 <h1>Randomness</h1>
 <p>Most of the times, we want our programs to be very predictable; to always give the same output when given the same inputs.</p>
 <p>However, if we're writing programs to generate art, graphics, or entertainment, we might actually want variability from our programs, to delight users with different output each time. Randomness to the rescue!</p>
@@ -117,8 +98,4 @@ def report_frequency(num, call_count, total_count):
 report_frequency(1, one_called, num_experiments)
 report_frequency(2, two_called, num_experiments)
 report_frequency(3, three_called, num_experiments)</code></pre>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

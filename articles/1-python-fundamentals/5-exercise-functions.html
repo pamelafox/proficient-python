@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: Functions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: Functions{% endblock %}
+{% block content %}
 <h1>Exercise: Functions</h1>
 <p>Throughout this course, we will be writing many of our own functions. We want to make sure that our functions work correctly- that for any given input, they return the correct output.</p>
 <p>One way to tests functions in Python is with <bold>doctests</bold>. A doctest shows a bunch of calls to a function and the expected output for each. The doctest for a function is always below the function header and before the function body, inside a giant comment known as the <bold>docstring</bold>.</p>
@@ -47,7 +28,7 @@
 <p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Lifetime Supply Calculator exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
 <h3>Lifetime Supply Calculator</h3>
 <p>📺  If you'd like, you can watch how I tackled this first exercise in <link>a walkthrough video</link>. I also show how to use the 'Run code' and 'Test code' buttons in that video.</p>
-<pre><code>def calculate_lifetime_supply(current_age, amount_per_day):
+<code-exercise-element exercise-name="lifetime-supply-calculator">def calculate_lifetime_supply(current_age, amount_per_day):
     """ Returns the amount of items consumed over a lifetime
     (with a max age of 100 assumed) based on the current age
     and the amount consumed per day.
@@ -59,10 +40,11 @@
     >>> calculate_lifetime_supply(36, 3)
     70080
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 
 <h3>Dog Age Calculator</h3>
-<pre><code>def calculate_dog_age(human_age):
+
+<code-exercise-element exercise-name="dog-age-calculator">def calculate_dog_age(human_age):
     """ Returns a dog's age based on a conversion rate of
     1 human year to 7 dog years.
     >>> calculate_dog_age(1)
@@ -72,11 +54,11 @@
     >>> calculate_dog_age(12)
     84
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 
 <h3>Fortune Teller</h3>
 <p>Implement a function, <code>tell_fortune</code>, that returns a string of the form shown in the docstring and doctests. The string will be a combination of string literals (strings in quotes) and the given parameters.</p>
-<pre><code>def tell_fortune(job_title, location, partner):
+<code-exercise-element exercise-name="fortune-teller">def tell_fortune(job_title, location, partner):
     """ Returns a fortune of the form:
      'You will be a <job_title> in <location> living with <partner>.'
 
@@ -87,14 +69,12 @@
     >>> tell_fortune('Elvis Impersonator', 'Russia', 'Karl the Fog')
     'You will be a Elvis Impersonator in Russia living with Karl the Fog.'
     """
-    return "?"  # YOUR CODE HERE</code></pre>
+    return "?"  # YOUR CODE HERE</code-exercise-element>
 
 <h3>Temperature Converter</h3>
-<p>Implement two functions, <code>celsius_to_fahrenheit</code> and <code>fahrenheit_to_celsius</code>, to convert temperatures based on the <link>standard conversion formulas</link>. You'll need to modify both the function signature <italic>and</italic> function body.</p>
+<p>Implement two functions, <code>celsius_to_fahrenheit</code> and <code>fahrenheit_to_celsius</code>, to convert temperatures based on the <a target="_blank" href="https://www.mathsisfun.com/temperature-conversion.html">standard conversion formulas</a>. You'll need to modify both the function signature <italic>and</italic> function body.</p>
 <p>Hint: As the final step in the conversion, the built-in <link><code>round</link></code> function may be helpful.</p>
-<pre><code># See https://www.mathsisfun.com/temperature-conversion.html for formulas.
-
-def celsius_to_fahrenheit():  # <- COMPLETE THIS
+<code-exercise-element exercise-name="celsius-to-fahrenheit">def celsius_to_fahrenheit():  # <- COMPLETE THIS
     """ Returns the Fahrenheit equivalent of the given Celsius temperature.
 
     >>> celsius_to_fahrenheit(0)
@@ -112,9 +92,8 @@ def fahrenheit_to_celsius(): # <- COMPLETE THIS
     >>> fahrenheit_to_celsius(212)
     100
     """
-    # YOUR CODE HERE</code></pre>
-
-
-</div>
-</body>
-</html>
+    # YOUR CODE HERE</code-exercise-element>
+{% endblock %}
+{% block foooter_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

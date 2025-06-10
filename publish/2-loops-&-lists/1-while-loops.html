@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: While loops</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>While loops</h1>
+<p>Consider the following code:</p>
+<pre><code>print(9 * 1)
+print(9 * 2)
+print(9 * 3)
+print(9 * 4)
+print(9 * 5)</code></pre>
+<p>This code is repetitive and variable, but the variability is sequential - it just adds one to the right-hand side number each time. In English, we could describe this as "print out the first 5 multiples of 9".</p>
+<p>We can simplify this code using a loop. There are a few kinds of loops in Python, and we'll be starting with the most generic and flexible loop, the while loop.</p>
+<p>This is the general form of a while loop:</p>
+<pre><code>while <condition>:
+    <statement>
+    <statement></code></pre>
+<p>As long as the condition is true, the statements below it are executed. That condition is the same sort of condition we've been using inside conditionals. However, conditions inside while loops get checked repeatedly, until they're finally false.</p>
+<p>We can rewrite the original code using a while loop like so:</p>
+<pre><code>multiplier = 1
+while multiplier <= 5:
+    print(9 * multiplier)
+    multiplier += 1</code></pre>
+<p>That code is shorter, and more importantly, it would be trivial to modify the code to run for more multiples of 9 or fewer multiples of 9. For example, if we wanted to print out 100 multiples of 9, we could just change our while loop condition to <code>while multiplier <= 100</code>. Without a loop, we would have had to write out each print statement—the loop saves us 95 lines of code!</p>
+<h3>Modifying a loop: Example #1</h3>
+<p>One way to modify a loop is to change the initial values of the variables involved in the condition. Consider the following code:</p>
+<pre><code>multiplier = 3
+while multiplier <= 5:
+    print(9 * multiplier)
+    multiplier += 1</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>Modifying a loop: Example #2</h3>
+<p>Another way to affect how a loop executes is to change the condition, so that it becomes false at a different point. Consider this code:</p>
+<pre><code>multiplier = 3
+while multiplier <= 10:
+    print(9 * multiplier)
+    multiplier += 1</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>Modifying a loop: Example #3</h3>
+<p>Another way to modify a loop is to alter how much the loop variables change between iterations. It's common to add one to a value, but you can add more than one or do any arithmetic operation your heart desires.</p>
+<p>Consider this code:</p>
+<pre><code>multiplier = 3
+while multiplier <= 10:
+    print(9 * multiplier)
+    multiplier += 2</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>Counter variables</h3>
+<p>It's very common for loops to use a <bold>counter variable</bold>: a variable whose primary purpose is to count the number of iterations.</p>
+<p>Here's an example that counts 5 iterations:</p>
+<pre><code>total = 0
+counter = 0
+while counter < 5:
+  total += pow(2, 1)
+  counter += 1</code></pre>
+<p>Notably, that counter variable starts at 0, not at 1. As a consequence, the loop condition checks that the counter is less than 5, <italic>not</italic> less than or equal. The loop still runs 5 times - when <code>counter</code> is 0, 1, 2, 3, and 4.</p>
+<p>Programmers often start counters at 0 instead of 1, so this is a common pattern, but it may throw you off at first. Whether you start at 0 or 1, make sure that your loop condition is using the appropriate operator. Otherwise, your code may experience the dreaded "off-by-one error". 🙀 Eek! But don't worry, it happens to all of us.</p>
+<p>The counter variable can also be used in the loop computation, like in the next example:</p>
+<pre><code>total = 0
+counter = 0
+while counter < 5:
+  total += pow(2, counter)
+  counter += 1</code></pre>
+<h3>Beware of infinite loops</h3>
+<p>Loops are a great way to repeat operations in your programs. However, at some point, a loop should stop iterating, so that the program can eventually exit.</p>
+<p>Consider this code:</p>
+<pre><code>counter = 0
+while counter < 5:
+    total += pow(2, counter)</code></pre>
+<p>That loop starts off with a counter variable initialized to 0, and then it adds a value to the total, and then it keeps doing that... forever! The counter variable is never changed, so <code>counter</code> remains at 0 and the loop condition <code>counter < 5</code> is always true. This is what we call an <bold>infinite loop</bold>.</p>
+<p>That loop just needs one line of code to fix it — any line of code that will change the counter variable in such a way that it will eventually not be less than 5.</p>
+<p>For example:</p>
+<pre><code>counter = 0
+while counter < 5:
+    total += pow(2, counter)
+    counter += 1</code></pre>
+<p>I have crashed quite a few browsers in my time with infinite loops, so don't feel bad if you write a few infinite loops while going through this week's lesson. Just check your loop condition and loop variables, and see what you're missing to make the loop eventually stop.</p>
+<h3>The break statement</h3>
+<p>To prematurely exit a loop, a <code>break</code> statement can be used. This is helpful if the condition for exiting the loop isn't as straightforward, like you're searching through some data or set of numbers for something that's true.</p>
+<p>This example searches through the numbers 100-200, but breaks when it finds the first multiple of 7:</p>
+<pre><code>first_multiple = None
+counter = 100
+while counter < 200:
+    if counter % 7 == 0:
+        first_multiple = counter
+        break
+    counter += 1
+print(first_multiple)</code></pre>
+<p>If it never finds a multiple of 7, then it will eventually exit the loop after 100 iterations, but if it does find it, it will set <code>first_multiple</code> to that value and exit the loop immediately. If you only care about the first time you find something, then it makes sense not to waste the computer's time on looking through the rest of the data.</p>
+<p>Now, if you are feeling very brave, it is possible to write loops where the condition is always true, as long as you use a <code>break</code> statement and are confident that the loop will eventually break.</p>
+<pre><code>counter = 100
+while True:
+    if counter % 62 == 0:
+        first_multiple = counter
+        break
+    counter += 1</code></pre>
+<p>If your loop never breaks, then uh-oh, you've coded an infinite loop! Proceed cautiously when writing <code>while True</code> loops.</p>
+<h3>Using loops in functions</h3>
+<p>If a loop is the main computational block of a function, then it commonly will use the function parameters to determine some aspect of its computation.</p>
+<p>The example below uses the parameters to determine the start and end of the loop variable values:</p>
+<pre><code>def sum_up_squares(start, end):
+    counter = start
+    total = 0
+    while counter <= end:
+      total += pow(counter, 2)
+      counter += 1
+    return total</code></pre>
+<p>Then we can call that function with various arguments in order to sum different ranges of squares:</p>
+<p><code>sum_up_squares(1, 5) # Returns 55</code></p>
+<p><code>sum_up_squares(5, 10) # Returns 355</code></p>
+<p>We could also use function parameters to affect the computation done inside a loop or to affect how a counter variable is incremented. Combining functions with loops gives us the power to create reusable, flexible looping computations.</p>
+
+</div>
+
+</body>
+</html>

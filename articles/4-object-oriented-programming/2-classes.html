@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Classes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Classes{% endblock %}
+{% block content %}
 <h1>Classes</h1>
 <p>Let's imagine that we're building an online chocolate shop, and we want to use object-oriented programming to organize our code for the shop. (This is not such a far-fetched fantasy; my friend is the CTO of a chocolate shop that's written in Python).</p>
 <p>Before writing code, it helps to think about what sort of data and functionality our shop is dealing with.</p>
@@ -125,8 +106,4 @@ truffle_bar.increase_inventory(200)</code></pre>
 <p>The great thing about object-oriented programming is that we can initialize hundreds of products, and know that each of those products have the same variable names and methods. A little bit of code can go a long way!</p>
 <p>TODO: Quiz</p>
 <p>TODO: Quiz</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: More on inheritance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>More on inheritance</h1>
+<h3>Using super()</h3>
+<p>Sometimes we want to be able to call the original method definition from inside the overridden method definition. That is possible using <code>super()</code>, a function that can delegate method calls to the parent class.</p>
+<p>For example, this <code>Lion</code> class has an <code>eat</code> method that only calls the original <code>eat</code> if the meal is meat:</p>
+<pre><code>class Lion(Animal):
+    species_name = "Lion"
+    scientific_name = "Panthera"
+    calories_needed = 3000
+
+    def eat(self, meal):
+        if meal.kind == "meat":
+            super().eat(meal)</code></pre>
+<p>Since <code>Lion</code> inherits from <code>Animal</code>, that line of code will call the definition of <code>eat</code> inside <code>Animal</code> instead, but pass in the <code>Lion</code> object as the <code>self</code>.</p>
+<p>We'd call it the same way as we usually would:</p>
+<pre><code>bones = Meal("Bones", "meat")
+mufasa = Lion("Mufasa", 10)
+mufasa.eat(bones)</code></pre>
+<p>We could have also written this code instead to achieve the same result:</p>
+<pre><code>def eat(self, food):
+    if food.kind == "meat":
+        Animal.eat(self, food)</code></pre>
+<p>However, the great thing about <code>super()</code> is that it both keeps track of the parent class and takes care of passing in <code>self</code>. Super convenient!</p>
+<h3>Using super() with __init__</h3>
+<p>A very common use of <code>super()</code> is to call the <code>__init__</code>. Many times, a subclass wants to initialize all the original instance variables of the base class, but then additionally wants to set a few instance variables specific to its needs.</p>
+<p>For example, consider this <code>Elephant</code> class:</p>
+<pre><code>class Elephant(Animal):
+    species_name = "Elephant"
+    scientific_name = "Loxodonta"
+    calories_needed = 8000
+
+    def __init__(self, name, age=0):
+        super().__init__(name, age)
+        if age < 1:
+            self.calories_needed = 1000
+        elif age < 5:
+            self.calories_needed = 3000</code></pre>
+<p>That <code>__init__</code> method first calls the original <code>__init__</code> from <code>Animal</code> and then it conditionally overrides the <code>calories_needed</code> instance variable in the case of young elephants.</p>
+<p>We can create an <code>Elephant</code> object in the usual manner:</p>
+<pre><code>elly = Elephant("Ellie", 3)
+print(elly.calories_needed)</code></pre>
+<p>TODO: Quiz</p>
+<h3>Layers of inheritance</h3>
+<p>Every Python 3 class actually implicitly inherits from the global built-in <code>object</code> class.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0buygfy000y1466hyga3kz4/animal_object.png"></p>
+<p>We could have written our <code>Animal</code> class to explicitly inherit from it, like so:</p>
+<pre><code>class Animal(object):</code></pre>
+<p>But Python 3 assumes that any class without a base class inherits from <code>object</code>, so we usually don't bother with the extra code.</p>
+<p>The <code>object</code> class includes a few default methods that we can use on any class, including a default implementation of <code>__init__</code> that doesn't do much of anything at all - but it does mean that we can write a class without <code>__init__</code> and won't run into errors when creating new instances.</p>
+<p>We can also add more layers of inheritance ourselves, if we realize it would be sensible to have a deeper hierarchy of classes.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0buz1gt000z1498civea3a6/animal_layers.png"></p>
+<p>To add that new layer of classes, we just define the new classes:</p>
+<pre><code>class Herbivore(Animal):
+
+    def eat(self, meal):
+        if meal.kind == "meat":
+            self.happiness -= 5
+        else:
+            super().eat(meal)
+
+class Carnivore(Animal):
+
+    def eat(self, meal):
+        if meal.kind == "meat":
+            super().eat(meal)</code></pre>
+<p>Notice that these subclasses only override a single method, <code>eat</code>.</p>
+<p>Then we change the classes that are currently inheriting from <code>Animal</code> to instead inherit from either <code>Herbivore</code> or <code>Carnivore</code>:</p>
+<pre><code>class Rabbit(Herbivore):
+class Panda(Herbivore):
+class Elephant(Herbivore):
+
+class Vulture(Carnivore):
+class Lion(Carnivore):</code></pre>
+<p>For a class that represents an omnivorous animal, we could keep its parent class as <code>Animal</code> and not change it to one of the new subclasses.</p>
+<h3>Multiple inheritance</h3>
+<p>This is where things start to get a little wild. A class can actually inherit from <italic>multiple</italic> other classes in Python.</p>
+<p>For example, if <code>Meal</code> has a subclass of <code>Prey</code> (since, in the circle of life, animals can become meals!), an animal like <code>Rabbit</code> could inherit from both <code>Prey</code> and <code>Herbivore</code>. Poor rabbits!</p>
+<p>Here's the <code>Prey</code> class:</p>
+<pre><code>class Prey(Meal):
+    kind = "meat"
+    calories = 200</code></pre>
+<p>To inherit from that class as well, we add it to the class names inside the parentheses:</p>
+<pre><code>class Rabbit(Herbivore, Prey):</code></pre>
+<p>We could even add another subclass to <code>Animal</code> to represent predators, making it so that interacting with a prey animal instantly turns into mealtime.</p>
+<pre><code>class Predator(Animal):
+
+    def interact_with(self, other):
+        if other.kind == "meat":
+            self.eat(other)
+            print("om nom nom, I'm a predator")
+        else:
+            super().interact_with(other)</code></pre>
+<p>We once again would need to modify the class names in the parentheses to make a subclass inherit from <code>Predator</code> as well:</p>
+<pre><code>class Lion(Carnivore, Predator):</code></pre>
+<p>Python can look for attributes in any of the parent classes. It first looks in the current class, then looks at the parent class, then looks at that class's parent class, etc.</p>
+<pre><code>r = Rabbit("Peter", 4)           # Animal __init__
+r.play()                         # Animal method
+r.kind                           # Prey class variable
+r.eat(Food("carrot", "veggies")) # Herbivore method
+l = Lion("Scar", 12)             # Animal __init__
+l.eat(Food("zazu", "meat"))      # Carnivore method
+l.interact_with(r)               # Predator method</code></pre>
+<p>Actually, the way that it finds attributes is even more complicated than that, since it will also look in sibling classes. We won't dive into that here, but if you're curious, search the web for "Python method resolution order (MRO").</p>
+<h3>Too much inheritance?</h3>
+<p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
+<p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <italic>not</italic> to add them.</p>
+<p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
+
+</div>
+
+</body>
+</html>

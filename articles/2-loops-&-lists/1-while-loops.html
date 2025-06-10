@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: While loops</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}While loops{% endblock %}
+{% block content %}
 <h1>While loops</h1>
 <p>Consider the following code:</p>
 <pre><code>print(9 * 1)
@@ -132,8 +113,4 @@ while True:
 <p><code>sum_up_squares(1, 5) # Returns 55</code></p>
 <p><code>sum_up_squares(5, 10) # Returns 355</code></p>
 <p>We could also use function parameters to affect the computation done inside a loop or to affect how a counter variable is incremented. Combining functions with loops gives us the power to create reusable, flexible looping computations.</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

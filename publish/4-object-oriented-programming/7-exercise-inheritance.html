@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Exercise: Inheritance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Exercise: Inheritance</h1>
+<p>These exercises are all about overriding base classes. In the first two exercises, you'll override just the class variables. In the last two, you'll also override methods.</p>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Weighty Dog exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+<h3>Exercise: Animal Subclasses</h3>
+<p>Finish the two subclasses <code>Sloth</code> and <code>Cat</code> so that they both inherit from <code>Animal</code> and override class variables according to the values in their doctests.</p>
+<p>📺 Need help with this one? Watch this <link>video walkthrough</link> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<code-exercise-element exercise-name="animal-subclasses">class Animal:
+    species_name = "Animal"
+    scientific_name = "Animalia"
+    play_multiplier = 2
+    interact_increment = 1
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten  = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * self.play_multiplier)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, food):
+        self.calories_eaten += food.calories
+        print(f"Om nom nom yummy {food.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += self.interact_increment
+        print(f"Yay happy fun time with {animal2.name}")
+
+
+class Sloth: # &lt;- FINISH THIS LINE
+    """
+    >>> Sloth.species_name
+    "Hoffmann's two-toed sloth"
+    >>> Sloth.scientific_name
+    'Choloepus hoffmanni'
+    >>> Sloth.calories_needed
+    680
+    >>> buttercup = Sloth('Buttercup', 27)
+    >>> buttercup.name
+    'Buttercup'
+    >>> buttercup.age
+    27
+    """
+    # YOUR CODE HERE
+
+
+class Cat: # &lt;- FINISH THIS LINE
+    """
+    >>> Cat.species_name
+    'Domestic cat'
+    >>> Cat.scientific_name
+    'Felis silvestris catus'
+    >>> Cat.calories_needed
+    200
+    >>> jackson = Cat("Jackson", 8)
+    >>> jackson.name
+    'Jackson'
+    >>> jackson.age
+    8
+    """
+    # YOUR CODE HERE</code-exercise-element>
+<h3>Exercise: LearnableContent subclasses</h3>
+<p>The <code>LearnableContent</code> class below is based on an actual class from the Khan Academy Python codebase. Finish the implementation of the <code>Article</code> and <code>Video</code> subclasses to properly inherit from <code>LearnableContent</code> and override class variables according to the values in the doctests.</p>
+<code-exercise-element exercise-name="learnable-content-subclasses">class LearnableContent:
+  """A base class for specific kinds of learnable content.
+  All kinds have title and author attributes,
+  but each kind may have additional attributes.
+  """
+  license = "Creative Commons"
+
+  def __init__(self, title, author):
+    self.title = title
+    self.author = author
+
+  def get_heading(self):
+    return f"{self.title} by {self.author}"
+
+class Video: # &lt;- FINISH THIS LINE
+    """
+    >>> Video.license
+    'YouTube Standard License'
+    >>> dna_vid = Video('DNA', 'Megan')
+    >>> dna_vid.title
+    'DNA'
+    >>> dna_vid.author
+    'Megan'
+    >>> dna_vid.get_heading()
+    'DNA by Megan'
+    """
+    # YOUR CODE HERE
+
+
+class Article: # &lt;- FINISH THIS LINE
+    """
+    >>> Article.license
+    'CC-BY-NC-SA'
+    >>> water_article = Article('Water phases', 'Lauren')
+    >>> water_article.title
+    'Water phases'
+    >>> water_article.author
+    'Lauren'
+    >>> water_article.get_heading()
+    'Water phases by Lauren'
+    """
+    # YOUR CODE HERE</code-exercise-element>
+
+<h3>Exercise: Boss methods</h3>
+<p>The <code>Character</code> class below represents a character in a video game. Finish implementing the methods in <code>Boss</code> so that they override the base class methods and behave according to the comments and doctests.</p>
+<p>📺 Need help with this one? Watch this <link>video walkthrough</link> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<code-exercise-element exercise-name="boss-methods">class Character:
+  """ Represents a character in a video game,
+  tracking their name and health.
+
+  >>> player = Character("Mario")
+  >>> player.name
+  'Mario'
+  >>> player.health
+  100
+  >>> player.damage(10)
+  >>> player.health
+  90
+  >>> player.boost(5)
+  >>> player.health
+  95
+  """
+  def __init__(self, name):
+    self.name = name
+    self.health = 100
+
+  def damage(self, amount):
+    self.health -= amount
+
+  def boost(self, amount):
+    self.health += amount
+
+
+class Boss(Character):
+  """ Tracks a Boss character in a video game.
+
+  >>> mx_boss = Boss("Mx Boss Person")
+  >>> mx_boss.damage(100)
+  >>> mx_boss.health
+  99
+  >>> mx_boss.damage(10)
+  >>> mx_boss.health
+  98
+  >>> mx_boss.boost(1)
+  >>> mx_boss.health
+  100
+  """
+  
+  def damage(self, amount):
+    # Bosses ignore the amount and instead
+    # always receive 1 unit of damage to their health
+    # YOUR CODE HERE
+
+  def boost(self, amount):
+    # Bosses always receive twice the amount of boost to their health
+    # YOUR CODE HERE
+
+</code-exercise-element>
+<h3>Exercise: Clothing methods</h3>
+<p>The <code>Clothing</code> class below represents pieces of clothing in a closet, and <code>KidsClothing</code> inherits from it. Write a <code>clean</code> method that overrides the base class method according to the comment and the doctests.</p>
+<code-exercise-element exercise-name="clothing-methods">class Clothing:
+  """ Represents clothing in a closet,
+  tracking the color, category, and clean/dirty state.
+
+  >>> blue_shirt = Clothing("shirt", "blue")
+  >>> blue_shirt.category
+  'shirt'
+  >>> blue_shirt.color
+  'blue'
+  >>> blue_shirt.is_clean
+  True
+  >>> blue_shirt.wear()
+  >>> blue_shirt.is_clean
+  False
+  >>> blue_shirt.clean()
+  >>> blue_shirt.is_clean
+  True
+  """
+
+  def __init__(self, category, color):
+    self.category = category
+    self.color = color
+    self.is_clean = True
+
+  def wear(self):
+    self.is_clean = False
+
+  def clean(self):
+    self.is_clean = True
+
+class KidsClothing(Clothing):
+  """
+  >>> onesie = KidsClothing("onesie", "polka dots")
+  >>> onesie.wear()
+  >>> onesie.is_clean
+  False
+  >>> onesie.clean()
+  >>> onesie.is_clean
+  False
+  >>> dress = KidsClothing("dress", "rainbow")
+  >>> dress.clean()
+  >>> dress.is_clean
+  True
+  >>> dress.wear()
+  >>> dress.is_clean
+  False
+  >>> dress.clean()
+  >>> dress.is_clean
+  False
+  """
+
+  # Override the clean() method
+  # so that kids clothing always stays dirty!
+  # YOUR CODE HERE</code-exercise-element>
+
+</div>
+
+</body>
+</html>

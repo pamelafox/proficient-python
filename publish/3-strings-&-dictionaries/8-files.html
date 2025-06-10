@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Files</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Files</h1>
+<p>One source of input for computer programs is a file stored in the local file system. You could write a program that checked a text document for spelling errors, or like you did in project 2, a program to apply filters to an image file.</p>
+<p>There are two types of files:</p>
+<p><bold>Text files</bold> contain one or more lines that contain text characters, encoded according to a character encoding (like UTF-8). Each line in a text file ends with a control character. Unfortunately, the character varies based on the operating system. When a text file is created on a Mac, lines end with <code>"\n"</code>. For Unix-created files, lines end with <code>"\r"</code>. And annoyingly, on Windows, lines end with both characters, <code>"\r\n"</code>. We'll need to keep this in mind when we read a file, if we're trying to break it up into lines.</p>
+<p>Anything that's not a text file is a <bold>binary file</bold>. The bytes in a binary file are intended to be interpreted in some other way, typically dictated by the file extension. For example, all of these are binary files:</p>
+<ul><li><p>Images (with extensions such as GIF/JPG/PNG)</p></li>
+<li><p>Audio (e.g. WAV/MP3)</p></li>
+<li><p>Video (e.g. MOV/MP4)</p></li>
+<li><p>Compressed files (e.g. ZIP/RAR)</p></li></ul>
+<h3>Handling files</h3>
+<p>This is the general 3-step process for handling files in Python:</p>
+<ol><li><p>Open the file</p></li>
+<li><p>Either read data from file or write data to file</p></li>
+<li><p>Close the file</p></li></ol>
+<p>It's necessary to explicitly close the file at the end, since if you don't, the operating system won't let any other processes mess with that file.</p>
+<p>Let's see how to write the code to make those steps happen.</p>
+<h3>Opening files</h3>
+<p>The global built-in function <link><code>open</link></code><code>(file, mode)</code> opens a file and returns a file object. The first argument is the path to the file, while the second argument specifies what we want to do with that file, like read or write it. The following code opens "myinfo.txt" in a read-only mode:</p>
+<pre><code>open("myinfo.txt", mode="r")</code></pre>
+<p>Here are the most common modes:</p>
+<p>Mode Meaning Description r Read If the file does not exist, this raises an error. w Write If the file does not exist, this mode creates it. If file already exists, this mode deletes all data. a Append If the file does not exist, this mode creates it. If file already exists, this mode appends data to end of existing data. b Binary Use for binary files along with r or w more.</p>
+<p>The function also takes additional optional arguments and modes, described in <link>the docs</link>.</p>
+<h3>Reading the file</h3>
+<p>Once we have a file object, there are several methods that we can use to read the contents of the file.</p>
+<p>The <code>read</code> method reads the entire contents of the file into a string:</p>
+<pre><code>my_file = open("myinfo.txt", mode="r")
+my_info = my_file.read()</code></pre>
+<p>The <code>readlines</code> method reads the contents into a list of strings, where each string is a line of the file. That's handy since it takes care of the cross-OS issues with different line end characters (<code>"\r"</code> vs. <code>"\n"</code>).</p>
+<pre><code>my_file = open("myinfo.txt", mode="r")
+file_lines = my_file.readlines()
+
+for line in file_lines:
+    print(line)</code></pre>
+<p>Python also provides an option for reading a file <bold>lazily</bold> - just one line at a time - by using a <code>for</code> loop.</p>
+<pre><code>rows = []
+my_file =  open("longbook.txt", mode="r")
+for line in my_file:
+    rows.append(line)</code></pre>
+<p>If we allow that loop to iterate all the way to the end of the file, then there's no difference between that and <code>readlines</code>. However, we could break out of the loop once we've found something in the file, like so:</p>
+<pre><code>rows = []
+my_file =  open("longbook.txt", mode="r")
+for line in my_file:
+    rows.append(line)
+     if line.find('Chapter 2') > -1:
+            break</code></pre>
+<p>This is a great approach for very long text files, since it means you don't have to read the whole darn file into memory.</p>
+<h3>Writing files</h3>
+<p>To write a file, we need to first open it in either the "w" mode, which will empty out the file upon opening it, or the "a" mode, which will keep the prior contents but append additional data to the end.</p>
+<p>Overwriting the entire file:</p>
+<pre><code>my_file = open("myinfo.txt", mode="w")
+my_file.write("Birth city: Pasadena, CA")</code></pre>
+<p>Appending to the existing file contents:</p>
+<pre><code>my_file = open("myinfo.txt", mode="a")
+my_file.write("First pet: Rosarita (Rabbit)")</code></pre>
+<h3>Closing files</h3>
+<p>Finally, once we're done reading or writing, we need to close the file. The <code>close()</code> method closes the file, ending all operations and freeing up resources.</p>
+<pre><code>my_file = open("myinfo.txt", mode="r")
+my_file.close()</code></pre>
+<p>A fairly different approach is to use a <code>with</code> statement to open the file, and then put all the reading and writing calls inside the body of the statement.</p>
+<pre><code>with open("myinfo.txt", mode="r") as my_file:
+    lines = my_file.readlines()
+    my_file.close()
+
+print(lines)</code></pre>
+<p>Once all the statements indented inside the <code>with</code> block are executed, Python takes care of closing the file for you. Any code that runs after the <code>with</code> block would not be able to read or write that file, since it's no longer open.</p>
+<p>Some programmers prefer the second approach since you only need to remember to open the file. But either approach is fine, whatever floats your boat! 🛶</p>
+<h3>Online files</h3>
+<p>The <code>open(path)</code> function only works for opening local files in the file system. What if there's a file online that you want to work with? I actually work more with online files than local files, myself!</p>
+<p>In the Python standard library, the <code>urllib.request</code> module includes a <code>urlopen(url)</code> function in the urllib module that can open a file at a URL and return a file-like object.</p>
+<p>This code opens a text file that contains an entire book, <link>The Count of Monte Cristo</link>:</p>
+<pre><code>import urllib.request
+
+text_file = urllib.request.urlopen('https://www.gutenberg.org/cache/epub/1184/pg1184.txt')</code></pre>
+<p>Once the file is opened, we can use similar methods as discussed above.</p>
+<p>This line of code reads the whole book into a single string:</p>
+<pre><code>whole_book = text_file.read()</code></pre>
+<p>However, there's one significant difference between that string and the string returned when reading a local file. The variable above now stores a <bold>byte string</bold>, which Python displays with a lowercase b in front:</p>
+<pre><code>b'\xef\xbb\xbfThe Count of Monte Cristo, by Alexandre Dumas, p\xc3\xa8re.'</code></pre>
+<p>A byte string is a series of bytes (8-bit sequences), which is how computers actually store data behind the strings. Python byte strings do allow the first 128 bytes to be shown as letters, but there are thousands of characters beyond those. That's why character encodings exist, to specify how a sequence of bytes corresponds to a particular character. The most common encoding is UTF-8, especially for files in English or European languages.</p>
+<p>In order to translate that byte string into a string of characters, we must know the encoding of the original data, and then call <code>decode(encoding)</code> on the byte string.</p>
+<p>Since that book file was indeed encoded with UTF-8, we can decode it like this:</p>
+<pre><code>whole_book = whole_book.decode('utf-8')</code></pre>
+<p>Now, instead of seeing <code>b'p\xc3\xa8re'</code>, we'll see 'père' in the string.</p>
+<p>Once decoded, we can use string operations on it, such as using <code>split</code> to turn it into a list of lines.</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Exercise: Conditionals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Exercise: Conditionals</h1>
+<p>In this exercise, you'll define functions that consist entirely of compound conditionals (<code>if</code>/<code>elif</code>/<code>else</code>). Think carefully about the order of your conditions; sometimes order can have a big effect!</p>
+
+<hr>
+<h3>Lesser Num</h3>
+<p>📺  Need help getting started on this one? Watch me go through a similar problem <link>in this video</link>.</p>
+
+<code-exercise-element exercise-name="lesser-num">
+def lesser_num(num1, num2):
+    """ Returns whichever number is lowest of the two supplied numbers.
+
+    >>> lesser_num(45, 10)
+    10
+    >>> lesser_num(-1, 30)
+    -1
+    >>> lesser_num(20, 20)
+    20
+    """
+    # YOUR CODE HERE
+</code-exercise-element>
+
+<hr>
+<h3>Hello World</h3>
+<p>In this exercise, you'll use conditionals to translate a phrase into three different languages. Once you get the tests to pass, I encourage you to add another language you know!</p>
+
+<code-exercise-element exercise-name="hello-world-language">def hello_world(language_code):
+    """ Returns the translation of "Hello, World" into the language
+    specified by the language code (e.g. "es", "pt", "en"),
+    defaulting to English if an unknown language code is specified.
+    >>> hello_world("en")
+    'Hello, World'
+    >>> hello_world("es")
+    'Hola, Mundo'
+    >>> hello_world("pt")
+    'Olá, Mundo'
+    """
+    # YOUR CODE HERE</code-exercise-element>
+
+<hr>
+<h3>Grade Assigner</h3>
+<code-exercise-element exercise-name="hello-world-language">def assign_grade(score):
+    """ Returns a letter grade for the numeric score based on the grade bins of:
+     "A" (90-100), "B" (80-89), "C" (70-79), "D" (65-69), or "F" (0-64)
+
+    >>> assign_grade(95)
+    'A'
+    >>> assign_grade(90)
+    'A'
+    >>> assign_grade(85)
+    'B'
+    >>> assign_grade(80)
+    'B'
+    >>> assign_grade(77)
+    'C'
+    >>> assign_grade(70)
+    'C'
+    >>> assign_grade(68)
+    'D'
+    >>> assign_grade(65)
+    'D'
+    >>> assign_grade(64)
+    'F'
+    >>> assign_grade(0)
+    'F'
+    """
+    return ''</code-exercise-element>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+
+</body>
+</html>

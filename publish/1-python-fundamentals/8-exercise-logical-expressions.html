@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Exercise: Logical expressions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Exercise: Logical expressions</h1>
+<p>In this exercise, you'll define functions to return Boolean expressions based on input parameters. Before you start coding, remember to check the doctests for examples of what should return <code>True</code>/<code>False</code>. When you think you're done coding, run the tests to make sure they all pass.</p>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Curly Hair Checker exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please do post when you have questions, we're here to help!</p>
+
+<h3>Curly Hair Checker</h3>
+<p>📺  Need help getting started on this one? Watch me go through a similar problem <link>in this video</link>.</p>
+<code-exercise-element exercise-name="curly-hair-checker">def has_curly_hair(father_allele, mother_allele):
+  """Returns true only if both the father allele and mother allele are "C".
+
+  >>> has_curly_hair("C", "c")
+  False
+  >>> has_curly_hair("c", "C")
+  False
+  >>> has_curly_hair("s", "s")
+  False
+  >>> has_curly_hair("C", "C")
+  True
+  """
+  return 0</code-exercise-element>
+
+<h3>Presidential Eligibility</h3>
+<code-exercise-element exercise-name="presidential-eligibility">def can_be_president(age, residency):
+    """
+    Returns whether someone can be US president based on age and residency.
+    According to the US constitution, a presidential candidate must be at least 
+    35 years old and have been a US resident for at least 14 years. 
+
+    >>> can_be_president(30, 10)
+    False
+    >>> can_be_president(36, 10)
+    False
+    >>> can_be_president(30, 16)
+    False
+    >>> can_be_president(36, 15)
+    True
+    >>> can_be_president(36, 14)
+    True
+    >>> can_be_president(35, 14)
+    True
+    >>> can_be_president(35, 30)
+    True
+    """
+    return 0 # REPLACE THIS</code-exercise-element>
+
+<h3>Seafood Safety</h3>
+<code-exercise-element exercise-name="seafood-safety">def is_safe_to_eat(seafood_type, days_frozen):
+    """ Returns true if the seafood is safe to eat: 
+    either the type is "mollusk" or it's been frozen for at least 7 days.
+
+    >>> is_safe_to_eat("tuna", 3)
+    False
+    >>> is_safe_to_eat("salmon", 6)
+    False
+    >>> is_safe_to_eat("salmon", 7)
+    True
+    >>> is_safe_to_eat("mollusk", 1)
+    True
+    >>> is_safe_to_eat("mollusk", 9)
+    True
+    """
+    return 0  # REPLACE THIS</code-exercise-element>
+
+<h3>Harvest Time</h3>
+<code-exercise-element exercise-name="harvest-time">def harvest_time(month, tuber_size):
+    """ Returns true if it's time to harvest root vegetables:
+    either the month is July or the size of the tuber is at least 2 feet.
+    >>> harvest_time("May", 1)
+    False
+    >>> harvest_time("May", 2)
+    True
+    >>> harvest_time("May", 3)
+    True
+    >>> harvest_time("July", 1)
+    True
+    >>> harvest_time("July", 2)
+    True
+    >>> harvest_time("July", 4)
+    True
+    """
+    return 0 # REPLACE THIS</code-exercise-element>
+
+</div>
+
+</body>
+</html>

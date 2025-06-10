@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Composition</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Composition</h1>
+<p>Another key part of object-oriented programming is <bold>composition</bold>: an object can be composed of other objects. In Python, since every piece of data (number, boolean, string, etc.) is an object, technically every example we've seen so far has been an example of composition. However, I want to dive into examples where an object of a user-defined class contains references to other objects of user-defined classes, since that's more interesting.</p>
+<p>Going back to our animal conservatory, what examples of composition could there be? A few ideas:</p>
+<ul><li><p>An animal has a mate (another animal of the same class).</p></li>
+<li><p>An animal has a mother (also another animal of the same class).</p></li>
+<li><p>An animal has children (multiple animals of the same class).</p></li></ul>
+<p>We can implement all of those examples using instance variables that either store a single object or a list of objects.</p>
+<h3>Composition with a single object</h3>
+<p>Here, let's code a method for mating one animal with another animal:</p>
+<pre><code>class Animal:
+
+    def mate_with(self, other):
+        if other is not self and other.species_name == self.species_name:
+            self.mate = other
+            other.mate = self</code></pre>
+<p>That method first checks to make sure we're not trying to mate an animal with itself, and also ensures the animals are the same species, since we want the best for their reproductive future. If that all checks out, then it sets a new instance variable <code>mate</code> to the <code>other</code> animal object passed in, and also sets the <code>mate</code> instance variable of the <code>other</code> animal to itself. That sets up a symmetric relationship where both objects are pointing at each other.</p>
+<p>Here's how we call that method:</p>
+<pre><code>mr_wabbit = Rabbit("Mister Wabbit", 3)
+jane_doe = Rabbit("Jane Doe", 2)
+mr_wabbit.mate_with(jane_doe)</code></pre>
+<h3>Composition with a list</h3>
+<p>An instance variable could also store a list of objects.</p>
+<p>Read through this code that simulates rabbit reproduction:</p>
+<pre><code>class Rabbit(Animal):
+
+    # Other methods/class variables omitted for brevity
+
+    def reproduce_like_rabbits(self):
+        if self.mate is None:
+            print("oh no! better go on ZoOkCupid")
+            return
+        self.babies = []
+        for _ in range(self.num_in_litter):
+            self.babies.append(Rabbit("bunny", 0))</code></pre>
+<p>It first makes sure the rabbit has a <code>mate</code>, since rabbits don't reproduce asexually. It then initializes the <code>babies</code> instance variable to an empty list, and uses loop to add a bunch of new rabbits to that list with an age of 0.</p>
+<p>We can call that method after setting up the mate relationship:</p>
+<pre><code>mr_wabbit = Rabbit("Mister Wabbit", 3)
+jane_doe = Rabbit("Jane Doe", 2)
+mr_wabbit.mate_with(jane_doe)
+jane_doe.reproduce_like_rabbits()</code></pre>
+<p>This composition isn't perfect: a better approach might be to initialize <code>babies</code> inside <code>__init__</code>, so that a rabbit could reproduce multiple times and keep growing its list of babies each time. It also might be a good thing to add a line like <code>self.mate.babies = self.babies</code> or <code>self.mate.babies.extend(self.babies)</code> so that the mate could also keep track of the produced babies. The best implementation really depends on the use case for the compositional relationship and how the rest of the program will use that information.</p>
+<h3>Inheritance vs. composition</h3>
+<p>You've now learned two ways that classes and objects can relate to each other, composition and inheritance. Let's compare them.</p>
+<p><bold>Inheritance</bold> is best for representing "is-a" relationships.</p>
+<ul><li><p>A rabbit is a specific type of animal.</p></li>
+<li><p>So, the <code>Rabbit</code> class inherits from <code>Animal</code>.</p></li></ul>
+<p><bold>Composition</bold> is best for representing "has-a" relationships.</p>
+<ul><li><p>A rabbit has a litter of babies.</p></li>
+<li><p>So, a <code>Rabbit</code> object has an instance variable containing other <code>Rabbit</code> objects.</p></li></ul>
+<p>When you're designing a system of classes, keep in mind how objects relate to each other so you can figure out the most appropriate way to represent that in code. Sometimes it helps to draw before you code, sketching the relationships out on paper or making a formal diagram using <link>UML (Unified Modeling Language)</link>.</p>
+
+</div>
+
+</body>
+</html>

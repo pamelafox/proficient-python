@@ -1,35 +1,16 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: Dictionaries</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: Dictionaries{% endblock %}
+{% block content %}
 <h1>Exercise: Dictionaries</h1>
 <p>These exercises combine many of the skills and data types you've learned over the last few weeks, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
 <p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Movie summarizer exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
 <h3>Movie summarizer</h3>
-<pre><code>def movie_summary(movie):
+<code-exercise-element exercise-name="movie-summarizer">def movie_summary(movie):
     """
     Accepts movie, a dictionary with three keys-
     title (string), duration (number), actors (list of strings),
     and returns a string of the form
-    "<title> lasts for <duration> minutes. Stars: <actor, ...>"
+    "&lt;title&gt; lasts for &lt;duration&gt; minutes. Stars: &lt;actor, ...&gt;"
     
     >>> puff = {
     ...     "title": "Puff the Magic Dragon",
@@ -47,7 +28,7 @@
     'Arrival lasts for 118 minutes. Stars: Amy Adams, Jeremy Renner.'
     """
     return "" # REPLACE THIS LINE
-</code></pre>
+</code-exercise-element>
 <h3>Lists of dicts</h3>
 <p>The next exercises deals with a list of dicts, like:</p>
 <pre><code>coords = [
@@ -70,7 +51,7 @@
 <p>TODO: Quiz</p>
 <p>TODO: Quiz</p>
 <p>Now implement <code>count_unread_books</code>, a function that processes a list of that form and returns the number of unread books in the list.</p>
-<pre><code>def count_unread_books(books):
+<code-exercise-element exercise-name="count-unread-books">def count_unread_books(books):
     """ Accepts a list of dicts describing books
     and returns the number of unread books in the list.
     
@@ -90,77 +71,8 @@
     # Iterate through the books
     # If a book is not read, increment count
     # Return count
-</code></pre>
-<p>These exercises combine many of the skills and data types you've learned over the last few weeks, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Movie summarizer exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
-<h3>Movie summarizer</h3>
-<pre><code>def movie_summary(movie):
-    """
-    Accepts movie, a dictionary with three keys-
-    title (string), duration (number), actors (list of strings),
-    and returns a string of the form
-    "<title> lasts for <duration> minutes. Stars: <actor, ...>"
-    
-    >>> puff = {
-    ...     "title": "Puff the Magic Dragon",
-    ...     "duration": 30,
-    ...     "actors": ["Puff", "Jackie", "Living Sneezes"]
-    ... }
-    >>> movie_summary(puff)
-    'Puff the Magic Dragon lasts for 30 minutes. Stars: Puff, Jackie, Living Sneezes.'
-    >>> arrival = {
-    ...     "title": "Arrival",
-    ...     "duration": "118",
-    ...     "actors": ["Amy Adams", "Jeremy Renner"]
-    ... }
-    >>> movie_summary(arrival)
-    'Arrival lasts for 118 minutes. Stars: Amy Adams, Jeremy Renner.'
-    """
-    return "" # REPLACE THIS LINE
-</code></pre>
-<h3>Lists of dicts</h3>
-<p>The next exercises deals with a list of dicts, like:</p>
-<pre><code>coords = [
-   {"x": 1, "y": 2},
-   {"x": 5, "y": 8}
-]</code></pre>
-<p>You've dealt with lists before and you've dealt with dicts before, so you can follow the same rules as long as you remember what sort of data type you're retrieving data from. For example, in a list of dicts, you'd use bracket notation with an index to access the first dict, and then use bracket notation with a key to access values inside the dict.</p>
-<h3>Exercise: Book list</h3>
-<p>This list stores information about books inside nested dicts:</p>
-<pre><code>books = [
-  {"title": "Uncanny Valley",
-  "author": "Anna Wiener",
-  "read": False
-  },
-  {"title": "Parable of the Sower",
-  "author": "Octavia E. Butler",
-  "read": True
-  }
-]</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<p>Now implement <code>count_unread_books</code>, a function that processes a list of that form and returns the number of unread books in the list.</p>
-<pre><code>def count_unread_books(books):
-    """ Accepts a list of dicts describing books
-    and returns the number of unread books in the list.
-    
-    >>> books = [{
-    ...     "title": "Uncanny Valley",
-    ...     "author": "Anna Wiener",
-    ...     "read": False
-    ...   }, {
-    ...     "title": "Parable of the Sower",
-    ...     "author": "Octavia E. Butler",
-    ...     "read": True
-    ...   }]
-    >>> count_unread_books(books)
-    1
-    """
-    # Initialize a count to 0
-    # Iterate through the books
-    # If a book is not read, increment count
-    # Return count
-</code></pre>
-</div>
-</body>
-</html>
+</code-exercise-element>
+{% endblock %}
+{% block foooter_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

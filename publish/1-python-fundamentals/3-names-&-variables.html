@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Names & variables</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Names & variables</h1>
+<h3>Names</h3>
+<p>We very often want to re-use the same values multiple times in the same computer program - just imagine if we were writing a geometry program and needed to write the value of π to 50 digits every time we used it in a calculation!</p>
+<p>To re-use a value, we just need to give it a <bold>name</bold>. Then, whenever we want to reference that value, we just reference the name instead.</p>
+<p>One way to assign a name in Python is with an assignment statement. This statement assigns the name <code>x</code> to the value 7.</p>
+<pre><code>x = 7</code></pre>
+<p>The value could be any Python value, or it could even be an expression.</p>
+<pre><code>x = 1 + 2 * 3 - 4 // 5</code></pre>
+<p>A name that holds a piece of data is also known as a <bold>variable</bold>.</p>
+<h3>Using variables</h3>
+<p>The great thing about variables is that once they exist, we can reference them multiple times in our code!</p>
+<p>Here's a short program to calculate the area and circumference of a circle:</p>
+<pre><code>pi = 3.1415926535
+radius = 6
+area = pi * (radius ** 2)
+circ = 2 * pi * radius</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<p>Here's another program to do some string concatenation. And yes, it's a true story.</p>
+<pre><code>my_last_name = 'Fox'
+partners_last_name = 'Gray'
+daughters_last_name = partners_last_name + my_last_name</code></pre>
+<p>TODO: Quiz</p>
+<h3>Re-assignment</h3>
+<p>A name can only be bound to a single value.</p>
+<p>What do you think the following Python code will do?</p>
+<pre><code>my_name = 'Pamela'
+
+my_name = my_name + 'ela'</code></pre>
+<p>TODO: Quiz</p>
+<p>In Python, re-assigning a name to a new value will replace the old value. However, Python evaluates the right-hand side of an assignment statement <italic>before</italic> the left-hand side, so when the right-hand side references the name, it will retrieve its current value, and then <italic>only once it's done</italic> computing the right-hand expression, it will re-assign the variable to the value of that expression.</p>
+<h3>Augmented assignment operators</h3>
+<p>It's actually incredibly common to re-assign a variable based on its previous contents, so common that Python and many other languages provide special operators to make it easier.</p>
+<p>For example, instead of:</p>
+<pre><code>my_name = my_name + 'ela'</code></pre>
+<p>I could simply write:</p>
+<pre><code>my_name += 'ela'</code></pre>
+<p>That <code>+=</code> operator means "take the previous value and add this new value to it".</p>
+<p>This table summarizes all the special operators like that one:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Long version</p>
+<th>
+<p>Shortcut</p>
+<tbody>
+<tr>
+<td>
+<p><code>x = x + 1</code></p>
+<td>
+<p><code>x += 1</code></p>
+<tr>
+<td>
+<p><code>y = y - 1</code></p>
+<td>
+<p><code>y -= 1</code></p>
+<tr>
+<td>
+<p><code>r = r * 2</code></p>
+<td>
+<p><code>r *= 2</code></p>
+<tr>
+<td>
+<p><code>w = w / 3</code></p>
+<td>
+<p><code>w /= 3</code></p>
+<tr>
+<td>
+<p><code>a = a // 4</code></p>
+<td>
+<p><code>a //= 4</code></p>
+<tr>
+<td>
+<p><code>p = p ** 2</code></p>
+<td>
+<p><code>p **= 2</code></p>
+</table>
+<h3>Naming rules</h3>
+<p>Here are a few things to keep in mind when coming up with names for your variables:</p>
+<ul><li><p>A name must be typed exactly the way it was originally typed. Names are case sensitive (<code>my_hobby</code> is a different name than <code>MY_HOBBY</code>).</p></li>
+<li><p>A good name is both descriptive but not overly descriptive. <code>my_hobby</code> is clear and descriptive, <code>mh</code> is too short and mysterious, and <code>my_most_favorite_hobby_ever</code> is overly verbose.</p></li>
+<li><p>When a name is made up of multiple words, the Python convention is to separate each word with an underscore.</p></li>
+<li><p>A name may contain numbers, but it <italic>cannot</italic> start with a number. It can either start with a letter or an underscore, but starting with an underscore actually has a special meaning we'll get into later.</p></li></ul>
+<p>TODO: Quiz</p>
+
+</div>
+
+</body>
+</html>

@@ -1,31 +1,12 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: String operations</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: String operations{% endblock %}
+{% block content %}
 <h1>Exercise: String operations</h1>
 <p>Try out different string operations and methods in the following coding exercises. You probably want to keep the previous articles open in other tabs, as well as the <link>Python string methods documentation</link>.</p>
 <p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Bleeper exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
 <h3>Bleeper</h3>
 <p>Implement <code>bleep_out</code>, a function that looks for a particular phrase in a string and returns a new string with that phrase replaced by '***'.</p>
-<pre><code>def bleep_out(string1, string2):
+<code-exercise-element exercise-name="bleeper">def bleep_out(string1, string2):
   """Returns a version of string1 where all instances of string2
   have been replaced by "***".
 
@@ -35,11 +16,11 @@
   'oh *** oh *** oh ***'
   """
   return "" # REPLACE THIS LINE
-</code></pre>
+</code-exercise-element>
 
 <h3>Mix up</h3>
 <p>Implement <code>mix_up</code>, a function that concatenates two words, but swaps out the first 2 characters of each word. For example, 'mix' and 'pod' is turned into 'pox mid'.</p>
-<pre><code>def mix_up(word1, word2):
+<code-exercise-element exercise-name="mix-up">def mix_up(word1, word2):
   """Returns the concatenation of word1 and word2 separated by a space,
   with the first 2 characters of each word swapped.
   Assumes the two words are at least 2 characters long.
@@ -50,12 +31,12 @@
   'dig donner'
   """
   return ""  # REPLACE THIS LINE
-</code></pre>
+</code-exercise-element>
 
 <h3>Gerundio</h3>
 <p>Implement <code>gerundio</code>, a function that transforms Spanish infinite verbs (such as "cantar" or "volver") into their gerund forms ("cantando" and "volviendo"). See the docstring for the transformation rules.</p>
 <p>Once you get the initial tests passing, you can also implement this function for another language you know that has similar infinitive → gerund verb form changes. Share it with the rest of us if you do!</p>
-<pre><code>def gerundio(verb):
+<code-exercise-element exercise-name="gerundio">def gerundio(verb):
   """Turns Spanish infinitive verbs (which end in "ar", "er", "ir")
   into the gerund forms (which end in "ando" or "iendo).
   When a verb ends in "ar", the "ar" is replaced with "ando".
@@ -70,11 +51,11 @@
   >>> gerundio('armar')
   'armando'
   """
-  return '' # REPLACE THIS LINE</code></pre>
+  return '' # REPLACE THIS LINE</code-exercise-element>
 
 <h3>Not bad? Good!</h3>
 <p>Implement <code>not_bad</code>, a function that replaces a phrase in a string that starts with  "not" and ends with "bad" into the single word "good".</p>
-<pre><code>def not_bad(sentence):
+<code-exercise-element exercise-name="not-bad-good">def not_bad(sentence):
   """Returns a new string where the first substring in a sentence
   that starts with "not" and ends with "bad" is replaced by the word "good".
   Returns the original string if no matching substring is found.
@@ -87,11 +68,11 @@
   'This dinner is bad!'
   """
   return '' # REPLACE THIS LINE
-</code></pre>
+</code-exercise-element>
 
 <h3>Phone number formats</h3>
 <p>Implement <code>phone_number_versions</code>, a function that turns a hyphen-separated phone number into a list containing that original number, a space-separated version of it, and a period-separated version.</p>
-<pre><code>def phone_number_versions(phone_number):
+<code-exercise-element exercise-name="phone-number-versions">def phone_number_versions(phone_number):
     """
     Accepts a hyphen-separated phone number and returns
     a list containing the original version, a space-separated version,
@@ -101,9 +82,8 @@
     ['1-800-867-5309', '1 800 867 5309', '1.800.867.5309']
     """
     return [] # REPLACE THIS LINE
-</code></pre>
-
-
-</div>
-</body>
-</html>
+</code-exercise-element>
+{% endblock %}
+{% block foooter_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

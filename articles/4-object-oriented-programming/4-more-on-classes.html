@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: More on classes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}More on classes{% endblock %}
+{% block content %}
 <h1>More on classes</h1>
 <h3>Class variables</h3>
 <p>A <bold>class variable</bold> is a data attribute that is shared across all the instances of the class (all the objects of that type).</p>
@@ -101,8 +82,4 @@ pina_bar.inventory = -5000</code></pre>
 </code></pre>
 <p>With this change, it's much more difficult for code outside of the class definition to reduce the inventory attribute. If the inventory attribute wasn't protected by the double underscores in front, another programmer might accidentally update inventory in another part of the codebase and not realize they needed to update <code>needs_restocking</code> as well. This change attempts to ensure that all inventory updates go through the restocking check.</p>
 <p>Private instance variables are often used to either add error checking, as in this example, or to hide other implementation details.</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

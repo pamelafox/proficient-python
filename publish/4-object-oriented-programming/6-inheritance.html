@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Inheritance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Inheritance</h1>
+<p>Languages that support object-oriented programming typically include the idea of <bold>inheritance</bold> to allow for greater code re-use and extensibility, and Python is one of those languages.</p>
+<p>To see what we mean by inheritance, let's imagine that we're building a game, "Animal Conserving", that simulates an animal conservatory. We'll be taking care of both fuzzy and ferocious animals in this game, making sure they're well fed and cared for.</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv0tmx001114988otka1dv/animal_conserving.png"></p>
+<p>We're going to use OOP to organize the data in the game. What do you think the classes should be?</p>
+<p>Here's one approach:</p>
+<pre><code># A class for meals
+Meal()
+
+# A class for each animal
+Panda()
+Lion()
+Rabbit()
+Vulture()
+Elephant()</code></pre>
+<p>Let's start writing out the class definitions, starting simple with the <code>Meal</code> class:</p>
+<pre><code>class Meal:
+
+    def __init__(self, name, kind, calories):
+        self.name = name
+        self.kind = kind
+        self.calories = calories</code></pre>
+<p>Here's how we would construct a couple meals:</p>
+<pre><code>broccoli = Meal("Broccoli Rabe", "veggies", 20)
+bone_marrow = Meal("Bone Marrow", "meat", 100)</code></pre>
+<p>Now, some of the animal classes, starting with our long-trunked friend: 🐘</p>
+<pre><code>class Elephant:
+    species_name = "African Savanna Elephant"
+    scientific_name = "Loxodonta africana"
+    calories_needed = 8000
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten  = 0
+        self.happiness = 0
+
+    def eat(self, meal):
+        self.calories_eaten += meal.calories
+        print(f"Om nom nom yummy {meal.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * 4)
+        print("WHEEE PLAY TIME!")
+
+    def interact_with(self, animal2):
+        self.happiness += 1
+        print(f"Yay happy fun time with {animal2.name}")</code></pre>
+<p>Every elephant shares a few class variables, <code>species_name</code>, <code>scientific_name</code>, and <code>calories_needed</code>. They each have their own <code>name</code>, <code>age</code>, <code>calories_eaten</code>, and <code>happiness</code> instance variables, however.</p>
+<p>Let's make a playful pair of elephants:</p>
+<pre><code>el1 = Elephant("Willaby", 5)
+el2 = Elephant("Wallaby", 3)
+el1.play(2)
+el1.interact_with(el2)</code></pre>
+<p>Next, let's write a class for our cute fuzzy long-eared friends: 🐇</p>
+<pre><code>class Rabbit:
+    species_name = "European rabbit"
+    scientific_name = "Oryctolagus cuniculus"
+    calories_needed = 200
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * 10)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, food):
+        self.calories_eaten += food.calories
+        print(f"Om nom nom yummy {food.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += 4
+        print(f"Yay happy fun time with {animal2.name}")</code></pre>
+<p>And construct a few famous rabbits:</p>
+<pre><code>rabbit1 = Rabbit("Mister Wabbit", 3)
+rabbit2 = Rabbit("Bugs Bunny", 2)
+rabbit1.eat(broccoli)
+rabbit2.interact_with(rabbit1)</code></pre>
+<p>Do you notice similarities between the two animal classes? The structure of the two classes have much in common:</p>
+<ul><li><p>Both <code>Elephant</code> and <code>Rabbit</code> have the same three class variable names, though the values of their class variables differ.</p></li>
+<li><p><code>Elephant</code> and <code>Rabbit</code> take the same arguments in their <code>__init__</code> method, and then initialize the same four instance variables. Their <code>__init__</code> methods are, in fact, identical.</p></li>
+<li><p>The <code>eat</code> and <code>play</code> methods are identical. The <code>interact_with</code> methods are nearly identical, but vary in how much the happiness instance variable increases.</p></li></ul>
+<p>So it appears that 90% of their code is in fact the same. That violates a popular programming principle, <bold>"DRY" (Don't Repeat Yourself)</bold>, and personally, makes my nose crinkle a little in disgust. Repeated code is generally a bad thing because we need to remember to update that code in multiple places, and we're liable to forget to keep code in sync that's meant to be the same.</p>
+<p>Fortunately, we can use <bold>inheritance</bold> to rewrite this code. Instead of repeating the code, <code>Elephant</code> and <code>Rabbit</code> can inherit the code from a base class.</p>
+<h3>Base class</h3>
+<p>When multiple classes share similar attributes, you can reduce redundant code by defining a <bold>base class</bold> and then <bold>subclasses</bold> can inherit from the base class.</p>
+<p>For example, we can first write an <code>Animal</code> base class, put all the common code in there, and the specific animal species can be subclasses of that base class:</p>
+<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv1hb9001014665tyi049e/animal_baseclass.png"></p>
+<p>You'll also hear the base class referred to as the <bold>superclass</bold>.</p>
+<p>Here's how we could write the <code>Animal</code> base class:</p>
+<pre><code>class Animal:
+    species_name = "Animal"
+    scientific_name = "Animalia"
+    play_multiplier = 2
+    interact_increment = 1
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten  = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * self.play_multiplier)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, food):
+        self.calories_eaten += food.calories
+        print(f"Om nom nom yummy {food.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += self.interact_increment
+        print(f"Yay happy fun time with {animal2.name}")</code></pre>
+<p>We even defined class variables in there. We didn't need to do that, since the values of those variables don't make sense, but it is helpful to show the recommended class variables for the subclasses.</p>
+<h3>Subclasses</h3>
+<p>To declare a subclass, put parentheses after the class name and specify the base class in the parentheses:</p>
+<pre><code>class Elephant(Animal):</code></pre>
+<p>Then the subclasses only need the code that's unique to them. They can redefine any aspect: class variables, method definitions, or constructor. A redefinition is called <bold>overriding</bold>.</p>
+<p>Here's the full <code>Elephant</code> subclass, which only overrides the class variables:</p>
+<pre><code>class Elephant(Animal):
+    species_name = "African Savanna Elephant"
+    scientific_name = "Loxodonta africana"
+    calories_needed = 8000
+    play_multiplier = 4
+    interact_increment = 1
+    num_tusks = 2</code></pre>
+<p>Same for the <code>Rabbit</code> class:</p>
+<pre><code>class Rabbit(Animal):
+    species_name = "European rabbit"
+    scientific_name = "Oryctolagus cuniculus"
+    calories_needed = 200
+    play_multiplier = 10
+    interact_increment = 2
+    num_in_litter = 12</code></pre>
+<h3>Overriding methods</h3>
+<p>A subclass can also override the methods of the base class. Python will always look for the method definition on the current object's class first, and will only look in the base class if it can't find it there.</p>
+<p>We could override <code>interact_with</code> for pandas, since they're quite solitary creatures:</p>
+<pre><code>class Panda(Animal):
+    species_name = "Giant Panda"
+    scientific_name = "Ailuropoda melanoleuca"
+    calories_needed = 6000
+
+    def interact_with(self, other):
+        print(f"I'm a Panda, I'm solitary, go away {other.name}!")</code></pre>
+<p>This code will call that overridden method definition instead of the <code>Animal</code> definition:</p>
+<pre><code>panda1 = Panda("Pandeybear", 6)
+panda2 = Panda("Spot", 3)
+panda1.interact_with(panda2)</code></pre>
+<p>The following code would not, however. Do you see why?</p>
+<pre><code>pandey = Panda("Pandeybear", 6)
+bugs = Rabbit("Bugs Bunny", 2)
+bugs.interact_with(pandey)</code></pre>
+<p>The object on the left-hand side of the dot notation is of type <code>Rabbit</code> and there is no <code>interact_with</code> defined on <code>Rabbit</code>, so the original <code>Animal</code> method definition will be used instead.</p>
+
+</div>
+
+</body>
+</html>

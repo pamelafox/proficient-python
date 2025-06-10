@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: While loops</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: While loops{% endblock %}
+{% block content %}
 <h1>Exercise: While loops</h1>
 <p>Practice while loops in these exercises, and run the doctests when you think you've got your code working. Remember, it's very easy (and common, even for experienced engineers) to code off-by-one errors, so keep your eyes peeled for those. 👀  Also, if you accidentally write an infinite loop, you will very likely crash the browser tab. If that happens, congratulations, that's a programmer rite of passage! Just reload the page and try to write a finite loop instead.</p>
 <p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Count Evens exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
@@ -27,7 +8,7 @@
 <p>Implement <code>count_evens</code>, a function that counts the number of even numbers between a given <code>start</code> number and a given <code>end</code> number. The count should include the <code>start</code> or <code>end</code> numbers if they are also even.</p>
 <p><italic>Hint: To check if a number is even, use the </italic><code>%</code> operator, which reports the remainder after dividing one number by another number. An even number divided by 2 has a remainder of 0.</p>
 <p>📺 You can watch me <link>walkthrough this problem in a video</link>. If you don't want to see the solution, make sure to pause when you feel like you've seen enough to get started.</p>
-<pre><code>def count_evens(start, end):
+<code-exercise-element exercise-name="count-evens">def count_evens(start, end):
     """
     Counts the number of even numbers between a given start number and given end number.
     Count should include the start or end if they are even.
@@ -39,11 +20,11 @@
     >>> count_evens(237, 500)
     132
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 <h3>Count Multiples</h3>
 <p>Implement <code>count_multiples</code>, a function that counts how many multiples of a given <code>divisor</code> are between the <code>start</code> and <code>end</code> numbers. It should include the <code>start</code> or <code>end</code> if they are also a multiple of <code>divisor</code>.</p>
 <p><italic>Hint: The </italic><code>%</code> operator is once again helpful here, for determining if one number is a multiple of another. In fact, you may want to start from your previous code and see how little you need to change to get this function implemented correctly.</p>
-<pre><code>def count_multiples(start, end, divisor):
+<code-exercise-element exercise-name="count-multiples">def count_multiples(start, end, divisor):
     """
     Counts the number of multiples of divisor between the start and end numbers.
     It should include the start or end if they are a multiple.
@@ -59,11 +40,11 @@
     >>> count_multiples(237, 500, 10)
     27
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 <h3>Sum Multiples</h3>
 <p>Implement <code>sum_multiples</code>, a function that returns the sum of the multiples of a given <code>divisor</code> between the given <code>start</code> and <code>end</code> numbers. If the <code>start</code> or <code>end</code> numbers are also multiples, they should also be included in the sum.</p>
 <p><italic>Hint: The main difference between this exercise and the previous exercise is summing versus counting. What do you need to change from your previous code to make the return value a sum instead?</italic></p>
-<pre><code>def sum_multiples(start, end, divisor):
+<code-exercise-element exercise-name="sum-multiples">def sum_multiples(start, end, divisor):
     """Returns the sum of the multiples of a given divisor between start and end.
     If the start or end numbers are multiples, they should be included in the sum.
 
@@ -78,14 +59,14 @@
     >>> sum_multiples(23, 81, 13)
     260
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 <h3>Debug this! 🐞🐛🐜</h3>
 <p>The code for the next function is already written, but it has several bugs.</p>
 <p>Tips for debugging:</p>
 <ul><li><p>Read through the code and trace it on paper for small inputs</p></li>
 <li><p>Try running the tests and observe the output</p></li>
 <li><p>If you have a hunch, try changing the code and seeing how the output changes</p></li></ul>
-<pre><code>def product_of_numbers(end):
+<code-exercise-element exercise-name="product-of-numbers">def product_of_numbers(end):
     """Returns the product of all the numbers from 1 to the end number,
     including the end number.
 
@@ -103,7 +84,8 @@
     while counter < end:
         result *= counter
         counter += 2
-    return result</code></pre>
-</div>
-</body>
-</html>
+    return result</code-exercise-element>
+{% endblock %}
+{% block foooter_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

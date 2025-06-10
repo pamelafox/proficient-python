@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: More on lists</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>More on lists</h1>
+<h3>More list methods</h3>
+<p>Here are a few more helpful methods that can be called on lists:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Method</p>
+<th>
+<p>Description</p>
+<tbody>
+<tr>
+<td>
+<p><code>reverse()</code></p>
+<td>
+<p>Reverses the items of the list, mutating the original list.</p>
+<tr>
+<td>
+<p><code>sort()</code></p>
+<td>
+<p>Sorts the items of the list, mutating the original list.</p>
+<tr>
+<td>
+<p><code>count(item)</code></p>
+<td>
+<p>Returns the number of occurrences of item in the list. If item is not found, returns 0.</p>
+</table>
+<p>These are documented in further details in that <link>Python list documentation</link>.</p>
+<p>Starting from this list:</p>
+<pre><code>nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+<p>We can call <code>reverse()</code> on it like so - remember, it's a method of lists, so we write it using dot notation:</p>
+<pre><code>nums.reverse()</code></pre>
+<p>That method mutates the original list, so <code>nums</code> now holds [10, 9, 8, 7, 6, 5, 4, 3, 2, 1].</p>
+<p>Now let's try out sorting, starting from this list:</p>
+<pre><code>scores = [9.5, 8.2, 7.3, 10.0, 9.2]</code></pre>
+<p>We can call the <code>sort()</code> method on it like so:</p>
+<pre><code>scores.sort()</code></pre>
+<p>That mutates the <code>scores</code> list, so it now holds [7.3, 8.2, 9.2, 9.5, 10.0]. If you wanted that sorted in the other direction, you could call <code>reverse</code> on it after, or just set the optional argument <code>reverse</code>.</p>
+<pre><code>scores.sort(reverse=True)</code></pre>
+<h3>List functions</h3>
+<p>Some of the Python global built-in functions can be called on lists (or any iterable object, like strings). Since these are functions, not methods, we pass the list in as an argument instead of using dot notation to call it after the list name.</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Function</p>
+<th>
+<p>Description</p>
+<tbody>
+<tr>
+<td>
+<p><code>sorted(iterable, reverse=False)</code></p>
+<td>
+<p>Returns a sorted version of the iterable object. Set the <code>reverse</code> argument to <code>True</code> to reverse the results.</p>
+<tr>
+<td>
+<p><code>min(iterable)</code></p>
+<td>
+<p>Returns the minimum value in the iterable object.</p>
+<tr>
+<td>
+<p><code>max(iterable)</code></p>
+<td>
+<p>Returns the maximum value in the iterable object.</p>
+</table>
+<p>So, if you wanted a sorted version of a list but you didn't want to change the original list, you could call <code>sorted()</code> instead:</p>
+<pre><code>scores = [9.5, 8.2, 7.3, 10.0, 9.2]
+scores2 = sorted(scores)</code></pre>
+<p>You could also get the minimum and maximum values of that list:</p>
+<pre><code>max_score = max(scores)
+min_score = min(scores)</code></pre>
+<p>These three functions also take additional arguments to customize their behavior further, which you can learn more about in the documentation.</p>
+<h3>List containment</h3>
+<p>When processing lists with unknown data, we often want to check if a value is inside a list. We can do that using the <code>in</code> operator, which evaluates to <code>True</code> if a value is in a list.</p>
+<p>For example:</p>
+<pre><code>groceries = ["apples", "bananas"]
+
+if "bananas" in groceries:
+    print("⚠️ Watch your step!")
+
+if "bleach" in groceries:
+    print("☣️ Watch what you eat!")</code></pre>
+
+</div>
+
+</body>
+</html>

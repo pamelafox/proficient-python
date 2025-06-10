@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: More on classes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>More on classes</h1>
+<h3>Class variables</h3>
+<p>A <bold>class variable</bold> is a data attribute that is shared across all the instances of the class (all the objects of that type).</p>
+<p>We declare a class variable by writing an assignment statement inside the class definition, before the methods:</p>
+<pre><code>class Product:
+    </code></pre>
+<p>Note there is no <code>self</code> since it belongs to the whole class, not to any one particular object.</p>
+<p>However, when accessing the class variable inside a methods, we can use <code>self</code>:</p>
+<pre><code>class Product:
+    sales_tax = 0.07
+    
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+
+</code></pre>
+<p>The <code>self.sales_tax</code> expression works because dot notation starts by looking for an instance variable by that name, and then if it can't find any, it looks for a class variable of that name instead.</p>
+<p>It's also possible to reference the class variable by using the class name in the dot notation, like <code>Product.sales_tax</code>. Accessing the class variable that way ensures that your code won't accidentally reference an instance variable by the same name. It's a bad idea to use the same name for both class variables and instance variables, however, unless you specifically intend for the instance variable to override the class variable.</p>
+<h3>Exercise: Attribute types</h3>
+<p>Consider this class representing the customer for the chocolate shop:</p>
+<pre><code>class Customer:
+
+    salutation = "Dear"
+
+    def __init__(self, name, address):
+        self.name = name
+        self.address = address
+
+    def get_greeting(self):
+        return f"{self.salutation} {self.name},"
+
+    def get_formatted_address(self):
+        return "\n".join(self.address)
+
+cust1 = Customer("Coco Lover",
+    ["123 Pining St", "Nibbsville", "OH"])</code></pre>
+<p>TODO: Quiz</p>
+<p>TODO: Quiz</p>
+<h3>Class methods</h3>
+<p>A <bold>class method</bold> is a method that is called on a class and does <italic>not</italic> receive an object as the first argument. Instead, it receives the class itself as the first argument.</p>
+<p>To define a class method, we must put the line <code>@classmethod</code> before the function definition, and by convention, name the first argument <code>cls</code> instead of <code>self</code>:</p>
+<pre><code>class Product:
+    sales_tax = 0.07
+    
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+
+</code></pre>
+<p>We call that method on the class and pass in everything but the first argument:</p>
+<pre><code>free_dark = Product.make_free_bars("Super Dark", ["200 cals", "5 g sugar"])</code></pre>
+<p>That line of code will create a new instance of the class with the given name, nutrition information, and a price of $0.00. That's because <code>cls</code> gets set to <code>Product</code>, so <code>cls(name, 0.00, nutrition_info)</code> is the same as <code>Product(name, 0.00, nutrition_info)</code>. It might seem silly to write <code>cls</code> instead of <code>Product</code>, but once we learn more features of object-oriented programming, we'll discover that using <code>cls</code> provides more flexibility than hardcoding <code>Product</code>.</p>
+<p>Class methods are commonly used to create "factory methods": methods whose job is to construct and return a new instance of the class, just like the example above. They're not limited to that, however; they could also be used to create multiple instances of a class, or perhaps do some computation on class variables.</p>
+<p>The majority of your methods will likely be instance methods, but <code>@classmethod</code> is a good tool for your OO toolbox.</p>
+<h3>Public vs. private</h3>
+<p>In many languages that support object-oriented programming, there are strict rules about which code can access and modify the attributes of an object. Python is not so strict (or, as I usually say, it's quite loosey-goosey!).</p>
+<p>For example, any code that has a reference to an object can modify the instance variables of that object:</p>
+<pre><code>pina_bar = Product("Piña Chocolotta", 7.99,
+    ["200 calories", "24 g sugar"])
+
+pina_bar.inventory = -5000</code></pre>
+<p>Other languages would error on the line that sets the <code>inventory</code> with complaints that the attribute can't be set outside of its method definitions.</p>
+<p>In fact, we can even assign brand new instance variables:</p>
+<pre><code>pina_bar.brand_new_attribute_haha = "instanception"</code></pre>
+<p>Now, as responsible programmers, we probably wouldn't purposefully do such a thing. But mistakes happen, and it can be nice when languages provide a way for us to save ourselves from ourselves.</p>
+<p>Python's approach is to use a naming convention for attribute names:</p>
+<ul><li><p>If there's <bold>no underscore</bold> in front of an attribute name, like <code>inventory</code>, then that attribute is considered publicly accessible, and can be freely accessed and modified wherever.</p></li>
+<li><p>If there's a <bold>single underscore</bold> in front, like <code>_inventory</code>, then it is considered an attribute that should only be used internally within the class definition. We could still write <code>pina_bar._inventory = 500</code>, but we'd be defying the convention by doing so, and should be prepared for horrible bugs to befall our code.</p></li>
+<li><p>If there's a <bold>double underscore</bold> in front, like <code>__inventory</code>, then Python will try to make it difficult to access that attribute by giving it a different name when it's used outside of the class definition. It is actually possible to figure out what that name will be and still access that attribute, but I won't tell you here since it's a bad idea to try to access attributes that a programmer really wanted to be fully private.</p></li></ul>
+<p>Here's how we could rewrite the <code>Product</code> class to make inventory into a fully private attribute (or at least, as private as possible in Python).</p>
+<pre><code>class Product:
+
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info
+</code></pre>
+<p>With this change, it's much more difficult for code outside of the class definition to reduce the inventory attribute. If the inventory attribute wasn't protected by the double underscores in front, another programmer might accidentally update inventory in another part of the codebase and not realize they needed to update <code>needs_restocking</code> as well. This change attempts to ensure that all inventory updates go through the restocking check.</p>
+<p>Private instance variables are often used to either add error checking, as in this example, or to hide other implementation details.</p>
+
+</div>
+
+</body>
+</html>

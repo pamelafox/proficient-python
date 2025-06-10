@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: More on inheritance</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}More on inheritance{% endblock %}
+{% block content %}
 <h1>More on inheritance</h1>
 <h3>Using super()</h3>
 <p>Sometimes we want to be able to call the original method definition from inside the overridden method definition. That is possible using <code>super()</code>, a function that can delegate method calls to the parent class.</p>
@@ -126,8 +107,4 @@ l.interact_with(r)               # Predator method</code></pre>
 <p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
 <p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <italic>not</italic> to add them.</p>
 <p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

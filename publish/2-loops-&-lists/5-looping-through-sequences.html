@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Looping through sequences</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  
+  </style>
+</head>
+<body>
+<div class="container container-md">
+  
+<h1>Looping through sequences</h1>
+<p>A <bold>sequence</bold> is any type of data that has sequential data inside it. A list is considered a sequence since it contains items in a sequence. A string is also considered a sequence since it contains characters in a sequence. The Python language also offers other sequential data types like tuples and sets, but we won't be diving into those in this course.</p>
+<p>All sequence types can be looped through using a loop, either a <code>while</code> loop or <code>for</code> loop.</p>
+<h3>While loops with lists</h3>
+<p>It's very common to use a loop to process the items in a list, doing some sort of computation on each item.</p>
+<p>For example, this <code>while</code> loop compares the counter variable <code>i</code> to the list length, and also uses that counter variable <code>i</code> as the current index:</p>
+<pre><code>scores = [80, 95, 78, 92]
+total = 0
+i = 0
+while i < len(scores):
+    score = scores[i]
+    total += score
+    i += 1</code></pre>
+<p>That loop sums up all the numbers in a list, storing the result in <code>total</code>, and stopping after it accesses the last element. Remember, the index of the last element is <code>len(list) - 1)</code>, <italic>not</italic> <code>len(list)</code>. That's why the comparison operator in the loop condition is <code><</code> and not <code><=</code>. Accidentally using <code><=</code> instead will lead to the dreaded off-by-one error. 🙀(At this point, you might be beginning to see why off-by-one errors are so common in programming.)</p>
+<aside><p>You might have noticed that I used <code>i</code> instead of <code>counter</code> in that code, as that's the standard naming convention when iterating through loops. These days, we often pretend that <code>i</code> stands for "index". However, it originally came about because the Fortran language manual started off only using the letters i - q for integer variable names, and Fortran probably chose that range due to common mathematics notation.</p></aside>
+<h3>For loops with lists</h3>
+<p>There's a much simpler way to iterate through a list: the <code>for</code> loop.</p>
+<pre><code>scores = [80, 95, 78, 92]
+total = 0
+for score in scores:
+    total += score</code></pre>
+<p>No counter variable, loop condition, or bracket notation needed! Python will start from the beginning of the list and put the current item in the <code>score</code> loop variable in each iteration, so your loop body can just reference <code>score</code>.</p>
+<h3>Looping through strings</h3>
+<p>Since a string is also a sequential data type, we can also use loops to iterate through a string. Looping over strings is less common than looping over lists, however.</p>
+<p>The following loop prints out an integer representing the Unicode code point of each letter in a string:</p>
+<pre><code>letters = "ABC"
+for letter in letters:
+    print(ord(letter))</code></pre>
+<p>If we iterate through a string with characters that require multiple code points, there will be an iteration for each of those code points.</p>
+<pre><code>emoji = "🤷🏽‍♀️"
+for code_point in emoji:
+    print(ord(code_point))</code></pre>
+<p>How many numbers do you think that will print out? Try it and see!</p>
+<pre><code># Try some code here</code></pre>
+
+</div>
+
+</body>
+</html>

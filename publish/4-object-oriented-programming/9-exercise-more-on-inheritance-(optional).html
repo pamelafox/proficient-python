@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python Course: Exercise: More on inheritance (Optional)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  pre {
+    background: #eee;
+    padding: 8px;
+  }
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Exercise: More on inheritance (Optional)</h1>
+<p>In these four exercises, you'll practice different ways to reuse inherited code from parent classes. Hint: expect to use <code>super()</code> a lot!</p>
+<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Weighty Dog exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+<h3>Exercise: Playful kitty cat</h3>
+<p>Modify the <code>Cat</code> initializer method so that a cat that's less than 1 years old has a <code>play_multiplier</code> of 6, and run the doctests when you're done.</p>
+<pre><code>class Animal:
+    species_name = "Animal"
+    scientific_name = "Animalia"
+    play_multiplier = 2
+    interact_increment = 1
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten  = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * self.play_multiplier)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, food):
+        self.calories_eaten += food.calories
+        print(f"Om nom nom yummy {food.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += self.interact_increment
+        print(f"Yay happy fun time with {animal2.name}")
+
+class Cat(Animal):
+  """
+  >>> adult = Cat("Winston", 12)
+  >>> adult.name
+  'Winston'
+  >>> adult.age
+  12
+  >>> adult.play_multiplier
+  3
+  >>> kitty = Cat("Kurty", 0.5)
+  >>> kitty.name
+  'Kurty'
+  >>> kitty.age
+  0.5
+  >>> kitty.play_multiplier
+  6
+  """
+  species_name = "Domestic cat"
+  scientific_name = "Felis silvestris catus"
+  calories_needed = 200
+  play_multiplier = 3
+
+  def __init__(self, name, age):
+    # Call the super class to set name and age
+    # If age is less than 1, set play multiplier to 6
+    # YOUR CODE HERE
+        
+</code></pre>
+<h3>Exercise: Weighty dogs</h3>
+<p>The <code>Dog</code> class in the code below accepts a third argument in the <code>__init__</code> to set the weight. Implement the method so that it first calls the <code>__init__</code> of the parent class, then sets the <code>weight</code> attribute, then sets <code>calories_needed</code> to 20 times the weight. Run the doctests when done.</p>
+<pre><code>class Animal:
+    species_name = "Animal"
+    scientific_name = "Animalia"
+    play_multiplier = 2
+    interact_increment = 1
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * self.play_multiplier)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, food):
+        self.calories_eaten += food.calories
+        print(f"Om nom nom yummy {food.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += self.interact_increment
+        print(f"Yay happy fun time with {animal2.name}")
+
+
+class Dog(Animal):
+  """
+  >>> spot = Dog("Spot", 5, 20)
+  >>> spot.name
+  'Spot'
+  >>> spot.age
+  5
+  >>> spot.weight
+  20
+  >>> spot.calories_needed
+  400
+  >>> puppy = Dog("Poppy", 1, 7)
+  >>> puppy.name
+  'Poppy'
+  >>> puppy.age
+  1
+  >>> puppy.weight
+  7
+  >>> puppy.calories_needed
+  140
+  """
+  species_name = "Domestic dog"
+  scientific_name = "Canis lupus familiaris"
+  calories_needed = 200
+
+  def __init__(self, name, age, weight):
+    # Call the super class to set name and age
+    # Set the weight attribute
+    # Set calories_needed to 20x the weight
+    # YOUR CODE HERE</code></pre>
+<h3>Exercise: Cats have 9 lives?</h3>
+<p>The program below contains a <code>Pet</code> class and a partially implemented <code>Cat</code> class that inherits from it. Read through the current code to understand what it's doing, then implement the <code>Cat</code> methods according to the comments and doctests.</p>
+<pre><code>class Pet():
+  def __init__(self, name, owner):
+    self.is_alive = True
+    self.name = name
+    self.owner = owner
+
+  def eat(self, thing):
+    print(self.name + " ate a " + str(thing) + "!")
+
+  def talk(self):
+    print(self.name)
+
+class Cat(Pet):
+  """
+  >>> lizzie = Cat("Lizzie", "Hunter")
+  >>> lizzie.name
+  'Lizzie'
+  >>> lizzie.owner
+  'Hunter'
+  >>> lizzie.lives
+  9
+  >>> lizzie.is_alive
+  True
+  >>> lizzie.talk()
+  Lizzie says meow!
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lives
+  4
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lose_life()
+  >>> lizzie.lives
+  0
+  >>> lizzie.is_alive
+  False
+  """
+  def __init__(self, name, owner, lives=9):
+    # Call super class to set name and owner
+    # Set lives attribute
+    # YOUR CODE HERE
+
+  def talk(self):
+    # Print out '<name> says meow!'
+    # YOUR CODE HERE
+
+  def lose_life(self):
+    # Decrement a cat's life by 1
+    # When lives reaches zero, set is_alive to False
+    # YOUR CODE HERE
+
+</code></pre>
+<h3>Exercise: Herbivores and carnivores</h3>
+<p>The program below includes classes you've seen before: <code>Animal</code>, <code>Herbivore</code>, and <code>Carnivore</code>. It also includes 2 new classes, <code>Zebra</code> and <code>Hyena</code>, that don't yet inherit from the correct parent class. Read through their doctests to determine what their parent class should be, and then change their class header as needed. The doctests should all pass if you've made the right change.</p>
+<pre><code>class Animal:
+    species_name = "Animal"
+    scientific_name = "Animalia"
+    play_multiplier = 2
+    interact_increment = 1
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+        self.calories_eaten  = 0
+        self.happiness = 0
+
+    def play(self, num_hours):
+        self.happiness += (num_hours * self.play_multiplier)
+        print("WHEEE PLAY TIME!")
+
+    def eat(self, meal):
+        self.calories_eaten += meal.calories
+        print(f"Om nom nom yummy {meal.name}")
+        if self.calories_eaten > self.calories_needed:
+            self.happiness -= 1
+            print("Ugh so full")
+
+    def interact_with(self, animal2):
+        self.happiness += self.interact_increment
+        print(f"Yay happy fun time with {animal2.name}")
+
+class Herbivore(Animal):
+
+    def eat(self, meal):
+        if meal.kind == "meat":
+            self.happiness -= 5
+        else:
+            super().eat(meal)
+
+class Carnivore(Animal):
+
+    def eat(self, meal):
+        if meal.kind == "meat":
+            super().eat(meal)
+
+class Meal():
+
+  def __init__(self, name, kind, calories):
+    self.name = name
+    self.kind = kind
+    self.calories = calories
+
+
+class Zebra(Animal):
+  """
+  >>> zebby = Zebra("Zebby", 12)
+  >>> zebby.play(2)
+  WHEEE PLAY TIME!
+  >>> zebby.happiness
+  4
+  >>> zebby.eat(Meal("Broccoli", "vegetable", 100))
+  Om nom nom yummy Broccoli
+  >>> zebby.calories_eaten
+  100
+  >>> zebby.eat(Meal("Beef", "meat", 300))
+  >>> zebby.happiness
+  -1
+  >>> zebby.calories_eaten
+  100
+  """
+  species_name = "Common Zebra"
+  scientific_name = "Equus quagga"
+  calories_needed = 15000
+
+class Hyena(Animal):
+  """
+  >>> helen = Hyena("Helen", 12)
+  >>> helen.play(2)
+  WHEEE PLAY TIME!
+  >>> helen.happiness
+  4
+  >>> helen.eat(Meal("Carrion", "meat", 300))
+  Om nom nom yummy Carrion
+  >>> helen.calories_eaten
+  300
+  >>> helen.happiness
+  4
+  >>> helen.eat(Meal("Broccoli", "vegetable", 100))
+  >>> helen.calories_eaten
+  300
+  >>> helen.happiness
+  4
+  """
+  species_name = "Striped Hyena"
+  scientific_name = "Hyaena hyaena"
+  calories_needed = 1000</code></pre>
+<h3>Exercise: Noisy dog</h3>
+<p>The program below includes three classes: <code>Pet</code>, <code>Dog</code>, and <code>NoisyDog</code>. Fix <code>NoisyDog</code> so that it inherits from the correct parent class, then override its <code>talk</code> method as described in the comments and doctests.</p>
+<pre><code>class Pet():
+  def __init__(self, name, owner):
+    self.is_alive = True
+    self.name = name
+    self.owner = owner
+
+  def eat(self, thing):
+    print(self.name + " ate a " + str(thing) + "!")
+
+  def talk(self):
+    print(self.name)
+
+class Dog(Pet):
+  """
+  >>> cooper = Dog("Cooper", "Tinu")
+  >>> cooper.name
+  'Cooper'
+  >>> cooper.owner
+  'Tinu'
+  >>> cooper.talk()
+  Cooper says BARK!
+  """
+
+  def talk(self):
+    print(f"{self.name} says BARK!")
+
+class NoisyDog(Pet):
+  """
+  >>> roxy = NoisyDog("Roxy", "Joe")
+  >>> roxy.name
+  'Roxy'
+  >>> roxy.owner
+  'Joe'
+  >>> roxy.talk()
+  Roxy says BARK!
+  Roxy says BARK!
+  Roxy says BARK!
+  """
+
+  def talk(self):
+    # Make it so that noisy dogs say the same thing,
+    # but always say it three times!
+    # Use super() to call the relevant superclass method
+    # YOUR CODE HERE</code></pre>
+
+</div>
+</body>
+</html>
