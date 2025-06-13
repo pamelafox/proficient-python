@@ -16,18 +16,66 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Exercise: Inheritance</h1>
 <p>These exercises are all about overriding base classes. In the first two exercises, you'll override just the class variables. In the last two, you'll also override methods.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Weighty Dog exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+
 <h3>Exercise: Animal Subclasses</h3>
 <p>Finish the two subclasses <code>Sloth</code> and <code>Cat</code> so that they both inherit from <code>Animal</code> and override class variables according to the values in their doctests.</p>
-<p>📺 Need help with this one? Watch this <link>video walkthrough</link> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<p>📺 Need help with this one? Watch this <a target="_blank" href="https://youtu.be/Dv9fFk7Z2tQ">video walkthrough</a> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element exercise-name="animal-subclasses">class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
@@ -135,7 +183,7 @@ class Article: # &lt;- FINISH THIS LINE
 
 <h3>Exercise: Boss methods</h3>
 <p>The <code>Character</code> class below represents a character in a video game. Finish implementing the methods in <code>Boss</code> so that they override the base class methods and behave according to the comments and doctests.</p>
-<p>📺 Need help with this one? Watch this <link>video walkthrough</link> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<p>📺 Need help with this one? Watch this <a target="_blank" href="https://youtu.be/8Cq-IuCFTyM">video walkthrough</a> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element exercise-name="boss-methods">class Character:
   """ Represents a character in a video game,
   tracking their name and health.
@@ -246,6 +294,8 @@ class KidsClothing(Clothing):
   # YOUR CODE HERE</code-exercise-element>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

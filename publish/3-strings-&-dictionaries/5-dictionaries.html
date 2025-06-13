@@ -16,10 +16,58 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Dictionaries</h1>
@@ -63,7 +111,7 @@ words[first_word]  # 'water'</code></pre>
 <p>If we specify no default, then <code>None</code> is returned:</p>
 <pre><code>words.get("pavo") # None</code></pre>
 <h3>Dictionary mutation</h3>
-<p>Just like lists, dictionaries are <bold>mutable</bold> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
+<p>Just like lists, dictionaries are <strong>mutable</strong> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
 <p>A common way to use dictionaries is to start with an empty dict like so:</p>
 <pre><code>users = {}</code></pre>
 <p>And then add a value to it, using bracket notation:</p>
@@ -74,7 +122,7 @@ words[first_word]  # 'water'</code></pre>
 <pre><code>users["pamelafox"] += "itsLongerSoItsMoreSecure!!"</code></pre>
 <p>TODO: Quiz</p>
 <h3>What's in a dict?</h3>
-<p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <italic>any</italic> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
+<p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <em>any</em> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
 <p>Consider this dict that maps years to the Pixar movie that came out that year:</p>
 <pre><code>pixar_by_year = {
    1995: "Toy Story",
@@ -125,10 +173,10 @@ for name in insects:
 }</code></pre>
 <p>The <code>len()</code> function reports how many key/value pairs are the dict.</p>
 <pre><code>len(states)  # 5</code></pre>
-<p>The <code>in</code> operator reports whether or not a particular key is in a dict (it will <italic>not</italic> look for values):</p>
+<p>The <code>in</code> operator reports whether or not a particular key is in a dict (it will <em>not</em> look for values):</p>
 <pre><code>"CA" in states  # True
 "ZZ" in states  # False</code></pre>
-<p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <link>Python dict documentation</link>.</p>
+<p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#dict">Python dict documentation</a>.</p>
 <h3>Exercise: Make a recipe</h3>
 <p>In the code editor below, create a dict to hold information on your favorite recipe. It should have keys for:</p>
 <ul><li><p>title (a string)</p></li>
@@ -157,6 +205,8 @@ ingredients = []
 print(ingredients)</code></pre>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

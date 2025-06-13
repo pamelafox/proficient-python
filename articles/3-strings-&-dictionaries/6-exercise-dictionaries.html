@@ -2,8 +2,8 @@
 {% block title %}Exercise: Dictionaries{% endblock %}
 {% block content %}
 <h1>Exercise: Dictionaries</h1>
-<p>These exercises combine many of the skills and data types you've learned over the last few weeks, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Movie summarizer exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+<p>These exercises combine many of the skills and data types you've learned over the last few units, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
+
 <h3>Movie summarizer</h3>
 <code-exercise-element exercise-name="movie-summarizer">def movie_summary(movie):
     """
@@ -48,8 +48,172 @@
   "read": True
   }
 ]</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>What expression would access the title of the first book?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-8cf133e5-13f7-43ca-b963-38068e122ba9"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-8cf133e5-13f7-43ca-b963-38068e122ba9"
+                ><p><code>books[0]["title"]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none"><p>✅ You got it!</p></aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-ae61ae5b-8082-47b4-97fd-3e029e993eca"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-ae61ae5b-8082-47b4-97fd-3e029e993eca"
+                ><p><code>books["title"][0]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ The outer data type is a list, so the first set of square brackets must contain an index, not a key.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-3becfacb-d816-49ad-be12-a0396678f5d5"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-3becfacb-d816-49ad-be12-a0396678f5d5"
+                ><p><code>books[1]["title"]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ This would access the title of the <em>second</em> book, since list indices start at 0.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-5154719a-11d8-43d1-8e4c-f86a5e9ed103"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-5154719a-11d8-43d1-8e4c-f86a5e9ed103"
+                ><p><code>books["title"][1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ The outer data type is a list, so the first set of square brackets must contain an index, not a key.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-2e62d92d-a41f-494d-96af-1c20b77dda7c"
+                value="4"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2e62d92d-a41f-494d-96af-1c20b77dda7c"
+                ><p><code>books[0].title</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ A dictionary value must be accessed with bracket notation, not dot notation.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-9952f0fa-b1c5-4ed1-b4e6-02ece29e82dc"
+                value="5"
+                data-correct="false" />
+              <label class="form-check-label" for="option-9952f0fa-b1c5-4ed1-b4e6-02ece29e82dc"
+                ><p><code>books[1].title</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ A dictionary value must be accessed with bracket notation, not dot notation.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>What expression would report how many keys are in the second book dict?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f4850a43-fd38-4201-951b-7bdadbd89bc1"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-f4850a43-fd38-4201-951b-7bdadbd89bc1"
+                ><p><code>len(books[1])</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none"><p>✅That's right!</p></aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-58fd15b9-ab50-49e8-b6ff-1b72f3575eb3"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-58fd15b9-ab50-49e8-b6ff-1b72f3575eb3"
+                ><p><code>len(books[0])</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ This reports how many keys are in the first dict, not the second dict. It's the same in this case, but it
+                  may not always be.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-2895ee8a-268a-4c8f-96bf-51946f38c5f1"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2895ee8a-268a-4c8f-96bf-51946f38c5f1">
+                <p><code>len(books)</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ This reports how many items are in the list.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
 <p>Now implement <code>count_unread_books</code>, a function that processes a list of that form and returns the number of unread books in the list.</p>
 <code-exercise-element exercise-name="count-unread-books">def count_unread_books(books):
     """ Accepts a list of dicts describing books

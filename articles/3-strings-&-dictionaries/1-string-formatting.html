@@ -13,12 +13,12 @@ lyric1 = start + "clap your hands!"
 lyric2 = start + "wiggle your toes!"
 lyric3 = start + "hug a friend!"</code></pre>
 <h3>Escape sequences</h3>
-<p>If the string contains the same quote character that is being used to surround the string, then that quote character <italic>must</italic> be <bold>escaped</bold>. That means we must use a special character to let Python know to not treat the quote character normally (since treating it normally would end the string).</p>
+<p>If the string contains the same quote character that is being used to surround the string, then that quote character <em>must</em> be <strong>escaped</strong>. That means we must use a special character to let Python know to not treat the quote character normally (since treating it normally would end the string).</p>
 <p>This string is broken and results in a syntax error:</p>
 <pre><code>greeting = 'how're you doing?'</code></pre>
 <p>To fix it, insert a backslash right before the single quote:</p>
 <pre><code>greeting = 'how\'re you doing?'</code></pre>
-<p>The backslash is what is known as the <bold>escape character</bold>, and is used as the escape character in many languages. That means if you do want an actual backslash in a string, you need to escape the backslash with yet another backslash:</p>
+<p>The backslash is what is known as the <strong>escape character</strong>, and is used as the escape character in many languages. That means if you do want an actual backslash in a string, you need to escape the backslash with yet another backslash:</p>
 <pre><code>path = "C:\\My Documents"</code></pre>
 <p>There are also a few special escape sequences that produce something other than a standard character. The most useful sequence is <code>"\n"</code>, which creates a new line in the string once it's printed out.</p>
 <p>Here's a string storing a famous haiku by Matsuo Bashō:</p>
@@ -33,12 +33,12 @@ Splash! Silence again.</code></pre>
 <pre><code>count = 3
 noun = 'cat'
 plural = 'I have ' + count + ' ' + noun + 's'</code></pre>
-<p>Sadly, that's en error! Python lets you use the <code>+</code> operator between two numbers and between two strings, but <italic>not</italic> between a number and a string.</p>
+<p>Sadly, that's en error! Python lets you use the <code>+</code> operator between two numbers and between two strings, but <em>not</em> between a number and a string.</p>
 <p>One approach is to convert the number to a string, by calling the globally available <code>str()</code> on it.</p>
 <pre><code>plural = 'I have ' + str(count) + ' ' + noun + 's'</code></pre>
 <p>You can use <code>str()</code> in any situation where a function or operator expects a string but all you have is a number or some other data type.</p>
 <h3>F strings</h3>
-<p>Since programmers very often need to create new strings from a mish-mash of strings, numbers, and other variables, Python offers multiple ways to do string formatting. The most modern technique, and my own personal favorite, is <bold>f strings</bold>.</p>
+<p>Since programmers very often need to create new strings from a mish-mash of strings, numbers, and other variables, Python offers multiple ways to do string formatting. The most modern technique, and my own personal favorite, is <strong>f strings</strong>.</p>
 <p>An f string starts with an "f" in front of the quotes, and then uses curly brackets to surround Python expressions inside the string. See this example:</p>
 <pre><code>greeting = "Ahoy"
 noun = "Boat"
@@ -51,7 +51,7 @@ day = "24"
 year = "1984"
 
 sentence = f"I was born {month} {day}th {year}"</code></pre>
-<p>The coolest thing about f strings is that you can put <italic>any</italic> valid expression inside those curly brackets - not just variable names.</p>
+<p>The coolest thing about f strings is that you can put <em>any</em> valid expression inside those curly brackets - not just variable names.</p>
 <pre><code>quantity = 3
 price = 9.99
 

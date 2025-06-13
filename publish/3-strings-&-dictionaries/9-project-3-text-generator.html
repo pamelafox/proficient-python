@@ -16,25 +16,70 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Project 3: Text generator</h1>
-<p>In this project, you'll be building a procedural text generator. <bold>Procedural generation</bold> is any way of using algorithms to create data (versus manually creating data), and is commonly used in games and movies - to create organic looking landscapes, intricate mazes, beautiful snowflakes, crowds of people, and fictitious text.</p>
-<p>You'll be using a technique called a <bold>Markov chain</bold> that generates text based on the probability of one word coming after another word, which it learns from whatever original data you feed it. You could generate text based on tweets, wise sayings, movie titles, sentences from your favorite author, ...whatever strikes your fancy!</p>
+<p>In this project, you'll be building a procedural text generator. <strong>Procedural generation</strong> is any way of using algorithms to create data (versus manually creating data), and is commonly used in games and movies - to create organic looking landscapes, intricate mazes, beautiful snowflakes, crowds of people, and fictitious text.</p>
+<p>You'll be using a technique called a <strong>Markov chain</strong> that generates text based on the probability of one word coming after another word, which it learns from whatever original data you feed it. You could generate text based on tweets, wise sayings, movie titles, sentences from your favorite author, ...whatever strikes your fancy!</p>
 <h3>Instructions</h3>
 <p>You'll be using a Python notebook on Google CoLab to develop this project.</p>
-<p>To get started, make a copy of the <link>Project 3 notebook</link> for yourself. The rest of the instructions are in the notebook.</p>
-<h3>Getting help</h3>
-<p>We want all of you to be able to complete this project. Before you get started on it, make sure you've completed the Week 3 exercises, since the project depends on those fundamental skills. To get help when working through this project:</p>
-<ul><li><p>Join us in the live project session.</p></li>
-<li><p>Ask questions in Slack. 🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  </p></li>
-<li><p>Attend the TA's coding parties and ask questions. Check the calendar for days/times.</p></li></ul>
+<p>To get started, make a copy of the <a target="_blank" href="https://colab.research.google.com/drive/1sKF6SJs0DAd1iEoSAEvDr99quVYkVIDZ?usp=sharing">Project 3 notebook</a> for yourself. The rest of the instructions are in the notebook.</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

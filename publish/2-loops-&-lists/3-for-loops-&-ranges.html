@@ -16,14 +16,62 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>For loops & ranges</h1>
-<p>Now we'll learn a more specialized loop: <bold>the </bold><code>for</code> loop. The uses of a <code>for</code> loop vary by language, but in Python, a <code>for</code> loop is useful whenever we want to iterate through a sequence, like iterating through a range of numbers or through a list of items.</p>
+<p>Now we'll learn a more specialized loop: <strong>the </strong><code>for</code> loop. The uses of a <code>for</code> loop vary by language, but in Python, a <code>for</code> loop is useful whenever we want to iterate through a sequence, like iterating through a range of numbers or through a list of items.</p>
 <p>Here's the general template of a <code>for</code> loop:</p>
 <pre><code>for <value> in <sequence>:
     <statement>
@@ -40,8 +88,8 @@ while num < 5:
 <p>Now let's dig into how <code>range()</code> works.</p>
 <h3>Ranges</h3>
 <p>The example above iterated through the numbers 1 through 4 by calling <code>range()</code>, a function that constructs a sequence of numbers. The <code>range()</code> function can be called with a varying number of arguments, and behaves differently depending on how many arguments it's called with.</p>
-<p>If <code>range()</code> is called with just one argument, then the range starts at 0 and ends <italic>just before</italic> the given value.</p>
-<p>For example, this code prints the numbers 0 through 5 (<italic>not</italic> including 6):</p>
+<p>If <code>range()</code> is called with just one argument, then the range starts at 0 and ends <em>just before</em> the given value.</p>
+<p>For example, this code prints the numbers 0 through 5 (<em>not</em> including 6):</p>
 <pre><code>for num in range(6):
     print(num)</code></pre>
 <p>If <code>range()</code> is called with two arguments, then the range starts at the first value and ends just before the second value.</p>
@@ -57,6 +105,8 @@ while num < 5:
 <p>TODO: Quiz</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

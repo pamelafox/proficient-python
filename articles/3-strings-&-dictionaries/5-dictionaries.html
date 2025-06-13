@@ -42,7 +42,7 @@ words[first_word]  # 'water'</code></pre>
 <p>If we specify no default, then <code>None</code> is returned:</p>
 <pre><code>words.get("pavo") # None</code></pre>
 <h3>Dictionary mutation</h3>
-<p>Just like lists, dictionaries are <bold>mutable</bold> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
+<p>Just like lists, dictionaries are <strong>mutable</strong> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
 <p>A common way to use dictionaries is to start with an empty dict like so:</p>
 <pre><code>users = {}</code></pre>
 <p>And then add a value to it, using bracket notation:</p>
@@ -51,9 +51,88 @@ words[first_word]  # 'water'</code></pre>
 <pre><code>users["pamelafox"] = "EV3Nb3tt3Rp@ssw0rd!"</code></pre>
 <p>We can even use the <code>+=</code> operator to add to an existing value, as long as it's a number or a string:</p>
 <pre><code>users["pamelafox"] += "itsLongerSoItsMoreSecure!!"</code></pre>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold">
+              <p>What value would <code>users["pamelafox"]</code> retrieve now?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-a401f649-961c-45db-9067-6bc8e0693d81"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-a401f649-961c-45db-9067-6bc8e0693d81"
+                ><p>'b3stp@ssEvErDontHackMe'</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>This was the original value, but it was changed (twice).</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-a2b40b73-6173-4e0f-b4a3-018cf302e5a9"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-a2b40b73-6173-4e0f-b4a3-018cf302e5a9"
+                ><p>'EV3Nb3tt3Rp@ssw0rd!'</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>This was the second value, but it was changed after.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f7877967-77e1-4bd1-a5d5-11cb201cb183"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-f7877967-77e1-4bd1-a5d5-11cb201cb183"
+                ><p>'itsLongerSoItsMoreSecure!!'</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  The final line of code added this string to the existing value using <code>+=</code>, so the value should
+                  start with 'EV3Nb3tt3Rp@ssw0rd!' and end with this string.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-b7cc38ae-54c2-4609-a237-17e966c58c96"
+                value="3"
+                data-correct="true" />
+              <label class="form-check-label" for="option-b7cc38ae-54c2-4609-a237-17e966c58c96"
+                ><p>'EV3Nb3tt3Rp@ssw0rd!itsLongerSoItsMoreSecure!!'</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none"><p>You got it!</p></aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      
 <h3>What's in a dict?</h3>
-<p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <italic>any</italic> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
+<p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <em>any</em> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
 <p>Consider this dict that maps years to the Pixar movie that came out that year:</p>
 <pre><code>pixar_by_year = {
    1995: "Toy Story",
@@ -83,7 +162,99 @@ words[first_word]  # 'water'</code></pre>
       "length": (5, 7)
   }
 }</code></pre>
-<p>TODO: Quiz</p>
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>What expression would retrieve the name "Marbled cellar spider" from the <code>spiders</code> dict?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-0543151a-cc13-4170-9dfe-47d25f74fa4e"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-0543151a-cc13-4170-9dfe-47d25f74fa4e">
+                <p><code>spiders[1]["name"]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ The values must be retrieved by key, not by index. Dictionaries don't have indices.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-51855d47-cdc9-44af-b32a-1ccbac324120"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-51855d47-cdc9-44af-b32a-1ccbac324120">
+                <p><code>spiders["holocnemus pluchei"]["name"]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ That's one way to retrieve it, yep!</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-328057b7-d406-4df8-889f-7216d2674e50"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-328057b7-d406-4df8-889f-7216d2674e50">
+                <p><code>spiders["holocnemus pluchei"].name</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ Bracket notation must be used with the keys, not dot notation.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-5ef3f03d-952a-4fde-be79-fb3317fcbafc"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-5ef3f03d-952a-4fde-be79-fb3317fcbafc">
+                <p><code>spiders[1][0]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ The values must be retrieved by key, not by index. Dictionaries don't have indices.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-126f9e1f-6ff9-49c3-9bcf-a5936f16590c"
+                value="4"
+                data-correct="false" />
+              <label class="form-check-label" for="option-126f9e1f-6ff9-49c3-9bcf-a5936f16590c">
+                <p><code>spiders.get("holocnemus pluchei").get("name")</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ This expression is longer than the option that uses bracket notation, but it also works.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
 <h3>Dictionary iteration</h3>
 <p>A Python dict is an iterable object, which means it can be iterated over using a <code>for</code> loop. In each iteration of the loop, the loop variable is assigned to the current key, and the loop body can choose what to do with that key.</p>
 <p>For example, this loop prints out each value by doing dictionary a lookup with the key:</p>
@@ -104,10 +275,10 @@ for name in insects:
 }</code></pre>
 <p>The <code>len()</code> function reports how many key/value pairs are the dict.</p>
 <pre><code>len(states)  # 5</code></pre>
-<p>The <code>in</code> operator reports whether or not a particular key is in a dict (it will <italic>not</italic> look for values):</p>
+<p>The <code>in</code> operator reports whether or not a particular key is in a dict (it will <em>not</em> look for values):</p>
 <pre><code>"CA" in states  # True
 "ZZ" in states  # False</code></pre>
-<p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <link>Python dict documentation</link>.</p>
+<p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#dict">Python dict documentation</a>.</p>
 <h3>Exercise: Make a recipe</h3>
 <p>In the code editor below, create a dict to hold information on your favorite recipe. It should have keys for:</p>
 <ul><li><p>title (a string)</p></li>

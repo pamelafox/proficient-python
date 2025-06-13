@@ -41,16 +41,40 @@ mufasa.eat(bones)</code></pre>
 <p>We can create an <code>Elephant</code> object in the usual manner:</p>
 <pre><code>elly = Elephant("Ellie", 3)
 print(elly.calories_needed)</code></pre>
-<p>TODO: Quiz</p>
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What value would that code display?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="3000" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's exactly right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The correct answer is <code>3000</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      
 <h3>Layers of inheritance</h3>
 <p>Every Python 3 class actually implicitly inherits from the global built-in <code>object</code> class.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0buygfy000y1466hyga3kz4/animal_object.png"></p>
+<p><img src="../images/more-on-inheritance-object-base-class.png" alt="Tree diagram with object class at the top, then Animal, then specific animal subclasses"></p>
 <p>We could have written our <code>Animal</code> class to explicitly inherit from it, like so:</p>
 <pre><code>class Animal(object):</code></pre>
 <p>But Python 3 assumes that any class without a base class inherits from <code>object</code>, so we usually don't bother with the extra code.</p>
 <p>The <code>object</code> class includes a few default methods that we can use on any class, including a default implementation of <code>__init__</code> that doesn't do much of anything at all - but it does mean that we can write a class without <code>__init__</code> and won't run into errors when creating new instances.</p>
 <p>We can also add more layers of inheritance ourselves, if we realize it would be sensible to have a deeper hierarchy of classes.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0buz1gt000z1498civea3a6/animal_layers.png"></p>
+<p><img src="../images/more-on-inheritance-object-layers.png" alt="Tree diagram with object class, Animal class, then Herbivore and Carnivore class, with animal subclasses under them"></p>
 <p>To add that new layer of classes, we just define the new classes:</p>
 <pre><code>class Herbivore(Animal):
 
@@ -75,7 +99,7 @@ class Vulture(Carnivore):
 class Lion(Carnivore):</code></pre>
 <p>For a class that represents an omnivorous animal, we could keep its parent class as <code>Animal</code> and not change it to one of the new subclasses.</p>
 <h3>Multiple inheritance</h3>
-<p>This is where things start to get a little wild. A class can actually inherit from <italic>multiple</italic> other classes in Python.</p>
+<p>This is where things start to get a little wild. A class can actually inherit from <em>multiple</em> other classes in Python.</p>
 <p>For example, if <code>Meal</code> has a subclass of <code>Prey</code> (since, in the circle of life, animals can become meals!), an animal like <code>Rabbit</code> could inherit from both <code>Prey</code> and <code>Herbivore</code>. Poor rabbits!</p>
 <p>Here's the <code>Prey</code> class:</p>
 <pre><code>class Prey(Meal):
@@ -105,6 +129,6 @@ l.interact_with(r)               # Predator method</code></pre>
 <p>Actually, the way that it finds attributes is even more complicated than that, since it will also look in sibling classes. We won't dive into that here, but if you're curious, search the web for "Python method resolution order (MRO").</p>
 <h3>Too much inheritance?</h3>
 <p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
-<p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <italic>not</italic> to add them.</p>
+<p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <em>not</em> to add them.</p>
 <p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
 {% endblock %}

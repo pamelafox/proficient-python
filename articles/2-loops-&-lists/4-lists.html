@@ -2,7 +2,7 @@
 {% block title %}Lists{% endblock %}
 {% block content %}
 <h1>Lists</h1>
-<p>A <bold>list</bold> is a data type that holds a sequence of related pieces of data. Lists are also known as arrays in many programming languages.</p>
+<p>A <strong>list</strong> is a data type that holds a sequence of related pieces of data. Lists are also known as arrays in many programming languages.</p>
 <p>The shortest list is the empty list, which we can construct with two square brackets:</p>
 <pre><code>members = []</code></pre>
 <p>An empty list doesn't seem very useful at first, but we'll soon learn how to add more items to empty lists.</p>
@@ -16,7 +16,7 @@ prices = [79.99, 49.99, 89.99]</code></pre>
 <pre><code>remixed = ["Pamela", 7, 79.99]</code></pre>
 <p>I wouldn't recommend that, personally, since a list should hold sequences of related data, and it's unclear how those items form a sequence or how they are related. But there may be some situations where it's helpful.</p>
 <h3>Accessing list items</h3>
-<p>It's possible to reference a specific item in a list by using <bold>bracket notation</bold>: the name of the variable, followed by square brackets with the item index inside.</p>
+<p>It's possible to reference a specific item in a list by using <strong>bracket notation</strong>: the name of the variable, followed by square brackets with the item index inside.</p>
 <pre><code>list_name[index]</code></pre>
 <p>The index of items in a list starts at 0:</p>
 <pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
@@ -38,8 +38,182 @@ temps[-2]  # 99.0</code></pre>
 <h3>Self-check: Favorite singers</h3>
 <p>Consider this list of my favorite musical artists:</p>
 <pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Robyn"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-ad7b81dc-e9cc-4749-86e8-9bc663226d6d"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-ad7b81dc-e9cc-4749-86e8-9bc663226d6d"
+                ><p><code>fav_singers[0]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ Since "Robyn" is the first item, referencing the list at index 0 will retrieve it.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-2cc5b3cf-ef86-40ab-a168-fd376e57c855"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2cc5b3cf-ef86-40ab-a168-fd376e57c855"
+                ><p><code>fav_singers[1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌Since 1 is the index for the second item in the list, this would retrieve "Ed Sheeran" instead.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-dede712c-de8e-4946-b770-9e094fe1f140"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-dede712c-de8e-4946-b770-9e094fe1f140"
+                ><p><code>fav_singers[-1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌This negative index goes backwards from the end of the list, so this would retrieve "Ben Platt" instead.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-c9760bd4-1cd0-44ad-b7c5-5af0c663aa06"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-c9760bd4-1cd0-44ad-b7c5-5af0c663aa06"
+                ><p><code>fav_singers[-5]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌This negative index isn't negative enough; this would retrieve "Ed Sheeran".</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-551817e9-fbe9-47e2-a30e-da9e61d29128"
+                value="4"
+                data-correct="true" />
+              <label class="form-check-label" for="option-551817e9-fbe9-47e2-a30e-da9e61d29128"
+                ><p><code>fav_singers[-6]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ This negative index would go backwards 6 items from the end of the list and retrieve "Robyn".</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Ben Platt"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-1e738f46-7267-44f8-bc83-8c4276d1ea2d"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-1e738f46-7267-44f8-bc83-8c4276d1ea2d"
+                ><p><code>fav_singers[5]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ Since this is a 6-item list, the index of the final item is 5, so this expression successfully retrieves
+                  "Ben Platt".
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-577133ae-4e10-4a03-8477-401c32df4499"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-577133ae-4e10-4a03-8477-401c32df4499"
+                ><p><code>fav_singers[6]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌This would result in an error, since the final index in a 6-item list is 5, not 6.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-b0beaad6-280e-4612-919e-854915a4977a"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-b0beaad6-280e-4612-919e-854915a4977a"
+                ><p><code>fav_singers[-0]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌An index of -0 is treated the same as an index of 0, so this would retrieve "Robyn".</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-9986fa5f-dca1-42c2-bad4-0e682655bd5a"
+                value="3"
+                data-correct="true" />
+              <label class="form-check-label" for="option-9986fa5f-dca1-42c2-bad4-0e682655bd5a"
+                ><p><code>fav_singers[-1]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ A negative index goes backwards from the end of the list, starting at -1, so this expression does retrieve
+                  "Ben Platt".
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+      
 <h3>List length</h3>
 <p>Python provides the global function <code>len()</code> to find out the length of a list (or any sequence).</p>
 <pre><code>attendees = ["Tammy", "Shonda", "Tina"]

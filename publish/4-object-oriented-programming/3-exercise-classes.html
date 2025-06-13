@@ -16,18 +16,67 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Exercise: Classes</h1>
 <p>In the following exercises, you'll implement the <code>__init__</code> and other methods of a class. Make sure you first read through the class doctests to see what instance variables and methods are expected to exist on each class.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Plant exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+
 <h3>Plant</h3>
 <p>Finish the implementation of <code>Plant</code>, a class that can be used by a plant nursery to track which plants they have in inventory and how many they have of each plant.</p>
-<p>📺 Need help with this one? Watch the <link>video walkthrough</link> of the solution. Then try it out yourself and apply what you learned to the exercises after.</p>
+<p>📺 Need help with this one? Watch a <a target="_blank" href="https://youtu.be/9d0LjvCD6GE">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the exercises after.</p>
+<p>🧩 Or, for a different form of guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=plant">Parsons Puzzle version</a> first.</p>
 <code-exercise-element exercise-name="plant-class">class Plant:
   """A class used by a plant nursery to track what plants they have in inventory 
   and how many they have of each plant.
@@ -57,6 +106,8 @@
 
 <h3>MoviePurchase</h3>
 <p>Finish the implementation of  <code>MoviePurchase</code>, a class that represents movie purchases on YouTube, tracking the title and costs of each movie bought, plus the number of times watched.</p>
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=movie_purchase">Parsons Puzzle version</a> first.</p>
+
 <code-exercise-element exercise-name="movie-purchase-class">class MoviePurchase:
   """A class that represents movie purchases on YouTube,
   tracking the title and cost of each movie bought,
@@ -83,6 +134,8 @@
 
 <h3>Player</h3>
 <p>Finish the implementation of <code>Player</code>, a class that represents a player in a video game, tracking their name and health.</p>
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=player">Parsons Puzzle version</a> first.</p>
+
 <code-exercise-element exercise-name="player-class">class Player:
   """A class that represents a player in a video game,
   tracking their name and health.
@@ -111,6 +164,8 @@
 
 <h3>Clothing</h3>
 <p>Implement <code>Clothing</code>, a class that represents pieces of clothing in a closet, tracking their color, category, and clean/dirty state.</p>
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=clothing">Parsons Puzzle version</a> first.</p>
+
 <code-exercise-element exercise-name="clothing-class">class Clothing:
   """A class that represents pieces of clothing in a closet,
   tracking the color, category, and clean/dirty state.
@@ -139,6 +194,8 @@
 
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -16,10 +16,58 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>While loops</h1>
@@ -71,14 +119,14 @@ while multiplier <= 10:
 <p>TODO: Quiz</p>
 <p>TODO: Quiz</p>
 <h3>Counter variables</h3>
-<p>It's very common for loops to use a <bold>counter variable</bold>: a variable whose primary purpose is to count the number of iterations.</p>
+<p>It's very common for loops to use a <strong>counter variable</strong>: a variable whose primary purpose is to count the number of iterations.</p>
 <p>Here's an example that counts 5 iterations:</p>
 <pre><code>total = 0
 counter = 0
 while counter < 5:
   total += pow(2, 1)
   counter += 1</code></pre>
-<p>Notably, that counter variable starts at 0, not at 1. As a consequence, the loop condition checks that the counter is less than 5, <italic>not</italic> less than or equal. The loop still runs 5 times - when <code>counter</code> is 0, 1, 2, 3, and 4.</p>
+<p>Notably, that counter variable starts at 0, not at 1. As a consequence, the loop condition checks that the counter is less than 5, <em>not</em> less than or equal. The loop still runs 5 times - when <code>counter</code> is 0, 1, 2, 3, and 4.</p>
 <p>Programmers often start counters at 0 instead of 1, so this is a common pattern, but it may throw you off at first. Whether you start at 0 or 1, make sure that your loop condition is using the appropriate operator. Otherwise, your code may experience the dreaded "off-by-one error". 🙀 Eek! But don't worry, it happens to all of us.</p>
 <p>The counter variable can also be used in the loop computation, like in the next example:</p>
 <pre><code>total = 0
@@ -92,14 +140,14 @@ while counter < 5:
 <pre><code>counter = 0
 while counter < 5:
     total += pow(2, counter)</code></pre>
-<p>That loop starts off with a counter variable initialized to 0, and then it adds a value to the total, and then it keeps doing that... forever! The counter variable is never changed, so <code>counter</code> remains at 0 and the loop condition <code>counter < 5</code> is always true. This is what we call an <bold>infinite loop</bold>.</p>
+<p>That loop starts off with a counter variable initialized to 0, and then it adds a value to the total, and then it keeps doing that... forever! The counter variable is never changed, so <code>counter</code> remains at 0 and the loop condition <code>counter < 5</code> is always true. This is what we call an <strong>infinite loop</strong>.</p>
 <p>That loop just needs one line of code to fix it — any line of code that will change the counter variable in such a way that it will eventually not be less than 5.</p>
 <p>For example:</p>
 <pre><code>counter = 0
 while counter < 5:
     total += pow(2, counter)
     counter += 1</code></pre>
-<p>I have crashed quite a few browsers in my time with infinite loops, so don't feel bad if you write a few infinite loops while going through this week's lesson. Just check your loop condition and loop variables, and see what you're missing to make the loop eventually stop.</p>
+<p>I have crashed quite a few browsers in my time with infinite loops, so don't feel bad if you write a few infinite loops while going through these unit's exercises. Just check your loop condition and loop variables, and see what you're missing to make the loop eventually stop.</p>
 <h3>The break statement</h3>
 <p>To prematurely exit a loop, a <code>break</code> statement can be used. This is helpful if the condition for exiting the loop isn't as straightforward, like you're searching through some data or set of numbers for something that's true.</p>
 <p>This example searches through the numbers 100-200, but breaks when it finds the first multiple of 7:</p>
@@ -136,6 +184,8 @@ while True:
 <p>We could also use function parameters to affect the computation done inside a loop or to affect how a counter variable is incremented. Combining functions with loops gives us the power to create reusable, flexible looping computations.</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -16,14 +16,62 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Looping through sequences</h1>
-<p>A <bold>sequence</bold> is any type of data that has sequential data inside it. A list is considered a sequence since it contains items in a sequence. A string is also considered a sequence since it contains characters in a sequence. The Python language also offers other sequential data types like tuples and sets, but we won't be diving into those in this course.</p>
+<p>A <strong>sequence</strong> is any type of data that has sequential data inside it. A list is considered a sequence since it contains items in a sequence. A string is also considered a sequence since it contains characters in a sequence. The Python language also offers other sequential data types like tuples and sets, but we won't be diving into those in this course.</p>
 <p>All sequence types can be looped through using a loop, either a <code>while</code> loop or <code>for</code> loop.</p>
 <h3>While loops with lists</h3>
 <p>It's very common to use a loop to process the items in a list, doing some sort of computation on each item.</p>
@@ -35,7 +83,7 @@ while i < len(scores):
     score = scores[i]
     total += score
     i += 1</code></pre>
-<p>That loop sums up all the numbers in a list, storing the result in <code>total</code>, and stopping after it accesses the last element. Remember, the index of the last element is <code>len(list) - 1)</code>, <italic>not</italic> <code>len(list)</code>. That's why the comparison operator in the loop condition is <code><</code> and not <code><=</code>. Accidentally using <code><=</code> instead will lead to the dreaded off-by-one error. 🙀(At this point, you might be beginning to see why off-by-one errors are so common in programming.)</p>
+<p>That loop sums up all the numbers in a list, storing the result in <code>total</code>, and stopping after it accesses the last element. Remember, the index of the last element is <code>len(list) - 1)</code>, <em>not</em> <code>len(list)</code>. That's why the comparison operator in the loop condition is <code><</code> and not <code><=</code>. Accidentally using <code><=</code> instead will lead to the dreaded off-by-one error. 🙀(At this point, you might be beginning to see why off-by-one errors are so common in programming.)</p>
 <aside><p>You might have noticed that I used <code>i</code> instead of <code>counter</code> in that code, as that's the standard naming convention when iterating through loops. These days, we often pretend that <code>i</code> stands for "index". However, it originally came about because the Fortran language manual started off only using the letters i - q for integer variable names, and Fortran probably chose that range due to common mathematics notation.</p></aside>
 <h3>For loops with lists</h3>
 <p>There's a much simpler way to iterate through a list: the <code>for</code> loop.</p>
@@ -58,6 +106,8 @@ for code_point in emoji:
 <pre><code># Try some code here</code></pre>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>More on classes</h1>
 <h3>Class variables</h3>
-<p>A <bold>class variable</bold> is a data attribute that is shared across all the instances of the class (all the objects of that type).</p>
+<p>A <strong>class variable</strong> is a data attribute that is shared across all the instances of the class (all the objects of that type).</p>
 <p>We declare a class variable by writing an assignment statement inside the class definition, before the methods:</p>
 <pre><code>class Product:
     </code></pre>
@@ -38,10 +38,172 @@
 
 cust1 = Customer("Coco Lover",
     ["123 Pining St", "Nibbsville", "OH"])</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+          <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which of these are class variables?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-b481fa97-5941-4855-98c7-06f20f99724b"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-b481fa97-5941-4855-98c7-06f20f99724b"
+                ><p><code>salutation</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ That's right, <code>salutation</code> is the only class variable.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-82a87c01-5848-4e97-b627-6f79da5bb23e"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-82a87c01-5848-4e97-b627-6f79da5bb23e"
+                ><p><code>name</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ No, <code>name</code> is an instance variable, since it's assigned to <code>self</code>.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-ac23ccc3-2018-4212-a7b1-22da2d885384"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-ac23ccc3-2018-4212-a7b1-22da2d885384"
+                ><p><code>address</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌ No, <code>address</code> is an instance variable, since it's assigned to <code>self</code>.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-5c188e4f-fab3-4199-bf88-99059e926a36"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-5c188e4f-fab3-4199-bf88-99059e926a36"
+                ><p><code>cust1</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ No, <code>cust</code> is an instance of the <code>Customer</code> class, not a class variable of the
+                  <code>Customer</code> class.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which of these are instance variables?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-8e57d006-9295-4d68-a531-311f3f068f91"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-8e57d006-9295-4d68-a531-311f3f068f91"
+                ><p><code>salutation</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ No, <code>salutation</code> is a class variable, since it's defined inside the class but outside a method.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-7141918f-6ba9-421d-b75f-86e69eccef99"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-7141918f-6ba9-421d-b75f-86e69eccef99"
+                ><p><code>name</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ Yes, <code>name</code> is one of the two instance variables, since it's assigned to
+                  <code>self</code> inside a method.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-33eb15ad-90de-41f8-933a-8db0b626fb58"
+                value="2"
+                data-correct="true" />
+              <label class="form-check-label" for="option-33eb15ad-90de-41f8-933a-8db0b626fb58"
+                ><p><code>address</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ Yes, <code>address</code> is one of the two instance variables, since it's assigned to
+                  <code>self</code> inside a method.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-3cd7cfa5-b792-4638-b516-f086cb6ba945"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-3cd7cfa5-b792-4638-b516-f086cb6ba945"
+                ><p><code>cust1</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ No, <code>cust</code> is an instance of the <code>Customer</code> class, not an instance variable of the
+                  <code>Customer</code> class.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      
 <h3>Class methods</h3>
-<p>A <bold>class method</bold> is a method that is called on a class and does <italic>not</italic> receive an object as the first argument. Instead, it receives the class itself as the first argument.</p>
+<p>A <strong>class method</strong> is a method that is called on a class and does <em>not</em> receive an object as the first argument. Instead, it receives the class itself as the first argument.</p>
 <p>To define a class method, we must put the line <code>@classmethod</code> before the function definition, and by convention, name the first argument <code>cls</code> instead of <code>self</code>:</p>
 <pre><code>class Product:
     sales_tax = 0.07
@@ -69,9 +231,9 @@ pina_bar.inventory = -5000</code></pre>
 <pre><code>pina_bar.brand_new_attribute_haha = "instanception"</code></pre>
 <p>Now, as responsible programmers, we probably wouldn't purposefully do such a thing. But mistakes happen, and it can be nice when languages provide a way for us to save ourselves from ourselves.</p>
 <p>Python's approach is to use a naming convention for attribute names:</p>
-<ul><li><p>If there's <bold>no underscore</bold> in front of an attribute name, like <code>inventory</code>, then that attribute is considered publicly accessible, and can be freely accessed and modified wherever.</p></li>
-<li><p>If there's a <bold>single underscore</bold> in front, like <code>_inventory</code>, then it is considered an attribute that should only be used internally within the class definition. We could still write <code>pina_bar._inventory = 500</code>, but we'd be defying the convention by doing so, and should be prepared for horrible bugs to befall our code.</p></li>
-<li><p>If there's a <bold>double underscore</bold> in front, like <code>__inventory</code>, then Python will try to make it difficult to access that attribute by giving it a different name when it's used outside of the class definition. It is actually possible to figure out what that name will be and still access that attribute, but I won't tell you here since it's a bad idea to try to access attributes that a programmer really wanted to be fully private.</p></li></ul>
+<ul><li><p>If there's <strong>no underscore</strong> in front of an attribute name, like <code>inventory</code>, then that attribute is considered publicly accessible, and can be freely accessed and modified wherever.</p></li>
+<li><p>If there's a <strong>single underscore</strong> in front, like <code>_inventory</code>, then it is considered an attribute that should only be used internally within the class definition. We could still write <code>pina_bar._inventory = 500</code>, but we'd be defying the convention by doing so, and should be prepared for horrible bugs to befall our code.</p></li>
+<li><p>If there's a <strong>double underscore</strong> in front, like <code>__inventory</code>, then Python will try to make it difficult to access that attribute by giving it a different name when it's used outside of the class definition. It is actually possible to figure out what that name will be and still access that attribute, but I won't tell you here since it's a bad idea to try to access attributes that a programmer really wanted to be fully private.</p></li></ul>
 <p>Here's how we could rewrite the <code>Product</code> class to make inventory into a fully private attribute (or at least, as private as possible in Python).</p>
 <pre><code>class Product:
 

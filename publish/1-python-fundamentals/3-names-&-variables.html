@@ -16,21 +16,69 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Names & variables</h1>
 <h3>Names</h3>
 <p>We very often want to re-use the same values multiple times in the same computer program - just imagine if we were writing a geometry program and needed to write the value of π to 50 digits every time we used it in a calculation!</p>
-<p>To re-use a value, we just need to give it a <bold>name</bold>. Then, whenever we want to reference that value, we just reference the name instead.</p>
+<p>To re-use a value, we just need to give it a <strong>name</strong>. Then, whenever we want to reference that value, we just reference the name instead.</p>
 <p>One way to assign a name in Python is with an assignment statement. This statement assigns the name <code>x</code> to the value 7.</p>
 <pre><code>x = 7</code></pre>
 <p>The value could be any Python value, or it could even be an expression.</p>
 <pre><code>x = 1 + 2 * 3 - 4 // 5</code></pre>
-<p>A name that holds a piece of data is also known as a <bold>variable</bold>.</p>
+<p>A name that holds a piece of data is also known as a <strong>variable</strong>.</p>
 <h3>Using variables</h3>
 <p>The great thing about variables is that once they exist, we can reference them multiple times in our code!</p>
 <p>Here's a short program to calculate the area and circumference of a circle:</p>
@@ -52,7 +100,7 @@ daughters_last_name = partners_last_name + my_last_name</code></pre>
 
 my_name = my_name + 'ela'</code></pre>
 <p>TODO: Quiz</p>
-<p>In Python, re-assigning a name to a new value will replace the old value. However, Python evaluates the right-hand side of an assignment statement <italic>before</italic> the left-hand side, so when the right-hand side references the name, it will retrieve its current value, and then <italic>only once it's done</italic> computing the right-hand expression, it will re-assign the variable to the value of that expression.</p>
+<p>In Python, re-assigning a name to a new value will replace the old value. However, Python evaluates the right-hand side of an assignment statement <em>before</em> the left-hand side, so when the right-hand side references the name, it will retrieve its current value, and then <em>only once it's done</em> computing the right-hand expression, it will re-assign the variable to the value of that expression.</p>
 <h3>Augmented assignment operators</h3>
 <p>It's actually incredibly common to re-assign a variable based on its previous contents, so common that Python and many other languages provide special operators to make it easier.</p>
 <p>For example, instead of:</p>
@@ -105,10 +153,12 @@ my_name = my_name + 'ela'</code></pre>
 <ul><li><p>A name must be typed exactly the way it was originally typed. Names are case sensitive (<code>my_hobby</code> is a different name than <code>MY_HOBBY</code>).</p></li>
 <li><p>A good name is both descriptive but not overly descriptive. <code>my_hobby</code> is clear and descriptive, <code>mh</code> is too short and mysterious, and <code>my_most_favorite_hobby_ever</code> is overly verbose.</p></li>
 <li><p>When a name is made up of multiple words, the Python convention is to separate each word with an underscore.</p></li>
-<li><p>A name may contain numbers, but it <italic>cannot</italic> start with a number. It can either start with a letter or an underscore, but starting with an underscore actually has a special meaning we'll get into later.</p></li></ul>
+<li><p>A name may contain numbers, but it <em>cannot</em> start with a number. It can either start with a letter or an underscore, but starting with an underscore actually has a special meaning we'll get into later.</p></li></ul>
 <p>TODO: Quiz</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

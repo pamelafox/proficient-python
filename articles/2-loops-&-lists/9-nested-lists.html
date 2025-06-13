@@ -2,7 +2,7 @@
 {% block title %}Nested lists{% endblock %}
 {% block content %}
 <h1>Nested lists</h1>
-<p>A Python list can contain any value, so in fact, the items can themselves be lists. When a list is made up of other lists, we call it a <bold>nested list</bold>.</p>
+<p>A Python list can contain any value, so in fact, the items can themselves be lists. When a list is made up of other lists, we call it a <strong>nested list</strong>.</p>
 <p>Here's a nested list representing the names and scores of three gymnasts:</p>
 <pre><code>gymnasts = [
              ["Brittany", 9.15, 9.4, 9.3, 9.2],
@@ -10,8 +10,60 @@
              ["Maya", 9.2, 8.7, 9.2, 8.8]
            ]</code></pre>
 <p>We can treat this like any other list, using bracket notation and list methods to interact with the list.</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>What's the length of <code>gymnasts</code>?</p>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="3" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Yep, that's right.</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The correct answer is 3, since there are three items in the outer list.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+
+            <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>What's the length of <code>gymnasts[0]</code>?</p>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="5" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Ding-ding!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The correct answer is 5, since there are five items in the first inner list.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+
 <h3>Accessing nested list items</h3>
 <p>Starting again with this nested list:</p>
 <pre><code>gymnasts = [
@@ -29,7 +81,37 @@ gymnasts[1][0]  # "Lea"
 gymnasts[1][4]  # 9.5
 gymnasts[1][5]  # 🚫 IndexError!
 gymnasts[3][0]  # 🚫 IndexError!</code></pre>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>Using bracket notation, how would you access the final score of 8.8?</p></div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="gymnasts\[(2|-1)\]\[(4|-1)\]"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ You got it!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ A correct answer is <code>gymnasts[2][4]</code> or <code>gymnasts[-1][-1]</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      
 <h3>Modifying nested lists</h3>
 <p>We can replace the inner lists inside a nested list using bracket notation.</p>
 <p>This code replaces the entire first list with a brand new list:</p>
@@ -40,7 +122,7 @@ gymnasts[2][4] = 9.8
 gymnasts[2].append(10.5)</code></pre>
 <p>None of this is new functionality; this is the same functionality you learnt from before. It all just works as a consequence of Python allowing lists to contain other lists. I like to explicitly point it out, however, since it's not always immediately obvious, and nested lists are such a powerful data structure in programming.</p>
 <h3>Looping through nested lists</h3>
-<p>To iterate through every item in a nested list, we can use a <bold>nested for loop</bold>: a <code>for</code> loop inside a <code>for</code> loop!</p>
+<p>To iterate through every item in a nested list, we can use a <strong>nested for loop</strong>: a <code>for</code> loop inside a <code>for</code> loop!</p>
 <p>Starting from this nested list of just the numeric scores:</p>
 <pre><code>team_scores = [
                 [9.15, 9.4, 9.3, 9.2],

@@ -2,17 +2,17 @@
 {% block title %}Logical expressions{% endblock %}
 {% block content %}
 <h1>Logical expressions</h1>
-<p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <bold>logic</bold> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
-<ul><li><p><bold>Logical expressions</bold> that evaluate to either true or false.</p></li>
-<li><p><bold>Conditionals</bold> (if statements) that specify which code to execute when something is true.</p></li></ul>
+<p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <strong>logic</strong> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
+<ul><li><p><strong>Logical expressions</strong> that evaluate to either true or false.</p></li>
+<li><p><strong>Conditionals</strong> (if statements) that specify which code to execute when something is true.</p></li></ul>
 <h3>Booleans</h3>
-<p>A <bold>Boolean</bold> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
-<p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <italic>always</italic> avoid them!)</p>
+<p>A <strong>Boolean</strong> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
+<p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <em>always</em> avoid them!)</p>
 <pre><code>avoid_highways = True</code></pre>
 <p>Twitter uses a Boolean to remember where the user allows personalized ads. (I hate ads!)</p>
 <pre><code>personalized_ads = False</code></pre>
-<aside><p>Booleans are named after George Boole, a self-taught logician. He described a system of logic in an 1854 book, The Laws of Thought, that was edited by his wife Mary Everest Boole, another self-taught logician. According to Mary, George was <link>inspired by Indian logic systems</link> dating back to 500 BCE. We can actually find the origins of many "modern" computer science concepts in ancient systems of India, Africa, or the Mediterranean.</p></aside>
-<p>A <bold>logical expression</bold> is any expression that evaluates to a Boolean value. Logical expressions use comparison operators, logical operators, or a mix of both.</p>
+<aside><p>Booleans are named after George Boole, a self-taught logician. He described a system of logic in an 1854 book, The Laws of Thought, that was edited by his wife Mary Everest Boole, another self-taught logician. According to Mary, George was <a target="_blank" href="https://www.currentscience.ac.in/Volumes/114/12/2570.pdf">inspired by Indian logic systems</a> dating back to 500 BCE. We can actually find the origins of many "modern" computer science concepts in ancient systems of India, Africa, or the Mediterranean.</p></aside>
+<p>A <strong>logical expression</strong> is any expression that evaluates to a Boolean value. Logical expressions use comparison operators, logical operators, or a mix of both.</p>
 <p>This expression uses a comparison operator, the greater-than operator:</p>
 <pre><code>passed_class = grade > 65</code></pre>
 <p>The next expression uses a logical operator, the or operator:</p>
@@ -72,7 +72,7 @@
 <td>
 <p><code>20 < 32</code>, <code>32 <= 32</code></p>
 </table>
-<p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <italic>do</italic> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
+<p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <em>do</em> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
 <h3>Logical operators</h3>
 <p>This table describes the logical operators:</p>
 <table class="table table-bordered table-sm">
@@ -127,5 +127,99 @@ passed_class(66) # Returns: True</code></pre>
 <p>Now consider this example:</p>
 <pre><code>def should_wear_jacket(is_rainy, is_windy):
     return is_rainy or is_windy</code></pre>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>Which of the following function calls would return True?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-b17a2a7d-4a76-466b-ba7b-bfc77e49558f"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-b17a2a7d-4a76-466b-ba7b-bfc77e49558f"
+                ><p><code>should_wear_jacket(False, False)</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  Since the return statement uses <code>or</code> and neither of the arguments are <code>True</code>, this call
+                  would return <code>False</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-52b0c9ef-eac1-438b-bb5e-e99b039932ba"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-52b0c9ef-eac1-438b-bb5e-e99b039932ba"
+                ><p><code>should_wear_jacket(True, False)</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  This is one of the calls that would return <code>True</code>, since at least one of the arguments is
+                  <code>True</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-32297451-a7dc-4e36-a534-8797a0219fc7"
+                value="2"
+                data-correct="true" />
+              <label class="form-check-label" for="option-32297451-a7dc-4e36-a534-8797a0219fc7"
+                ><p><code>should_wear_jacket(False, True)</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  This is one of the calls that would return <code>True</code>, since at least one of the arguments is
+                  <code>True</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-de04e48b-fde0-42a1-91f2-07394e3201eb"
+                value="3"
+                data-correct="true" />
+              <label class="form-check-label" for="option-de04e48b-fde0-42a1-91f2-07394e3201eb"
+                ><p><code>should_wear_jacket(True, True)</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  This is one of the calls that would return <code>True</code>, since at least one of the arguments is
+                  <code>True</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+            <aside class="alert alert-secondary mt-3" style="display: none">
+              <p>
+                Since the return statement uses an <code>or</code> on the two parameters, one of the passed in arguments must
+                be <code>True</code> for the call to return <code>True</code>.
+              </p>
+            </aside>
+          </div>
+        </form>
+      </quiz-element>
+      
 {% endblock %}

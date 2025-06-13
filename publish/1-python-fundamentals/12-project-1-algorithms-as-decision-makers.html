@@ -16,27 +16,71 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Project 1: Algorithms as Decision Makers</h1>
-<p>Computer programs make decisions that affect human lives all the time. Banks use algorithms to decide who is eligible for a loan, universities use algorithms to decide which students get on-campus housing, Gmail uses algorithms to decide whether to send an email to the spam folder. Since the fate of individual's lives can depend on decisions made by algorithms, it's very important to think about how to make <italic>good</italic> decisions.</p>
+<p>Computer programs make decisions that affect human lives all the time. Banks use algorithms to decide who is eligible for a loan, universities use algorithms to decide which students get on-campus housing, Gmail uses algorithms to decide whether to send an email to the spam folder. Since the fate of individual's lives can depend on decisions made by algorithms, it's very important to think about how to make <em>good</em> decisions.</p>
 <p>In this project, you'll build a program that can make a decision about how to prioritize an individual for an opportunity. You'll practice variables, functions, conditionals, and user input, all combined in one program. You'll also figure out how to test this program, both automatically and in the real world.</p>
 <h3>Instructions</h3>
 <p>You'll be developing this project using a Python notebook in Google CoLab. A Python notebook is a kind of document that combines text blocks and runnable code blocks. You can run each code block separately, or you can run all the code blocks in the notebook in sequence. When you run a code block, the output will be displayed below the block, and when you come back to a notebook after closing it, you'll see the previously generated output. All of the code in the notebook runs in the same Python environment, so a code block will have access to any names that have been assigned in previously run code.</p>
 <p>Python notebooks are very popular with the data science and scientific programming community, since they are an easy way to see the steps of an analysis, but they're also generally helpful when learning Python.</p>
-<p>To get started, make a copy of the <link>Project 1 notebook</link> for yourself. The rest of the instructions are in the notebook.</p>
-<h3>Getting help</h3>
-<p>We want all of you to be able to complete this project. Before you get started on it, make sure you've completed the Week 1 exercises, since the project depends on those fundamental skills. To get help when working through this project:</p>
-<ul><li><p>Join us in the live project session.</p></li>
-<li><p>Watch the <link>getting started video</link>. 📺</p></li>
-<li><p>Ask questions in the Slack #project channel. 🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  </p></li>
-<li><p>Attend the TA's coding parties and ask questions. Check the calendar for days/times.</p></li></ul>
+<p>To get started, make a copy of the <a target="_blank" href="https://colab.research.google.com/drive/1y_uh8YDUM1v_BRzv3slLyoJsAZ6yjgPI?usp=sharing">Project 1 notebook</a> for yourself. The rest of the instructions are in the notebook.</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

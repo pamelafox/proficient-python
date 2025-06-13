@@ -16,14 +16,62 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Composition</h1>
-<p>Another key part of object-oriented programming is <bold>composition</bold>: an object can be composed of other objects. In Python, since every piece of data (number, boolean, string, etc.) is an object, technically every example we've seen so far has been an example of composition. However, I want to dive into examples where an object of a user-defined class contains references to other objects of user-defined classes, since that's more interesting.</p>
+<p>Another key part of object-oriented programming is <strong>composition</strong>: an object can be composed of other objects. In Python, since every piece of data (number, boolean, string, etc.) is an object, technically every example we've seen so far has been an example of composition. However, I want to dive into examples where an object of a user-defined class contains references to other objects of user-defined classes, since that's more interesting.</p>
 <p>Going back to our animal conservatory, what examples of composition could there be? A few ideas:</p>
 <ul><li><p>An animal has a mate (another animal of the same class).</p></li>
 <li><p>An animal has a mother (also another animal of the same class).</p></li>
@@ -65,15 +113,17 @@ jane_doe.reproduce_like_rabbits()</code></pre>
 <p>This composition isn't perfect: a better approach might be to initialize <code>babies</code> inside <code>__init__</code>, so that a rabbit could reproduce multiple times and keep growing its list of babies each time. It also might be a good thing to add a line like <code>self.mate.babies = self.babies</code> or <code>self.mate.babies.extend(self.babies)</code> so that the mate could also keep track of the produced babies. The best implementation really depends on the use case for the compositional relationship and how the rest of the program will use that information.</p>
 <h3>Inheritance vs. composition</h3>
 <p>You've now learned two ways that classes and objects can relate to each other, composition and inheritance. Let's compare them.</p>
-<p><bold>Inheritance</bold> is best for representing "is-a" relationships.</p>
+<p><strong>Inheritance</strong> is best for representing "is-a" relationships.</p>
 <ul><li><p>A rabbit is a specific type of animal.</p></li>
 <li><p>So, the <code>Rabbit</code> class inherits from <code>Animal</code>.</p></li></ul>
-<p><bold>Composition</bold> is best for representing "has-a" relationships.</p>
+<p><strong>Composition</strong> is best for representing "has-a" relationships.</p>
 <ul><li><p>A rabbit has a litter of babies.</p></li>
 <li><p>So, a <code>Rabbit</code> object has an instance variable containing other <code>Rabbit</code> objects.</p></li></ul>
-<p>When you're designing a system of classes, keep in mind how objects relate to each other so you can figure out the most appropriate way to represent that in code. Sometimes it helps to draw before you code, sketching the relationships out on paper or making a formal diagram using <link>UML (Unified Modeling Language)</link>.</p>
+<p>When you're designing a system of classes, keep in mind how objects relate to each other so you can figure out the most appropriate way to represent that in code. Sometimes it helps to draw before you code, sketching the relationships out on paper or making a formal diagram using <a target="_blank" href="https://www.geeksforgeeks.org/unified-modeling-language-uml-introduction/">UML (Unified Modeling Language)</a>.</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

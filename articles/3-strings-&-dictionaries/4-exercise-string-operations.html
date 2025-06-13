@@ -2,10 +2,22 @@
 {% block title %}Exercise: String operations{% endblock %}
 {% block content %}
 <h1>Exercise: String operations</h1>
-<p>Try out different string operations and methods in the following coding exercises. You probably want to keep the previous articles open in other tabs, as well as the <link>Python string methods documentation</link>.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Bleeper exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+<p>Try out different string operations and methods in the following coding exercises. You probably want to keep the previous articles open in other tabs, as well as the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#string-methods">Python string methods documentation</a>.</p>
+
+<h2>String methods</h2>
+
+<p>The next two exercises help you practice using string methods.</p>
+
 <h3>Bleeper</h3>
 <p>Implement <code>bleep_out</code>, a function that looks for a particular phrase in a string and returns a new string with that phrase replaced by '***'.</p>
+
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>Your function only needs a single line of code: one <strong><code>return</code></strong> statement.
+    <li>The return statement should use the <code>replace</code> method on <code>string1</code>, passing in <code>string2</code> and the literal string <code>"***"</code>.
+  </ul>
+</details>
 <code-exercise-element exercise-name="bleeper">def bleep_out(string1, string2):
   """Returns a version of string1 where all instances of string2
   have been replaced by "***".
@@ -17,6 +29,34 @@
   """
   return "" # REPLACE THIS LINE
 </code-exercise-element>
+
+
+<h3>Phone number formats</h3>
+<p>Implement <code>phone_number_versions</code>, a function that turns a hyphen-separated phone number into a list containing that original number, a space-separated version of it, and a period-separated version.</p>
+
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>As a first step, your function should split <code>phone_number</code> into parts, using the <code>split</code> method, and store the results in a list.
+    <li>Then, the function should create a new list, where some of the items are made using the <code>join</code> method.
+  </ul>
+</details>
+<code-exercise-element exercise-name="phone-number-versions">def phone_number_versions(phone_number):
+    """
+    Accepts a hyphen-separated phone number and returns
+    a list containing the original version, a space-separated version,
+    and a period-separated version.
+    
+    >>> phone_number_versions('1-800-867-5309')
+    ['1-800-867-5309', '1 800 867 5309', '1.800.867.5309']
+    """
+    return [] # REPLACE THIS LINE
+</code-exercise-element>
+
+
+<h2>String slicing</h2>
+
+<p>The next three exercises help you practice using string slicing.</p>
 
 <h3>Mix up</h3>
 <p>Implement <code>mix_up</code>, a function that concatenates two words, but swaps out the first 2 characters of each word. For example, 'mix' and 'pod' is turned into 'pox mid'.</p>
@@ -68,20 +108,6 @@
   'This dinner is bad!'
   """
   return '' # REPLACE THIS LINE
-</code-exercise-element>
-
-<h3>Phone number formats</h3>
-<p>Implement <code>phone_number_versions</code>, a function that turns a hyphen-separated phone number into a list containing that original number, a space-separated version of it, and a period-separated version.</p>
-<code-exercise-element exercise-name="phone-number-versions">def phone_number_versions(phone_number):
-    """
-    Accepts a hyphen-separated phone number and returns
-    a list containing the original version, a space-separated version,
-    and a period-separated version.
-    
-    >>> phone_number_versions('1-800-867-5309')
-    ['1-800-867-5309', '1 800 867 5309', '1.800.867.5309']
-    """
-    return [] # REPLACE THIS LINE
 </code-exercise-element>
 {% endblock %}
 {% block foooter_scripts %}

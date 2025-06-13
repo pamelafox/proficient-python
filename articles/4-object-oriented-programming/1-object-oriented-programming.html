@@ -2,14 +2,14 @@
 {% block title %}Object-oriented programming{% endblock %}
 {% block content %}
 <h1>Object-oriented programming</h1>
-<p>Our programs so far have consisted of functions intermixed with variables. This is a common way of writing programs when they are small and focused on computational functions, but as programs become larger and revolve more around data, Python programmers often use an approach known as <bold>object-oriented programming (OOP)</bold>.</p>
+<p>Our programs so far have consisted of functions intermixed with variables. This is a common way of writing programs when they are small and focused on computational functions, but as programs become larger and revolve more around data, Python programmers often use an approach known as <strong>object-oriented programming (OOP)</strong>.</p>
 <p>Object-oriented programming includes:</p>
 <ul><li><p>A way to describe a type of complex data, such as a bank account which has an associated account owner, a current balance, a history of deposits/withdrawals, etc.</p></li>
 <li><p>A way to bundle together data with related functionality. For a bank account, it might need functions for withdrawing money, depositing money, closing the account, transferring between accounts, etc.</p></li></ul>
-<p>We can have multiple instances of each type of data, and we consider each of them to be an <bold>object</bold>. For example, my savings account could be one object and my checking account could be another object. Since they're both bank accounts, I could deposit and transfer into either of them.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv8ybf00131498cg8i5e52/Intro to Python OOP diagrams (1).png"></p>
+<p>We can have multiple instances of each type of data, and we consider each of them to be an <strong>object</strong>. For example, my savings account could be one object and my checking account could be another object. Since they're both bank accounts, I could deposit and transfer into either of them.</p>
+<p><img src="../images/object-oriented-programming-account-transfer.png" alt="A diagram showing a deposit into a checking account and a transfer into a savings account"></p>
 <p>There might be some functionality specific to savings accounts versus checking accounts, and object-oriented programming also gives us a way to declare that a particular type of object is similar to another type, but also differs in some ways.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv96l500151498asbm12el/OOP_inheritance.png"></p>
-<p>As it turns out, we've been using objects this whole time: <italic>every</italic> piece of data in Python is an object of a particular type. Integers are type <code>int</code>, floating point numbers are type <code>float</code>, strings are type <code>string</code>, lists are type <code>list</code>, dictionaries are type <code>dict</code>. Each of the types have associated functionality (<bold>methods</bold>), and that's why we can call <code>split()</code> on any string object, or call <code>pop()</code> on any list object.</p>
-<p>What we'll learn this week is how we can declare our own types of objects, thanks to a mechanism called <bold>classes</bold>. Let's dive in!</p>
+<p><img src="../images/object-oriented-programming-account-types.png" alt="A tree diagram showing a Bank Account type with Checking Account and Saving Account types below"></p>
+<p>As it turns out, we've been using objects this whole time: <em>every</em> piece of data in Python is an object of a particular type. Integers are type <code>int</code>, floating point numbers are type <code>float</code>, strings are type <code>string</code>, lists are type <code>list</code>, dictionaries are type <code>dict</code>. Each of the types have associated functionality (<strong>methods</strong>), and that's why we can call <code>split()</code> on any string object, or call <code>pop()</code> on any list object.</p>
+<p>What we'll learn this unit is how we can declare our own types of objects, thanks to a mechanism called <strong>classes</strong>. Let's dive in!</p>
 {% endblock %}

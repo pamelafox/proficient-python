@@ -16,24 +16,72 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Logical expressions</h1>
-<p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <bold>logic</bold> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
-<ul><li><p><bold>Logical expressions</bold> that evaluate to either true or false.</p></li>
-<li><p><bold>Conditionals</bold> (if statements) that specify which code to execute when something is true.</p></li></ul>
+<p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <strong>logic</strong> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
+<ul><li><p><strong>Logical expressions</strong> that evaluate to either true or false.</p></li>
+<li><p><strong>Conditionals</strong> (if statements) that specify which code to execute when something is true.</p></li></ul>
 <h3>Booleans</h3>
-<p>A <bold>Boolean</bold> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
-<p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <italic>always</italic> avoid them!)</p>
+<p>A <strong>Boolean</strong> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
+<p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <em>always</em> avoid them!)</p>
 <pre><code>avoid_highways = True</code></pre>
 <p>Twitter uses a Boolean to remember where the user allows personalized ads. (I hate ads!)</p>
 <pre><code>personalized_ads = False</code></pre>
-<aside><p>Booleans are named after George Boole, a self-taught logician. He described a system of logic in an 1854 book, The Laws of Thought, that was edited by his wife Mary Everest Boole, another self-taught logician. According to Mary, George was <link>inspired by Indian logic systems</link> dating back to 500 BCE. We can actually find the origins of many "modern" computer science concepts in ancient systems of India, Africa, or the Mediterranean.</p></aside>
-<p>A <bold>logical expression</bold> is any expression that evaluates to a Boolean value. Logical expressions use comparison operators, logical operators, or a mix of both.</p>
+<aside><p>Booleans are named after George Boole, a self-taught logician. He described a system of logic in an 1854 book, The Laws of Thought, that was edited by his wife Mary Everest Boole, another self-taught logician. According to Mary, George was <a target="_blank" href="https://www.currentscience.ac.in/Volumes/114/12/2570.pdf">inspired by Indian logic systems</a> dating back to 500 BCE. We can actually find the origins of many "modern" computer science concepts in ancient systems of India, Africa, or the Mediterranean.</p></aside>
+<p>A <strong>logical expression</strong> is any expression that evaluates to a Boolean value. Logical expressions use comparison operators, logical operators, or a mix of both.</p>
 <p>This expression uses a comparison operator, the greater-than operator:</p>
 <pre><code>passed_class = grade > 65</code></pre>
 <p>The next expression uses a logical operator, the or operator:</p>
@@ -93,7 +141,7 @@
 <td>
 <p><code>20 < 32</code>, <code>32 <= 32</code></p>
 </table>
-<p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <italic>do</italic> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
+<p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <em>do</em> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
 <h3>Logical operators</h3>
 <p>This table describes the logical operators:</p>
 <table class="table table-bordered table-sm">
@@ -151,6 +199,8 @@ passed_class(66) # Returns: True</code></pre>
 <p>TODO: Quiz</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

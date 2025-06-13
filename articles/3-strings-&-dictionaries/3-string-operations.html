@@ -19,7 +19,7 @@ for letter in alphabet:
 
 true_start_sound = illness[1]   # Stores 'n'
 last_letter = illness[-1]       # Stores 's'</code></pre>
-<p>However, strings are different from lists in that they are <bold>immutable</bold>, meaning they cannot be changed after they're created. Using bracket notation to try to change a character will result in an error.</p>
+<p>However, strings are different from lists in that they are <strong>immutable</strong>, meaning they cannot be changed after they're created. Using bracket notation to try to change a character will result in an error.</p>
 <pre><code>illness[0] = "n"   # 🚫 Error!</code></pre>
 <p>We can also use bracket notation to slice parts of the string, from a start to (just before) an end index:</p>
 <pre><code>how_small = illness[13:24]      # Stores 'microscopic'
@@ -27,11 +27,154 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
 <h3>Exercise: Bracket notation</h3>
 <p>Use this string variable for the next three questions:</p>
 <pre><code>author_name = 'P S Fox'</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "P"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-cb6d0648-2324-4eea-a341-ea885964a117"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-cb6d0648-2324-4eea-a341-ea885964a117"
+                ><p><code>author_name[0]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>That's right, the first letter is at index 0.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-25fdfaf0-d355-44ae-9b9b-627ec14c6820"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-25fdfaf0-d355-44ae-9b9b-627ec14c6820"
+                ><p><code>author_name[1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>That would retrieve the second letter, not the first.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-104e6cfd-a5c2-43d0-aa5c-2e20b01239f5"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-104e6cfd-a5c2-43d0-aa5c-2e20b01239f5"
+                ><p><code>author_name[-1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>That would retrieve the last letter, not the first.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "S"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-6601d0b2-9076-4d81-9ff7-2f31604e1ba4"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-6601d0b2-9076-4d81-9ff7-2f31604e1ba4"
+                ><p><code>author_name[1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>The character at index 1 is the space before "S", not the letter "S".</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-3173d34a-f268-46b2-8a96-b8d928f0c8b1"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-3173d34a-f268-46b2-8a96-b8d928f0c8b1"
+                ><p><code>author_name[2]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none"><p>That's right!</p></aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-17e9e52e-576f-4c4b-8eac-24e6666aacc5"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-17e9e52e-576f-4c4b-8eac-24e6666aacc5"
+                ><p><code>author_name[3]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>The character at index 3 is the space after "S", not the letter "S".</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "Fox"?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="author_name\[4:7?\]" required />
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's correct!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>
+                ❌ You can slice the last three letters by specifying the start and end indices in bracket notation. The start
+                index would be 4 (for "F") and the end index would be 7, because it needs to be just after the last desired
+                index (6 for "x"). The whole expression would be <code>author_name[4:7]</code>. You can also leave off the end
+                index, and Python will slice until the end of the list, so that'd be <code>author_name[4:]</code>.
+              </p>
+            </aside>
+          </div>
+        </form>
+      </quiz-element>
+
 <h3>String methods</h3>
-<p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <italic>none</italic> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
+<p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <em>none</em> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
 <p>For example, the <code>upper()</code> method returns an uppercase version of a string.</p>
 <pre><code>request = "Please wash the dishes from your cookie disaster."
 demand = request.upper()</code></pre>
@@ -86,9 +229,94 @@ demand = request.upper()</code></pre>
 <td>
 <p>Returns a string which is the concatenation of strings in the iterable object.</p>
 </table>
-<p>More methods are described in the <link>Python documentation</link>.</p>
+<p>More methods are described in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#string-methods">Python documentation</a>.</p>
 <p>Remember that these are methods, not functions, so when using them, you always write the variable name first, then the dot, then the method name.</p>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold">
+              <p>What expression would tell us if the string variable <code>mystery</code> ends with the letters "ing"?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-8e3b6c94-842a-4ad2-9d08-9265d449072c"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-8e3b6c94-842a-4ad2-9d08-9265d449072c"
+                ><p><code>mystery.endswith(ing)</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ This is almost correct, except <code>ing</code> needs to be in quotes so it is treated as a string instead
+                  of a variable name.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-7263d9ea-6e77-4156-9e7c-362c3e6ab987"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-7263d9ea-6e77-4156-9e7c-362c3e6ab987"
+                ><p><code>mystery.endswith("ing")</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none"><p>✅ That's right!</p></aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-7342b5d9-16cb-455b-a47f-688fe42d1edd"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-7342b5d9-16cb-455b-a47f-688fe42d1edd"
+                ><p><code>endswith(mystery, ing)</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ Since <code>endswith</code> is a method, it must be called on <code>mystery</code> using dot notation.
+                  Plus, <code>ing</code> needs to be in quotes.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-7d697cbf-03e4-4e06-906b-e3017253d734"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-7d697cbf-03e4-4e06-906b-e3017253d734">
+                <p><code>endswith(mystery, "ing")</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌ Since <code>endswith</code> is a method, it must be called on <code>mystery</code> using dot notation.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+
+      
 <h3>Splitting and joining</h3>
 <p>There are two string methods that I want to spend more time on, because they're just so dang useful, but can also be a little tricky to use: <code>split</code> and <code>join</code>.</p>
 <ul><li><p><code>split(separator)</code>: Returns a list of substrings in the string, using separator as the delimiter.</p></li>

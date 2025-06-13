@@ -16,24 +16,72 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Functions</h1>
-<p>A <bold>function</bold> is a sequence of code that performs a task and can be easily reused. ♻️</p>
+<p>A <strong>function</strong> is a sequence of code that performs a task and can be easily reused. ♻️</p>
 <p>We've already used functions in call expressions like:</p>
 <pre><code>abs(-100)
 
 pow(2, 10)</code></pre>
-<p>A function takes in an input (the <bold>arguments</bold>) and returns an output (the <bold>return value</bold>).</p>
+<p>A function takes in an input (the <strong>arguments</strong>) and returns an output (the <strong>return value</strong>).</p>
 <p>-100 → abs → 100</p>
 <p>In the <code>abs</code> expression, there is a single argument of -100 and a return value of 100.</p>
 <p>2, 10 → pow → 1024</p>
 <p>In the <code>pow</code> expression, there are two arguments of 2 and 10, and a return value of 1024.</p>
-<p>Those are all functions provided by Python, however. Many times, we want to create <italic>our own</italic> functions, to perform some task unique to our program.</p>
+<p>Those are all functions provided by Python, however. Many times, we want to create <em>our own</em> functions, to perform some task unique to our program.</p>
 <p>TODO: Quiz</p>
 <h3>Defining functions</h3>
 <p>The most common way to define functions in Python is with a <code>def</code> statement.</p>
@@ -46,18 +94,18 @@ pow(2, 10)</code></pre>
 <p>Once defined, we can call the function, just like we call built-in Python functions:</p>
 <pre><code>add_two(2, 2)
 add_two(18, 69)</code></pre>
-<p>Let's break down that function definition statement a little. The first line that declares the name and parameters is called the <bold>function signature</bold>, and all the indented lines below it are the <bold>function body</bold>.</p>
+<p>Let's break down that function definition statement a little. The first line that declares the name and parameters is called the <strong>function signature</strong>, and all the indented lines below it are the <strong>function body</strong>.</p>
 <pre><code>def <name>(<parameters>):      # ← Function signature
     return <return expression> # ← Function body</code></pre>
 <pre><code>def add_two(num1, num2):       # ← Function signature
     return num1 + num2         # ← Function body</code></pre>
-<p>The Python language is somewhat unique in that it uses indentation to show how lines of code relate to each other. (Other languages use brackets or keywords). That means that the lines in the function body <italic>must</italic> be indented. It doesn't actually matter how much they're indented - heck, Python will let you get away with indenting them with 200 spaces! However, the standard convention is either 2 spaces or 4 spaces; enough indentation to be visible to someone reading the code, but not so much that lines of code become ridiculously long.</p>
+<p>The Python language is somewhat unique in that it uses indentation to show how lines of code relate to each other. (Other languages use brackets or keywords). That means that the lines in the function body <em>must</em> be indented. It doesn't actually matter how much they're indented - heck, Python will let you get away with indenting them with 200 spaces! However, the standard convention is either 2 spaces or 4 spaces; enough indentation to be visible to someone reading the code, but not so much that lines of code become ridiculously long.</p>
 <p>The function body can (and often does) have multiple lines:</p>
 <pre><code>def add_two(num1, num2):      # ← Function signature
     result = num1 + num2      # ← Function body
     return result             # ← Function body</code></pre>
 <h3>Parameters vs. arguments</h3>
-<p>We've now used two different terms to refer to the values that get passed into a function: <bold>parameters</bold> and <bold>arguments</bold>. Well, which is it?? Both!</p>
+<p>We've now used two different terms to refer to the values that get passed into a function: <strong>parameters</strong> and <strong>arguments</strong>. Well, which is it?? Both!</p>
 <p>When we're defining a function, the parameters are the names given to the values that will eventually get passed into a function. The following function accepts two parameters, <code>num1</code> and <code>num2</code>, and the return value sums up those two parameters.</p>
 <pre><code>def add_two(num1, num2): 
     return num1 + num2 </code></pre>
@@ -99,6 +147,8 @@ result = add_two(2, 4)</code></pre>
 <p>TODO: Quiz</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

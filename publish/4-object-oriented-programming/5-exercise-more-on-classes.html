@@ -16,19 +16,66 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Exercise: More on classes</h1>
 <p>These exercises will give you practice with class variables and class methods.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the StudentGrade exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
 <h2>Missing class variables</h2>
 <p>In the first two exercises, the class definitions are missing a class variable. Read the docstring and doctests to determine the name and value of the missing class variable, add it in, and run the doctests after.</p>
 <h3>Exercise: StudentGrade</h3>
-<p>📺 Need help with this one? Watch the <link>video walkthrough</link> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<p>📺 Need help with this one? Watch a <a target="_blank" href="https://www.youtube.com/watch?v=wFHKyVkn5mQ">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element exercise-name="studentgrade-class">class StudentGrade:
   """Represents the grade for a student in a class
   and indicates when a grade is failing.
@@ -79,8 +126,8 @@
 <h2>Class methods</h2>
 <h3>Exercise: Thneed Factory</h3>
 <p>For this exercise, you'll finish the implementation of <code>make_thneed</code>, a class method that can make Thneeds of a given size and a random color.</p>
-<p><bold>Hint: </bold>You can use<bold> </bold><code>random.choice(list)</code> to generate a random color from a list of colors.</p>
-<p>📺 Need help with this one? Watch the <link>video walkthrough</link> <link>o</link>f the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
+<p><strong>Hint: </strong>You can use<strong> </strong><code>random.choice(list)</code> to generate a random color from a list of colors.</p>
+<p>📺 Need help with this one? Watch the <a target="_blank" href="https://youtu.be/_dB4koJNHL0">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element exercise-name="thneed-factory">import random
 
 class Thneed:
@@ -104,7 +151,7 @@ class Thneed:
         # YOUR CODE HERE</code-exercise-element>
 <h3>Exercise: Cat adoption</h3>
 <p>For this exercise, you'll finish the implementation of <code>adopt_random_cat</code>, a class method that can generate new cats. Just what we need in the world! 🐈‍⬛🐈</p>
-<p><bold>Hint: </bold>You can use<bold> </bold><code>random.choice(list)</code> to generate a random name from a list of names and <code>random.randrange(start, stop)</code> to generate a random number of lives.</p>
+<p><strong>Hint: </strong>You can use<strong> </strong><code>random.choice(list)</code> to generate a random name from a list of names and <code>random.randrange(start, stop)</code> to generate a random number of lives.</p>
 <code-exercise-element exercise-name="cat-adoption">import random
 
 class Cat:
@@ -127,6 +174,8 @@ class Cat:
         # YOUR CODE HERE</code-exercise-element>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

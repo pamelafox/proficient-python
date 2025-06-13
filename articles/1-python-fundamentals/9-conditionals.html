@@ -2,20 +2,98 @@
 {% block title %}Conditionals{% endblock %}
 {% block content %}
 <h1>Conditionals</h1>
-<p>Now that we know how to write Boolean expressions, we can use them inside <bold>conditional statements</bold> to tell our programs to <italic>conditionally</italic> execute one block of code versus another.</p>
+<p>Now that we know how to write Boolean expressions, we can use them inside <strong>conditional statements</strong> to tell our programs to <em>conditionally</em> execute one block of code versus another.</p>
 <h3>Conditional statements</h3>
 <p>In Python, conditional statements always start with <code>if</code>. Here's the basic template:</p>
 <pre><code>if <condition>:
     <statement>
     <statement>
     ...</code></pre>
-<p>If <code><condition></code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <italic>required</italic> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
+<p>If <code><condition></code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <em>required</em> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
 <p>Here's a simple <code>if</code> statement that re-assigns a variable based on a condition:</p>
 <pre><code>clothing = "shirt"
 
 if temperature < 32:
     clothing = "jacket"</code></pre>
-<p>TODO: Quiz</p>
+
+
+      <quiz-element>
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>In which situations will <code>clothing</code> be assigned to "jacket"?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-d7240054-fbe6-437b-a530-c1816614ca8b"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-d7240054-fbe6-437b-a530-c1816614ca8b"
+                ><p>when <code>temperature</code> is 0</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>0 is less than 32, so the statement inside the <code>if</code> would indeed execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-02f0315f-98df-480f-914c-dcc9038b4f0f"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-02f0315f-98df-480f-914c-dcc9038b4f0f"
+                ><p>when <code>temperature</code> is 31</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>31 is less than 32, so the statement inside the <code>if</code> would indeed execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-2dcf9ed6-8354-465d-889d-5902bf442fa6"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2dcf9ed6-8354-465d-889d-5902bf442fa6"
+                ><p>when <code>temperature</code> is 32</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>32 is <em>not</em> less than 32, so the statement inside the <code>if</code> would <em>not</em> execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-a23da2e2-99ee-40ac-93eb-e9ec20df99dd"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-a23da2e2-99ee-40ac-93eb-e9ec20df99dd"
+                ><p>when <code>temperature</code> is 65</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>65 is <em>not</em> less than 32, so the statement inside the <code>if</code> would <em>not</em> execute.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </quiz-element>
+      
 <h3>Compound conditionals</h3>
 <p>A conditional statement can include any number of <code>elif</code> statements to check other conditions and execute different blocks of code. Other languages use <code>else if</code>, but Python decided that was just too dang long and shortened it to <code>elif</code>. 🤷🏼‍♀️</p>
 <p>Here's a template with three conditional paths:</p>

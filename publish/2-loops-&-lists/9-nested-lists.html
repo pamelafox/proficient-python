@@ -16,14 +16,62 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Nested lists</h1>
-<p>A Python list can contain any value, so in fact, the items can themselves be lists. When a list is made up of other lists, we call it a <bold>nested list</bold>.</p>
+<p>A Python list can contain any value, so in fact, the items can themselves be lists. When a list is made up of other lists, we call it a <strong>nested list</strong>.</p>
 <p>Here's a nested list representing the names and scores of three gymnasts:</p>
 <pre><code>gymnasts = [
              ["Brittany", 9.15, 9.4, 9.3, 9.2],
@@ -61,7 +109,7 @@ gymnasts[2][4] = 9.8
 gymnasts[2].append(10.5)</code></pre>
 <p>None of this is new functionality; this is the same functionality you learnt from before. It all just works as a consequence of Python allowing lists to contain other lists. I like to explicitly point it out, however, since it's not always immediately obvious, and nested lists are such a powerful data structure in programming.</p>
 <h3>Looping through nested lists</h3>
-<p>To iterate through every item in a nested list, we can use a <bold>nested for loop</bold>: a <code>for</code> loop inside a <code>for</code> loop!</p>
+<p>To iterate through every item in a nested list, we can use a <strong>nested for loop</strong>: a <code>for</code> loop inside a <code>for</code> loop!</p>
 <p>Starting from this nested list of just the numeric scores:</p>
 <pre><code>team_scores = [
                 [9.15, 9.4, 9.3, 9.2],
@@ -77,6 +125,8 @@ for member_scores in team_scores:
 <p>If you're ever not sure what your variable is storing, you can always print it out and double check.</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

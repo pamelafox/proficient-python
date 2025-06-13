@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Exercise: Functions</h1>
 <p>Throughout this course, we will be writing many of our own functions. We want to make sure that our functions work correctly- that for any given input, they return the correct output.</p>
-<p>One way to tests functions in Python is with <bold>doctests</bold>. A doctest shows a bunch of calls to a function and the expected output for each. The doctest for a function is always below the function header and before the function body, inside a giant comment known as the <bold>docstring</bold>.</p>
+<p>One way to tests functions in Python is with <strong>doctests</strong>. A doctest shows a bunch of calls to a function and the expected output for each. The doctest for a function is always below the function header and before the function body, inside a giant comment known as the <strong>docstring</strong>.</p>
 <p>For example:</p>
 <pre><code>def add_two(num1, num2):
     """ Adds two numbers together.
@@ -25,9 +25,23 @@
     """
     return num1 + num2</code></pre>
 <p>In the exercises, you should first look at the doctests as an additional way of making sure you understand the function you're about to write, and then once written, you should run the tests to make sure that your function works how the doctests expect.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Lifetime Supply Calculator exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+
 <h3>Lifetime Supply Calculator</h3>
-<p>📺  If you'd like, you can watch how I tackled this first exercise in <link>a walkthrough video</link>. I also show how to use the 'Run code' and 'Test code' buttons in that video.</p>
+<p>📺  If you'd like, you can watch how I tackled this first exercise in <a target="_blank" href="https://www.youtube.com/watch?v=Koi_oBQ1VAU">a walkthrough video</a>.</p>
+<details>
+  <summary>Or, if you'd like more guidance in written form, expand this block.</summary>
+  <ul>
+    <li>Your function only needs a single line of code: one <strong><code>return</code></strong> statement.
+    <li>The return statement should contain an <strong>arithmetic expression</strong> using <code>-</code>, <code>*</code>, <code>(</code>, <code>)</code>.
+    <li>The Boolean expression should involve the <strong>parameters</strong> (<code>current_age</code>, <code>amount_per_day</code>) as well as literal <strong>numbers</strong> (<code>100</code>, <code>365</code>).
+  </ul>
+  <details>
+    <summary>For a code template, expand this block.</summary>
+    <p>Fill in the blanks with the appropriate parameters and try running the tests.</p>
+    <pre><code>return (100 - ______) * (______ * 365)</code></pre>
+  </details>
+</details>
+
 <code-exercise-element exercise-name="lifetime-supply-calculator">def calculate_lifetime_supply(current_age, amount_per_day):
     """ Returns the amount of items consumed over a lifetime
     (with a max age of 100 assumed) based on the current age
@@ -42,22 +56,48 @@
     """
     # YOUR CODE HERE</code-exercise-element>
 
-<h3>Dog Age Calculator</h3>
+<h3>Seconds Between</h3>
 
-<code-exercise-element exercise-name="dog-age-calculator">def calculate_dog_age(human_age):
-    """ Returns a dog's age based on a conversion rate of
-    1 human year to 7 dog years.
-    >>> calculate_dog_age(1)
-    7
-    >>> calculate_dog_age(0.5)
-    3.5
-    >>> calculate_dog_age(12)
-    84
+<p>Implement a function, <code>seconds_between</code>, that returns the number of seconds between years, based on the assumption of 365 days in a year, 24 hours in a day, 60 minutes in an hour, and 60 seconds in a minute.</p>
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>Your function only needs a single line of code: one <strong><code>return</code></strong> statement.
+    <li>The return statement should contain an <strong>arithmetic expression</strong> using <code>-</code>, <code>*</code>, <code>(</code>, <code>)</code>.
+    <li>The Boolean expression should involve the <strong>parameters</strong> (<code>year1</code>, <code>year2</code>) as well as literal <strong>numbers</strong> (<code>365</code>, <code>24</code>, <code>60</code>).
+  </ul>
+  <details>
+    <summary>For a code template, expand this block.</summary>
+    <p>Fill in the blank with the appropriate expression and try running the tests.</p>
+    <pre><code>return (_____________) * 365 * 24 * 60 * 60</code></pre>
+  </details>
+</details>
+<code-exercise-element exercise-name="seconds-between">def seconds_between(year1, year2):
+    """ Returns the number of seconds between two years.
+
+    >>> seconds_between(1984, 1985)
+    31536000
+    >>> seconds_between(1984, 2000)
+    504576000
     """
     # YOUR CODE HERE</code-exercise-element>
 
 <h3>Fortune Teller</h3>
 <p>Implement a function, <code>tell_fortune</code>, that returns a string of the form shown in the docstring and doctests. The string will be a combination of string literals (strings in quotes) and the given parameters.</p>
+
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>Your function only needs a single line of code: one <strong><code>return</code></strong> statement.
+    <li>The return statement should contain a <strong>string concatenation</strong> using the <code>+</code> operator.
+    <li>The Boolean expression should involve the <strong>parameters</strong> (<code>job</code>, <code>place</code>, <code>partner</code>) as well as a literal <strong>string</strong> (<code>'You will be a '</code>, <code>' in '</code>, <code>' living with '</code>, <code>' .'</code>).
+  </ul>
+  <details>
+    <summary>For a code template, expand this block.</summary>
+    <p>Fill in the blanks with the appropriate parameters and try running the tests.</p>
+    <pre><code>return 'You will be a ' + ____ + ' living in ' + ____ + ' with ' + ____ + '.'</code></pre>
+  </details>
+</details>
 <code-exercise-element exercise-name="fortune-teller">def tell_fortune(job_title, location, partner):
     """ Returns a fortune of the form:
      'You will be a <job_title> in <location> living with <partner>.'
@@ -72,8 +112,8 @@
     return "?"  # YOUR CODE HERE</code-exercise-element>
 
 <h3>Temperature Converter</h3>
-<p>Implement two functions, <code>celsius_to_fahrenheit</code> and <code>fahrenheit_to_celsius</code>, to convert temperatures based on the <a target="_blank" href="https://www.mathsisfun.com/temperature-conversion.html">standard conversion formulas</a>. You'll need to modify both the function signature <italic>and</italic> function body.</p>
-<p>Hint: As the final step in the conversion, the built-in <link><code>round</link></code> function may be helpful.</p>
+<p>Implement two functions, <code>celsius_to_fahrenheit</code> and <code>fahrenheit_to_celsius</code>, to convert temperatures based on the <a target="_blank" href="https://www.mathsisfun.com/temperature-conversion.html">standard conversion formulas</a>. You'll need to modify both the function signature <em>and</em> function body.</p>
+<p>Tip: As the final step in the conversion, the built-in <a target="_blank" href="https://docs.python.org/3/library/functions.html#round"><code>round</code></a> function may be helpful.</p>
 <code-exercise-element exercise-name="celsius-to-fahrenheit">def celsius_to_fahrenheit():  # <- COMPLETE THIS
     """ Returns the Fahrenheit equivalent of the given Celsius temperature.
 
@@ -94,6 +134,7 @@ def fahrenheit_to_celsius(): # <- COMPLETE THIS
     """
     # YOUR CODE HERE</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
+
+{% block footer_scripts %}
 <script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

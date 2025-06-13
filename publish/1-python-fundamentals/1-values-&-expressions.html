@@ -16,23 +16,71 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Values & expressions</h1>
 <h3>Values</h3>
-<p>A computer program manipulates <bold>values</bold>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
+<p>A computer program manipulates <strong>values</strong>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
 <p>In Python and most languages, each value has a certain data type. Some basic types:</p>
-<ul><li><p>An <bold>integer</bold> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
-<li><p>A <bold>float</bold> is a number that <italic>does</italic> have something after the decimal, even if that something is a 0. Floating-point numbers are stored differently in computers and are treated differently in arithmetic calculations, so it's important to know whether you want a float or an integer. Examples: <code>3.14159</code> , <code>4.5</code>, <code>-2.0</code></p></li>
-<li><p>A <bold>Boolean</bold> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
-<li><p>A <bold>string</bold> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
-<p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in a few weeks.</p>
+<ul><li><p>An <strong>integer</strong> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
+<li><p>A <strong>float</strong> is a number that <em>does</em> have something after the decimal, even if that something is a 0. Floating-point numbers are stored differently in computers and are treated differently in arithmetic calculations, so it's important to know whether you want a float or an integer. Examples: <code>3.14159</code> , <code>4.5</code>, <code>-2.0</code></p></li>
+<li><p>A <strong>Boolean</strong> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
+<li><p>A <strong>string</strong> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
+<p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in later units.</p>
 <h3>Expressions</h3>
-<p>Computer programs use <bold>expressions</bold> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
+<p>Computer programs use <strong>expressions</strong> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
 <pre><code>18 + 69     # Results in 87
 
 2021 - 37   # Results in 1984
@@ -67,7 +115,7 @@
 <pre><code># Type the expression below, and click Run to see the result
 7</code></pre>
 <h3>String expressions</h3>
-<p>The most basic way to manipulate string values is <bold>concatenation</bold>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
+<p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
 <pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
 <p>If you want a whitespace between the strings you're concatenating, you need to explicitly put a space inside one of the strings:</p>
 <pre><code>"hola " + "mundo"      # Results in "hola mundo"</code></pre>
@@ -78,7 +126,7 @@
 <p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
 <pre><code>"firstname" + "othername" + "lastname"</code></pre>
 <h3>Call expressions</h3>
-<p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <link>built-in functions</link>, which means it can be used inside any Python program anywhere.</p>
+<p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
 <p>A few more handy built-ins:</p>
 <pre><code>max(50, 300)  # Results in 300
 
@@ -98,6 +146,8 @@ sub(2021, 37)</code></pre>
 
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

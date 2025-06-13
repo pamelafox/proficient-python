@@ -16,25 +16,75 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Object-oriented programming</h1>
-<p>Our programs so far have consisted of functions intermixed with variables. This is a common way of writing programs when they are small and focused on computational functions, but as programs become larger and revolve more around data, Python programmers often use an approach known as <bold>object-oriented programming (OOP)</bold>.</p>
+<p>Our programs so far have consisted of functions intermixed with variables. This is a common way of writing programs when they are small and focused on computational functions, but as programs become larger and revolve more around data, Python programmers often use an approach known as <strong>object-oriented programming (OOP)</strong>.</p>
 <p>Object-oriented programming includes:</p>
 <ul><li><p>A way to describe a type of complex data, such as a bank account which has an associated account owner, a current balance, a history of deposits/withdrawals, etc.</p></li>
 <li><p>A way to bundle together data with related functionality. For a bank account, it might need functions for withdrawing money, depositing money, closing the account, transferring between accounts, etc.</p></li></ul>
-<p>We can have multiple instances of each type of data, and we consider each of them to be an <bold>object</bold>. For example, my savings account could be one object and my checking account could be another object. Since they're both bank accounts, I could deposit and transfer into either of them.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv8ybf00131498cg8i5e52/Intro to Python OOP diagrams (1).png"></p>
+<p>We can have multiple instances of each type of data, and we consider each of them to be an <strong>object</strong>. For example, my savings account could be one object and my checking account could be another object. Since they're both bank accounts, I could deposit and transfer into either of them.</p>
+<p><img src="../images/object-oriented-programming-account-transfer.png" alt="A diagram showing a deposit into a checking account and a transfer into a savings account"></p>
 <p>There might be some functionality specific to savings accounts versus checking accounts, and object-oriented programming also gives us a way to declare that a particular type of object is similar to another type, but also differs in some ways.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv96l500151498asbm12el/OOP_inheritance.png"></p>
-<p>As it turns out, we've been using objects this whole time: <italic>every</italic> piece of data in Python is an object of a particular type. Integers are type <code>int</code>, floating point numbers are type <code>float</code>, strings are type <code>string</code>, lists are type <code>list</code>, dictionaries are type <code>dict</code>. Each of the types have associated functionality (<bold>methods</bold>), and that's why we can call <code>split()</code> on any string object, or call <code>pop()</code> on any list object.</p>
-<p>What we'll learn this week is how we can declare our own types of objects, thanks to a mechanism called <bold>classes</bold>. Let's dive in!</p>
+<p><img src="../images/object-oriented-programming-account-types.png" alt="A tree diagram showing a Bank Account type with Checking Account and Saving Account types below"></p>
+<p>As it turns out, we've been using objects this whole time: <em>every</em> piece of data in Python is an object of a particular type. Integers are type <code>int</code>, floating point numbers are type <code>float</code>, strings are type <code>string</code>, lists are type <code>list</code>, dictionaries are type <code>dict</code>. Each of the types have associated functionality (<strong>methods</strong>), and that's why we can call <code>split()</code> on any string object, or call <code>pop()</code> on any list object.</p>
+<p>What we'll learn this unit is how we can declare our own types of objects, thanks to a mechanism called <strong>classes</strong>. Let's dive in!</p>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -4,8 +4,8 @@
 <h1>Files</h1>
 <p>One source of input for computer programs is a file stored in the local file system. You could write a program that checked a text document for spelling errors, or like you did in project 2, a program to apply filters to an image file.</p>
 <p>There are two types of files:</p>
-<p><bold>Text files</bold> contain one or more lines that contain text characters, encoded according to a character encoding (like UTF-8). Each line in a text file ends with a control character. Unfortunately, the character varies based on the operating system. When a text file is created on a Mac, lines end with <code>"\n"</code>. For Unix-created files, lines end with <code>"\r"</code>. And annoyingly, on Windows, lines end with both characters, <code>"\r\n"</code>. We'll need to keep this in mind when we read a file, if we're trying to break it up into lines.</p>
-<p>Anything that's not a text file is a <bold>binary file</bold>. The bytes in a binary file are intended to be interpreted in some other way, typically dictated by the file extension. For example, all of these are binary files:</p>
+<p><strong>Text files</strong> contain one or more lines that contain text characters, encoded according to a character encoding (like UTF-8). Each line in a text file ends with a control character. Unfortunately, the character varies based on the operating system. When a text file is created on a Mac, lines end with <code>"\n"</code>. For Unix-created files, lines end with <code>"\r"</code>. And annoyingly, on Windows, lines end with both characters, <code>"\r\n"</code>. We'll need to keep this in mind when we read a file, if we're trying to break it up into lines.</p>
+<p>Anything that's not a text file is a <strong>binary file</strong>. The bytes in a binary file are intended to be interpreted in some other way, typically dictated by the file extension. For example, all of these are binary files:</p>
 <ul><li><p>Images (with extensions such as GIF/JPG/PNG)</p></li>
 <li><p>Audio (e.g. WAV/MP3)</p></li>
 <li><p>Video (e.g. MOV/MP4)</p></li>
@@ -18,11 +18,11 @@
 <p>It's necessary to explicitly close the file at the end, since if you don't, the operating system won't let any other processes mess with that file.</p>
 <p>Let's see how to write the code to make those steps happen.</p>
 <h3>Opening files</h3>
-<p>The global built-in function <link><code>open</link></code><code>(file, mode)</code> opens a file and returns a file object. The first argument is the path to the file, while the second argument specifies what we want to do with that file, like read or write it. The following code opens "myinfo.txt" in a read-only mode:</p>
+<p>The global built-in function <a target="_blank" href="https://docs.python.org/3/library/functions.html#open"><code>open(file, mode)</code></a> opens a file and returns a file object. The first argument is the path to the file, while the second argument specifies what we want to do with that file, like read or write it. The following code opens "myinfo.txt" in a read-only mode:</p>
 <pre><code>open("myinfo.txt", mode="r")</code></pre>
 <p>Here are the most common modes:</p>
 <p>Mode Meaning Description r Read If the file does not exist, this raises an error. w Write If the file does not exist, this mode creates it. If file already exists, this mode deletes all data. a Append If the file does not exist, this mode creates it. If file already exists, this mode appends data to end of existing data. b Binary Use for binary files along with r or w more.</p>
-<p>The function also takes additional optional arguments and modes, described in <link>the docs</link>.</p>
+<p>The function also takes additional optional arguments and modes, described in <a target="_blank" href="https://docs.python.org/3/library/functions.html#open">the docs</a>.</p>
 <h3>Reading the file</h3>
 <p>Once we have a file object, there are several methods that we can use to read the contents of the file.</p>
 <p>The <code>read</code> method reads the entire contents of the file into a string:</p>
@@ -34,7 +34,7 @@ file_lines = my_file.readlines()
 
 for line in file_lines:
     print(line)</code></pre>
-<p>Python also provides an option for reading a file <bold>lazily</bold> - just one line at a time - by using a <code>for</code> loop.</p>
+<p>Python also provides an option for reading a file <strong>lazily</strong> - just one line at a time - by using a <code>for</code> loop.</p>
 <pre><code>rows = []
 my_file =  open("longbook.txt", mode="r")
 for line in my_file:
@@ -70,14 +70,14 @@ print(lines)</code></pre>
 <h3>Online files</h3>
 <p>The <code>open(path)</code> function only works for opening local files in the file system. What if there's a file online that you want to work with? I actually work more with online files than local files, myself!</p>
 <p>In the Python standard library, the <code>urllib.request</code> module includes a <code>urlopen(url)</code> function in the urllib module that can open a file at a URL and return a file-like object.</p>
-<p>This code opens a text file that contains an entire book, <link>The Count of Monte Cristo</link>:</p>
+<p>This code opens a text file that contains an entire book, <a target="_blank" href="https://www.gutenberg.org/ebooks/1184">The Count of Monte Cristo</a>:</p>
 <pre><code>import urllib.request
 
 text_file = urllib.request.urlopen('https://www.gutenberg.org/cache/epub/1184/pg1184.txt')</code></pre>
 <p>Once the file is opened, we can use similar methods as discussed above.</p>
 <p>This line of code reads the whole book into a single string:</p>
 <pre><code>whole_book = text_file.read()</code></pre>
-<p>However, there's one significant difference between that string and the string returned when reading a local file. The variable above now stores a <bold>byte string</bold>, which Python displays with a lowercase b in front:</p>
+<p>However, there's one significant difference between that string and the string returned when reading a local file. The variable above now stores a <strong>byte string</strong>, which Python displays with a lowercase b in front:</p>
 <pre><code>b'\xef\xbb\xbfThe Count of Monte Cristo, by Alexandre Dumas, p\xc3\xa8re.'</code></pre>
 <p>A byte string is a series of bytes (8-bit sequences), which is how computers actually store data behind the strings. Python byte strings do allow the first 128 bytes to be shown as letters, but there are thousands of characters beyond those. That's why character encodings exist, to specify how a sequence of bytes corresponds to a particular character. The most common encoding is UTF-8, especially for files in English or European languages.</p>
 <p>In order to translate that byte string into a string of characters, we must know the encoding of the original data, and then call <code>decode(encoding)</code> on the byte string.</p>

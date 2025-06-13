@@ -16,10 +16,58 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>String operations</h1>
@@ -40,7 +88,7 @@ for letter in alphabet:
 
 true_start_sound = illness[1]   # Stores 'n'
 last_letter = illness[-1]       # Stores 's'</code></pre>
-<p>However, strings are different from lists in that they are <bold>immutable</bold>, meaning they cannot be changed after they're created. Using bracket notation to try to change a character will result in an error.</p>
+<p>However, strings are different from lists in that they are <strong>immutable</strong>, meaning they cannot be changed after they're created. Using bracket notation to try to change a character will result in an error.</p>
 <pre><code>illness[0] = "n"   # 🚫 Error!</code></pre>
 <p>We can also use bracket notation to slice parts of the string, from a start to (just before) an end index:</p>
 <pre><code>how_small = illness[13:24]      # Stores 'microscopic'
@@ -52,7 +100,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
 <p>TODO: Quiz</p>
 <p>TODO: Quiz</p>
 <h3>String methods</h3>
-<p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <italic>none</italic> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
+<p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <em>none</em> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
 <p>For example, the <code>upper()</code> method returns an uppercase version of a string.</p>
 <pre><code>request = "Please wash the dishes from your cookie disaster."
 demand = request.upper()</code></pre>
@@ -107,7 +155,7 @@ demand = request.upper()</code></pre>
 <td>
 <p>Returns a string which is the concatenation of strings in the iterable object.</p>
 </table>
-<p>More methods are described in the <link>Python documentation</link>.</p>
+<p>More methods are described in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#string-methods">Python documentation</a>.</p>
 <p>Remember that these are methods, not functions, so when using them, you always write the variable name first, then the dot, then the method name.</p>
 <p>TODO: Quiz</p>
 <h3>Splitting and joining</h3>
@@ -135,6 +183,8 @@ grocery_items = my_groceries.split(',')   # Stores ["apples", "bananas", "carrot
 "\n".join(poem_lines)</code></pre>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -16,23 +16,71 @@
     background: #eee;
     padding: 8px;
   }
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   
   </style>
 </head>
 <body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Fundamentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Loops & Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Strings & Dictionaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">OOP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="container container-md">
   
 <h1>Nested call expressions</h1>
 <h3>Anatomy of a call expression</h3>
 <p>Before we dive into more complex call expressions, let's first understand a simple call expression more deeply. Remember, a call expression is any expression that calls a function, like <code>pow(2, 100)</code>. The diagram below is for a call expression using the <code>add</code> function.</p>
-<p><img src="callexpression.png">Here's how Python evaluates that call expression:</p>
-<ol><li><p>It first evaluates the <bold>operator</bold>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
-<li><p>It then evaluates the <bold>operands</bold>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
-<li><p>Finally, it <bold>applies</bold> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
+<p><img src="../images/callexpression.png">Here's how Python evaluates that call expression:</p>
+<ol><li><p>It first evaluates the <strong>operator</strong>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
+<li><p>It then evaluates the <strong>operands</strong>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
+<li><p>Finally, it <strong>applies</strong> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
 <p>TODO: Quiz</p>
 <h3>Nested call expressions</h3>
-<p>Now let's look at a <bold>nested call expression</bold>: a call expression where the expressions themselves are <italic>also</italic> call expressions.</p>
-<p><img src="callexpression_nested.png"></p>
+<p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
+<p><img src="../images/callexpression_nested.png"></p>
 <p>If we were asked to evaluate that as a human, logically, we'd realize that we can't compute the outer <code>add</code> function until we know the operands, and we can't even compute that inner <code>add</code> function until we know the result of the first <code>mul</code> operation.</p>
 <p>So we might start from the inside out, computing like this:</p>
 <pre><code>add(add(6, mul(4, 6)), mul(3, 5))
@@ -43,11 +91,11 @@ add(        30       , mul(3, 5))
 add(        30       ,    15    )
 add(        30       ,    15    )
 45</code></pre>
-<p>The computer takes a similar approach, creating an <bold>expression tree</bold>. It applies the same 3-step process from before to each call expression in the tree, starting with the bottom-most expressions, until it's able to finally do the final computation.</p>
-<p><img src="callexpression_tree.png">📺  Here's <link>a video walkthrough</link> of that call expression tree which shows the order of the calls and return values.</p>
+<p>The computer takes a similar approach, creating an <strong>expression tree</strong>. It applies the same 3-step process from before to each call expression in the tree, starting with the bottom-most expressions, until it's able to finally do the final computation.</p>
+<p><img src="../images/callexpression_tree.png">📺  Here's <a target="_blank" href="https://www.youtube.com/watch?v=vBx30J-NV9I">a video walkthrough</a> of that call expression tree which shows the order of the calls and return values.</p>
 <p>TODO: Quiz</p>
 <h3>Exercise: Operator expressions</h3>
-<p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <link>table that maps operators to functions</link> particularly helpful.</p>
+<p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
 <ul><li><p><code>30 + 2</code></p></li>
 <li><p><code>30 - 2</code></p></li>
 <li><p><code>30 * 2</code></p></li>
@@ -64,6 +112,8 @@ add(        30       ,    15    )
 add(30, 2)</code></pre>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>
