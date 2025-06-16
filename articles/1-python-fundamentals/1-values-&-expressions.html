@@ -1,36 +1,17 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Values & expressions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Values & expressions{% endblock %}
+{% block content %}
 <h1>Values & expressions</h1>
 <h3>Values</h3>
-<p>A computer program manipulates <bold>values</bold>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
+<p>A computer program manipulates <strong>values</strong>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
 <p>In Python and most languages, each value has a certain data type. Some basic types:</p>
-<ul><li><p>An <bold>integer</bold> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
-<li><p>A <bold>float</bold> is a number that <italic>does</italic> have something after the decimal, even if that something is a 0. Floating-point numbers are stored differently in computers and are treated differently in arithmetic calculations, so it's important to know whether you want a float or an integer. Examples: <code>3.14159</code> , <code>4.5</code>, <code>-2.0</code></p></li>
-<li><p>A <bold>Boolean</bold> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
-<li><p>A <bold>string</bold> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
-<p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in a few weeks.</p>
+<ul><li><p>An <strong>integer</strong> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
+<li><p>A <strong>float</strong> is a number that <em>does</em> have something after the decimal, even if that something is a 0. Floating-point numbers are stored differently in computers and are treated differently in arithmetic calculations, so it's important to know whether you want a float or an integer. Examples: <code>3.14159</code> , <code>4.5</code>, <code>-2.0</code></p></li>
+<li><p>A <strong>Boolean</strong> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
+<li><p>A <strong>string</strong> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
+<p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in later units.</p>
 <h3>Expressions</h3>
-<p>Computer programs use <bold>expressions</bold> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
+<p>Computer programs use <strong>expressions</strong> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
 <pre><code>18 + 69     # Results in 87
 
 2021 - 37   # Results in 1984
@@ -62,10 +43,11 @@
 <li><p>Divide by 10</p></li>
 <li><p>Add 11</p></li>
 <li><p>Divide by 100</p></li></ol>
-<pre><code># Type the expression below, and click Run to see the result
-7</code></pre>
+<code-exercise-element name="magic-birthday-math">
+# Type the expression below, and click "Run code" to see the result
+7</code-exercise-element>
 <h3>String expressions</h3>
-<p>The most basic way to manipulate string values is <bold>concatenation</bold>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
+<p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
 <pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
 <p>If you want a whitespace between the strings you're concatenating, you need to explicitly put a space inside one of the strings:</p>
 <pre><code>"hola " + "mundo"      # Results in "hola mundo"</code></pre>
@@ -74,9 +56,9 @@
 <p>String concatenation will soon become very useful, once we learn how to use variables and functions.</p>
 <h3>Exercise: Say my name</h3>
 <p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
-<pre><code>"firstname" + "othername" + "lastname"</code></pre>
+<code-exercise-element name="your-name-string">"firstname" + "othername" + "lastname"</code-exercise-element>
 <h3>Call expressions</h3>
-<p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <link>built-in functions</link>, which means it can be used inside any Python program anywhere.</p>
+<p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
 <p>A few more handy built-ins:</p>
 <pre><code>max(50, 300)  # Results in 300
 
@@ -92,9 +74,10 @@ add(18, 69)</code></pre>
 <pre><code>from operator import sub
 
 sub(2021, 37)</code></pre>
-<p>Why the heck would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+<p>Why would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

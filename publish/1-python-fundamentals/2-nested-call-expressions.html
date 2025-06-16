@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Nested call expressions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 14px;
+  }
+  
+  .cm-editor {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  /* Code that's not in a pre block (inline code) */
+  :not(pre) > code {
+    background: #f0f0f0;
+    color: #800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  
+  /* Article heading styles */
+  .container h1 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+    font-weight: 600;
+  }
+  
+  .container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .container h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .container h4, .container h5, .container h6 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraph spacing */
+  .container p, .container details {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Active navbar link */
+  .navbar-nav .nav-link.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: #f8f9fa;
+    overflow-y: auto;
+    transition: all 0.3s;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar.collapsed {
+    margin-left: -280px;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 20px;
+    color: #333;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background: #e9ecef;
+    border-left: 3px solid #007bff;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .content-wrapper {
+    margin-left: 0;
+    transition: all 0.3s;
+  }
+  
+  .content-wrapper.sidebar-open {
+    margin-left: 280px;
+  }
+  
+  /* Only apply sidebar margin on larger screens */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+    
+    .content-wrapper.sidebar-collapsed {
+      margin-left: 0;
+    }
+    
+    .sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  /* On mobile, sidebar covers content when open */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      margin-left: -280px;
+    }
+    
+    .sidebar.expanded {
+      margin-left: 0;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-heading">Python Fundamentals</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/4-functions.html">Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/6-more-on-functions.html">More on Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/7-logical-expressions.html">Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/9-conditionals.html">Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/11-user-input.html">User Input</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Loops & Lists</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/2-exercise-while-loops.html">Exercise: While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/3-for-loops-&-ranges.html">For Loops & Ranges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/4-lists.html">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7-list-mutation.html">List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/8-more-on-lists.html">More on Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/9-nested-lists.html">Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Strings & Dictionaries</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/2-exercise-string-formatting.html">Exercise: String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/3-string-operations.html">String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/8-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Object-Oriented Programming</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/2-classes.html">Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/4-more-on-classes.html">More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/5-exercise-more-on-classes.html">Exercise: More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/8-more-on-inheritance.html">More on Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on Inheritance (Optional)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/10-composition.html">Composition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content-wrapper" id="content">
+  <div class="container container-md">
+    
+<h1>Nested call expressions</h1>
+<h3>Anatomy of a call expression</h3>
+<p>Before we dive into more complex call expressions, let's first understand a simple call expression more deeply. Remember, a call expression is any expression that calls a function, like <code>pow(2, 100)</code>. The diagram below is for a call expression using the <code>add</code> function.</p>
+<p><img src="../images/callexpression.png">Here's how Python evaluates that call expression:</p>
+<ol><li><p>It first evaluates the <strong>operator</strong>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
+<li><p>It then evaluates the <strong>operands</strong>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
+<li><p>Finally, it <strong>applies</strong> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
+
+<single-question-quiz-element name="fix-call-expression">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-4 fw-bold">Is any additional code required for the above call expression to work?</p>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option1" value="0" data-correct="false" />
+              <label class="form-check-label" for="option1"> No, <code>add(18, 69)</code> should work on its own. </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                This is incorrect. Since <code>add</code> comes from the <code>operator</code> module, it must be imported
+                first. Otherwise Python does not know where to find the <code>add</code> function definition.
+              </aside>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option2" value="1" data-correct="false" />
+              <label class="form-check-label" for="option2"> Yes, there needs to be an import statement below it. </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                This answer is almost correct, but the import statement needs to come before the line of code.
+              </aside>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option3" value="2" data-correct="true" />
+              <label class="form-check-label" for="option3"> Yes, there needs to be an import statement above it. </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                This answer is correct, there needs to be <code>from operator import add</code> before this line of code.
+              </aside>
+            </div>
+
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+            <aside class="alert alert-secondary mt-3" style="display: none">
+              The <code>add</code> function is not actually one of the globally available built-in Python functions (like
+              <code>pow</code>, <code>max</code>, <code>min</code>, and <code>abs</code>), so it must be imported from the
+              <code>operator</code> module. There needs to be a line above the code, <code>from operator import add</code>.
+            </aside>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+<h3>Nested call expressions</h3>
+<p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
+<p><img src="../images/callexpression_nested.png"></p>
+<p>If we were asked to evaluate that as a human, logically, we'd realize that we can't compute the outer <code>add</code> function until we know the operands, and we can't even compute that inner <code>add</code> function until we know the result of the first <code>mul</code> operation.</p>
+<p>So we might start from the inside out, computing like this:</p>
+<pre><code>add(add(6, mul(4, 6)), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(add(6,    24    ), mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       , mul(3, 5))
+add(        30       ,    15    )
+add(        30       ,    15    )
+45</code></pre>
+<p>The computer takes a similar approach, creating an <strong>expression tree</strong>. It applies the same 3-step process from before to each call expression in the tree, starting with the bottom-most expressions, until it's able to finally do the final computation.</p>
+<p><img src="../images/callexpression_tree.png">📺  Here's <a target="_blank" href="https://www.youtube.com/watch?v=vBx30J-NV9I">a video walkthrough</a> of that call expression tree which shows the order of the calls and return values.</p>
+
+
+<single-question-quiz-element name="nested-call-expression">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-4 fw-bold">What's the final step for that call expression?</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-d2d59621-793f-4915-9d19-3e13820a6143"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-d2d59621-793f-4915-9d19-3e13820a6143"
+                ><p>Looking up the outer <code>add</code> function to make sure it's defined in the environment.</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>No, that's actually the very first step.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f26b957f-d419-4849-a4da-1d77b180dfc5"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-f26b957f-d419-4849-a4da-1d77b180dfc5"
+                ><p>Calling the <code>add</code> function on the values 30 and 15</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  That's correct! Once it finally has evaluated the operands to find the values of 30 and 15, it can apply the
+                  <code>add</code> function to them.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f9a29f81-2db3-4d16-85e0-da7ed3145eee"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-f9a29f81-2db3-4d16-85e0-da7ed3145eee"
+                ><p>Calling the <code>mul</code> function on the values 4 and 6</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>No, this step is actually done fairly early, since it's the inner-most expression.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-fb4b0d56-aac3-486e-9f14-40fcdc17eb8d"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-fb4b0d56-aac3-486e-9f14-40fcdc17eb8d"
+                ><p>Calling the <code>add</code> function on the values 6 and 24</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  No, that sounds like the step that evaluates the inner <code>add</code>, not the final step of applying the
+                  outer <code>add</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      
+<h3>Exercise: Operator expressions</h3>
+<p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
+<ul><li><p><code>30 + 2</code></p></li>
+<li><p><code>30 - 2</code></p></li>
+<li><p><code>30 * 2</code></p></li>
+<li><p><code>30 / 2</code></p></li>
+<li><p><code>30 // 2</code></p></li>
+<li><p><code>30 % 2</code></p></li>
+<li><p><code>30 + (2 * 4)</code></p></li>
+<li><p><code>3 * (10 - 2)</code></p></li>
+<li><p><code>(3 ** (365/52)) - 1</code></p></li>
+<li><p><code>(25 // 4) - (25 / 4)</code></p></li></ul>
+
+<code-exercise-element name="your-name-string">from operator import add, sub, mul, truediv, floordiv, mod
+
+# After adding a call expression, run code to see if its correct
+add(30, 2)</code-exercise-element>
+
+
+  </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  // Sidebar toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    // Function to toggle sidebar
+    function toggleSidebar() {
+      if (window.innerWidth >= 992) {
+        // On desktop
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('sidebar-collapsed');
+      } else {
+        // On mobile
+        sidebar.classList.toggle('expanded');
+      }
+    }
+    
+    // Add click event to toggle button
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    
+    // Set initial state based on screen size
+    function setInitialState() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('expanded');
+        content.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Set initial state on page load
+    setInitialState();
+    
+    // Update on window resize
+    window.addEventListener('resize', setInitialState);
+    
+    // Highlight active link in navbar and sidebar
+    const currentPath = window.location.pathname;
+    
+    // Find all links in the navbar and sidebar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+    
+    // Function to check if a link corresponds to the current page
+    function isActivePage(linkHref) {
+      // Get the path from the href
+      const linkPath = new URL(linkHref, window.location.origin).pathname;
+      
+      // Extract just the filename part from both paths
+      const currentFile = currentPath.split('/').pop();
+      const linkFile = linkPath.split('/').pop();
+      
+      // Exact match for the full path
+      if (currentPath === linkPath) {
+        return true;
+      }
+      
+      // Exact match for the filename
+      if (currentFile === linkFile) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    // Highlight active navbar link
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract section number (e.g., "1-python-fundamentals") from both paths
+        const linkSection = href.split('/').filter(part => part.match(/^\d-/))[0];
+        const currentSection = currentPath.split('/').filter(part => part.match(/^\d-/))[0];
+        
+        // If we're in the same section, highlight this navbar link
+        if (linkSection && currentSection && linkSection === currentSection) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'section');
+        }
+      }
+    });
+    
+    // Highlight active sidebar link
+    sidebarLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && isActivePage(href)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Expand section if it's in a collapsed section
+        const parentUl = link.closest('ul');
+        if (parentUl) {
+          parentUl.classList.add('show');
+        }
+      }
+    });
+    
+    // Debug info
+    console.log('Current path:', currentPath);
+    console.log('Current file:', currentPath.split('/').pop());
+    
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+
+
+</body>
+</html>

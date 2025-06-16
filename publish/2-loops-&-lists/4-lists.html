@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Lists</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 14px;
+  }
+  
+  .cm-editor {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  /* Code that's not in a pre block (inline code) */
+  :not(pre) > code {
+    background: #f0f0f0;
+    color: #800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  
+  /* Article heading styles */
+  .container h1 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+    font-weight: 600;
+  }
+  
+  .container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .container h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .container h4, .container h5, .container h6 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraph spacing */
+  .container p, .container details {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Active navbar link */
+  .navbar-nav .nav-link.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: #f8f9fa;
+    overflow-y: auto;
+    transition: all 0.3s;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar.collapsed {
+    margin-left: -280px;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 20px;
+    color: #333;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background: #e9ecef;
+    border-left: 3px solid #007bff;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .content-wrapper {
+    margin-left: 0;
+    transition: all 0.3s;
+  }
+  
+  .content-wrapper.sidebar-open {
+    margin-left: 280px;
+  }
+  
+  /* Only apply sidebar margin on larger screens */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+    
+    .content-wrapper.sidebar-collapsed {
+      margin-left: 0;
+    }
+    
+    .sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  /* On mobile, sidebar covers content when open */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      margin-left: -280px;
+    }
+    
+    .sidebar.expanded {
+      margin-left: 0;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-heading">Python Fundamentals</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/4-functions.html">Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/6-more-on-functions.html">More on Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/7-logical-expressions.html">Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/9-conditionals.html">Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/11-user-input.html">User Input</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Loops & Lists</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/2-exercise-while-loops.html">Exercise: While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/3-for-loops-&-ranges.html">For Loops & Ranges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/4-lists.html">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7-list-mutation.html">List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/8-more-on-lists.html">More on Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/9-nested-lists.html">Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Strings & Dictionaries</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/2-exercise-string-formatting.html">Exercise: String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/3-string-operations.html">String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/8-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Object-Oriented Programming</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/2-classes.html">Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/4-more-on-classes.html">More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/5-exercise-more-on-classes.html">Exercise: More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/8-more-on-inheritance.html">More on Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on Inheritance (Optional)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/10-composition.html">Composition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content-wrapper" id="content">
+  <div class="container container-md">
+    
+<h1>Lists</h1>
+<p>A <strong>list</strong> is a data type that holds a sequence of related pieces of data. Lists are also known as arrays in many programming languages.</p>
+<p>The shortest list is the empty list, which we can construct with two square brackets:</p>
+<pre><code>members = []</code></pre>
+<p>An empty list doesn't seem very useful at first, but we'll soon learn how to add more items to empty lists.</p>
+<p>To construct lists with data inside, put the values between the brackets and separate the values by commas:</p>
+<pre><code>members = ["Pamela", "Tinu", "Brenda", "Kaya"]
+
+ages_of_kids = [1, 2, 7]
+
+prices = [79.99, 49.99, 89.99]</code></pre>
+<p>As you can see from those examples, lists can hold any Python data type. In fact, Python even lets you mix and match data types:</p>
+<pre><code>remixed = ["Pamela", 7, 79.99]</code></pre>
+<p>I wouldn't recommend that, personally, since a list should hold sequences of related data, and it's unclear how those items form a sequence or how they are related. But there may be some situations where it's helpful.</p>
+<h3>Accessing list items</h3>
+<p>It's possible to reference a specific item in a list by using <strong>bracket notation</strong>: the name of the variable, followed by square brackets with the item index inside.</p>
+<pre><code>list_name[index]</code></pre>
+<p>The index of items in a list starts at 0:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:   0     1     2     3     4</code></pre>
+<p>That means that the final item in a 5-item list has an index of 4, not 5. Here's how we would access each of the items in that list:</p>
+<pre><code>temps[0]  # 48.0
+temps[1]  # 30.5
+temps[2]  # 20.2
+temps[3]  # 99.0
+temps[4]  # 52.0</code></pre>
+<p>There is no item at index 5, so running <code>temps[5]</code> would result in the error "IndexError: list index out of range". The zero-indexing scheme is often a source of confusion, especially since there are a few languages that start list items at index 1, so this is another common source of off-by-one errors. 😱</p>
+<p>Python also allows for negative indexing, which goes backwards from the end of the list:</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+# Index:  -5    -4   -3    -2    -1</code></pre>
+<p>Using the indices looks like this:</p>
+<pre><code>temps[-1]  # 52.0
+temps[-2]  # 99.0</code></pre>
+<p>Once again, going too far will result in an error. In this case, since the negative indices start from -1 (not -0, since apparently negative zero is not a thing!), the first out-of-bounds index is <code>temps[-6]</code>.</p>
+<h3>Self-check: Favorite singers</h3>
+<p>Consider this list of my favorite musical artists:</p>
+<pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
+
+      <single-question-quiz-element name="fav-singers1">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Robyn"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-ad7b81dc-e9cc-4749-86e8-9bc663226d6d"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-ad7b81dc-e9cc-4749-86e8-9bc663226d6d"
+                ><p><code>fav_singers[0]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ Since "Robyn" is the first item, referencing the list at index 0 will retrieve it.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-2cc5b3cf-ef86-40ab-a168-fd376e57c855"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2cc5b3cf-ef86-40ab-a168-fd376e57c855"
+                ><p><code>fav_singers[1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌Since 1 is the index for the second item in the list, this would retrieve "Ed Sheeran" instead.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-dede712c-de8e-4946-b770-9e094fe1f140"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-dede712c-de8e-4946-b770-9e094fe1f140"
+                ><p><code>fav_singers[-1]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  ❌This negative index goes backwards from the end of the list, so this would retrieve "Ben Platt" instead.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-c9760bd4-1cd0-44ad-b7c5-5af0c663aa06"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-c9760bd4-1cd0-44ad-b7c5-5af0c663aa06"
+                ><p><code>fav_singers[-5]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌This negative index isn't negative enough; this would retrieve "Ed Sheeran".</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-551817e9-fbe9-47e2-a30e-da9e61d29128"
+                value="4"
+                data-correct="true" />
+              <label class="form-check-label" for="option-551817e9-fbe9-47e2-a30e-da9e61d29128"
+                ><p><code>fav_singers[-6]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>✅ This negative index would go backwards 6 items from the end of the list and retrieve "Robyn".</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+
+      <single-question-quiz-element name="fav-singers2">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question" data-shuffle>
+            <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Ben Platt"?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-1e738f46-7267-44f8-bc83-8c4276d1ea2d"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-1e738f46-7267-44f8-bc83-8c4276d1ea2d"
+                ><p><code>fav_singers[5]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ Since this is a 6-item list, the index of the final item is 5, so this expression successfully retrieves
+                  "Ben Platt".
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-577133ae-4e10-4a03-8477-401c32df4499"
+                value="1"
+                data-correct="false" />
+              <label class="form-check-label" for="option-577133ae-4e10-4a03-8477-401c32df4499"
+                ><p><code>fav_singers[6]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌This would result in an error, since the final index in a 6-item list is 5, not 6.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-b0beaad6-280e-4612-919e-854915a4977a"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-b0beaad6-280e-4612-919e-854915a4977a"
+                ><p><code>fav_singers[-0]</code></p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>❌An index of -0 is treated the same as an index of 0, so this would retrieve "Robyn".</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-9986fa5f-dca1-42c2-bad4-0e682655bd5a"
+                value="3"
+                data-correct="true" />
+              <label class="form-check-label" for="option-9986fa5f-dca1-42c2-bad4-0e682655bd5a"
+                ><p><code>fav_singers[-1]</code></p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  ✅ A negative index goes backwards from the end of the list, starting at -1, so this expression does retrieve
+                  "Ben Platt".
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+      
+<h3>List length</h3>
+<p>Python provides the global function <code>len()</code> to find out the length of a list (or any sequence).</p>
+<pre><code>attendees = ["Tammy", "Shonda", "Tina"]
+
+len(attendees) # Evaluates to: 3</code></pre>
+<p>The length of a list is how many items are in the list, which is different from the maximum index in a list. A list with a <code>len()</code> of 3 will have a maximum index of 2.</p>
+<p>You can also use <code>len()</code> on strings, since Python considers a string to be a type of sequence:</p>
+<pre><code>len("Supercalifragilisticexpialidocious")  # Evaluates to: 34</code></pre>
+<p>The length of a string is typically the number of characters. In actuality, it's reporting the number of Unicode code points in a string, and Western alphabet letters require only one code point. However, many modern emojis require multiple Unicode code points, like 🤷🏽‍♀️, so <code>len("🤷🏽‍♀️")</code> will actually report 5. I love emojis, but dang, programming with them is a pain.</p>
+
+  </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  // Sidebar toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    // Function to toggle sidebar
+    function toggleSidebar() {
+      if (window.innerWidth >= 992) {
+        // On desktop
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('sidebar-collapsed');
+      } else {
+        // On mobile
+        sidebar.classList.toggle('expanded');
+      }
+    }
+    
+    // Add click event to toggle button
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    
+    // Set initial state based on screen size
+    function setInitialState() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('expanded');
+        content.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Set initial state on page load
+    setInitialState();
+    
+    // Update on window resize
+    window.addEventListener('resize', setInitialState);
+    
+    // Highlight active link in navbar and sidebar
+    const currentPath = window.location.pathname;
+    
+    // Find all links in the navbar and sidebar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+    
+    // Function to check if a link corresponds to the current page
+    function isActivePage(linkHref) {
+      // Get the path from the href
+      const linkPath = new URL(linkHref, window.location.origin).pathname;
+      
+      // Extract just the filename part from both paths
+      const currentFile = currentPath.split('/').pop();
+      const linkFile = linkPath.split('/').pop();
+      
+      // Exact match for the full path
+      if (currentPath === linkPath) {
+        return true;
+      }
+      
+      // Exact match for the filename
+      if (currentFile === linkFile) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    // Highlight active navbar link
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract section number (e.g., "1-python-fundamentals") from both paths
+        const linkSection = href.split('/').filter(part => part.match(/^\d-/))[0];
+        const currentSection = currentPath.split('/').filter(part => part.match(/^\d-/))[0];
+        
+        // If we're in the same section, highlight this navbar link
+        if (linkSection && currentSection && linkSection === currentSection) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'section');
+        }
+      }
+    });
+    
+    // Highlight active sidebar link
+    sidebarLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && isActivePage(href)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Expand section if it's in a collapsed section
+        const parentUl = link.closest('ul');
+        if (parentUl) {
+          parentUl.classList.add('show');
+        }
+      }
+    });
+    
+    // Debug info
+    console.log('Current path:', currentPath);
+    console.log('Current file:', currentPath.split('/').pop());
+    
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+
+
+</body>
+</html>

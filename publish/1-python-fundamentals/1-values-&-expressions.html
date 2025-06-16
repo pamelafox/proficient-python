@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Values & expressions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 14px;
+  }
+  
+  .cm-editor {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  /* Code that's not in a pre block (inline code) */
+  :not(pre) > code {
+    background: #f0f0f0;
+    color: #800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  
+  /* Article heading styles */
+  .container h1 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+    font-weight: 600;
+  }
+  
+  .container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .container h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .container h4, .container h5, .container h6 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraph spacing */
+  .container p, .container details {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Active navbar link */
+  .navbar-nav .nav-link.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: #f8f9fa;
+    overflow-y: auto;
+    transition: all 0.3s;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar.collapsed {
+    margin-left: -280px;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 20px;
+    color: #333;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background: #e9ecef;
+    border-left: 3px solid #007bff;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .content-wrapper {
+    margin-left: 0;
+    transition: all 0.3s;
+  }
+  
+  .content-wrapper.sidebar-open {
+    margin-left: 280px;
+  }
+  
+  /* Only apply sidebar margin on larger screens */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+    
+    .content-wrapper.sidebar-collapsed {
+      margin-left: 0;
+    }
+    
+    .sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  /* On mobile, sidebar covers content when open */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      margin-left: -280px;
+    }
+    
+    .sidebar.expanded {
+      margin-left: 0;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-heading">Python Fundamentals</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/4-functions.html">Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/6-more-on-functions.html">More on Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/7-logical-expressions.html">Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/9-conditionals.html">Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/11-user-input.html">User Input</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Loops & Lists</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/2-exercise-while-loops.html">Exercise: While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/3-for-loops-&-ranges.html">For Loops & Ranges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/4-lists.html">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7-list-mutation.html">List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/8-more-on-lists.html">More on Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/9-nested-lists.html">Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Strings & Dictionaries</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/2-exercise-string-formatting.html">Exercise: String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/3-string-operations.html">String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/8-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Object-Oriented Programming</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/2-classes.html">Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/4-more-on-classes.html">More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/5-exercise-more-on-classes.html">Exercise: More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/8-more-on-inheritance.html">More on Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on Inheritance (Optional)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/10-composition.html">Composition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content-wrapper" id="content">
+  <div class="container container-md">
+    
+<h1>Values & expressions</h1>
+<h3>Values</h3>
+<p>A computer program manipulates <strong>values</strong>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
+<p>In Python and most languages, each value has a certain data type. Some basic types:</p>
+<ul><li><p>An <strong>integer</strong> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
+<li><p>A <strong>float</strong> is a number that <em>does</em> have something after the decimal, even if that something is a 0. Floating-point numbers are stored differently in computers and are treated differently in arithmetic calculations, so it's important to know whether you want a float or an integer. Examples: <code>3.14159</code> , <code>4.5</code>, <code>-2.0</code></p></li>
+<li><p>A <strong>Boolean</strong> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
+<li><p>A <strong>string</strong> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
+<p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in later units.</p>
+<h3>Expressions</h3>
+<p>Computer programs use <strong>expressions</strong> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
+<pre><code>18 + 69     # Results in 87
+
+2021 - 37   # Results in 1984
+
+2 * 100     # Results in 200
+
+100/2       # Results in 50.0
+
+100//2      # Results in 50
+
+2 ** 100    # Results in 1267650600228229401496703205376</code></pre>
+<p>Most of those arithmetic operators likely look familiar to you, so let’s just break down the not so familiar ones.</p>
+<p>The <code>/</code> operator is the “true division” operator; it treats both numbers as floating point numbers and always results in a floating point number (even if the first number evenly divided the second). Contrasted to that, <code>//</code> is the “floor division” operator; it calculates the result and then takes the “floor” of it, rounding down so that there is never anything after the decimal. It always results in an integer.</p>
+<p>The <code>**</code> operator is the exponentiation operator; it raises the first number to the power of the second number and returns the result. In math class, this is often written like 2^100, but Python decided to use <code>**</code> instead. The <code>^</code> symbol is actually an operator in Python, but it's used for a very different operation (“bitwise exclusive or”) that we won’t dive into here.</p>
+<p>You can put together multiple operators to make longer expressions, and use parentheses to group parts of the expression you want evaluated first. Parentheses work pretty much the same in programming as they do in math.</p>
+<pre><code>24 + ((60 * 6) / 12)</code></pre>
+<h3>Exercise: Magic birthday math</h3>
+<p>There's a neat math trick that we used to do back in the days of calculators. After a long sequence of calculations, your birthday will come out at the end as a floating point number! Try to use Python to pull off the math trick instead, using the editor below.</p>
+<p>The instructions:</p>
+<ol><li><p>Start with the number 7</p></li>
+<li><p>Multiply by the month of your birth</p></li>
+<li><p>Subtract 1</p></li>
+<li><p>Multiply by 13</p></li>
+<li><p>Add the day of your birth</p></li>
+<li><p>Add 3</p></li>
+<li><p>Multiply by 11</p></li>
+<li><p>Subtract the month of your birth</p></li>
+<li><p>Subtract the day of your birth</p></li>
+<li><p>Divide by 10</p></li>
+<li><p>Add 11</p></li>
+<li><p>Divide by 100</p></li></ol>
+<code-exercise-element name="magic-birthday-math">
+# Type the expression below, and click "Run code" to see the result
+7</code-exercise-element>
+<h3>String expressions</h3>
+<p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
+<pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
+<p>If you want a whitespace between the strings you're concatenating, you need to explicitly put a space inside one of the strings:</p>
+<pre><code>"hola " + "mundo"      # Results in "hola mundo"</code></pre>
+<p>Or concatenate a string that is simply whitespace:</p>
+<pre><code>"oi" + " " + "galera"  # Results in "oi galera!"</code></pre>
+<p>String concatenation will soon become very useful, once we learn how to use variables and functions.</p>
+<h3>Exercise: Say my name</h3>
+<p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
+<code-exercise-element name="your-name-string">"firstname" + "othername" + "lastname"</code-exercise-element>
+<h3>Call expressions</h3>
+<p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
+<p>A few more handy built-ins:</p>
+<pre><code>max(50, 300)  # Results in 300
+
+min(-1, -300) # Results in -300
+
+abs(-100)     # Results in 100</code></pre>
+<p>In fact, every arithmetic expression from above can also be expressed using function calls, but not all of the functions are built-in. Instead, we must import the functions from the Python standard library.</p>
+<p>So, to make a function call that adds two numbers, our program starts off with a line that imports the <code>add</code> function from the <code>operator</code> module:</p>
+<pre><code>from operator import add
+
+add(18, 69)</code></pre>
+<p>Or similarly, for subtraction:</p>
+<pre><code>from operator import sub
+
+sub(2021, 37)</code></pre>
+<p>Why would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
+
+
+  </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  // Sidebar toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    // Function to toggle sidebar
+    function toggleSidebar() {
+      if (window.innerWidth >= 992) {
+        // On desktop
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('sidebar-collapsed');
+      } else {
+        // On mobile
+        sidebar.classList.toggle('expanded');
+      }
+    }
+    
+    // Add click event to toggle button
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    
+    // Set initial state based on screen size
+    function setInitialState() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('expanded');
+        content.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Set initial state on page load
+    setInitialState();
+    
+    // Update on window resize
+    window.addEventListener('resize', setInitialState);
+    
+    // Highlight active link in navbar and sidebar
+    const currentPath = window.location.pathname;
+    
+    // Find all links in the navbar and sidebar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+    
+    // Function to check if a link corresponds to the current page
+    function isActivePage(linkHref) {
+      // Get the path from the href
+      const linkPath = new URL(linkHref, window.location.origin).pathname;
+      
+      // Extract just the filename part from both paths
+      const currentFile = currentPath.split('/').pop();
+      const linkFile = linkPath.split('/').pop();
+      
+      // Exact match for the full path
+      if (currentPath === linkPath) {
+        return true;
+      }
+      
+      // Exact match for the filename
+      if (currentFile === linkFile) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    // Highlight active navbar link
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract section number (e.g., "1-python-fundamentals") from both paths
+        const linkSection = href.split('/').filter(part => part.match(/^\d-/))[0];
+        const currentSection = currentPath.split('/').filter(part => part.match(/^\d-/))[0];
+        
+        // If we're in the same section, highlight this navbar link
+        if (linkSection && currentSection && linkSection === currentSection) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'section');
+        }
+      }
+    });
+    
+    // Highlight active sidebar link
+    sidebarLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && isActivePage(href)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Expand section if it's in a collapsed section
+        const parentUl = link.closest('ul');
+        if (parentUl) {
+          parentUl.classList.add('show');
+        }
+      }
+    });
+    
+    // Debug info
+    console.log('Current path:', currentPath);
+    console.log('Current file:', currentPath.split('/').pop());
+    
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+
+
+</body>
+</html>

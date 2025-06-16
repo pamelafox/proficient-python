@@ -1,0 +1,82 @@
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: List mutation{% endblock %}
+{% block content %}
+<h1>Exercise: List mutation</h1>
+<p>In these exercises, you'll practice list mutation using both list methods and bracket notation.</p>
+<h3>Add to sequence</h3>
+<p>Implement <code>add_to_sequence</code>, a function that adds a final item to the end of a list that is 1 more than the previous final item of the list.</p>
+
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>You should first use bracket notation to access the final item of the list.
+    <li>Then add one to the final item.
+    <li>Finally, use a list method to add that value to the end of the list.
+  </ul>
+  <details>
+    <summary>For a code template, expand this block.</summary>
+    <pre><code>last_num = sequence[__]
+sequence.______(last_num + 1)</code></pre>
+  </details>
+</details>
+
+<code-exercise-element name="add-to-sequence" show-tests>def add_to_sequence(sequence):
+    """
+    >>> nums = [1, 2, 3]
+    >>> add_to_sequence(nums)
+    >>> nums
+    [1, 2, 3, 4]
+    >>> nums2 = [26, 27]
+    >>> add_to_sequence(nums2)
+    >>> nums2
+    [26, 27, 28]
+    """</code-exercise-element>
+
+<h3>Malcolm in the Middle</h3>
+<p>Implement <code>malcolm_in_middle</code>, a function that adds a new element with the string 'malcolm' in the middle of the provided list. In the case of a list with odd elements, the string should be inserted to the "right" of the middle. See doctests for examples.</p>
+
+
+<details>
+  <summary>If you'd like more guidance, expand this block.</summary>
+  <ul>
+    <li>Your solution can be a single line of code.</li>
+    <li>Your code should use a list method to insert the new element.</li>
+    <li>Your code needs to calculate the index based on the current length of the list.</li>
+  </ul>
+  <details>
+    <summary>For a code template, expand this block.</summary>
+    <pre><code>sequence.________(___________, 'malcolm')</code></pre>
+  </details>
+</details>
+
+<code-exercise-element name="malcolm-in-middle" show-tests>def malcolm_in_middle(sequence):
+    """
+    >>> kids = ['jamie', 'dewey', 'reese', 'francis']
+    >>> malcolm_in_middle(kids)
+    >>> kids
+    ['jamie', 'dewey', 'malcolm', 'reese', 'francis']
+    >>> kids2 = ['hunter', 'pamela', 'oliver']
+    >>> malcolm_in_middle(kids2)
+    >>> kids2
+    ['hunter', 'pamela', 'malcolm', 'oliver']
+    """</code-exercise-element>
+
+<h3>Double time</h3>
+<p>Implement <code>double_time</code>, a function that doubles each element in the provided list.</p>
+<p><em>Tip: Remember there are several ways to loops through lists. Which way will work better here?</em></p>
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=double_time">Parsons Puzzle version</a> first.</p>
+<code-exercise-element name="double-time" show-tests>def double_time(sequence):
+    """
+    >>> nums = [1, 2, 3]
+    >>> double_time(nums)
+    >>> nums
+    [2, 4, 6]
+    >>> nums2 = [-1, -4]
+    >>> double_time(nums2)
+    >>> nums2
+    [-2, -8]
+    """</code-exercise-element>
+{% endblock %}
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

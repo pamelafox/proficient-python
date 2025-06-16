@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: List mutation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 14px;
+  }
+  
+  .cm-editor {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  /* Code that's not in a pre block (inline code) */
+  :not(pre) > code {
+    background: #f0f0f0;
+    color: #800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  
+  /* Article heading styles */
+  .container h1 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+    font-weight: 600;
+  }
+  
+  .container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .container h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .container h4, .container h5, .container h6 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraph spacing */
+  .container p, .container details {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Active navbar link */
+  .navbar-nav .nav-link.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: #f8f9fa;
+    overflow-y: auto;
+    transition: all 0.3s;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar.collapsed {
+    margin-left: -280px;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 20px;
+    color: #333;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background: #e9ecef;
+    border-left: 3px solid #007bff;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .content-wrapper {
+    margin-left: 0;
+    transition: all 0.3s;
+  }
+  
+  .content-wrapper.sidebar-open {
+    margin-left: 280px;
+  }
+  
+  /* Only apply sidebar margin on larger screens */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+    
+    .content-wrapper.sidebar-collapsed {
+      margin-left: 0;
+    }
+    
+    .sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  /* On mobile, sidebar covers content when open */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      margin-left: -280px;
+    }
+    
+    .sidebar.expanded {
+      margin-left: 0;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-heading">Python Fundamentals</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/4-functions.html">Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/6-more-on-functions.html">More on Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/7-logical-expressions.html">Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/9-conditionals.html">Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/11-user-input.html">User Input</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Loops & Lists</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/2-exercise-while-loops.html">Exercise: While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/3-for-loops-&-ranges.html">For Loops & Ranges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/4-lists.html">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7-list-mutation.html">List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/8-more-on-lists.html">More on Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/9-nested-lists.html">Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Strings & Dictionaries</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/2-exercise-string-formatting.html">Exercise: String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/3-string-operations.html">String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/8-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Object-Oriented Programming</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/2-classes.html">Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/4-more-on-classes.html">More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/5-exercise-more-on-classes.html">Exercise: More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/8-more-on-inheritance.html">More on Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on Inheritance (Optional)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/10-composition.html">Composition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content-wrapper" id="content">
+  <div class="container container-md">
+    
+<h1>List mutation</h1>
+<p>A list in Python is a <strong>mutable</strong> data type, which means you can change the values stored inside them.</p>
+<p>The following code initializes a list of 5 numbers, and then changes the contents at two indices.</p>
+<pre><code>temps = [48.0, 30.5, 20.2, 99.0, 52.0]
+temps[2] = 22.22
+temps[-1] = 55.55</code></pre>
+<p>Just like we used bracket notation to access items in a list, we can use it to change items in a list. All the indexing rules are the same, so the code above changes the third item (20.2 -> 22.22) and the final item (52.0 -> 55.55).</p>
+<p>Our code is subject to the same off-by-one errors, too. Trying to change an item past the final index results in an error:</p>
+<pre><code>temps[5] = 111.11  # 🚫 Error!</code></pre>
+<h3>Mutation vs. re-assignment</h3>
+<p>You might think that all the data types we've seen so far are mutable, since we could write code like:</p>
+<pre><code>x = 5
+x = 10</code></pre>
+<p>However, re-assignment isn't the same as mutation. That re-assignment of <code>x</code> creates a brand new number, probably storing it somewhere else in computer memory, and points <code>x</code> at that new number. That's different from mutation, which will change parts of an existing object in memory, keeping the name pointing at the same object in memory.</p>
+<p>For lists, we can also do re-assignment, to point a variable at a whole new list object in memory. That looks like:</p>
+<pre><code>nums = [1, 2, 3]
+nums = [-1, -2, -3]</code></pre>
+<p>Even though it appears similar, that's fundamentally different from using mutation:</p>
+<pre><code>nums = [1, 2, 3]
+nums[0] = -1
+nums[1] = -2
+nums[2] = -3</code></pre>
+<p>It may seem like a subtle point, but once you're programming with mutable data types, your program is subject to more kinds of bugs than before. There are some languages that don't even allow mutable data types at all, to avoid those kinds of bugs.</p>
+<h3>List mutation methods</h3>
+<p>Using bracket notation is only one way to mutate a list, and it only allows us to change items at existing indices. Fortunately, there are a large number of <strong>methods</strong> that can mutate a list. A method is any function that belongs to a particular kind of object, and we call it in a slightly different way.</p>
+<p>For example, this call appends an item to the end of a list:</p>
+<pre><code>temps.append(98.6)</code></pre>
+<p>To call a method, we first write the name of the object (<code>temps</code>), then a dot, the the name of the method (<code>append</code>), and the arguments in parentheses. If <code>append</code> was instead a global built-in function, we'd call it like <code>append(temps, 98.6)</code>. But it's not! Since the <code>append</code> method is a function that belongs to list objects, we instead use dot notation whenever we want to call it on a list.</p>
+<p>Here are some particularly useful list methods:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>Method</p>
+<th>
+<p>Description</p>
+<tbody>
+<tr>
+<td>
+<p><code>append(item)</code></p>
+<td>
+<p>Adds item to the end of the list. This increases list length by one.</p>
+<tr>
+<td>
+<p><code>insert(index, item)</code></p>
+<td>
+<p>Inserts item at the specified index. This increases the list length by one and shifts all items after the specified index forward by one index.</p>
+<tr>
+<td>
+<p><code>remove(item)</code></p>
+<td>
+<p>Remove the first item from the list whose value is equal to item. It raises a ValueError if there is no such item.</p>
+<tr>
+<td>
+<p><code>index(item)</code></p>
+<td>
+<p>Returns the index of the first occurrence of an item whose value is equal to item. It raises a <code>ValueError</code> if there is no such item.</p>
+<tr>
+<td>
+<p><code>pop([index])</code></p>
+<td>
+<p>If no index is specified, it removes the last item from the list and returns it. Otherwise, it removes the item at the specified index and returns it.</p>
+</table>
+<p>A list of all the possible list methods is available in the <a target="_blank" href="https://docs.python.org/3/tutorial/datastructures.html">Python list documentation</a>.</p>
+<p>Here's a program that uses all of those methods to modify a grocery list:</p>
+<pre><code>groceries = ["apples", "bananas"]
+
+groceries.append("peanut butter")
+groceries.insert(0, "applesauce")
+groceries.insert(3, "cheerios")
+groceries.remove("bananas")
+
+bought_food = groceries.pop()
+bought_food2 = groceries.pop(1)
+i = groceries.index("cheerios")
+bought_food3 = groceries.pop(i)</code></pre>
+<p>To watch for yourself how those methods mutate the original list, step through the code <a target="_blank" href="https://pythontutor.com/visualize.html#code=groceries%20%3D%20%5B%22apples%22,%20%22bananas%22%5D%0A%0Agroceries.append%28%22peanut%20butter%22%29%0Agroceries.insert%280,%20%22applesauce%22%29%0Agroceries.insert%283,%20%22cheerios%22%29%0Agroceries.remove%28%22bananas%22%29%0A%0Abought_food%20%3D%20groceries.pop%28%29%0Abought_food2%20%3D%20groceries.pop%281%29%0Ai%20%3D%20groceries.index%28%22cheerios%22%29%0Abought_food3%20%3D%20groceries.pop%28i%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">on PythonTutor</a>.</p>
+<h3>Exercise: Cities</h3>
+<p>Start from this code:</p>
+<pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
+
+<single-question-quiz-element name="cities-list-mutation1">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>Using bracket notation, write the line of code that would change "Constantinople" to "Istanbul".</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="cities\[(1|-4)\]\s*=\s*(['&quot;]Istanbul['&quot;])"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Nice, you got it!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ A correct line of code is <code>cities[1] = 'Istanbul'</code> or <code>cities[-4] = 'Istanbul'</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+      <single-question-quiz-element name="cities-list-mutation2">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>Using bracket notation, write the line of code that would change "Leningrad" to "Saint Petersburg".</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="cities\[(3|-2)\]\s*=\s*(['&quot;]Saint Petersburg['&quot;])"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's correct!</p>
+            </aside>
+
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ A correct line of code is <code>cities[3] = 'Saint Petersburg'</code>.</p>
+            </aside>
+
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+      <single-question-quiz-element name="cities-list-mutation3">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>Using bracket notation, write the line of code that would change "Peking" to "Beijing".</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="cities\[(-1|4)\]\s*=\s*(['&quot;]Beijing['&quot;])"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Nice, that's it!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ A correct line of code is <code>cities[-1] = 'Beijing'</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+<h3>Exercise: Planets</h3>
+<p>Start from this code:</p>
+<pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
+    'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
+
+      <single-question-quiz-element name="planets-list-mutation">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>Write a line of code that removes the last item.</p></div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="(planets\.pop\((-1)?\))|(planets\.remove\(['&quot;]Pluto['&quot;]\))"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true"><p>✅ That does it!</p></aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ A correct line of code is <code>planets.pop()</code> or <code>planets.remove('Pluto')</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+
+
+  </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  // Sidebar toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    // Function to toggle sidebar
+    function toggleSidebar() {
+      if (window.innerWidth >= 992) {
+        // On desktop
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('sidebar-collapsed');
+      } else {
+        // On mobile
+        sidebar.classList.toggle('expanded');
+      }
+    }
+    
+    // Add click event to toggle button
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    
+    // Set initial state based on screen size
+    function setInitialState() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('expanded');
+        content.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Set initial state on page load
+    setInitialState();
+    
+    // Update on window resize
+    window.addEventListener('resize', setInitialState);
+    
+    // Highlight active link in navbar and sidebar
+    const currentPath = window.location.pathname;
+    
+    // Find all links in the navbar and sidebar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+    
+    // Function to check if a link corresponds to the current page
+    function isActivePage(linkHref) {
+      // Get the path from the href
+      const linkPath = new URL(linkHref, window.location.origin).pathname;
+      
+      // Extract just the filename part from both paths
+      const currentFile = currentPath.split('/').pop();
+      const linkFile = linkPath.split('/').pop();
+      
+      // Exact match for the full path
+      if (currentPath === linkPath) {
+        return true;
+      }
+      
+      // Exact match for the filename
+      if (currentFile === linkFile) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    // Highlight active navbar link
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract section number (e.g., "1-python-fundamentals") from both paths
+        const linkSection = href.split('/').filter(part => part.match(/^\d-/))[0];
+        const currentSection = currentPath.split('/').filter(part => part.match(/^\d-/))[0];
+        
+        // If we're in the same section, highlight this navbar link
+        if (linkSection && currentSection && linkSection === currentSection) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'section');
+        }
+      }
+    });
+    
+    // Highlight active sidebar link
+    sidebarLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && isActivePage(href)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Expand section if it's in a collapsed section
+        const parentUl = link.closest('ul');
+        if (parentUl) {
+          parentUl.classList.add('show');
+        }
+      }
+    });
+    
+    // Debug info
+    console.log('Current path:', currentPath);
+    console.log('Current file:', currentPath.split('/').pop());
+    
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+
+
+</body>
+</html>

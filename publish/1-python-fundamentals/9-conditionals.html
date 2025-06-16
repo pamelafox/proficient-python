@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Python 101: Conditionals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <style>
+  img {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 14px;
+  }
+  
+  .cm-editor {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  /* Code that's not in a pre block (inline code) */
+  :not(pre) > code {
+    background: #f0f0f0;
+    color: #800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  
+  body {
+    padding-top: 70px; /* Add padding to prevent content from being hidden behind fixed navbar */
+  }
+  
+  /* Article heading styles */
+  .container h1 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+    font-weight: 600;
+  }
+  
+  .container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .container h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .container h4, .container h5, .container h6 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraph spacing */
+  .container p, .container details {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  
+  .site-header {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .site-header a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  .site-header a:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  .site-header .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Active navbar link */
+  .navbar-nav .nav-link.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    background: #f8f9fa;
+    overflow-y: auto;
+    transition: all 0.3s;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar.collapsed {
+    margin-left: -280px;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 20px;
+    color: #333;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background: #e9ecef;
+    border-left: 3px solid #007bff;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .content-wrapper {
+    margin-left: 0;
+    transition: all 0.3s;
+  }
+  
+  .content-wrapper.sidebar-open {
+    margin-left: 280px;
+  }
+  
+  /* Only apply sidebar margin on larger screens */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+    
+    .content-wrapper.sidebar-collapsed {
+      margin-left: 0;
+    }
+    
+    .sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  /* On mobile, sidebar covers content when open */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      margin-left: -280px;
+    }
+    
+    .sidebar.expanded {
+      margin-left: 0;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-heading">Python Fundamentals</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/4-functions.html">Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/6-more-on-functions.html">More on Functions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/7-logical-expressions.html">Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical Expressions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/9-conditionals.html">Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/11-user-input.html">User Input</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Loops & Lists</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/2-exercise-while-loops.html">Exercise: While Loops</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/3-for-loops-&-ranges.html">For Loops & Ranges</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/4-lists.html">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7-list-mutation.html">List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List Mutation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/8-more-on-lists.html">More on Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/9-nested-lists.html">Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Strings & Dictionaries</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/2-exercise-string-formatting.html">Exercise: String Formatting</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/3-string-operations.html">String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String Operations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/8-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
+    </li>
+  </ul>
+  
+  <div class="sidebar-heading">Object-Oriented Programming</div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/2-classes.html">Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/4-more-on-classes.html">More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/5-exercise-more-on-classes.html">Exercise: More on Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/8-more-on-inheritance.html">More on Inheritance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on Inheritance (Optional)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/10-composition.html">Composition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content-wrapper" id="content">
+  <div class="container container-md">
+    
+<h1>Conditionals</h1>
+<p>Now that we know how to write Boolean expressions, we can use them inside <strong>conditional statements</strong> to tell our programs to <em>conditionally</em> execute one block of code versus another.</p>
+<h3>Conditional statements</h3>
+<p>In Python, conditional statements always start with <code>if</code>. Here's the basic template:</p>
+<pre><code>if &lt;condition&gt;:
+    &lt;statement&gt;
+    &lt;statement&gt;
+    ...</code></pre>
+<p>If <code>&lt;condition&gt;</code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <em>required</em> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
+<p>Here's a simple <code>if</code> statement that re-assigns a variable based on a condition:</p>
+<pre><code>clothing = "shirt"
+
+if temperature &lt; 32:
+    clothing = "jacket"</code></pre>
+
+
+      <single-question-quiz-element name="if-temperature-jacket">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>In which situations will <code>clothing</code> be assigned to "jacket"?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-d7240054-fbe6-437b-a530-c1816614ca8b"
+                value="0"
+                data-correct="true" />
+              <label class="form-check-label" for="option-d7240054-fbe6-437b-a530-c1816614ca8b"
+                ><p>when <code>temperature</code> is 0</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>0 is less than 32, so the statement inside the <code>if</code> would indeed execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-02f0315f-98df-480f-914c-dcc9038b4f0f"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-02f0315f-98df-480f-914c-dcc9038b4f0f"
+                ><p>when <code>temperature</code> is 31</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>31 is less than 32, so the statement inside the <code>if</code> would indeed execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-2dcf9ed6-8354-465d-889d-5902bf442fa6"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-2dcf9ed6-8354-465d-889d-5902bf442fa6"
+                ><p>when <code>temperature</code> is 32</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>32 is <em>not</em> less than 32, so the statement inside the <code>if</code> would <em>not</em> execute.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="quizOptions"
+                id="option-a23da2e2-99ee-40ac-93eb-e9ec20df99dd"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-a23da2e2-99ee-40ac-93eb-e9ec20df99dd"
+                ><p>when <code>temperature</code> is 65</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>65 is <em>not</em> less than 32, so the statement inside the <code>if</code> would <em>not</em> execute.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      
+<h3>Compound conditionals</h3>
+<p>A conditional statement can include any number of <code>elif</code> statements to check other conditions and execute different blocks of code. Other languages use <code>else if</code>, but Python decided that was just too dang long and shortened it to <code>elif</code>. 🤷🏼‍♀️</p>
+<p>Here's a template with three conditional paths:</p>
+<pre><code>if &gt;condition&lt;:
+    &lt;statement&gt;
+    ...
+elif &lt;condition&gt;:
+    &lt;statement&gt;
+    ...
+elif &lt;condition&gt;:
+    &lt;statement&gt;
+    ...</code></pre>
+<p>Here's an extension of the earlier example with one more path:</p>
+<pre><code>clothing = "shirt"
+
+if temperature < 0:
+    clothing = "snowsuit"
+elif temperature < 32:
+    clothing = "jacket"</code></pre>
+<p>One way to make sure we understand a conditional is to make a table showing possible values of program state and the result.</p>
+<p>For example:</p>
+<table class="table table-bordered table-sm">
+<thead>
+<tr>
+<th>
+<p>temperature</p>
+<th>
+<p>clothing</p>
+<tbody>
+<tr>
+<td>
+<p>-50</p>
+<td>
+<p>"snowsuit"</p>
+<tr>
+<td>
+<p>-1</p>
+<td>
+<p>"snowsuit"</p>
+<tr>
+<td>
+<p>0</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>1</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>31</p>
+<td>
+<p>"jacket"</p>
+<tr>
+<td>
+<p>32</p>
+<td>
+<p>"shirt"</p>
+<tr>
+<td>
+<p>50</p>
+<td>
+<p>"shirt"</p>
+</table>
+<p>It's a good idea to be doubly sure of what happens at the boundary conditions- sometimes you might realize, "uh oh! I wanted >=, not >, my bad!". 🙀When writing tests for a function that uses a conditional function, make sure to test those boundary conditions.</p>
+<p>Finally, a conditional statement can include an <code>else</code> clause to specify what code should be executed if none of the preceding conditions were true.</p>
+<pre><code>if &lt;condition&gt;:
+    &lt;statement&gt;
+    ...
+elif &lt;condition&gt;:
+    &lt;statement&gt;
+    ...
+else &lt;condition&gt;:
+    &lt;statement&gt;
+    ...</code></pre>
+<p>Here's a way to rewrite the earlier example using <code>if</code>/<code>elif</code>/<code>else</code>:</p>
+<pre><code>if temperature &lt; 0:
+    clothing = "snowsuit"
+elif temperature < 32:
+    clothing = "jacket"
+else:
+    clothing = "shirt"</code></pre>
+<p>That code would result in the same values for <code>clothing</code> as shown in the table below, but reads more clearly.</p>
+<p>In summary, a conditional statement:</p>
+<ul><li><p>always starts with an <code>if</code> clause</p></li>
+<li><p>can have 0 or more <code>elif</code> clauses</p></li>
+<li><p>can optionally end with an <code>else</code> clause</p></li></ul>
+<h3>Using conditionals in functions</h3>
+<p>A conditional statement could be just one part of a longer function, or it could be the entire function. It's common to write a function that uses a conditional to compare the input parameters and return values based on what was passed in.</p>
+<p>For example:</p>
+<pre><code>def get_number_sign(num):
+    if num &lt; 0:
+        sign = "negative"
+    elif num &gt; 0:
+        sign = "positive"
+    else:
+        sign = "neutral"
+    return sign</code></pre>
+<p>We'd call that function like this:</p>
+<pre><code>get_number_sign(50)  # Returns: "positive"
+get_number_sign(-1)  # Returns: "negative"
+get_number_sign(0)   # Returns: "neutral"</code></pre>
+<p>We could also end each branch of the conditional with a return, rewriting the above function like so:</p>
+<pre><code>def get_number_sign(num):
+    if num < 0:
+        return "negative"
+    elif num > 0:
+        return "positive"
+    else:
+        return "neutral"</code></pre>
+<p>That makes it very clear that the function won't be doing anything else besides returning that value, since a return statement exits a function immediately.</p>
+<p>There's one more way we might write this function, leaving off the <code>else</code> of the conditional:</p>
+<pre><code>def get_number_sign(num):
+    if num &lt; 0:
+        return "negative"
+    elif num &gt; 0:
+        return "positive"
+    return "neutral"</code></pre>
+<p>When that function receives a <code>num</code> of 0, it doesn't execute either of the return statements inside the conditional, since neither condition is true. It continues on, discovers the next statement is a return statement, and executes that statement instead.</p>
+
+  </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  // Sidebar toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    // Function to toggle sidebar
+    function toggleSidebar() {
+      if (window.innerWidth >= 992) {
+        // On desktop
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('sidebar-collapsed');
+      } else {
+        // On mobile
+        sidebar.classList.toggle('expanded');
+      }
+    }
+    
+    // Add click event to toggle button
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    
+    // Set initial state based on screen size
+    function setInitialState() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('expanded');
+        content.classList.remove('sidebar-collapsed');
+      }
+    }
+    
+    // Set initial state on page load
+    setInitialState();
+    
+    // Update on window resize
+    window.addEventListener('resize', setInitialState);
+    
+    // Highlight active link in navbar and sidebar
+    const currentPath = window.location.pathname;
+    
+    // Find all links in the navbar and sidebar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+    
+    // Function to check if a link corresponds to the current page
+    function isActivePage(linkHref) {
+      // Get the path from the href
+      const linkPath = new URL(linkHref, window.location.origin).pathname;
+      
+      // Extract just the filename part from both paths
+      const currentFile = currentPath.split('/').pop();
+      const linkFile = linkPath.split('/').pop();
+      
+      // Exact match for the full path
+      if (currentPath === linkPath) {
+        return true;
+      }
+      
+      // Exact match for the filename
+      if (currentFile === linkFile) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    // Highlight active navbar link
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract section number (e.g., "1-python-fundamentals") from both paths
+        const linkSection = href.split('/').filter(part => part.match(/^\d-/))[0];
+        const currentSection = currentPath.split('/').filter(part => part.match(/^\d-/))[0];
+        
+        // If we're in the same section, highlight this navbar link
+        if (linkSection && currentSection && linkSection === currentSection) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'section');
+        }
+      }
+    });
+    
+    // Highlight active sidebar link
+    sidebarLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && isActivePage(href)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Expand section if it's in a collapsed section
+        const parentUl = link.closest('ul');
+        if (parentUl) {
+          parentUl.classList.add('show');
+        }
+      }
+    });
+    
+    // Debug info
+    console.log('Current path:', currentPath);
+    console.log('Current file:', currentPath.split('/').pop());
+    
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+
+
+</body>
+</html>

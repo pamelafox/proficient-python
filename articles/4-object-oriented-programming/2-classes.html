@@ -1,39 +1,20 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Classes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Classes{% endblock %}
+{% block content %}
 <h1>Classes</h1>
 <p>Let's imagine that we're building an online chocolate shop, and we want to use object-oriented programming to organize our code for the shop. (This is not such a far-fetched fantasy; my friend is the CTO of a chocolate shop that's written in Python).</p>
 <p>Before writing code, it helps to think about what sort of data and functionality our shop is dealing with.</p>
 <p>In terms of data, we need to keep track of what kind of chocolate bars we're selling, their name and price, and how much inventory remains of each bar. If inventory runs low, we can mark them as "sold out" on the website and make sure to ramp up production on that type of bar. We are of course very much hoping our shop will attract customers, and each customer has a name and address.</p>
 <p>In terms of functionality, customers need to be able to order a type of chocolate bar, perhaps ordering more than 1 bar, and specify how they will pay for their bars. When a customer makes an order, the inventory of that bar needs to be adjusted accordingly. Customers will be quite mad if they order bars that no longer exist. 😡</p>
 <p>Here's all that in diagram form:</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bv65fb00121466fk2r3bt4/oop_chocolateshop.png"></p>
+<p><img src="../images/classes-chocolate-shop.png" alt="A diagram with two chocolate bar products, three customers, and three orders"></p>
 <p>Now let's translate that into object types and methods.</p>
 <ul><li><p>A <code>Product</code> represents a kind of chocolate bar, and has a name, price, nutrition information, and inventory amount. It also has methods like <code>increase_inventory(amount)</code> and <code>reduce_inventory(amount)</code>. Note that I'm choosing for <code>Product</code> to represent a kind of bar (like all the "Piña Chocolatta" bars), not an individual bar, since it doesn't seem necessary to track every bar separately.</p></li>
 <li><p>A <code>Customer</code> has a name and address, with a method like <code>buy(product, quantity, cc_info)</code>.</p></li>
 <li><p>An <code>Order</code> has an associated customer, product, quantity, and credit card information. Its associated methods might be <code>ship()</code> and <code>refund(reason)</code>.</p></li></ul>
-<p>To make each data type, we need to create a <bold>class</bold>. A class is a template for describing new data types, and is responsible for managing the data associated with an object (such as the name and address of a customer) and defining the associated methods (like buying a product).</p>
+<p>To make each data type, we need to create a <strong>class</strong>. A class is a template for describing new data types, and is responsible for managing the data associated with an object (such as the name and address of a customer) and defining the associated methods (like buying a product).</p>
 <h3>Class initialization</h3>
-<p>To define a new <bold>class</bold> (a new object type), we first write the <code>class</code> keyword followed by the class name and a colon.</p>
+<p>To define a new <strong>class</strong> (a new object type), we first write the <code>class</code> keyword followed by the class name and a colon.</p>
 <pre><code>class Product:</code></pre>
 <p>By convention, class names for new classes always start with a capital letter, even though many of the built-in class names are lowercase (e.g.<code>float</code>, <code>int</code>, <code>str</code>).</p>
 <p>We will put all the associated data and methods after the colon, indented inside the class definition.</p>
@@ -55,12 +36,12 @@ self.price = price
 self.nutrition_info = nutrition_info
 self.inventory = 0</code></pre>
 <h3>Instance variables</h3>
-<p>An <bold>instance variable</bold> is a data attribute that describes the state of an object.</p>
+<p>An <strong>instance variable</strong> is a data attribute that describes the state of an object.</p>
 <p>An initialized <code>Product</code> object has four instance variables: <code>name</code>, <code>price</code>, <code>nutrition_info</code>, <code>inventory</code>. You can't just set instance variables by passing them into <code>__init__</code>, you have to actually set them on the object using dot notation.</p>
 <p>For example, the following initialization method only sets a single instance variable:</p>
 <pre><code>    def __init__(self, name, price, nutrition_info):
         self.inventory = 0</code></pre>
-<p>Relatedly, the name of the instance variable depends on the name that comes after the dot, <italic>not</italic> the name of the passed in argument.</p>
+<p>Relatedly, the name of the instance variable depends on the name that comes after the dot, <em>not</em> the name of the passed in argument.</p>
 <p>This initialization method does assign the same four instance variable names, despite using horribly short argument names:</p>
 <pre><code>    def __init__(self, n, p, ni):
         self.name = n
@@ -93,7 +74,7 @@ pina_bar.increase_inventory(2) </code></pre>
 <p>As you've now seen, dot notation is used to access all attributes of an object, both the instance variables and the methods.</p>
 <pre><code>pina_bar.name</code></pre>
 <pre><code>pina_bar.increase_inventory(2)</code></pre>
-<p>The variable name on the left side of the dot notation can actually be <italic>any</italic> expression that evaluates to an object reference.</p>
+<p>The variable name on the left side of the dot notation can actually be <em>any</em> expression that evaluates to an object reference.</p>
 <p>This code makes a list of objects, then uses bracket notation to grab a single object and dot notation after to call the object's method:</p>
 <pre><code>bars = [pina_bar, truffle_bar]
 bars[0].increase_inventory(2)</code></pre>
@@ -123,10 +104,63 @@ truffle_bar = Product("Trufflapagus", 9.99, ["170 calories", "9 g sugar"])
 pina_bar.increase_inventory(2)
 truffle_bar.increase_inventory(200)</code></pre>
 <p>The great thing about object-oriented programming is that we can initialize hundreds of products, and know that each of those products have the same variable names and methods. A little bit of code can go a long way!</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+
+      <single-question-quiz-element name="chocolate-bar-object-method-call">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>What line of code would reduce the inventory of <code>truffle_bar</code> by 50?</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="quizAnswer"
+                data-regexcheck="truffle_bar\.reduce_inventory\(50\)"
+                required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's exactly right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The correct answer is <code>truffle_bar.reduce_inventory(50)</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="chocolate-bar-instance-variable">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What is the name of the instance variable that stores 9.99?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="price" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The correct answer is <code>price</code>.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% endblock %}

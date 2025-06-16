@@ -1,36 +1,63 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Nested call expressions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Nested call expressions{% endblock %}
+{% block content %}
 <h1>Nested call expressions</h1>
 <h3>Anatomy of a call expression</h3>
 <p>Before we dive into more complex call expressions, let's first understand a simple call expression more deeply. Remember, a call expression is any expression that calls a function, like <code>pow(2, 100)</code>. The diagram below is for a call expression using the <code>add</code> function.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl1135hu9013s116mfug4183d/Screen Shot 2022-03-21 at 12.12.39 PM.png">Here's how Python evaluates that call expression:</p>
-<ol><li><p>It first evaluates the <bold>operator</bold>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
-<li><p>It then evaluates the <bold>operands</bold>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
-<li><p>Finally, it <bold>applies</bold> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
-<p>TODO: Quiz</p>
+<p><img src="../images/callexpression.png">Here's how Python evaluates that call expression:</p>
+<ol><li><p>It first evaluates the <strong>operator</strong>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
+<li><p>It then evaluates the <strong>operands</strong>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
+<li><p>Finally, it <strong>applies</strong> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
+
+<single-question-quiz-element name="fix-call-expression">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-4 fw-bold">Is any additional code required for the above call expression to work?</p>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option1" value="0" data-correct="false" />
+              <label class="form-check-label" for="option1"> No, <code>add(18, 69)</code> should work on its own. </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                This is incorrect. Since <code>add</code> comes from the <code>operator</code> module, it must be imported
+                first. Otherwise Python does not know where to find the <code>add</code> function definition.
+              </aside>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option2" value="1" data-correct="false" />
+              <label class="form-check-label" for="option2"> Yes, there needs to be an import statement below it. </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                This answer is almost correct, but the import statement needs to come before the line of code.
+              </aside>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="quizOptions" id="option3" value="2" data-correct="true" />
+              <label class="form-check-label" for="option3"> Yes, there needs to be an import statement above it. </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                This answer is correct, there needs to be <code>from operator import add</code> before this line of code.
+              </aside>
+            </div>
+
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+            <aside class="alert alert-secondary mt-3" style="display: none">
+              The <code>add</code> function is not actually one of the globally available built-in Python functions (like
+              <code>pow</code>, <code>max</code>, <code>min</code>, and <code>abs</code>), so it must be imported from the
+              <code>operator</code> module. There needs to be a line above the code, <code>from operator import add</code>.
+            </aside>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
 <h3>Nested call expressions</h3>
-<p>Now let's look at a <bold>nested call expression</bold>: a call expression where the expressions themselves are <italic>also</italic> call expressions.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvlz8u001d146653rz69u0/Screen Shot 2021-12-20 at 1.11.32 PM (2).png"></p>
+<p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
+<p><img src="../images/callexpression_nested.png"></p>
 <p>If we were asked to evaluate that as a human, logically, we'd realize that we can't compute the outer <code>add</code> function until we know the operands, and we can't even compute that inner <code>add</code> function until we know the result of the first <code>mul</code> operation.</p>
 <p>So we might start from the inside out, computing like this:</p>
 <pre><code>add(add(6, mul(4, 6)), mul(3, 5))
@@ -41,11 +68,93 @@ add(        30       , mul(3, 5))
 add(        30       ,    15    )
 add(        30       ,    15    )
 45</code></pre>
-<p>The computer takes a similar approach, creating an <bold>expression tree</bold>. It applies the same 3-step process from before to each call expression in the tree, starting with the bottom-most expressions, until it's able to finally do the final computation.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl1138lc3013u116mb1s4axov/Screen Shot 2022-03-21 at 12.15.20 PM.png">📺  Here's <link>a video walkthrough</link> of that call expression tree which shows the order of the calls and return values.</p>
-<p>TODO: Quiz</p>
+<p>The computer takes a similar approach, creating an <strong>expression tree</strong>. It applies the same 3-step process from before to each call expression in the tree, starting with the bottom-most expressions, until it's able to finally do the final computation.</p>
+<p><img src="../images/callexpression_tree.png">📺  Here's <a target="_blank" href="https://www.youtube.com/watch?v=vBx30J-NV9I">a video walkthrough</a> of that call expression tree which shows the order of the calls and return values.</p>
+
+
+<single-question-quiz-element name="nested-call-expression">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <p class="mb-4 fw-bold">What's the final step for that call expression?</p>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-d2d59621-793f-4915-9d19-3e13820a6143"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-d2d59621-793f-4915-9d19-3e13820a6143"
+                ><p>Looking up the outer <code>add</code> function to make sure it's defined in the environment.</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>No, that's actually the very first step.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f26b957f-d419-4849-a4da-1d77b180dfc5"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-f26b957f-d419-4849-a4da-1d77b180dfc5"
+                ><p>Calling the <code>add</code> function on the values 30 and 15</p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>
+                  That's correct! Once it finally has evaluated the operands to find the values of 30 and 15, it can apply the
+                  <code>add</code> function to them.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-f9a29f81-2db3-4d16-85e0-da7ed3145eee"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-f9a29f81-2db3-4d16-85e0-da7ed3145eee"
+                ><p>Calling the <code>mul</code> function on the values 4 and 6</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>No, this step is actually done fairly early, since it's the inner-most expression.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-fb4b0d56-aac3-486e-9f14-40fcdc17eb8d"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-fb4b0d56-aac3-486e-9f14-40fcdc17eb8d"
+                ><p>Calling the <code>add</code> function on the values 6 and 24</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  No, that sounds like the step that evaluates the inner <code>add</code>, not the final step of applying the
+                  outer <code>add</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      
 <h3>Exercise: Operator expressions</h3>
-<p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <link>table that maps operators to functions</link> particularly helpful.</p>
+<p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
 <ul><li><p><code>30 + 2</code></p></li>
 <li><p><code>30 - 2</code></p></li>
 <li><p><code>30 * 2</code></p></li>
@@ -56,12 +165,15 @@ add(        30       ,    15    )
 <li><p><code>3 * (10 - 2)</code></p></li>
 <li><p><code>(3 ** (365/52)) - 1</code></p></li>
 <li><p><code>(25 // 4) - (25 / 4)</code></p></li></ul>
-<pre><code>from operator import add, sub, mul, truediv, floordiv, mod
+
+<code-exercise-element name="your-name-string">from operator import add, sub, mul, truediv, floordiv, mod
 
 # After adding a call expression, run code to see if its correct
-add(30, 2)</code></pre>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+add(30, 2)</code-exercise-element>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

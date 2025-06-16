@@ -1,32 +1,14 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: Classes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: Classes{% endblock %}
+{% block content %}
 <h1>Exercise: Classes</h1>
 <p>In the following exercises, you'll implement the <code>__init__</code> and other methods of a class. Make sure you first read through the class doctests to see what instance variables and methods are expected to exist on each class.</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Plant exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+
 <h3>Plant</h3>
 <p>Finish the implementation of <code>Plant</code>, a class that can be used by a plant nursery to track which plants they have in inventory and how many they have of each plant.</p>
-<p>📺 Need help with this one? Watch the <link>video walkthrough</link> of the solution. Then try it out yourself and apply what you learned to the exercises after.</p>
-<pre><code>class Plant:
+<p>📺 Need help with this one? Watch a <a target="_blank" href="https://youtu.be/9d0LjvCD6GE">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the exercises after.</p>
+<p>🧩 Or, for a different form of guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=plant">Parsons Puzzle version</a> first.</p>
+<code-exercise-element name="plant-class" show-tests>class Plant:
   """A class used by a plant nursery to track what plants they have in inventory 
   and how many they have of each plant.
 
@@ -51,11 +33,13 @@
     
   def update_inventory(self, amount):
     # Fill out this function
-</code></pre>
+</code-exercise-element>
 
 <h3>MoviePurchase</h3>
 <p>Finish the implementation of  <code>MoviePurchase</code>, a class that represents movie purchases on YouTube, tracking the title and costs of each movie bought, plus the number of times watched.</p>
-<pre><code>class MoviePurchase:
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=movie_purchase">Parsons Puzzle version</a> first.</p>
+
+<code-exercise-element name="movie-purchase-class" show-tests>class MoviePurchase:
   """A class that represents movie purchases on YouTube,
   tracking the title and cost of each movie bought,
   as well as the number of times the movie is watched.
@@ -77,11 +61,13 @@
     # Fill out this function
 
   def watch(self):
-    # Fill out this function</code></pre>
+    # Fill out this function</code-exercise-element>
 
 <h3>Player</h3>
 <p>Finish the implementation of <code>Player</code>, a class that represents a player in a video game, tracking their name and health.</p>
-<pre><code>class Player:
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=player">Parsons Puzzle version</a> first.</p>
+
+<code-exercise-element name="player-class" show-tests>class Player:
   """A class that represents a player in a video game,
   tracking their name and health.
 
@@ -105,11 +91,13 @@
     # YOUR CODE HERE
 
   def boost(self, amount):
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 
 <h3>Clothing</h3>
 <p>Implement <code>Clothing</code>, a class that represents pieces of clothing in a closet, tracking their color, category, and clean/dirty state.</p>
-<pre><code>class Clothing:
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=clothing">Parsons Puzzle version</a> first.</p>
+
+<code-exercise-element name="clothing-class" show-tests>class Clothing:
   """A class that represents pieces of clothing in a closet,
   tracking the color, category, and clean/dirty state.
 
@@ -133,7 +121,9 @@
   # Write the wear() method
 
   # Write the clean() method
-</code></pre>
-</div>
-</body>
-</html>
+</code-exercise-element>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

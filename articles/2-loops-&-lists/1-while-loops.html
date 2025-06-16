@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: While loops</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}While loops{% endblock %}
+{% block content %}
 <h1>While loops</h1>
 <p>Consider the following code:</p>
 <pre><code>print(9 * 1)
@@ -46,18 +27,156 @@ while multiplier <= 5:
 while multiplier <= 5:
     print(9 * multiplier)
     multiplier += 1</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+
+      <single-question-quiz-element name="while-loop1-first-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the first number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="27" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The first number displayed is 27.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop1-last-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="45" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's correct!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The last number displayed is 45.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop1-number-of-iterations">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="3" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ That's right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The loop will iterate 3 times.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+
 <h3>Modifying a loop: Example #2</h3>
 <p>Another way to affect how a loop executes is to change the condition, so that it becomes false at a different point. Consider this code:</p>
 <pre><code>multiplier = 3
 while multiplier <= 10:
     print(9 * multiplier)
     multiplier += 1</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+
+      <single-question-quiz-element name="while-loop2-first-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the first number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="27" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true"><p>✅ You got it!</p></aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The first number displayed is 27.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop2-last-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="90" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Woot, that's correct!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The last number displayed is 90.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop2-number-of-iterations">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="8" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Yep, that's right!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The loop will iterate 8 times.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+
 <h3>Modifying a loop: Example #3</h3>
 <p>Another way to modify a loop is to alter how much the loop variables change between iterations. It's common to add one to a value, but you can add more than one or do any arithmetic operation your heart desires.</p>
 <p>Consider this code:</p>
@@ -65,18 +184,88 @@ while multiplier <= 10:
 while multiplier <= 10:
     print(9 * multiplier)
     multiplier += 2</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+
+      <single-question-quiz-element name="while-loop3-first-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the first number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="27" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ Yep, that's correct!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The first number displayed is 27.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop3-last-number">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="81" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ You figured it out, nice!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The last number displayed is 81.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop3-number-of-iterations">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="quizAnswer" data-regexcheck="4" required />
+            </div>
+            <aside class="alert alert-success mt-3" style="display: none" data-correct="true">
+              <p>✅ You got it!</p>
+            </aside>
+            <aside class="alert alert-danger mt-3" style="display: none" data-correct="false">
+              <p>❌ The loop will iterate 4 times.</p>
+            </aside>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+      
 <h3>Counter variables</h3>
-<p>It's very common for loops to use a <bold>counter variable</bold>: a variable whose primary purpose is to count the number of iterations.</p>
+<p>It's very common for loops to use a <strong>counter variable</strong>: a variable whose primary purpose is to count the number of iterations.</p>
 <p>Here's an example that counts 5 iterations:</p>
 <pre><code>total = 0
 counter = 0
 while counter < 5:
   total += pow(2, 1)
   counter += 1</code></pre>
-<p>Notably, that counter variable starts at 0, not at 1. As a consequence, the loop condition checks that the counter is less than 5, <italic>not</italic> less than or equal. The loop still runs 5 times - when <code>counter</code> is 0, 1, 2, 3, and 4.</p>
+<p>Notably, that counter variable starts at 0, not at 1. As a consequence, the loop condition checks that the counter is less than 5, <em>not</em> less than or equal. The loop still runs 5 times - when <code>counter</code> is 0, 1, 2, 3, and 4.</p>
 <p>Programmers often start counters at 0 instead of 1, so this is a common pattern, but it may throw you off at first. Whether you start at 0 or 1, make sure that your loop condition is using the appropriate operator. Otherwise, your code may experience the dreaded "off-by-one error". 🙀 Eek! But don't worry, it happens to all of us.</p>
 <p>The counter variable can also be used in the loop computation, like in the next example:</p>
 <pre><code>total = 0
@@ -90,14 +279,14 @@ while counter < 5:
 <pre><code>counter = 0
 while counter < 5:
     total += pow(2, counter)</code></pre>
-<p>That loop starts off with a counter variable initialized to 0, and then it adds a value to the total, and then it keeps doing that... forever! The counter variable is never changed, so <code>counter</code> remains at 0 and the loop condition <code>counter < 5</code> is always true. This is what we call an <bold>infinite loop</bold>.</p>
+<p>That loop starts off with a counter variable initialized to 0, and then it adds a value to the total, and then it keeps doing that... forever! The counter variable is never changed, so <code>counter</code> remains at 0 and the loop condition <code>counter < 5</code> is always true. This is what we call an <strong>infinite loop</strong>.</p>
 <p>That loop just needs one line of code to fix it — any line of code that will change the counter variable in such a way that it will eventually not be less than 5.</p>
 <p>For example:</p>
 <pre><code>counter = 0
 while counter < 5:
     total += pow(2, counter)
     counter += 1</code></pre>
-<p>I have crashed quite a few browsers in my time with infinite loops, so don't feel bad if you write a few infinite loops while going through this week's lesson. Just check your loop condition and loop variables, and see what you're missing to make the loop eventually stop.</p>
+<p>I have crashed quite a few browsers in my time with infinite loops, so don't feel bad if you write a few infinite loops while going through these unit's exercises. Just check your loop condition and loop variables, and see what you're missing to make the loop eventually stop.</p>
 <h3>The break statement</h3>
 <p>To prematurely exit a loop, a <code>break</code> statement can be used. This is helpful if the condition for exiting the loop isn't as straightforward, like you're searching through some data or set of numbers for something that's true.</p>
 <p>This example searches through the numbers 100-200, but breaks when it finds the first multiple of 7:</p>
@@ -132,8 +321,8 @@ while True:
 <p><code>sum_up_squares(1, 5) # Returns 55</code></p>
 <p><code>sum_up_squares(5, 10) # Returns 355</code></p>
 <p>We could also use function parameters to affect the computation done inside a loop or to affect how a counter variable is incremented. Combining functions with loops gives us the power to create reusable, flexible looping computations.</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% endblock %}

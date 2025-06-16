@@ -1,25 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: More on functions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}More on functions{% endblock %}
+{% block content %}
 <h1>More on functions</h1>
 <p>Congratulations on writing your first functions! Here are a few more helpful things to understand about return values and arguments.</p>
 <h3>The None value</h3>
@@ -29,12 +10,12 @@
   x * x
 </code></pre>
 <p>When you call a function that returns <code>None</code>, the console will show no output at all.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvhwid001914668l78gvu3/Screen Shot 2021-12-22 at 11.55.31 AM.png"></p>
+<p><img src="../images/more-on-functions-call-repl.png" alt="A call to function square_it(4) in Python REPL with no output"></p>
 <p>If you then accidentally try to use a <code>None</code> value as if it were a real value like a number or a string, you'll see an error.</p>
-<p><img src="https://corise.com/static/course/python-crash-course/assets/cl0bvgzu6001a14982itue39k/Screen Shot 2021-12-22 at 11.58.05 AM (1).png"></p>
+<p><img src="../images/more-on-functions-call-error.png" alt="A call that adds result of square_it(4) to a number, with an error"></p>
 <p>If you see an error like that when testing a function, it's a good sign that you've forgotten to actually return a value.</p>
 <h3>Side effects</h3>
-<p>So far, all of the functions we've seen and made ourselves are functions that return values. However, it is possible to use functions that cause <bold>side effects</bold> instead (or in addition). A side effect is some effect on the environment the code is running in, like a change to the visual display or manipulating files in the hard drive.</p>
+<p>So far, all of the functions we've seen and made ourselves are functions that return values. However, it is possible to use functions that cause <strong>side effects</strong> instead (or in addition). A side effect is some effect on the environment the code is running in, like a change to the visual display or manipulating files in the hard drive.</p>
 <p>The most common side effect is logging to the console via the built-in <code>print()</code> function.</p>
 <pre><code>print("i'm here!")</code></pre>
 <p>That function call doesn't return anything useful (just <code>None</code>) but it does have a useful effect, printing a string of text to the console.</p>
@@ -43,17 +24,157 @@
     return pow(number, 2)</code></pre>
 <pre><code>def square_num2(number):
     print(number ** 2)</code></pre>
-<p>TODO: Quiz</p>
-<p>TODO: Quiz</p>
+
+      <single-question-quiz-element name="functions-side-effects">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold">
+              <p>Which function has a side effect?</p>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-85e26578-45d8-482b-a979-0f8607ab92a6"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-85e26578-45d8-482b-a979-0f8607ab92a6"><p>square_num1</p> </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>All it does is return a value, so it has no side effects.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-ecf0ca3b-ef19-4e86-a257-76dffa11eff4"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-ecf0ca3b-ef19-4e86-a257-76dffa11eff4"><p>square_num2</p> </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>It calls the print function, so this function does have a side effect.</p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+            <aside class="alert alert-secondary mt-3" style="display: none">
+              <p>
+                The first function <code>square_num1</code> just returns a value, so it has no side effects. The second
+                function <code>square_num2</code> calls the <code>print</code> function, so it does have a side effect (of
+                printing to the console).
+              </p>
+            </aside>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
+
+      <single-question-quiz-element name="functions-return-values">
+        <form class="bg-light rounded p-4">
+          <div class="d-flex align-items-center mb-4">
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+          </div>
+          <div class="quiz-question">
+            <div class="mb-4 fw-bold"><p>What data type does each function return?</p></div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-c851aa90-c04a-480f-8413-a5cbc5516512"
+                value="0"
+                data-correct="false" />
+              <label class="form-check-label" for="option-c851aa90-c04a-480f-8413-a5cbc5516512"
+                ><p>
+                  The first function <code>square_num1</code> returns <code>None</code>, while the second function
+                  <code>square_num2</code> returns a number.
+                </p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  It's actually the reverse - <code>square_num1</code> returns a number whereas
+                  <code>square_num2</code> returns <code>None</code>.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-32d30851-58f7-401e-983e-9ced945e056a"
+                value="1"
+                data-correct="true" />
+              <label class="form-check-label" for="option-32d30851-58f7-401e-983e-9ced945e056a"
+                ><p>
+                  The first function <code>square_num1</code> returns a number, while the second function
+                  <code>square_num2</code> returns <code>None</code>.
+                </p>
+              </label>
+              <aside class="alert alert-success mt-2" style="display: none">
+                <p>You got it! The second function returns <code>None</code> since it has no explicit return statement.</p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-1c3ba3f4-854a-4ba7-ad63-05b1f171bf5d"
+                value="2"
+                data-correct="false" />
+              <label class="form-check-label" for="option-1c3ba3f4-854a-4ba7-ad63-05b1f171bf5d"
+                ><p>Both functions return <code>None</code>.</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  The second function <code>square_num2</code> returns <code>None</code> since it has no explicit return
+                  statement, but the first one does return a number.
+                </p>
+              </aside>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="quizOptions"
+                id="option-c5a2e54b-4b0c-4e02-a328-5322c9290dde"
+                value="3"
+                data-correct="false" />
+              <label class="form-check-label" for="option-c5a2e54b-4b0c-4e02-a328-5322c9290dde"
+                ><p>Both functions return a number.</p>
+              </label>
+              <aside class="alert alert-danger mt-2" style="display: none">
+                <p>
+                  Only <code>square_num1</code> returns a number, the second one returns <code>None</code> since it has no
+                  explicit return statement.
+                </p>
+              </aside>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
+            </div>
+          </div>
+        </form>
+      </single-question-quiz-element>
+
 <h3>Default arguments</h3>
 <p>Function parameters make a function more customizable, since they allow us to pass in more information about how to compute something.</p>
-<p>For example, the built-in <code>round</code> function accepts both the number to round <italic>and</italic> the number of digits that should be after the decimal point in the rounded result.</p>
+<p>For example, the built-in <code>round</code> function accepts both the number to round <em>and</em> the number of digits that should be after the decimal point in the rounded result.</p>
 <pre><code>round(3.1415926535, 3)   # Returns 3.142
 
 round(2/3, 2)            # Returns 0.67</code></pre>
 <p>That second parameter is super useful! However, the most common use of <code>round</code> is just to round a floating point number to an integer. And in fact, we don't have to pass in a second argument in that case:</p>
 <pre><code>round(3.141)  # Returns 3</code></pre>
-<p>It's possible to leave off some arguments in a function call thanks to <bold>default arguments</bold>. When a parameter specifies a default value in the function signature, then Python uses that default value if that argument isn't passed in.</p>
+<p>It's possible to leave off some arguments in a function call thanks to <strong>default arguments</strong>. When a parameter specifies a default value in the function signature, then Python uses that default value if that argument isn't passed in.</p>
 <p>For example, the following function has one required parameter and one optional parameter with a default:</p>
 <pre><code>def calculate_dog_age(human_years, multiplier = 7):
     return human_years * multiplier</code></pre>
@@ -65,8 +186,8 @@ calculate_dog_age(3, 7)    # Returns 21</code></pre>
 calculate_dog_age(3, multiplier=6)   # Returns: 18</code></pre>
 <p>The first way is much shorter, but sometimes the second way is clearer, and is especially helpful when a function has multiple parameters with default values and you only want to override a subset of them.</p>
 <p>Default arguments are a great way to make functions that are more flexible while still being simple to use in the majority of cases!</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% endblock %}

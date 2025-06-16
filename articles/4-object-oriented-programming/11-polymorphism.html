@@ -1,27 +1,8 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Polymorphism</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Polymorphism{% endblock %}
+{% block content %}
 <h1>Polymorphism</h1>
-<p>One of the great benefits of object-oriented programming is <bold>polymorphism</bold>: different types of objects sharing the same interface.</p>
+<p>One of the great benefits of object-oriented programming is <strong>polymorphism</strong>: different types of objects sharing the same interface.</p>
 <h3>Polymorphism from inheritance</h3>
 <p>We've already seen many polymorphic objects, since inheritance almost always leads to polymorphism.</p>
 <p>For example, we can call the <code>eat</code> method on both <code>Panda</code> object and <code>Lion</code> objects, passing in the same argument:</p>
@@ -53,11 +34,7 @@ len("ahoy there!")
 len({"CA": "Sacramento", "NY": "Albany"})
 len(range(5))</code></pre>
 <p>The <code>len()</code> function is able to report the length of lists, strings, dicts, and ranges. All of those inherit from <code>object</code>, but <code>len()</code> doesn't work on any old object. So why does it work for those types?</p>
-<p>It's actually because the <code>list</code>, <code>str</code>, <code>dict</code>, and <code>range</code> classes each define a method named <code>__len__</code> that reports their length using various mechanisms. The global <code>len()</code> function works on <italic>any</italic> object that defines a <code>__len__</code> method and returns a number. That means we can even make <code>len()</code> work on our own user-defined classes.</p>
-<p>This type of polymorphism in a language is also known as <bold>duck typing</bold>: if it walks like a duck and quacks like a duck, then it must be a duck. 🦆The <code>len()</code> function doesn't care exactly what kind of object it's passed: if it has a <code>__len__</code> method and that method takes 0 arguments, then that's good enough for Python.</p>
+<p>It's actually because the <code>list</code>, <code>str</code>, <code>dict</code>, and <code>range</code> classes each define a method named <code>__len__</code> that reports their length using various mechanisms. The global <code>len()</code> function works on <em>any</em> object that defines a <code>__len__</code> method and returns a number. That means we can even make <code>len()</code> work on our own user-defined classes.</p>
+<p>This type of polymorphism in a language is also known as <strong>duck typing</strong>: if it walks like a duck and quacks like a duck, then it must be a duck. 🦆The <code>len()</code> function doesn't care exactly what kind of object it's passed: if it has a <code>__len__</code> method and that method takes 0 arguments, then that's good enough for Python.</p>
 <p>Many languages are more strict than Python, and possibly for good reason, since you can get yourself in trouble with loosey-goosey duck typing. But you can also write highly flexible code. Tread carefully in these polymorphic waters!</p>
-<hr>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions about the content in this article, just post in the #questions channel on Slack. Please post when you have questions, we're here to help!</p>
-</div>
-</body>
-</html>
+{% endblock %}

@@ -1,31 +1,12 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: More on inheritance (Optional)</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
-<h1>Exercise: More on inheritance (Optional)</h1>
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: More on inheritance{% endblock %}
+{% block content %}
+<h1>Exercise: More on inheritance</h1>
 <p>In these four exercises, you'll practice different ways to reuse inherited code from parent classes. Hint: expect to use <code>super()</code> a lot!</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Weighty Dog exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
+
 <h3>Exercise: Playful kitty cat</h3>
 <p>Modify the <code>Cat</code> initializer method so that a cat that's less than 1 years old has a <code>play_multiplier</code> of 6, and run the doctests when you're done.</p>
-<pre><code>class Animal:
+<code-exercise-element name="playful-kitty-cat" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -79,10 +60,11 @@ class Cat(Animal):
     # If age is less than 1, set play multiplier to 6
     # YOUR CODE HERE
         
-</code></pre>
+</code-exercise-element>
+
 <h3>Exercise: Weighty dogs</h3>
 <p>The <code>Dog</code> class in the code below accepts a third argument in the <code>__init__</code> to set the weight. Implement the method so that it first calls the <code>__init__</code> of the parent class, then sets the <code>weight</code> attribute, then sets <code>calories_needed</code> to 20 times the weight. Run the doctests when done.</p>
-<pre><code>class Animal:
+<code-exercise-element name="weight-dogs" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -139,10 +121,11 @@ class Dog(Animal):
     # Call the super class to set name and age
     # Set the weight attribute
     # Set calories_needed to 20x the weight
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
+  
 <h3>Exercise: Cats have 9 lives?</h3>
 <p>The program below contains a <code>Pet</code> class and a partially implemented <code>Cat</code> class that inherits from it. Read through the current code to understand what it's doing, then implement the <code>Cat</code> methods according to the comments and doctests.</p>
-<pre><code>class Pet():
+<code-exercise-element name="cats-lives">class Pet():
   def __init__(self, name, owner):
     self.is_alive = True
     self.name = name
@@ -197,10 +180,11 @@ class Cat(Pet):
     # When lives reaches zero, set is_alive to False
     # YOUR CODE HERE
 
-</code></pre>
+</code-exercise-element>
+
 <h3>Exercise: Herbivores and carnivores</h3>
 <p>The program below includes classes you've seen before: <code>Animal</code>, <code>Herbivore</code>, and <code>Carnivore</code>. It also includes 2 new classes, <code>Zebra</code> and <code>Hyena</code>, that don't yet inherit from the correct parent class. Read through their doctests to determine what their parent class should be, and then change their class header as needed. The doctests should all pass if you've made the right change.</p>
-<pre><code>class Animal:
+<code-exercise-element name="herbivores-carnivores" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -291,10 +275,11 @@ class Hyena(Animal):
   """
   species_name = "Striped Hyena"
   scientific_name = "Hyaena hyaena"
-  calories_needed = 1000</code></pre>
+  calories_needed = 1000</code-exercise-element>
+
 <h3>Exercise: Noisy dog</h3>
 <p>The program below includes three classes: <code>Pet</code>, <code>Dog</code>, and <code>NoisyDog</code>. Fix <code>NoisyDog</code> so that it inherits from the correct parent class, then override its <code>talk</code> method as described in the comments and doctests.</p>
-<pre><code>class Pet():
+<code-exercise-element name="noisy-dog">class Pet():
   def __init__(self, name, owner):
     self.is_alive = True
     self.name = name
@@ -337,8 +322,9 @@ class NoisyDog(Pet):
     # Make it so that noisy dogs say the same thing,
     # but always say it three times!
     # Use super() to call the relevant superclass method
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 
-</div>
-</body>
-</html>
+{% endblock %}
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}

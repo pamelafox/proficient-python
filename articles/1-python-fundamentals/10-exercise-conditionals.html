@@ -1,32 +1,16 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Python Course: Exercise: Conditionals</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <style>
-  img {
-    display: block;
-    margin-bottom: 12px;
-    max-width: 800px;
-  }
-  pre {
-    background: #eee;
-    padding: 8px;
-  }
-  </style>
-</head>
-<body>
-<div class="container container-md">
+{% extends "_base.html.jinja2" %}
+{% block title %}Exercise: Conditionals{% endblock %}
+{% block content %}
 <h1>Exercise: Conditionals</h1>
 <p>In this exercise, you'll define functions that consist entirely of compound conditionals (<code>if</code>/<code>elif</code>/<code>else</code>). Think carefully about the order of your conditions; sometimes order can have a big effect!</p>
-<p>🙋🏽 🙋🏻‍♀️ 🙋🏿‍♂️  If you have any questions while working through the exercises, just post in the #exercises channel on Slack. For example, you can post "I'm looking for help with the Hello World exercise." and then post your code in the thread (so as to not reveal the answer for those who haven't worked on it yet). Please post when you have questions, we're here to help!</p>
 
+<hr>
 <h3>Lesser Num</h3>
-<p>📺  Need help getting started on this one? Watch me go through a similar problem <link>in this video</link>.</p>
-<pre><code>def lesser_num(num1, num2):
+<p>📺  Need help getting started on this one? Watch me go through a similar problem <a target="_blank" href="https://www.youtube.com/watch?v=_8-VF441nWk">in this video</a>.</p>
+<p>🧩 Or try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=greater_num">Parsons Puzzle version</a> of the similar problem first.</p>
+
+<code-exercise-element name="lesser-num" show-tests>
+def lesser_num(num1, num2):
     """ Returns whichever number is lowest of the two supplied numbers.
 
     >>> lesser_num(45, 10)
@@ -36,11 +20,14 @@
     >>> lesser_num(20, 20)
     20
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE
+</code-exercise-element>
 
+<hr>
 <h3>Hello World</h3>
 <p>In this exercise, you'll use conditionals to translate a phrase into three different languages. Once you get the tests to pass, I encourage you to add another language you know!</p>
-<pre><code>def hello_world(language_code):
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=hello_world">Parsons Puzzle version</a> of the problem first.</p>
+<code-exercise-element name="hello-world-language" show-tests>def hello_world(language_code):
     """ Returns the translation of "Hello, World" into the language
     specified by the language code (e.g. "es", "pt", "en"),
     defaulting to English if an unknown language code is specified.
@@ -51,10 +38,12 @@
     >>> hello_world("pt")
     'Olá, Mundo'
     """
-    # YOUR CODE HERE</code></pre>
+    # YOUR CODE HERE</code-exercise-element>
 
+<hr>
 <h3>Grade Assigner</h3>
-<pre><code>def assign_grade(score):
+<p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=assign_grade">Parsons Puzzle version</a> of the problem first.</p>
+<code-exercise-element name="hello-world-language" show-tests>def assign_grade(score):
     """ Returns a letter grade for the numeric score based on the grade bins of:
      "A" (90-100), "B" (80-89), "C" (70-79), "D" (65-69), or "F" (0-64)
 
@@ -79,7 +68,9 @@
     >>> assign_grade(0)
     'F'
     """
-    return ''</code></pre>
-</div>
-</body>
-</html>
+    return ''</code-exercise-element>
+
+{% endblock %}
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
+{% endblock %}
