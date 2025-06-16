@@ -1,3 +1,3 @@
-python3 -m jinja2ssg --src articles --dest publish build
-cp -r articles/images publish/images
-python3 -m http.server 8000 --directory publish
+python3 -m jinja2ssg --src articles --dest docs build
+cp -r articles/images docs/images
+python3 -m http.server 8000 --directory docs
