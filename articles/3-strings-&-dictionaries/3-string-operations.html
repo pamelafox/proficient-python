@@ -28,7 +28,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
 <p>Use this string variable for the next three questions:</p>
 <pre><code>author_name = 'P S Fox'</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="string-operations-name-bracket-notation">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -86,8 +86,8 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="string-operations-name-bracket-notation2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -143,8 +143,8 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="string-operations-name-bracket-notation3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -171,7 +171,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>String methods</h3>
 <p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <em>none</em> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
@@ -233,7 +233,7 @@ demand = request.upper()</code></pre>
 <p>Remember that these are methods, not functions, so when using them, you always write the variable name first, then the dot, then the method name.</p>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="string-operations-methods-endswith">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -314,7 +314,7 @@ demand = request.upper()</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
       
 <h3>Splitting and joining</h3>
@@ -340,4 +340,8 @@ grocery_items = my_groceries.split(',')   # Stores ["apples", "bananas", "carrot
 <p>Try it out below with your own favorite poem, haiku, or song verse.</p>
 <pre><code>poem_lines = ["Forgive me", "they were delicious", "so sweet", "and so cold"]
 "\n".join(poem_lines)</code></pre>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

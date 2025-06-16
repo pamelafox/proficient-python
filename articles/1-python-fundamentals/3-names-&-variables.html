@@ -17,7 +17,7 @@
 radius = 6
 area = pi * (radius ** 2)
 circ = 2 * pi * radius</code></pre>
-      <quiz-element>
+      <single-question-quiz-element name="number-of-variables">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -41,10 +41,10 @@ circ = 2 * pi * radius</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
    
 
-      <quiz-element>
+      <single-question-quiz-element name="number-of-variable-references">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -72,7 +72,7 @@ circ = 2 * pi * radius</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <p>Here's another program to do some string concatenation. And yes, it's a true story.</p>
 <pre><code>my_last_name = 'Fox'
@@ -80,7 +80,7 @@ partners_last_name = 'Gray'
 daughters_last_name = partners_last_name + my_last_name</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="daughters-last-name">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -132,7 +132,7 @@ daughters_last_name = partners_last_name + my_last_name</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Re-assignment</h3>
 <p>A name can only be bound to a single value.</p>
@@ -141,7 +141,7 @@ daughters_last_name = partners_last_name + my_last_name</code></pre>
 
 my_name = my_name + 'ela'</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="variable-reassignment">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -212,7 +212,7 @@ my_name = my_name + 'ela'</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <p>In Python, re-assigning a name to a new value will replace the old value. However, Python evaluates the right-hand side of an assignment statement <em>before</em> the left-hand side, so when the right-hand side references the name, it will retrieve its current value, and then <em>only once it's done</em> computing the right-hand expression, it will re-assign the variable to the value of that expression.</p>
 <h3>Augmented assignment operators</h3>
@@ -270,7 +270,7 @@ my_name = my_name + 'ela'</code></pre>
 <li><p>A name may contain numbers, but it <em>cannot</em> start with a number. It can either start with a letter or an underscore, but starting with an underscore actually has a special meaning we'll get into later.</p></li></ul>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="variable-naming-rules">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -364,7 +364,11 @@ my_name = my_name + 'ela'</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
       
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

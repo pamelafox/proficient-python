@@ -9,7 +9,7 @@
 <p>📺 You can watch me <a target="_blank" href="https://www.youtube.com/watch?v=-Vs9nIdHVcM">walk through this problem in a video</a>. If you don't want to see the solution, make sure to pause when you feel like you've seen enough to get started.</p>
 <p>🧩 Or, for more guidance in written form, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=count_evens">Parsons Puzzle version</a> first.</p>
 
-<code-exercise-element exercise-name="count-evens">def count_evens(start, end):
+<code-exercise-element name="count-evens" show-tests>def count_evens(start, end):
     """
     Counts the number of even numbers between a given start number and given end number.
     Count should include the start or end if they are even.
@@ -27,7 +27,7 @@
 <p>Tip: The <code>%</code> operator is once again helpful here, for determining if one number is a multiple of another. In fact, you may want to start from your previous code and see how little you need to change to get this function implemented correctly.</p>
 <p>🧩 For more, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=count_multiples">Parsons Puzzle version</a> first.</p>
 
-<code-exercise-element exercise-name="count-multiples">def count_multiples(start, end, divisor):
+<code-exercise-element name="count-multiples" show-tests>def count_multiples(start, end, divisor):
     """
     Counts the number of multiples of divisor between the start and end numbers.
     It should include the start or end if they are a multiple.
@@ -48,7 +48,7 @@
 <h3>Sum Multiples</h3>
 <p>Implement <code>sum_multiples</code>, a function that returns the sum of the multiples of a given <code>divisor</code> between the given <code>start</code> and <code>end</code> numbers. If the <code>start</code> or <code>end</code> numbers are also multiples, they should also be included in the sum.</p>
 <p><em>Hint: The main difference between this exercise and the previous exercise is summing versus counting. What do you need to change from your previous code to make the return value a sum instead?</em></p>
-<code-exercise-element exercise-name="sum-multiples">def sum_multiples(start, end, divisor):
+<code-exercise-element name="sum-multiples" show-tests>def sum_multiples(start, end, divisor):
     """Returns the sum of the multiples of a given divisor between start and end.
     If the start or end numbers are multiples, they should be included in the sum.
 
@@ -72,7 +72,7 @@
     <li>Try running the tests and observe the output</li>
     <li>If you have a hunch, try changing the code and seeing how the output changes</li>
 </ul>
-<code-exercise-element exercise-name="product-of-numbers">def product_of_numbers(end):
+<code-exercise-element name="product-of-numbers" show-tests>def product_of_numbers(end):
     """Returns the product of all the numbers from 1 to the end number,
     including the end number.
 
@@ -92,6 +92,6 @@
         counter += 2
     return result</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

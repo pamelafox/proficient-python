@@ -43,8 +43,9 @@
 <li><p>Divide by 10</p></li>
 <li><p>Add 11</p></li>
 <li><p>Divide by 100</p></li></ol>
-<pre><code># Type the expression below, and click Run to see the result
-7</code></pre>
+<code-exercise-element name="magic-birthday-math">
+# Type the expression below, and click "Run code" to see the result
+7</code-exercise-element>
 <h3>String expressions</h3>
 <p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
 <pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
@@ -55,7 +56,7 @@
 <p>String concatenation will soon become very useful, once we learn how to use variables and functions.</p>
 <h3>Exercise: Say my name</h3>
 <p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
-<pre><code>"firstname" + "othername" + "lastname"</code></pre>
+<code-exercise-element name="your-name-string">"firstname" + "othername" + "lastname"</code-exercise-element>
 <h3>Call expressions</h3>
 <p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
 <p>A few more handy built-ins:</p>
@@ -73,6 +74,10 @@ add(18, 69)</code></pre>
 <pre><code>from operator import sub
 
 sub(2021, 37)</code></pre>
-<p>Why the heck would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
+<p>Why would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
 
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

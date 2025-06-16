@@ -7,7 +7,7 @@
 <p>Implement <code>make_point</code>, a function that returns a list with the two arguments <code>x</code> and <code>y</code>, each rounded to integer values.</p>
 <p>Tip: Remember one of Python's <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a> makes it easy to round numbers.</p>
 <p>📺 Need help getting started? Watch me go through a similar problem <a target="_blank" href="https://youtu.be/Tfqj1b3wBNg">in this video</a>.</p>
-<code-exercise-element exercise-name="make-point">def make_point(x, y):
+<code-exercise-element name="make-point" show-tests>def make_point(x, y):
   """Returns a list with the two arguments, rounded to their integer values.
   
   >>> make_point(30, 75)
@@ -22,7 +22,7 @@
 <p>Implement <code>average_scores</code>, a function that returns the average of the provided list <code>scores</code>.</p>
 <p>📺 Need help getting started? Watch me go through a similar problem <a target="_blank" href="https://youtu.be/mwnyHpdiGSc">in this video.</a></p>
 <p> 🧩 Or, for more guidance in written form, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=average_scores">Parsons Puzzle version</a> first.</p>
-<code-exercise-element exercise-name="average-scores">def average_scores(scores):
+<code-exercise-element name="average-scores" show-tests>def average_scores(scores):
   """Returns the average of the provided scores.
   
   >>> average_scores([10, 20])
@@ -41,7 +41,7 @@
 <p>Implement <code>concatenator</code>, a function that returns a string made up of all the strings from the provided list <code>items</code>.</p>
 <p><em>(There is a way to do this with a single function call in Python, but for the purposes of this exercise, please try using a for loop to join the strings.)</em></p>
 <p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=concatenator">Parsons Puzzle version</a> first.</p>
-<code-exercise-element exercise-name="concatenator">def concatenator(items):
+<code-exercise-element name="concatenator" show-tests>def concatenator(items):
   """Returns a string with all the contents of the list concatenated together.
 
   >>> concatenator(["Super", "cali", "fragilistic", "expialidocious"])
@@ -56,6 +56,6 @@
     # Concatenate each item to the variable
   # Return the variable</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

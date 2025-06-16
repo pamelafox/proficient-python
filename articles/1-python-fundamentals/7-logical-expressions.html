@@ -129,7 +129,7 @@ passed_class(66) # Returns: True</code></pre>
     return is_rainy or is_windy</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="logical-expressions-should-wear-jacket">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -220,6 +220,10 @@ passed_class(66) # Returns: True</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

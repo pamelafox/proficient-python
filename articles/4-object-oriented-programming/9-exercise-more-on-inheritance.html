@@ -6,7 +6,7 @@
 
 <h3>Exercise: Playful kitty cat</h3>
 <p>Modify the <code>Cat</code> initializer method so that a cat that's less than 1 years old has a <code>play_multiplier</code> of 6, and run the doctests when you're done.</p>
-<code-exercise-element exercise-name="playful-kitty-cat">class Animal:
+<code-exercise-element name="playful-kitty-cat" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -64,7 +64,7 @@ class Cat(Animal):
 
 <h3>Exercise: Weighty dogs</h3>
 <p>The <code>Dog</code> class in the code below accepts a third argument in the <code>__init__</code> to set the weight. Implement the method so that it first calls the <code>__init__</code> of the parent class, then sets the <code>weight</code> attribute, then sets <code>calories_needed</code> to 20 times the weight. Run the doctests when done.</p>
-<code-exercise-element exercise-name="weight-dogs">class Animal:
+<code-exercise-element name="weight-dogs" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -125,7 +125,7 @@ class Dog(Animal):
   
 <h3>Exercise: Cats have 9 lives?</h3>
 <p>The program below contains a <code>Pet</code> class and a partially implemented <code>Cat</code> class that inherits from it. Read through the current code to understand what it's doing, then implement the <code>Cat</code> methods according to the comments and doctests.</p>
-<code-exercise-element exercise-name="cats-lives">class Pet():
+<code-exercise-element name="cats-lives">class Pet():
   def __init__(self, name, owner):
     self.is_alive = True
     self.name = name
@@ -184,7 +184,7 @@ class Cat(Pet):
 
 <h3>Exercise: Herbivores and carnivores</h3>
 <p>The program below includes classes you've seen before: <code>Animal</code>, <code>Herbivore</code>, and <code>Carnivore</code>. It also includes 2 new classes, <code>Zebra</code> and <code>Hyena</code>, that don't yet inherit from the correct parent class. Read through their doctests to determine what their parent class should be, and then change their class header as needed. The doctests should all pass if you've made the right change.</p>
-<code-exercise-element exercise-name="herbivores-carnivores">class Animal:
+<code-exercise-element name="herbivores-carnivores" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -279,7 +279,7 @@ class Hyena(Animal):
 
 <h3>Exercise: Noisy dog</h3>
 <p>The program below includes three classes: <code>Pet</code>, <code>Dog</code>, and <code>NoisyDog</code>. Fix <code>NoisyDog</code> so that it inherits from the correct parent class, then override its <code>talk</code> method as described in the comments and doctests.</p>
-<code-exercise-element exercise-name="noisy-dog">class Pet():
+<code-exercise-element name="noisy-dog">class Pet():
   def __init__(self, name, owner):
     self.is_alive = True
     self.name = name
@@ -325,6 +325,6 @@ class NoisyDog(Pet):
     # YOUR CODE HERE</code-exercise-element>
 
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

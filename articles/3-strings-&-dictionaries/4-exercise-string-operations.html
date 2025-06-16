@@ -18,7 +18,7 @@
     <li>The return statement should use the <code>replace</code> method on <code>string1</code>, passing in <code>string2</code> and the literal string <code>"***"</code>.
   </ul>
 </details>
-<code-exercise-element exercise-name="bleeper">def bleep_out(string1, string2):
+<code-exercise-element name="bleeper" show-tests>def bleep_out(string1, string2):
   """Returns a version of string1 where all instances of string2
   have been replaced by "***".
 
@@ -41,7 +41,7 @@
     <li>Then, the function should create a new list, where some of the items are made using the <code>join</code> method.
   </ul>
 </details>
-<code-exercise-element exercise-name="phone-number-versions">def phone_number_versions(phone_number):
+<code-exercise-element name="phone-number-versions" show-tests>def phone_number_versions(phone_number):
     """
     Accepts a hyphen-separated phone number and returns
     a list containing the original version, a space-separated version,
@@ -60,7 +60,7 @@
 
 <h3>Mix up</h3>
 <p>Implement <code>mix_up</code>, a function that concatenates two words, but swaps out the first 2 characters of each word. For example, 'mix' and 'pod' is turned into 'pox mid'.</p>
-<code-exercise-element exercise-name="mix-up">def mix_up(word1, word2):
+<code-exercise-element name="mix-up" show-tests>def mix_up(word1, word2):
   """Returns the concatenation of word1 and word2 separated by a space,
   with the first 2 characters of each word swapped.
   Assumes the two words are at least 2 characters long.
@@ -76,7 +76,7 @@
 <h3>Gerundio</h3>
 <p>Implement <code>gerundio</code>, a function that transforms Spanish infinite verbs (such as "cantar" or "volver") into their gerund forms ("cantando" and "volviendo"). See the docstring for the transformation rules.</p>
 <p>Once you get the initial tests passing, you can also implement this function for another language you know that has similar infinitive → gerund verb form changes. Share it with the rest of us if you do!</p>
-<code-exercise-element exercise-name="gerundio">def gerundio(verb):
+<code-exercise-element name="gerundio" show-tests>def gerundio(verb):
   """Turns Spanish infinitive verbs (which end in "ar", "er", "ir")
   into the gerund forms (which end in "ando" or "iendo).
   When a verb ends in "ar", the "ar" is replaced with "ando".
@@ -95,7 +95,7 @@
 
 <h3>Not bad? Good!</h3>
 <p>Implement <code>not_bad</code>, a function that replaces a phrase in a string that starts with  "not" and ends with "bad" into the single word "good".</p>
-<code-exercise-element exercise-name="not-bad-good">def not_bad(sentence):
+<code-exercise-element name="not-bad-good" show-tests>def not_bad(sentence):
   """Returns a new string where the first substring in a sentence
   that starts with "not" and ends with "bad" is replaced by the word "good".
   Returns the original string if no matching substring is found.
@@ -110,6 +110,6 @@
   return '' # REPLACE THIS LINE
 </code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

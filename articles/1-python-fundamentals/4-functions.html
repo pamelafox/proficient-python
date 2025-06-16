@@ -14,7 +14,7 @@ pow(2, 10)</code></pre>
 <p>In the <code>pow</code> expression, there are two arguments of 2 and 10, and a return value of 1024.</p>
 <p>Those are all functions provided by Python, however. Many times, we want to create <em>our own</em> functions, to perform some task unique to our program.</p>
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-brainstorm">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🤔 Brainstorming Time</h2>
@@ -31,7 +31,7 @@ pow(2, 10)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Defining functions</h3>
 <p>The most common way to define functions in Python is with a <code>def</code> statement.</p>
@@ -82,7 +82,7 @@ result = add_two(2, 4)</code></pre>
 result = add_two(2, 4)</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-spot-the-bug1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -102,7 +102,7 @@ result = add_two(2, 4)</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
 <h3>Spot the bug! 🐛</h3>
@@ -113,7 +113,7 @@ result = add_two(2, 4)</code></pre>
 result = add_two(2, 4)</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-spot-the-bug2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -136,7 +136,7 @@ result = add_two(2, 4)</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Spot the bug! 🦟</h3>
 <p>Here's the last bit of code that's problematic:</p>
@@ -146,7 +146,7 @@ result = add_two(2, 4)</code></pre>
 result = add_two(2, 4)</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-spot-the-bug3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -169,6 +169,10 @@ result = add_two(2, 4)</code></pre>
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

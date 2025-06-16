@@ -5,7 +5,7 @@
 <p>Use f strings to complete these functions that return strings based on the input parameters.</p>
 
 <h3>Solar system</h3>
-<code-exercise-element exercise-name="solar-system">def solar_system(num_planets):
+<code-exercise-element name="solar-system" show-tests>def solar_system(num_planets):
   """Returns a string like
    "There are NUM planets in the solar system"
    where NUM is provided as an argument.
@@ -18,7 +18,7 @@
   return "" # REPLACE THIS LINE</code-exercise-element>
 
 <h3>Location</h3>
-<code-exercise-element exercise-name="location-formatter">def location(place, lat, lng):
+<code-exercise-element name="location-formatter" show-tests>def location(place, lat, lng):
   """Returns a string which starts with the provided PLACE,
   then has an @ sign, then the comma-separated LAT and LNG
   
@@ -30,7 +30,7 @@
   return "" # REPLACE THIS LINE</code-exercise-element>
 
 <h3>Fancy date</h3>
-<code-exercise-element exercise-name="fancy-date">def fancy_date(month, day, year):
+<code-exercise-element name="fancy-date" show-tests>def fancy_date(month, day, year):
   """Returns a string of the format 
    "On the DAYth day of MONTH in the year YEAR"
    where DAY, MONTH, and YEAR are provided. 
@@ -44,7 +44,7 @@
   return "" # REPLACE THIS LINE</code-exercise-element>
 
 <h3>Dr. Evil</h3>
-<code-exercise-element exercise-name="dr-evil">def dr_evil(amount):
+<code-exercise-element name="dr-evil" show-tests>def dr_evil(amount):
   """Returns '<amount> dollars', adding '(pinky)' at the end
   if the amount is 1 million or more.
    
@@ -57,6 +57,6 @@
   """
   # YOUR CODE HERE</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

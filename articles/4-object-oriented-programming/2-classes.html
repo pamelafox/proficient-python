@@ -105,7 +105,7 @@ pina_bar.increase_inventory(2)
 truffle_bar.increase_inventory(200)</code></pre>
 <p>The great thing about object-oriented programming is that we can initialize hundreds of products, and know that each of those products have the same variable names and methods. A little bit of code can go a long way!</p>
 
-      <quiz-element>
+      <single-question-quiz-element name="chocolate-bar-object-method-call">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -134,8 +134,8 @@ truffle_bar.increase_inventory(200)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="chocolate-bar-instance-variable">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -157,6 +157,10 @@ truffle_bar.increase_inventory(200)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

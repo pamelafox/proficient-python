@@ -7,7 +7,7 @@
 <h3>Exercise: Animal Subclasses</h3>
 <p>Finish the two subclasses <code>Sloth</code> and <code>Cat</code> so that they both inherit from <code>Animal</code> and override class variables according to the values in their doctests.</p>
 <p>📺 Need help with this one? Watch this <a target="_blank" href="https://youtu.be/Dv9fFk7Z2tQ">video walkthrough</a> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
-<code-exercise-element exercise-name="animal-subclasses">class Animal:
+<code-exercise-element name="animal-subclasses" show-tests>class Animal:
     species_name = "Animal"
     scientific_name = "Animalia"
     play_multiplier = 2
@@ -69,7 +69,7 @@ class Cat: # &lt;- FINISH THIS LINE
     # YOUR CODE HERE</code-exercise-element>
 <h3>Exercise: LearnableContent subclasses</h3>
 <p>The <code>LearnableContent</code> class below is based on an actual class from the Khan Academy Python codebase. Finish the implementation of the <code>Article</code> and <code>Video</code> subclasses to properly inherit from <code>LearnableContent</code> and override class variables according to the values in the doctests.</p>
-<code-exercise-element exercise-name="learnable-content-subclasses">class LearnableContent:
+<code-exercise-element name="learnable-content-subclasses" show-tests>class LearnableContent:
   """A base class for specific kinds of learnable content.
   All kinds have title and author attributes,
   but each kind may have additional attributes.
@@ -115,7 +115,7 @@ class Article: # &lt;- FINISH THIS LINE
 <h3>Exercise: Boss methods</h3>
 <p>The <code>Character</code> class below represents a character in a video game. Finish implementing the methods in <code>Boss</code> so that they override the base class methods and behave according to the comments and doctests.</p>
 <p>📺 Need help with this one? Watch this <a target="_blank" href="https://youtu.be/8Cq-IuCFTyM">video walkthrough</a> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
-<code-exercise-element exercise-name="boss-methods">class Character:
+<code-exercise-element name="boss-methods" show-tests>class Character:
   """ Represents a character in a video game,
   tracking their name and health.
 
@@ -169,7 +169,7 @@ class Boss(Character):
 </code-exercise-element>
 <h3>Exercise: Clothing methods</h3>
 <p>The <code>Clothing</code> class below represents pieces of clothing in a closet, and <code>KidsClothing</code> inherits from it. Write a <code>clean</code> method that overrides the base class method according to the comment and the doctests.</p>
-<code-exercise-element exercise-name="clothing-methods">class Clothing:
+<code-exercise-element name="clothing-methods" show-tests>class Clothing:
   """ Represents clothing in a closet,
   tracking the color, category, and clean/dirty state.
 
@@ -224,6 +224,6 @@ class KidsClothing(Clothing):
   # so that kids clothing always stays dirty!
   # YOUR CODE HERE</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

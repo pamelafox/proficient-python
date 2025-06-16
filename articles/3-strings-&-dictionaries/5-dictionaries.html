@@ -53,7 +53,7 @@ words[first_word]  # 'water'</code></pre>
 <pre><code>users["pamelafox"] += "itsLongerSoItsMoreSecure!!"</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="dictionaries-users-value">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -129,7 +129,7 @@ words[first_word]  # 'water'</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>What's in a dict?</h3>
 <p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <em>any</em> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
@@ -163,7 +163,7 @@ words[first_word]  # 'water'</code></pre>
   }
 }</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="dictionaries-spiders-access">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -253,7 +253,7 @@ words[first_word]  # 'water'</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Dictionary iteration</h3>
 <p>A Python dict is an iterable object, which means it can be iterated over using a <code>for</code> loop. In each iteration of the loop, the loop variable is assigned to the current key, and the loop body can choose what to do with that key.</p>
@@ -305,4 +305,8 @@ print(servings)
 # by using bracket notation on the recipe variable
 ingredients = []
 print(ingredients)</code></pre>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

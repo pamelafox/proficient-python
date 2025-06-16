@@ -25,7 +25,7 @@
 <pre><code>def square_num2(number):
     print(number ** 2)</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-side-effects">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -73,10 +73,10 @@
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="functions-return-values">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -164,7 +164,7 @@
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Default arguments</h3>
 <p>Function parameters make a function more customizable, since they allow us to pass in more information about how to compute something.</p>
@@ -186,4 +186,8 @@ calculate_dog_age(3, 7)    # Returns 21</code></pre>
 calculate_dog_age(3, multiplier=6)   # Returns: 18</code></pre>
 <p>The first way is much shorter, but sometimes the second way is clearer, and is especially helpful when a function has multiple parameters with default values and you only want to override a subset of them.</p>
 <p>Default arguments are a great way to make functions that are more flexible while still being simple to use in the majority of cases!</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

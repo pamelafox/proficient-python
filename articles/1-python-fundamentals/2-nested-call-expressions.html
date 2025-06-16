@@ -9,7 +9,7 @@
 <li><p>It then evaluates the <strong>operands</strong>, in order. Above, they are both simple numbers, so it first evaluates the number 18 and then the number 69. Since those are simple number values and not expressions themselves, it doesn't have to do much work here!</p></li>
 <li><p>Finally, it <strong>applies</strong> the operator (a function) to the operands (values), according to the function definition. The above expression calls the add function on the values 18 and 69 and returns whatever is computed by that function.</p></li></ol>
 
-<quiz-element>
+<single-question-quiz-element name="fix-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -53,7 +53,7 @@
             </aside>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Nested call expressions</h3>
 <p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
@@ -72,7 +72,7 @@ add(        30       ,    15    )
 <p><img src="../images/callexpression_tree.png">📺  Here's <a target="_blank" href="https://www.youtube.com/watch?v=vBx30J-NV9I">a video walkthrough</a> of that call expression tree which shows the order of the calls and return values.</p>
 
 
-      <quiz-element>
+<single-question-quiz-element name="nested-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -151,7 +151,7 @@ add(        30       ,    15    )
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>Exercise: Operator expressions</h3>
 <p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
@@ -165,8 +165,15 @@ add(        30       ,    15    )
 <li><p><code>3 * (10 - 2)</code></p></li>
 <li><p><code>(3 ** (365/52)) - 1</code></p></li>
 <li><p><code>(25 // 4) - (25 / 4)</code></p></li></ul>
-<pre><code>from operator import add, sub, mul, truediv, floordiv, mod
+
+<code-exercise-element name="your-name-string">from operator import add, sub, mul, truediv, floordiv, mod
 
 # After adding a call expression, run code to see if its correct
-add(30, 2)</code></pre>
+add(30, 2)</code-exercise-element>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

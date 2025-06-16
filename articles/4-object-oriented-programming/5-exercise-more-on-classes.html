@@ -7,7 +7,7 @@
 <p>In the first two exercises, the class definitions are missing a class variable. Read the docstring and doctests to determine the name and value of the missing class variable, add it in, and run the doctests after.</p>
 <h3>Exercise: StudentGrade</h3>
 <p>📺 Need help with this one? Watch a <a target="_blank" href="https://www.youtube.com/watch?v=wFHKyVkn5mQ">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
-<code-exercise-element exercise-name="studentgrade-class">class StudentGrade:
+<code-exercise-element name="studentgrade-class" show-tests>class StudentGrade:
   """Represents the grade for a student in a class
   and indicates when a grade is failing.
   For all students, 159 points is considered a failing grade.
@@ -35,7 +35,7 @@
     return self.num_points < StudentGrade.failing_grade</code-exercise-element>
 
 <h3>Exercise: Article</h3>
-<code-exercise-element exercise-name="article-class">class Article:
+<code-exercise-element name="article-class" show-tests>class Article:
   """Represents an article on an educational website.
   The license for all articles should be "CC-BY-NC-SA".
 
@@ -59,7 +59,7 @@
 <p>For this exercise, you'll finish the implementation of <code>make_thneed</code>, a class method that can make Thneeds of a given size and a random color.</p>
 <p><strong>Hint: </strong>You can use<strong> </strong><code>random.choice(list)</code> to generate a random color from a list of colors.</p>
 <p>📺 Need help with this one? Watch the <a target="_blank" href="https://youtu.be/_dB4koJNHL0">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
-<code-exercise-element exercise-name="thneed-factory">import random
+<code-exercise-element name="thneed-factory">import random
 
 class Thneed:
     def __init__(self, color, size):
@@ -83,7 +83,7 @@ class Thneed:
 <h3>Exercise: Cat adoption</h3>
 <p>For this exercise, you'll finish the implementation of <code>adopt_random_cat</code>, a class method that can generate new cats. Just what we need in the world! 🐈‍⬛🐈</p>
 <p><strong>Hint: </strong>You can use<strong> </strong><code>random.choice(list)</code> to generate a random name from a list of names and <code>random.randrange(start, stop)</code> to generate a random number of lives.</p>
-<code-exercise-element exercise-name="cat-adoption">import random
+<code-exercise-element name="cat-adoption" show-tests>import random
 
 class Cat:
     def __init__(self, name, owner, lives=9):
@@ -104,6 +104,6 @@ class Cat:
         """
         # YOUR CODE HERE</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

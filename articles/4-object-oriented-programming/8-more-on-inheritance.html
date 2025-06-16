@@ -42,7 +42,7 @@ mufasa.eat(bones)</code></pre>
 <pre><code>elly = Elephant("Ellie", 3)
 print(elly.calories_needed)</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="elephant-variable-change">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -64,7 +64,7 @@ print(elly.calories_needed)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>Layers of inheritance</h3>
 <p>Every Python 3 class actually implicitly inherits from the global built-in <code>object</code> class.</p>
@@ -131,4 +131,8 @@ l.interact_with(r)               # Predator method</code></pre>
 <p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
 <p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <em>not</em> to add them.</p>
 <p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

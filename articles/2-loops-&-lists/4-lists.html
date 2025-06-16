@@ -39,7 +39,7 @@ temps[-2]  # 99.0</code></pre>
 <p>Consider this list of my favorite musical artists:</p>
 <pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="fav-singers1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -129,10 +129,10 @@ temps[-2]  # 99.0</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="fav-singers2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -211,7 +211,7 @@ temps[-2]  # 99.0</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
       
 <h3>List length</h3>
@@ -223,4 +223,8 @@ len(attendees) # Evaluates to: 3</code></pre>
 <p>You can also use <code>len()</code> on strings, since Python considers a string to be a type of sequence:</p>
 <pre><code>len("Supercalifragilisticexpialidocious")  # Evaluates to: 34</code></pre>
 <p>The length of a string is typically the number of characters. In actuality, it's reporting the number of Unicode code points in a string, and Western alphabet letters require only one code point. However, many modern emojis require multiple Unicode code points, like 🤷🏽‍♀️, so <code>len("🤷🏽‍♀️")</code> will actually report 5. I love emojis, but dang, programming with them is a pain.</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

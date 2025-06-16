@@ -82,7 +82,7 @@ bought_food3 = groceries.pop(i)</code></pre>
 <p>Start from this code:</p>
 <pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
 
-<quiz-element>
+<single-question-quiz-element name="cities-list-mutation1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -111,9 +111,9 @@ bought_food3 = groceries.pop(i)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
-      <quiz-element>
+      <single-question-quiz-element name="cities-list-mutation2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -144,9 +144,9 @@ bought_food3 = groceries.pop(i)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
-      <quiz-element>
+      <single-question-quiz-element name="cities-list-mutation3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -175,14 +175,14 @@ bought_food3 = groceries.pop(i)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <h3>Exercise: Planets</h3>
 <p>Start from this code:</p>
 <pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
     'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
 
-      <quiz-element>
+      <single-question-quiz-element name="planets-list-mutation">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -207,7 +207,11 @@ bought_food3 = groceries.pop(i)</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

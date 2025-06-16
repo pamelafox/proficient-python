@@ -39,7 +39,7 @@
 cust1 = Customer("Coco Lover",
     ["123 Pining St", "Nibbsville", "OH"])</code></pre>
 
-          <quiz-element>
+      <single-question-quiz-element name="chocolate-shop-class-variables">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -115,12 +115,9 @@ cust1 = Customer("Coco Lover",
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="chocolate-shop-instance-variables">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
-          </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>Which of these are instance variables?</p></div>
             <div class="form-check">
@@ -200,7 +197,7 @@ cust1 = Customer("Coco Lover",
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>Class methods</h3>
 <p>A <strong>class method</strong> is a method that is called on a class and does <em>not</em> receive an object as the first argument. Instead, it receives the class itself as the first argument.</p>
@@ -244,4 +241,9 @@ pina_bar.inventory = -5000</code></pre>
 </code></pre>
 <p>With this change, it's much more difficult for code outside of the class definition to reduce the inventory attribute. If the inventory attribute wasn't protected by the double underscores in front, another programmer might accidentally update inventory in another part of the codebase and not realize they needed to update <code>needs_restocking</code> as well. This change attempts to ensure that all inventory updates go through the restocking check.</p>
 <p>Private instance variables are often used to either add error checking, as in this example, or to hide other implementation details.</p>
+{% endblock %}
+
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

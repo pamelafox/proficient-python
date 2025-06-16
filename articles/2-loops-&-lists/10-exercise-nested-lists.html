@@ -7,7 +7,7 @@
 <p>Implement <code>sum_grid</code>, a function that returns the sum of all the numbers in <code>grid</code>, a 2-dimensional list of numbers.</p>
 <p>📺 Need help getting started? Here's <a target="_blank" href="https://youtu.be/2gubXCUL4rU">a video walkthrough</a> of a similar problem.</p>
 <p>🧩 Or, for more guidance in written form, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=sum_grid">Parsons Puzzle version</a> first.</p>
-<code-exercise-element exercise-name="sum-grid">def sum_grid(grid):
+<code-exercise-element name="sum-grid" show-tests>def sum_grid(grid):
     """Returns the sum of all the numbers in the given grid, a 2-D list of numbers.
 
     >>> grid1 = [
@@ -34,7 +34,7 @@
 <h3>Contains 15 row?</h3>
 <p>Implement <code>contains_15row</code>, a function that returns true if any of the rows in <code>grid</code>, a 2-dimension list of numbers, add up to a total of 15.</p>
 <p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=contains_15row">Parsons Puzzle version</a> first.</p>
-<code-exercise-element exercise-name="contains-15-row">def contains_15row(grid):
+<code-exercise-element name="contains-15-row" show-tests>def contains_15row(grid):
     """Takes an input of a 2-dimensional list of numbers
         and returns true if any of the rows add up to 15.
     
@@ -60,6 +60,6 @@
     # If sum is 15, return true
     # return false otherwise</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

@@ -42,7 +42,7 @@
   </details>
 </details>
 
-<code-exercise-element exercise-name="lifetime-supply-calculator">def calculate_lifetime_supply(current_age, amount_per_day):
+<code-exercise-element name="lifetime-supply-calculator" show-tests>def calculate_lifetime_supply(current_age, amount_per_day):
     """ Returns the amount of items consumed over a lifetime
     (with a max age of 100 assumed) based on the current age
     and the amount consumed per day.
@@ -72,7 +72,7 @@
     <pre><code>return (_____________) * 365 * 24 * 60 * 60</code></pre>
   </details>
 </details>
-<code-exercise-element exercise-name="seconds-between">def seconds_between(year1, year2):
+<code-exercise-element name="seconds-between" show-tests>def seconds_between(year1, year2):
     """ Returns the number of seconds between two years.
 
     >>> seconds_between(1984, 1985)
@@ -98,7 +98,7 @@
     <pre><code>return 'You will be a ' + ____ + ' living in ' + ____ + ' with ' + ____ + '.'</code></pre>
   </details>
 </details>
-<code-exercise-element exercise-name="fortune-teller">def tell_fortune(job_title, location, partner):
+<code-exercise-element name="fortune-teller" show-tests>def tell_fortune(job_title, location, partner):
     """ Returns a fortune of the form:
      'You will be a <job_title> in <location> living with <partner>.'
 
@@ -114,7 +114,7 @@
 <h3>Temperature Converter</h3>
 <p>Implement two functions, <code>celsius_to_fahrenheit</code> and <code>fahrenheit_to_celsius</code>, to convert temperatures based on the <a target="_blank" href="https://www.mathsisfun.com/temperature-conversion.html">standard conversion formulas</a>. You'll need to modify both the function signature <em>and</em> function body.</p>
 <p>Tip: As the final step in the conversion, the built-in <a target="_blank" href="https://docs.python.org/3/library/functions.html#round"><code>round</code></a> function may be helpful.</p>
-<code-exercise-element exercise-name="celsius-to-fahrenheit">def celsius_to_fahrenheit():  # <- COMPLETE THIS
+<code-exercise-element name="celsius-to-fahrenheit" show-tests>def celsius_to_fahrenheit():  # <- COMPLETE THIS
     """ Returns the Fahrenheit equivalent of the given Celsius temperature.
 
     >>> celsius_to_fahrenheit(0)
@@ -136,5 +136,5 @@ def fahrenheit_to_celsius(): # <- COMPLETE THIS
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

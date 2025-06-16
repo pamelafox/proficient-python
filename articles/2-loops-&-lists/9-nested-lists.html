@@ -10,7 +10,7 @@
              ["Maya", 9.2, 8.7, 9.2, 8.8]
            ]</code></pre>
 <p>We can treat this like any other list, using bracket notation and list methods to interact with the list.</p>
-      <quiz-element>
+      <single-question-quiz-element name="nested-lists-gymnasts-outer">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -34,10 +34,10 @@
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
-            <quiz-element>
+      <single-question-quiz-element name="nested-lists-gymnasts-inner">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -61,7 +61,7 @@
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
 <h3>Accessing nested list items</h3>
@@ -83,7 +83,7 @@ gymnasts[1][5]  # 🚫 IndexError!
 gymnasts[3][0]  # 🚫 IndexError!</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="nested-lists-gymnasts-access">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -110,7 +110,7 @@ gymnasts[3][0]  # 🚫 IndexError!</code></pre>
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>Modifying nested lists</h3>
 <p>We can replace the inner lists inside a nested list using bracket notation.</p>
@@ -136,4 +136,8 @@ for member_scores in team_scores:
         sum_scores += score</code></pre>
 <p>The trickiest thing with nested loops is keeping track of what each loop variable represents. In the above code, <code>member_scores</code> stores each of the inner lists in each iteration- first <code>[9.15, 9.4, 9.3, 9.2]</code>, then <code>[9, 8.8, 9.1, 9.5]</code>, finally <code>[9.2, 8.7, 9.2, 8.8]</code>. Then in the inner loop, <code>score</code> stores each of the numbers inside those lists, starting with 9.15 and ending with 8.8. </p>
 <p>If you're ever not sure what your variable is storing, you can always print it out and double check.</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

@@ -5,19 +5,19 @@
 <p>Now that we know how to write Boolean expressions, we can use them inside <strong>conditional statements</strong> to tell our programs to <em>conditionally</em> execute one block of code versus another.</p>
 <h3>Conditional statements</h3>
 <p>In Python, conditional statements always start with <code>if</code>. Here's the basic template:</p>
-<pre><code>if <condition>:
-    <statement>
-    <statement>
+<pre><code>if &lt;condition&gt;:
+    &lt;statement&gt;
+    &lt;statement&gt;
     ...</code></pre>
-<p>If <code><condition></code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <em>required</em> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
+<p>If <code>&lt;condition&gt;</code> is true, then the program will execute the statements indented below it. The indentation of the inner statements is <em>required</em> in Python, and indenting incorrectly will result in either a syntax error or a buggy program.</p>
 <p>Here's a simple <code>if</code> statement that re-assigns a variable based on a condition:</p>
 <pre><code>clothing = "shirt"
 
-if temperature < 32:
+if temperature &lt; 32:
     clothing = "jacket"</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="if-temperature-jacket">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -92,19 +92,19 @@ if temperature < 32:
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
       
 <h3>Compound conditionals</h3>
 <p>A conditional statement can include any number of <code>elif</code> statements to check other conditions and execute different blocks of code. Other languages use <code>else if</code>, but Python decided that was just too dang long and shortened it to <code>elif</code>. 🤷🏼‍♀️</p>
 <p>Here's a template with three conditional paths:</p>
-<pre><code>if <condition>:
-    <statement>
+<pre><code>if &gt;condition&lt;:
+    &lt;statement&gt;
     ...
-elif <condition>:
-    <statement>
+elif &lt;condition&gt;:
+    &lt;statement&gt;
     ...
-elif <condition>:
-    <statement>
+elif &lt;condition&gt;:
+    &lt;statement&gt;
     ...</code></pre>
 <p>Here's an extension of the earlier example with one more path:</p>
 <pre><code>clothing = "shirt"
@@ -161,17 +161,17 @@ elif temperature < 32:
 </table>
 <p>It's a good idea to be doubly sure of what happens at the boundary conditions- sometimes you might realize, "uh oh! I wanted >=, not >, my bad!". 🙀When writing tests for a function that uses a conditional function, make sure to test those boundary conditions.</p>
 <p>Finally, a conditional statement can include an <code>else</code> clause to specify what code should be executed if none of the preceding conditions were true.</p>
-<pre><code>if <condition>:
-    <statement>
+<pre><code>if &lt;condition&gt;:
+    &lt;statement&gt;
     ...
-elif <condition>:
-    <statement>
+elif &lt;condition&gt;:
+    &lt;statement&gt;
     ...
-else <condition>:
-    <statement>
+else &lt;condition&gt;:
+    &lt;statement&gt;
     ...</code></pre>
 <p>Here's a way to rewrite the earlier example using <code>if</code>/<code>elif</code>/<code>else</code>:</p>
-<pre><code>if temperature < 0:
+<pre><code>if temperature &lt; 0:
     clothing = "snowsuit"
 elif temperature < 32:
     clothing = "jacket"
@@ -186,9 +186,9 @@ else:
 <p>A conditional statement could be just one part of a longer function, or it could be the entire function. It's common to write a function that uses a conditional to compare the input parameters and return values based on what was passed in.</p>
 <p>For example:</p>
 <pre><code>def get_number_sign(num):
-    if num < 0:
+    if num &lt; 0:
         sign = "negative"
-    elif num > 0:
+    elif num &gt; 0:
         sign = "positive"
     else:
         sign = "neutral"
@@ -208,10 +208,14 @@ get_number_sign(0)   # Returns: "neutral"</code></pre>
 <p>That makes it very clear that the function won't be doing anything else besides returning that value, since a return statement exits a function immediately.</p>
 <p>There's one more way we might write this function, leaving off the <code>else</code> of the conditional:</p>
 <pre><code>def get_number_sign(num):
-    if num < 0:
+    if num &lt; 0:
         return "negative"
-    elif num > 0:
+    elif num &gt; 0:
         return "positive"
     return "neutral"</code></pre>
 <p>When that function receives a <code>num</code> of 0, it doesn't execute either of the return statements inside the conditional, since neither condition is true. It continues on, discovers the next statement is a return statement, and executes that statement instead.</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}

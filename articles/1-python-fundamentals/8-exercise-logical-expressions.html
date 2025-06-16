@@ -21,7 +21,7 @@
   </details>
 </details>
 
-<code-exercise-element exercise-name="curly-hair-checker">def has_curly_hair(father_allele, mother_allele):
+<code-exercise-element name="curly-hair-checker" show-tests>def has_curly_hair(father_allele, mother_allele):
   """Returns true only if both the father allele and mother allele are "C".
 
   >>> has_curly_hair("C", "c")
@@ -51,7 +51,7 @@
   </details>
 </details>
 
-<code-exercise-element exercise-name="presidential-eligibility">def can_be_president(age, residency):
+<code-exercise-element name="presidential-eligibility" show-tests>def can_be_president(age, residency):
     """
     Returns whether someone can be US president based on age and residency.
     According to the US constitution, a presidential candidate must be at least 
@@ -81,7 +81,7 @@
   <ul>
     <li>Your function only needs a single line of code: one <strong>return</strong> statement.
     <li>The return statement should contain a <strong>compound Boolean expression</strong> using <code>>=</code>, <code>==</code>, with the <code>or</code> operator.
-    <li>The Boolean expression should involve the <strong>parameters</strong> (<code>seafood_type</code>, <code>days_frozen</code>) as well as a literal <strong>number</strong> (<code>7<code>) and a literal <code>string</code> (<code>"mollusk"</code>).
+    <li>The Boolean expression should involve the <strong>parameters</strong> (<code>seafood_type</code>, <code>days_frozen</code>) as well as a literal <strong>number</strong> (<code>7</code>) and a literal <code>string</code> (<code>"mollusk"</code>).
   </ul>
   <details>
     <summary>For a code template, expand this block.</summary>
@@ -89,7 +89,8 @@
     <pre><code>return ______ or ______</code></pre>
   </details>
 </details>
-<code-exercise-element exercise-name="seafood-safety">def is_safe_to_eat(seafood_type, days_frozen):
+
+<code-exercise-element name="seafood-safety" show-tests>def is_safe_to_eat(seafood_type, days_frozen):
     """ Returns true if the seafood is safe to eat: 
     either the type is "mollusk" or it's been frozen for at least 7 days.
 
@@ -107,7 +108,7 @@
     return 0  # REPLACE THIS</code-exercise-element>
 
 <h3>Harvest Time</h3>
-<code-exercise-element exercise-name="harvest-time">def harvest_time(month, tuber_size):
+<code-exercise-element name="harvest-time" show-tests>def harvest_time(month, tuber_size):
     """ Returns true if it's time to harvest root vegetables:
     either the month is July or the size of the tuber is at least 2 feet.
     >>> harvest_time("May", 1)
@@ -125,6 +126,6 @@
     """
     return 0 # REPLACE THIS</code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

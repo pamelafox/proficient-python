@@ -5,7 +5,7 @@
 <p>These exercises combine many of the skills and data types you've learned over the last few units, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
 
 <h3>Movie summarizer</h3>
-<code-exercise-element exercise-name="movie-summarizer">def movie_summary(movie):
+<code-exercise-element name="movie-summarizer" show-tests>def movie_summary(movie):
     """
     Accepts movie, a dictionary with three keys-
     title (string), duration (number), actors (list of strings),
@@ -50,7 +50,7 @@
 ]</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="nested-lists-books-access-first">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -151,9 +151,9 @@
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
-      <quiz-element>
+      <single-question-quiz-element name="nested-lists-books-num-keys">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -212,10 +212,10 @@
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 <p>Now implement <code>count_unread_books</code>, a function that processes a list of that form and returns the number of unread books in the list.</p>
-<code-exercise-element exercise-name="count-unread-books">def count_unread_books(books):
+<code-exercise-element name="count-unread-books" show-tests>def count_unread_books(books):
     """ Accepts a list of dicts describing books
     and returns the number of unread books in the list.
     
@@ -237,6 +237,7 @@
     # Return count
 </code-exercise-element>
 {% endblock %}
-{% block foooter_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.4/dist/code-exercise.umd.min.js"></script>
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.7/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

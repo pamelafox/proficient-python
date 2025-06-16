@@ -29,7 +29,7 @@ while multiplier <= 5:
     multiplier += 1</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="while-loop1-first-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -51,8 +51,8 @@ while multiplier <= 5:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop1-last-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -74,8 +74,8 @@ while multiplier <= 5:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop1-number-of-iterations">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -97,7 +97,7 @@ while multiplier <= 5:
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
 <h3>Modifying a loop: Example #2</h3>
@@ -108,7 +108,7 @@ while multiplier <= 10:
     multiplier += 1</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="while-loop2-first-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -128,8 +128,8 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop2-last-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -151,8 +151,8 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop2-number-of-iterations">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -174,7 +174,7 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
 
 <h3>Modifying a loop: Example #3</h3>
@@ -186,7 +186,7 @@ while multiplier <= 10:
     multiplier += 2</code></pre>
 
 
-      <quiz-element>
+      <single-question-quiz-element name="while-loop3-first-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -208,8 +208,8 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop3-last-number">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -231,8 +231,8 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
-      <quiz-element>
+      </single-question-quiz-element>
+      <single-question-quiz-element name="while-loop3-number-of-iterations">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
             <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
@@ -254,7 +254,7 @@ while multiplier <= 10:
             </div>
           </div>
         </form>
-      </quiz-element>
+      </single-question-quiz-element>
 
       
 <h3>Counter variables</h3>
@@ -321,4 +321,8 @@ while True:
 <p><code>sum_up_squares(1, 5) # Returns 55</code></p>
 <p><code>sum_up_squares(5, 10) # Returns 355</code></p>
 <p>We could also use function parameters to affect the computation done inside a loop or to affect how a counter variable is incremented. Combining functions with loops gives us the power to create reusable, flexible looping computations.</p>
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
 {% endblock %}
