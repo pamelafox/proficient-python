@@ -1,0 +1,9 @@
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+select = ["E", "F", "I", "UP", "A"]
+ignore = ["D203"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ['.']

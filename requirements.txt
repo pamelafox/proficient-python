@@ -1,1 +1,6 @@
 jinja2ssg
+pytest
+playwright
+pytest-playwright
+axe-playwright-python
+ruff

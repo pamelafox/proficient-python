@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Python 101: Course Overview</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <title>Proficient Python: Course Overview</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
   <style>
   img {
     display: block;
@@ -183,10 +181,10 @@
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2">
+      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
-      <a class="navbar-brand" href="/index.html">Python 101</a>
+      <a class="navbar-brand" href="/index.html">Proficient Python</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -194,7 +192,7 @@
   </nav>
 </header>
 
-<div class="sidebar" id="sidebar">
+<nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
   <div class="sidebar-heading">Python Fundamentals</div>
   <ul class="nav flex-column">
     <li class="nav-item">
@@ -357,70 +355,90 @@
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
   </ul>
-</div>
+</nav>
 
-<div class="content-wrapper" id="content">
+<main class="content-wrapper" id="content" role="main">
   <div class="container container-md">
     
 
-<h2>Unit 1: Python Fundamentals</h2>
-<ul><li><a href='1-python-fundamentals/0-unit-overview.html'>Unit overview</a></li>
-<li><a href='1-python-fundamentals/1-values-&-expressions.html'>Values & expressions</a></li>
-<li><a href='1-python-fundamentals/2-nested-call-expressions.html'>Nested call expressions</a></li>
-<li><a href='1-python-fundamentals/3-names-&-variables.html'>Names & variables</a></li>
-<li><a href='1-python-fundamentals/4-functions.html'>Functions</a></li>
-<li><a href='1-python-fundamentals/5-exercise-functions.html'>Exercise: Functions</a></li>
-<li><a href='1-python-fundamentals/6-more-on-functions.html'>More on functions</a></li>
-<li><a href='1-python-fundamentals/7-logical-expressions.html'>Logical expressions</a></li>
-<li><a href='1-python-fundamentals/8-exercise-logical-expressions.html'>Exercise: Logical expressions</a></li>
-<li><a href='1-python-fundamentals/9-conditionals.html'>Conditionals</a></li>
-<li><a href='1-python-fundamentals/10-exercise-conditionals.html'>Exercise: Conditionals</a></li>
-<li><a href='1-python-fundamentals/11-user-input.html'>User input</a></li>
-<li><a href='1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html'>Project 1: Algorithms as Decision Makers</a></li></ul>
-<h2>Unit 2: Loops & Lists</h2>
-<ul><li><a href='2-loops-&-lists/0-unit-overview.html'>Unit overview</a></li>
-<li><a href='2-loops-&-lists/1-while-loops.html'>While loops</a></li>
-<li><a href='2-loops-&-lists/2-exercise-while-loops.html'>Exercise: While loops</a></li>
-<li><a href='2-loops-&-lists/3-for-loops-&-ranges.html'>For loops & ranges</a></li>
-<li><a href='2-loops-&-lists/4-lists.html'>Lists</a></li>
-<li><a href='2-loops-&-lists/5-looping-through-sequences.html'>Looping through sequences</a></li>
-<li><a href='2-loops-&-lists/6-exercise-loops-and-lists.html'>Exercise: Loops and lists</a></li>
-<li><a href='2-loops-&-lists/7-list-mutation.html'>List mutation</a></li>
-<li><a href='2-loops-&-lists/7b-exercise-list-mutation.html'>Exercise: List mutation</a></li>
-<li><a href='2-loops-&-lists/8-more-on-lists.html'>More on lists</a></li>
-<li><a href='2-loops-&-lists/9-nested-lists.html'>Nested lists</a></li>
-<li><a href='2-loops-&-lists/10-exercise-nested-lists.html'>Exercise: Nested lists</a></li>
-<li><a href='2-loops-&-lists/11-project-2-photo-filters.html'>Project 2: Photo Filters</a></li></ul>
-<h2>Unit 3: Strings & Dictionaries</h2>
-<ul><li><a href='3-strings-&-dictionaries/0-unit-overview.html'>Unit overview</a></li>
-<li><a href='3-strings-&-dictionaries/1-string-formatting.html'>String formatting</a></li>
-<li><a href='3-strings-&-dictionaries/2-exercise-string-formatting.html'>Exercise: String formatting</a></li>
-<li><a href='3-strings-&-dictionaries/3-string-operations.html'>String operations</a></li>
-<li><a href='3-strings-&-dictionaries/4-exercise-string-operations.html'>Exercise: String operations</a></li>
-<li><a href='3-strings-&-dictionaries/5-dictionaries.html'>Dictionaries</a></li>
-<li><a href='3-strings-&-dictionaries/6-exercise-dictionaries.html'>Exercise: Dictionaries</a></li>
-<li><a href='3-strings-&-dictionaries/7-randomness.html'>Randomness</a></li>
-<li><a href='3-strings-&-dictionaries/8-files.html'>Files</a></li>
-<li><a href='3-strings-&-dictionaries/9-project-3-text-generator.html'>Project 3: Text generator</a></li></ul>
-<h2>Unit 4: Object-oriented Programming</h2>
-<ul><li><a href='4-object-oriented-programming/0-unit-overview.html'>Unit overview</a></li>
-<li><a href='4-object-oriented-programming/1-object-oriented-programming.html'>Object-oriented programming</a></li>
-<li><a href='4-object-oriented-programming/2-classes.html'>Classes</a></li>
-<li><a href='4-object-oriented-programming/3-exercise-classes.html'>Exercise: Classes</a></li>
-<li><a href='4-object-oriented-programming/4-more-on-classes.html'>More on classes</a></li>
-<li><a href='4-object-oriented-programming/5-exercise-more-on-classes.html'>Exercise: More on classes</a></li>
-<li><a href='4-object-oriented-programming/6-inheritance.html'>Inheritance</a></li>
-<li><a href='4-object-oriented-programming/7-exercise-inheritance.html'>Exercise: Inheritance</a></li>
-<li><a href='4-object-oriented-programming/8-more-on-inheritance.html'>More on inheritance</a></li>
-<li><a href='4-object-oriented-programming/9-exercise-more-on-inheritance.html'>Exercise: More on inheritance (Optional)</a></li>
-<li><a href='4-object-oriented-programming/10-composition.html'>Composition</a></li>
-<li><a href='4-object-oriented-programming/11-polymorphism.html'>Polymorphism</a></li>
-<li><a href='4-object-oriented-programming/12-project-4-oop-quiz.html'>Project 4: OOP Quiz</a></li></ul>
+    <section class="hero">
+      <h1>Course overview</h1>
+      <p><strong>Proficient Python</strong> is a free interactive course designed to help you build real confidence in Python — whether you're just getting started or reinforcing your foundations. Through a blend of clear explanations, hands-on exercises, and real projects, you'll develop a solid understanding of the Python language.</p>
+    </section>
+
+    <section class="what-youll-learn">
+      <h2>🧠 What you'll learn</h2>
+      <p>The course covers all the core topics needed to write useful Python programs, including:</p>
+      <ul>
+        <li>Variables, expressions, and functions</li>
+        <li>Logical conditions and control flow</li>
+        <li>Loops, lists, and list mutation</li>
+        <li>Strings and dictionaries</li>
+        <li>File handling and randomness</li>
+        <li>Object-oriented programming (OOP), including classes, inheritance, and composition</li>
+      </ul>
+    </section>
+
+    <section class="how-youll-learn">
+      <h2>🛠 How you'll learn</h2>
+      <p>This course offers multiple learning modes to support different learning styles:</p>
+      <ul>
+        <li><strong>📚 Articles with inline quizzes</strong> — Read short lessons with embedded self-checks to reinforce key ideas.</li>
+        <li><strong>💻 Coding exercises</strong> — Practice writing real Python code in your browser with an integrated test runner. Need help? You’ll find:
+          <ul>
+            <li>Video walkthroughs</li>
+            <li>Scaffolded starter versions for each challenge</li>
+          </ul>
+        </li>
+        <li><strong>📓 Unit projects</strong> — Apply what you've learned with creative, open-ended projects in Jupyter notebooks (hosted on Google Colab).</li>
+      </ul>
+    </section>
+
+<section class="getting-help">
+  <h2>🙋🏾 Getting Help</h2>
+  <p>While this course is designed to be as self-guided and supportive as possible, questions are totally expected! Here's how you can get help along the way:</p>
+
+  <ul>
+    <li>
+      <strong>💬 Ask in the community:</strong> Visit the 
+      <a href="https://github.com/pamelafox/proficient-python/discussions" target="_blank" rel="noopener">GitHub Discussions</a> 
+      board for the course to ask questions, share tips, or see what others have encountered.
+    </li>
+    <li>
+    <p><strong>🤖 Use AI tools thoughtfully:</strong> Tools like ChatGPT or Claude can be helpful if you're stuck, but try not to just ask them for the solution. Instead, share your code and ask:</p>
+      <ul>
+        <li>"Can you help me understand why this function isn't returning what I expect?"</li>
+        <li>"Here's the error message I'm seeing. What could be causing it?"</li>
+        <li>"I'm trying to loop through a list of strings—why isn't this working?"</li>
+      </ul>
+      <p>You may need to even specifically add an instruction like "Do NOT give me the solution."
+      </p>
+    </li>
+    <li>
+      <strong>🙏 A note about support:</strong> Because this course is free and open, there's no dedicated 1-on-1 support.
+    </li>
+  </ul>
+</section>
+
+<section class="about-author">
+  <h2>🧑🏼‍🏫 About the Author</h2>
+  <p><strong><a target="_blank" href="https://www.pamelafox.org/">Pamela Fox</a></strong> is the creator of the course. She originally created the course for the <a target="_blank" href="https://uplimit.com/">Uplimit learning platform</a>, where she taught it along with <a target="_blank" href="https://www.linkedin.com/in/murtazaabbasali">Murtaza Ali</a>.
+    The course was inspired by her experience teaching Python for UC Berkeley CS61A, the first course in the Computer Science curriculum.</p>
+  
+  <p>Before that, she developed interactive programming courses for Khan Academy, covering topics like JavaScript, HTML/CSS, and SQL — helping millions of learners get their start in coding.</p>
+  
+  <p>Today, Pamela works as a Python Cloud Advocate at Microsoft, where she focuses on making programming and cloud technologies more accessible to everyone through tutorials, talks, and open-source tools.</p>
+
+  <p>She's passionate about helping learners gain confidence and joy in coding — and believes that Python is a perfect place to start (and grow).</p>
+</section>
+
+
+
 
   </div>
-</div>
+</main>
 
-<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script>
   // Sidebar toggle functionality
@@ -471,18 +489,20 @@
       // Get the path from the href
       const linkPath = new URL(linkHref, window.location.origin).pathname;
       
-      // Extract just the filename part from both paths
-      const currentFile = currentPath.split('/').pop();
-      const linkFile = linkPath.split('/').pop();
-      
       // Exact match for the full path
       if (currentPath === linkPath) {
         return true;
       }
       
-      // Exact match for the filename
-      if (currentFile === linkFile) {
-        return true;
+      // Split paths into segments to compare both section and filename
+      const currentSegments = currentPath.split('/').filter(Boolean);
+      const linkSegments = linkPath.split('/').filter(Boolean);
+      
+      // Make sure we have enough segments to compare
+      if (currentSegments.length >= 2 && linkSegments.length >= 2) {
+        // Compare both the section folder and the filename
+        return (currentSegments[0] === linkSegments[0] && 
+                currentSegments[currentSegments.length-1] === linkSegments[linkSegments.length-1]);
       }
       
       return false;
@@ -516,6 +536,23 @@
         if (parentUl) {
           parentUl.classList.add('show');
         }
+        
+        // Scroll the active link into view within the sidebar only if not visible
+        setTimeout(() => {
+          // Check if element is visible in the sidebar viewport
+          const rect = link.getBoundingClientRect();
+          const sidebarRect = sidebar.getBoundingClientRect();
+          
+          // Check if the link is outside the visible area of the sidebar
+          const isVisible = 
+            rect.top >= sidebarRect.top && 
+            rect.bottom <= sidebarRect.bottom;
+          
+          // Only scroll if link is not visible in the sidebar's viewport
+          if (!isVisible) {
+            link.scrollIntoView({ behavior: 'auto', block: 'center' });
+          }
+        }, 100);
       }
     });
     
