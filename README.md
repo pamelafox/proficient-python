@@ -1,8 +1,41 @@
-# Python fundamentals
+# Proficient Python
 
-To use these materials, I recommend going through the articles, and then doing the exercises and projects when referenced by the articles. You can work on the exercises/projects in JupyterLab, VS Code, or Google CoLab.
+A comprehensive, interactive Python programming course designed to take you from beginner to proficient Python developer through hands-on learning.
 
-* Articles (HTML - [View online](https://pamelafox.github.io/python-fundamentals/))
-* Exercises (Jupyter notebooks, in `exercises` folder)
-* Projects (Jupyter notebooks, in `projects` folder)
-* Lecture slides (RevealJS format - [View online](https://pamelafox.github.io/python-fundamentals/lectures))
+Visit [Proficient Python Course](https://proficientpython.com) to start learning.
+
+## Key Features
+
+- **Progressive Learning Path**: Structured from basic to advanced concepts
+- **Interactive Exercises**: Practice coding with built-in exercises
+- **Hands-on Projects**: Four major projects to apply your skills
+- **Accessibility**: Designed with accessibility in mind
+
+## Local Development
+
+To build and run the course locally:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Build the site
+./build.sh
+```
+
+The course will be available at http://localhost:8000.
+
+## Testing
+
+Run the accessibility and functionality tests:
+
+```bash
+pytest
+```
+
+## License
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
+
