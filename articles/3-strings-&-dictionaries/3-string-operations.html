@@ -13,7 +13,7 @@ longest_word_record_length = len(illness)</code></pre>
 <pre><code>alphabet = 'abcdefghijklmnopqrstuvwxyz'
 for letter in alphabet:
     print(letter)</code></pre>
-<h3>Bracket notation</h3>
+<h2>Bracket notation</h2>
 <p>We can use bracket notation to access single characters inside a string:</p>
 <pre><code>illness = 'pneumonoultramicroscopicsilicovolcanoconiosis'
 
@@ -24,14 +24,14 @@ last_letter = illness[-1]       # Stores 's'</code></pre>
 <p>We can also use bracket notation to slice parts of the string, from a start to (just before) an end index:</p>
 <pre><code>how_small = illness[13:24]      # Stores 'microscopic'
 from_where = illness[30:37]     # Stores 'volcano'</code></pre>
-<h3>Exercise: Bracket notation</h3>
+<h2>Exercise: Bracket notation</h2>
 <p>Use this string variable for the next three questions:</p>
 <pre><code>author_name = 'P S Fox'</code></pre>
 
       <single-question-quiz-element name="string-operations-name-bracket-notation">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "P"?</p></div>
@@ -90,7 +90,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
       <single-question-quiz-element name="string-operations-name-bracket-notation2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "S"?</p></div>
@@ -147,7 +147,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
       <single-question-quiz-element name="string-operations-name-bracket-notation3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>How would you use bracket notation to access "Fox"?</p></div>
@@ -173,7 +173,7 @@ from_where = illness[30:37]     # Stores 'volcano'</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>String methods</h3>
+<h2>String methods</h2>
 <p>Python offers many methods for string-specific functionality. Since strings are immutable, however, <em>none</em> of the methods change the original string. They either return a new string entirely, or return some other result like a boolean, number, or a list.</p>
 <p>For example, the <code>upper()</code> method returns an uppercase version of a string.</p>
 <pre><code>request = "Please wash the dishes from your cookie disaster."
@@ -236,7 +236,7 @@ demand = request.upper()</code></pre>
       <single-question-quiz-element name="string-operations-methods-endswith">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold">
@@ -317,7 +317,7 @@ demand = request.upper()</code></pre>
       </single-question-quiz-element>
 
       
-<h3>Splitting and joining</h3>
+<h2>Splitting and joining</h2>
 <p>There are two string methods that I want to spend more time on, because they're just so dang useful, but can also be a little tricky to use: <code>split</code> and <code>join</code>.</p>
 <ul><li><p><code>split(separator)</code>: Returns a list of substrings in the string, using separator as the delimiter.</p></li>
 <li><p><code>join(iterable)</code>: Returns a string which is the concatenation of strings in the iterable object.</p></li></ul>
@@ -335,11 +335,15 @@ grocery_items = my_groceries.split(',')   # Stores ["apples", "bananas", "carrot
 <p>We can also use the empty string as the separator, if we just want to mash strings together:</p>
 <pre><code>names = ["Gray", "Fox"]
 "".join(names)   # 'GrayFox'</code></pre>
-<h3>Exercise: Write a poem</h3>
+<h2>Exercise: Write a poem</h2>
 <p>In order to create a string with items separated by new lines, we can specify the escape sequence "\n" as the separator.</p>
 <p>Try it out below with your own favorite poem, haiku, or song verse.</p>
 <pre><code>poem_lines = ["Forgive me", "they were delicious", "so sweet", "and so cold"]
 "\n".join(poem_lines)</code></pre>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/3-strings-&-dictionaries/4-exercise-string-operations.html">Exercise: String operations</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

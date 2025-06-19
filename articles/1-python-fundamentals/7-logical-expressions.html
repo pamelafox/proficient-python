@@ -5,7 +5,7 @@
 <p>In the code and functions that we've seen so far, all the lines of code are executed. But often in programming, we only want to execute code if some condition is true, and otherwise do nothing or execute some other bit of code. The addition of <strong>logic</strong> into our programs allows us to build much more powerful programs, programs that can actually make decisions. To add logic, we must learn:</p>
 <ul><li><p><strong>Logical expressions</strong> that evaluate to either true or false.</p></li>
 <li><p><strong>Conditionals</strong> (if statements) that specify which code to execute when something is true.</p></li></ul>
-<h3>Booleans</h3>
+<h2>Booleans</h2>
 <p>A <strong>Boolean</strong> value is a type of data that is either <code>True</code> or <code>False</code>, and is used frequently in computer science.</p>
 <p>As a user, you probably see Booleans all the time. For example, Google Maps uses a Boolean to decide whether to avoid highways in driving directions. (I <em>always</em> avoid them!)</p>
 <pre><code>avoid_highways = True</code></pre>
@@ -17,7 +17,7 @@
 <pre><code>passed_class = grade > 65</code></pre>
 <p>The next expression uses a logical operator, the or operator:</p>
 <pre><code>wear_jacket = is_raining or is_windy</code></pre>
-<h3>Comparison operators</h3>
+<h2>Comparison operators</h2>
 <p>This table shows all the comparison operators and examples of true expressions using each:</p>
 <table class="table table-bordered table-sm">
 <thead>
@@ -73,7 +73,7 @@
 <p><code>20 < 32</code>, <code>32 <= 32</code></p>
 </table>
 <p>⚠️ Beware of a very common mistake: confusing <code>==</code> (equality operator) with <code>=</code> (assignment operator). It's particularly easy to make this mistake since some programming languages <em>do</em> use <code>=</code> as their equality operator. In Python, at least, they are two very different operators, so you need to make sure to use <code>==</code> when you want to check that one value equals another value.</p>
-<h3>Logical operators</h3>
+<h2>Logical operators</h2>
 <p>This table describes the logical operators:</p>
 <table class="table table-bordered table-sm">
 <thead>
@@ -109,14 +109,14 @@
 </table>
 <p>One thing to note about <code>or</code> is that it's true even when both conditions are true, which might be different from how we sometimes use "or" in natural language.</p>
 <p>There is actually a bit more complexity to <code>and</code>/<code>or</code> that we'll get into later when we discuss "truthiness" and "falsiness", but for now, as long as each expression is <code>True</code> or <code>False</code>, the description above is correct.</p>
-<h3>Compound Boolean expressions</h3>
+<h2>Compound Boolean expressions</h2>
 <p>We can mix and match any of the above operators into compound Boolean expression (versus a simple expression that uses only one operator).</p>
 <pre><code>may_have_mobility_issues = (age >= 0 and age < 2)  or age > 90</code></pre>
 <p>That expression is true if either:</p>
 <ul><li><p>it's true that both age is greater than or equal to 0 and age is less than 2</p></li>
 <li><p>it's true that age is greater than 90</p></li></ul>
 <p>Basically, it's true if someone's a toddler or an elder! (People that are less than 0 years old are either non-existent or happily snuggled in a warm womb 🤰🏽).</p>
-<h3>Boolean expressions in functions</h3>
+<h2>Boolean expressions in functions</h2>
 <p>To make a function that returns a Boolean, use a Boolean expression in the return statement. The simplest functions like this just return a Boolean based on the values of the parameters.</p>
 <pre><code>def passed_class(grade):
     return grade > 65</code></pre>
@@ -132,7 +132,7 @@ passed_class(66) # Returns: True</code></pre>
       <single-question-quiz-element name="logical-expressions-should-wear-jacket">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>Which of the following function calls would return True?</p></div>
@@ -222,6 +222,9 @@ passed_class(66) # Returns: True</code></pre>
         </form>
       </single-question-quiz-element>
       
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/8-exercise-logical-expressions.html">Exercise: Logical expressions</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

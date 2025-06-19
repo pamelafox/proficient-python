@@ -95,7 +95,7 @@ rabbit2.interact_with(rabbit1)</code></pre>
 <li><p>The <code>eat</code> and <code>play</code> methods are identical. The <code>interact_with</code> methods are nearly identical, but vary in how much the happiness instance variable increases.</p></li></ul>
 <p>So it appears that 90% of their code is in fact the same. That violates a popular programming principle, <strong>"DRY" (Don't Repeat Yourself)</strong>, and personally, makes my nose crinkle a little in disgust. Repeated code is generally a bad thing because we need to remember to update that code in multiple places, and we're liable to forget to keep code in sync that's meant to be the same.</p>
 <p>Fortunately, we can use <strong>inheritance</strong> to rewrite this code. Instead of repeating the code, <code>Elephant</code> and <code>Rabbit</code> can inherit the code from a base class.</p>
-<h3>Base class</h3>
+<h2>Base class</h2>
 <p>When multiple classes share similar attributes, you can reduce redundant code by defining a <strong>base class</strong> and then <strong>subclasses</strong> can inherit from the base class.</p>
 <p>For example, we can first write an <code>Animal</code> base class, put all the common code in there, and the specific animal species can be subclasses of that base class:</p>
 <p><img src="../images/inheritance-animal-diagram.png" alt="A tree diagram with Animal at the top and specific animal classes as nodes underneath it"></p>
@@ -128,7 +128,7 @@ rabbit2.interact_with(rabbit1)</code></pre>
         self.happiness += self.interact_increment
         print(f"Yay happy fun time with {animal2.name}")</code></pre>
 <p>We even defined class variables in there. We didn't need to do that, since the values of those variables don't make sense, but it is helpful to show the recommended class variables for the subclasses.</p>
-<h3>Subclasses</h3>
+<h2>Subclasses</h2>
 <p>To declare a subclass, put parentheses after the class name and specify the base class in the parentheses:</p>
 <pre><code>class Elephant(Animal):</code></pre>
 <p>Then the subclasses only need the code that's unique to them. They can redefine any aspect: class variables, method definitions, or constructor. A redefinition is called <strong>overriding</strong>.</p>
@@ -148,7 +148,7 @@ rabbit2.interact_with(rabbit1)</code></pre>
     play_multiplier = 10
     interact_increment = 2
     num_in_litter = 12</code></pre>
-<h3>Overriding methods</h3>
+<h2>Overriding methods</h2>
 <p>A subclass can also override the methods of the base class. Python will always look for the method definition on the current object's class first, and will only look in the base class if it can't find it there.</p>
 <p>We could override <code>interact_with</code> for pandas, since they're quite solitary creatures:</p>
 <pre><code>class Panda(Animal):
@@ -167,4 +167,8 @@ panda1.interact_with(panda2)</code></pre>
 bugs = Rabbit("Bugs Bunny", 2)
 bugs.interact_with(pandey)</code></pre>
 <p>The object on the left-hand side of the dot notation is of type <code>Rabbit</code> and there is no <code>interact_with</code> defined on <code>Rabbit</code>, so the original <code>Animal</code> method definition will be used instead.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/7-exercise-inheritance.html">Exercise: Inheritance</a>
+</section>
 {% endblock %}

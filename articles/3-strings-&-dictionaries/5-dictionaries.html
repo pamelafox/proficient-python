@@ -20,7 +20,7 @@
 ]</code></pre>
 <p>We could certainly find the definition of "flex" in that nested list, by either iterating through and checking values or by using a list method like <code>find()</code>. However, it would be a much slower operation, due to the differences in the ways Python lists and dictionaries are stored. If there were 10,000 sublists in that nested list, and the word we're looking for was at the end of the list, the computer would have to search through every single sublist. However, if there were 10,000 keys in a dictionary, and we looked up a word, the computer can find it immediately.</p>
 <p>In conclusion: if you think that you are going to be frequently looking up something according to its key, a dictionary is typically the right data type to use.</p>
-<h3>Dictionary access</h3>
+<h2>Dictionary access</h2>
 <p>Let's dive more into how we can retrieve values from a dictionary (or <code>dict</code>, as it's formally known in Python).</p>
 <p>Consider this dict that maps Spanish words to their English translations:</p>
 <pre><code>words = {
@@ -41,7 +41,7 @@ words[first_word]  # 'water'</code></pre>
 <pre><code>words.get("pavo", "🤔")  # '🤔'</code></pre>
 <p>If we specify no default, then <code>None</code> is returned:</p>
 <pre><code>words.get("pavo") # None</code></pre>
-<h3>Dictionary mutation</h3>
+<h2>Dictionary mutation</h2>
 <p>Just like lists, dictionaries are <strong>mutable</strong> data types. That means that we can continue modifying their contents after we initially create them, using various operators and methods.</p>
 <p>A common way to use dictionaries is to start with an empty dict like so:</p>
 <pre><code>users = {}</code></pre>
@@ -56,7 +56,7 @@ words[first_word]  # 'water'</code></pre>
       <single-question-quiz-element name="dictionaries-users-value">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold">
@@ -131,7 +131,7 @@ words[first_word]  # 'water'</code></pre>
         </form>
       </single-question-quiz-element>
       
-<h3>What's in a dict?</h3>
+<h2>What's in a dict?</h2>
 <p>All of our example dicts so far have been using string keys and string values. However, it is possible to use <em>any</em> immutable type as a key - so the keys could actually be numbers! It's not nearly as common, but it is possible.</p>
 <p>Consider this dict that maps years to the Pixar movie that came out that year:</p>
 <pre><code>pixar_by_year = {
@@ -166,7 +166,7 @@ words[first_word]  # 'water'</code></pre>
       <single-question-quiz-element name="dictionaries-spiders-access">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -255,7 +255,7 @@ words[first_word]  # 'water'</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Dictionary iteration</h3>
+<h2>Dictionary iteration</h2>
 <p>A Python dict is an iterable object, which means it can be iterated over using a <code>for</code> loop. In each iteration of the loop, the loop variable is assigned to the current key, and the loop body can choose what to do with that key.</p>
 <p>For example, this loop prints out each value by doing dictionary a lookup with the key:</p>
 <pre><code>insects = {"spiders": 8, "centipedes": 100, "bees": 6}
@@ -263,7 +263,7 @@ for name in insects:
     print(insects[name])</code></pre>
 <p>What will be the order of the keys during the iteration? In younger versions of Python, the order was not defined, so the iteration might go through the keys in any order. However, in modern Python, the order is always according to when the keys were added to the dictionary.</p>
 <p>In the example above, the order would be "spiders", then "centipedes", then "bees", so the loop would print 8, then 100, then 6.</p>
-<h3>Dictionary operations</h3>
+<h2>Dictionary operations</h2>
 <p>Dictionaries support some of the same operators and functions as strings and lists.</p>
 <p>Starting with this dict that maps US state codes to states:</p>
 <pre><code>states = {
@@ -279,7 +279,7 @@ for name in insects:
 <pre><code>"CA" in states  # True
 "ZZ" in states  # False</code></pre>
 <p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#dict">Python dict documentation</a>.</p>
-<h3>Exercise: Make a recipe</h3>
+<h2>Exercise: Make a recipe</h2>
 <p>In the code editor below, create a dict to hold information on your favorite recipe. It should have keys for:</p>
 <ul><li><p>title (a string)</p></li>
 <li><p>servings (a number)</p></li>
@@ -305,6 +305,10 @@ print(servings)
 # by using bracket notation on the recipe variable
 ingredients = []
 print(ingredients)</code></pre>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

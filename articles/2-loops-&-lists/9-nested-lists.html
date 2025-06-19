@@ -13,7 +13,7 @@
       <single-question-quiz-element name="nested-lists-gymnasts-outer">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -40,7 +40,7 @@
       <single-question-quiz-element name="nested-lists-gymnasts-inner">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -64,7 +64,7 @@
       </single-question-quiz-element>
 
 
-<h3>Accessing nested list items</h3>
+<h2>Accessing nested list items</h2>
 <p>Starting again with this nested list:</p>
 <pre><code>gymnasts = [
                 ["Brittany", 9.15, 9.4, 9.3, 9.2],
@@ -86,7 +86,7 @@ gymnasts[3][0]  # 🚫 IndexError!</code></pre>
       <single-question-quiz-element name="nested-lists-gymnasts-access">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>Using bracket notation, how would you access the final score of 8.8?</p></div>
@@ -112,7 +112,7 @@ gymnasts[3][0]  # 🚫 IndexError!</code></pre>
         </form>
       </single-question-quiz-element>
       
-<h3>Modifying nested lists</h3>
+<h2>Modifying nested lists</h2>
 <p>We can replace the inner lists inside a nested list using bracket notation.</p>
 <p>This code replaces the entire first list with a brand new list:</p>
 <pre><code>gymnasts[0] = ["Olivia", 8.75, 9.1, 9.6, 9.8]</code></pre>
@@ -121,7 +121,7 @@ gymnasts[3][0]  # 🚫 IndexError!</code></pre>
 gymnasts[2][4] = 9.8
 gymnasts[2].append(10.5)</code></pre>
 <p>None of this is new functionality; this is the same functionality you learnt from before. It all just works as a consequence of Python allowing lists to contain other lists. I like to explicitly point it out, however, since it's not always immediately obvious, and nested lists are such a powerful data structure in programming.</p>
-<h3>Looping through nested lists</h3>
+<h2>Looping through nested lists</h2>
 <p>To iterate through every item in a nested list, we can use a <strong>nested for loop</strong>: a <code>for</code> loop inside a <code>for</code> loop!</p>
 <p>Starting from this nested list of just the numeric scores:</p>
 <pre><code>team_scores = [
@@ -136,6 +136,10 @@ for member_scores in team_scores:
         sum_scores += score</code></pre>
 <p>The trickiest thing with nested loops is keeping track of what each loop variable represents. In the above code, <code>member_scores</code> stores each of the inner lists in each iteration- first <code>[9.15, 9.4, 9.3, 9.2]</code>, then <code>[9, 8.8, 9.1, 9.5]</code>, finally <code>[9.2, 8.7, 9.2, 8.8]</code>. Then in the inner loop, <code>score</code> stores each of the numbers inside those lists, starting with 9.15 and ending with 8.8. </p>
 <p>If you're ever not sure what your variable is storing, you can always print it out and double check.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/2-loops-&-lists/10-exercise-nested-lists.html">Exercise: Nested lists</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

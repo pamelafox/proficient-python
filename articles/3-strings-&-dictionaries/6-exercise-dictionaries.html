@@ -4,7 +4,7 @@
 <h1>Exercise: Dictionaries</h1>
 <p>These exercises combine many of the skills and data types you've learned over the last few units, so you may find yourself consulting previous articles or exercises. For example, the first exercise can be solved nicely with f strings and string methods.</p>
 
-<h3>Movie summarizer</h3>
+<h2>Movie summarizer</h2>
 <code-exercise-element name="movie-summarizer" show-tests>def movie_summary(movie):
     """
     Accepts movie, a dictionary with three keys-
@@ -29,14 +29,14 @@
     """
     return "" # REPLACE THIS LINE
 </code-exercise-element>
-<h3>Lists of dicts</h3>
+<h2>Lists of dicts</h2>
 <p>The next exercises deals with a list of dicts, like:</p>
 <pre><code>coords = [
    {"x": 1, "y": 2},
    {"x": 5, "y": 8}
 ]</code></pre>
 <p>You've dealt with lists before and you've dealt with dicts before, so you can follow the same rules as long as you remember what sort of data type you're retrieving data from. For example, in a list of dicts, you'd use bracket notation with an index to access the first dict, and then use bracket notation with a key to access values inside the dict.</p>
-<h3>Exercise: Book list</h3>
+<h2>Exercise: Book list</h2>
 <p>This list stores information about books inside nested dicts:</p>
 <pre><code>books = [
   {"title": "Uncanny Valley",
@@ -53,7 +53,7 @@
       <single-question-quiz-element name="nested-lists-books-access-first">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>What expression would access the title of the first book?</p></div>
@@ -156,7 +156,7 @@
       <single-question-quiz-element name="nested-lists-books-num-keys">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>What expression would report how many keys are in the second book dict?</p></div>
@@ -236,6 +236,10 @@
     # If a book is not read, increment count
     # Return count
 </code-exercise-element>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/3-strings-&-dictionaries/7-randomness.html">Randomness</a>
+</section>
 {% endblock %}
 {% block footer_scripts %}
 <script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>

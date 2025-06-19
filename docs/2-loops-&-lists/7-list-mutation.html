@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,7 +433,9 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
@@ -369,7 +450,7 @@ temps[-1] = 55.55</code></pre>
 <p>Just like we used bracket notation to access items in a list, we can use it to change items in a list. All the indexing rules are the same, so the code above changes the third item (20.2 -> 22.22) and the final item (52.0 -> 55.55).</p>
 <p>Our code is subject to the same off-by-one errors, too. Trying to change an item past the final index results in an error:</p>
 <pre><code>temps[5] = 111.11  # 🚫 Error!</code></pre>
-<h3>Mutation vs. re-assignment</h3>
+<h2>Mutation vs. re-assignment</h2>
 <p>You might think that all the data types we've seen so far are mutable, since we could write code like:</p>
 <pre><code>x = 5
 x = 10</code></pre>
@@ -383,7 +464,7 @@ nums[0] = -1
 nums[1] = -2
 nums[2] = -3</code></pre>
 <p>It may seem like a subtle point, but once you're programming with mutable data types, your program is subject to more kinds of bugs than before. There are some languages that don't even allow mutable data types at all, to avoid those kinds of bugs.</p>
-<h3>List mutation methods</h3>
+<h2>List mutation methods</h2>
 <p>Using bracket notation is only one way to mutate a list, and it only allows us to change items at existing indices. Fortunately, there are a large number of <strong>methods</strong> that can mutate a list. A method is any function that belongs to a particular kind of object, and we call it in a slightly different way.</p>
 <p>For example, this call appends an item to the end of a list:</p>
 <pre><code>temps.append(98.6)</code></pre>
@@ -437,14 +518,14 @@ bought_food2 = groceries.pop(1)
 i = groceries.index("cheerios")
 bought_food3 = groceries.pop(i)</code></pre>
 <p>To watch for yourself how those methods mutate the original list, step through the code <a target="_blank" href="https://pythontutor.com/visualize.html#code=groceries%20%3D%20%5B%22apples%22,%20%22bananas%22%5D%0A%0Agroceries.append%28%22peanut%20butter%22%29%0Agroceries.insert%280,%20%22applesauce%22%29%0Agroceries.insert%283,%20%22cheerios%22%29%0Agroceries.remove%28%22bananas%22%29%0A%0Abought_food%20%3D%20groceries.pop%28%29%0Abought_food2%20%3D%20groceries.pop%281%29%0Ai%20%3D%20groceries.index%28%22cheerios%22%29%0Abought_food3%20%3D%20groceries.pop%28i%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">on PythonTutor</a>.</p>
-<h3>Exercise: Cities</h3>
+<h2>Exercise: Cities</h2>
 <p>Start from this code:</p>
 <pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
 
 <single-question-quiz-element name="cities-list-mutation1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -475,7 +556,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="cities-list-mutation2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -508,7 +589,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="cities-list-mutation3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -536,7 +617,7 @@ bought_food3 = groceries.pop(i)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Exercise: Planets</h3>
+<h2>Exercise: Planets</h2>
 <p>Start from this code:</p>
 <pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
     'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
@@ -544,7 +625,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="planets-list-mutation">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>Write a line of code that removes the last item.</p></div>
@@ -568,7 +649,9 @@ bought_food3 = groceries.pop(i)</code></pre>
         </form>
       </single-question-quiz-element>
 
-
+<section class="next-step">
+    ➡️ Next up: <a href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List mutation</a>
+</section>
 
   </div>
 </main>
@@ -614,6 +697,56 @@ bought_food3 = groceries.pop(i)</code></pre>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');

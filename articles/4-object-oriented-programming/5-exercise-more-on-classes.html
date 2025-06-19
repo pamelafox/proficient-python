@@ -32,7 +32,7 @@
     self.num_points = num_points
 
   def is_failing(self):
-    return self.num_points < StudentGrade.failing_grade</code-exercise-element>
+    return self.num_points &lt; StudentGrade.failing_grade</code-exercise-element>
 
 <h3>Exercise: Article</h3>
 <code-exercise-element name="article-class" show-tests>class Article:
@@ -52,7 +52,7 @@
     self.author = author
 
   def get_byline(self):
-    return f"By {self.author}, License: {self.license}"</code></pre>
+    return f"By {self.author}, License: {self.license}"</code-exercise-element>
 
 <h2>Class methods</h2>
 <h3>Exercise: Thneed Factory</h3>
@@ -80,6 +80,7 @@ class Thneed:
         True
         """
         # YOUR CODE HERE</code-exercise-element>
+
 <h3>Exercise: Cat adoption</h3>
 <p>For this exercise, you'll finish the implementation of <code>adopt_random_cat</code>, a class method that can generate new cats. Just what we need in the world! 🐈‍⬛🐈</p>
 <p><strong>Hint: </strong>You can use<strong> </strong><code>random.choice(list)</code> to generate a random name from a list of names and <code>random.randrange(start, stop)</code> to generate a random number of lives.</p>
@@ -103,6 +104,10 @@ class Cat:
         'Ifeoma'
         """
         # YOUR CODE HERE</code-exercise-element>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/6-inheritance.html">Inheritance</a>
+</section>
 {% endblock %}
 {% block footer_scripts %}
 <script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.10/dist/code-exercise.umd.min.js"></script>

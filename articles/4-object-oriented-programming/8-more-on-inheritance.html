@@ -2,7 +2,7 @@
 {% block title %}More on inheritance{% endblock %}
 {% block content %}
 <h1>More on inheritance</h1>
-<h3>Using super()</h3>
+<h2>Using super()</h2>
 <p>Sometimes we want to be able to call the original method definition from inside the overridden method definition. That is possible using <code>super()</code>, a function that can delegate method calls to the parent class.</p>
 <p>For example, this <code>Lion</code> class has an <code>eat</code> method that only calls the original <code>eat</code> if the meal is meat:</p>
 <pre><code>class Lion(Animal):
@@ -23,7 +23,7 @@ mufasa.eat(bones)</code></pre>
     if food.kind == "meat":
         Animal.eat(self, food)</code></pre>
 <p>However, the great thing about <code>super()</code> is that it both keeps track of the parent class and takes care of passing in <code>self</code>. Super convenient!</p>
-<h3>Using super() with __init__</h3>
+<h2>Using super() with __init__</h2>
 <p>A very common use of <code>super()</code> is to call the <code>__init__</code>. Many times, a subclass wants to initialize all the original instance variables of the base class, but then additionally wants to set a few instance variables specific to its needs.</p>
 <p>For example, consider this <code>Elephant</code> class:</p>
 <pre><code>class Elephant(Animal):
@@ -45,7 +45,7 @@ print(elly.calories_needed)</code></pre>
       <single-question-quiz-element name="elephant-variable-change">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What value would that code display?</p></div>
@@ -66,7 +66,7 @@ print(elly.calories_needed)</code></pre>
         </form>
       </single-question-quiz-element>
       
-<h3>Layers of inheritance</h3>
+<h2>Layers of inheritance</h2>
 <p>Every Python 3 class actually implicitly inherits from the global built-in <code>object</code> class.</p>
 <p><img src="../images/more-on-inheritance-object-base-class.png" alt="Tree diagram with object class at the top, then Animal, then specific animal subclasses"></p>
 <p>We could have written our <code>Animal</code> class to explicitly inherit from it, like so:</p>
@@ -98,7 +98,7 @@ class Elephant(Herbivore):
 class Vulture(Carnivore):
 class Lion(Carnivore):</code></pre>
 <p>For a class that represents an omnivorous animal, we could keep its parent class as <code>Animal</code> and not change it to one of the new subclasses.</p>
-<h3>Multiple inheritance</h3>
+<h2>Multiple inheritance</h2>
 <p>This is where things start to get a little wild. A class can actually inherit from <em>multiple</em> other classes in Python.</p>
 <p>For example, if <code>Meal</code> has a subclass of <code>Prey</code> (since, in the circle of life, animals can become meals!), an animal like <code>Rabbit</code> could inherit from both <code>Prey</code> and <code>Herbivore</code>. Poor rabbits!</p>
 <p>Here's the <code>Prey</code> class:</p>
@@ -127,10 +127,14 @@ l = Lion("Scar", 12)             # Animal __init__
 l.eat(Food("zazu", "meat"))      # Carnivore method
 l.interact_with(r)               # Predator method</code></pre>
 <p>Actually, the way that it finds attributes is even more complicated than that, since it will also look in sibling classes. We won't dive into that here, but if you're curious, search the web for "Python method resolution order (MRO").</p>
-<h3>Too much inheritance?</h3>
+<h2>Too much inheritance?</h2>
 <p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
 <p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <em>not</em> to add them.</p>
 <p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on inheritance</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

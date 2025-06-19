@@ -15,7 +15,7 @@ prices = [79.99, 49.99, 89.99]</code></pre>
 <p>As you can see from those examples, lists can hold any Python data type. In fact, Python even lets you mix and match data types:</p>
 <pre><code>remixed = ["Pamela", 7, 79.99]</code></pre>
 <p>I wouldn't recommend that, personally, since a list should hold sequences of related data, and it's unclear how those items form a sequence or how they are related. But there may be some situations where it's helpful.</p>
-<h3>Accessing list items</h3>
+<h2>Accessing list items</h2>
 <p>It's possible to reference a specific item in a list by using <strong>bracket notation</strong>: the name of the variable, followed by square brackets with the item index inside.</p>
 <pre><code>list_name[index]</code></pre>
 <p>The index of items in a list starts at 0:</p>
@@ -35,14 +35,14 @@ temps[4]  # 52.0</code></pre>
 <pre><code>temps[-1]  # 52.0
 temps[-2]  # 99.0</code></pre>
 <p>Once again, going too far will result in an error. In this case, since the negative indices start from -1 (not -0, since apparently negative zero is not a thing!), the first out-of-bounds index is <code>temps[-6]</code>.</p>
-<h3>Self-check: Favorite singers</h3>
+<h2>Self-check: Favorite singers</h2>
 <p>Consider this list of my favorite musical artists:</p>
 <pre><code>fav_singers = ["Robyn", "Ed Sheeran", "Pink", "Lil Nas X", "Janelle Monáe", "Ben Platt"]</code></pre>
 
       <single-question-quiz-element name="fav-singers1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Robyn"?</p></div>
@@ -135,7 +135,7 @@ temps[-2]  # 99.0</code></pre>
       <single-question-quiz-element name="fav-singers2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Ben Platt"?</p></div>
@@ -214,7 +214,7 @@ temps[-2]  # 99.0</code></pre>
       </single-question-quiz-element>
 
       
-<h3>List length</h3>
+<h2>List length</h2>
 <p>Python provides the global function <code>len()</code> to find out the length of a list (or any sequence).</p>
 <pre><code>attendees = ["Tammy", "Shonda", "Tina"]
 
@@ -223,6 +223,10 @@ len(attendees) # Evaluates to: 3</code></pre>
 <p>You can also use <code>len()</code> on strings, since Python considers a string to be a type of sequence:</p>
 <pre><code>len("Supercalifragilisticexpialidocious")  # Evaluates to: 34</code></pre>
 <p>The length of a string is typically the number of characters. In actuality, it's reporting the number of Unicode code points in a string, and Western alphabet letters require only one code point. However, many modern emojis require multiple Unicode code points, like 🤷🏽‍♀️, so <code>len("🤷🏽‍♀️")</code> will actually report 5. I love emojis, but dang, programming with them is a pain.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/2-loops-&-lists/5-looping-through-sequences.html">Looping Through Sequences</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

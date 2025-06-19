@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Polymorphism</h1>
 <p>One of the great benefits of object-oriented programming is <strong>polymorphism</strong>: different types of objects sharing the same interface.</p>
-<h3>Polymorphism from inheritance</h3>
+<h2>Polymorphism from inheritance</h2>
 <p>We've already seen many polymorphic objects, since inheritance almost always leads to polymorphism.</p>
 <p>For example, we can call the <code>eat</code> method on both <code>Panda</code> object and <code>Lion</code> objects, passing in the same argument:</p>
 <pre><code>broc = Meal("Broccoli", "veggie")
@@ -26,7 +26,7 @@ elly = Elephant("Elly", 5)
 pandy = Panda("PandeyBear", 4)
 partytime([jane_doe, scar, elly, pandy])</code></pre>
 <p>That right there is the power of polymorphism.</p>
-<h3>Polymorphism from method interfaces</h3>
+<h2>Polymorphism from method interfaces</h2>
 <p>We've also seen a lot of polymorphism in the built-in Python object types, even though we haven't called it that.</p>
 <p>For example, consider how many types we can pass to the <code>len</code> function:</p>
 <pre><code>len([1, 2, 3])
@@ -37,4 +37,8 @@ len(range(5))</code></pre>
 <p>It's actually because the <code>list</code>, <code>str</code>, <code>dict</code>, and <code>range</code> classes each define a method named <code>__len__</code> that reports their length using various mechanisms. The global <code>len()</code> function works on <em>any</em> object that defines a <code>__len__</code> method and returns a number. That means we can even make <code>len()</code> work on our own user-defined classes.</p>
 <p>This type of polymorphism in a language is also known as <strong>duck typing</strong>: if it walks like a duck and quacks like a duck, then it must be a duck. 🦆The <code>len()</code> function doesn't care exactly what kind of object it's passed: if it has a <code>__len__</code> method and that method takes 0 arguments, then that's good enough for Python.</p>
 <p>Many languages are more strict than Python, and possibly for good reason, since you can get yourself in trouble with loosey-goosey duck typing. But you can also write highly flexible code. Tread carefully in these polymorphic waters!</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP quiz</a>
+</section>
 {% endblock %}

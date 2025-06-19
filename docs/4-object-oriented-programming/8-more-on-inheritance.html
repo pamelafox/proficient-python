@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,14 +433,16 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
   <div class="container container-md">
     
 <h1>More on inheritance</h1>
-<h3>Using super()</h3>
+<h2>Using super()</h2>
 <p>Sometimes we want to be able to call the original method definition from inside the overridden method definition. That is possible using <code>super()</code>, a function that can delegate method calls to the parent class.</p>
 <p>For example, this <code>Lion</code> class has an <code>eat</code> method that only calls the original <code>eat</code> if the meal is meat:</p>
 <pre><code>class Lion(Animal):
@@ -382,7 +463,7 @@ mufasa.eat(bones)</code></pre>
     if food.kind == "meat":
         Animal.eat(self, food)</code></pre>
 <p>However, the great thing about <code>super()</code> is that it both keeps track of the parent class and takes care of passing in <code>self</code>. Super convenient!</p>
-<h3>Using super() with __init__</h3>
+<h2>Using super() with __init__</h2>
 <p>A very common use of <code>super()</code> is to call the <code>__init__</code>. Many times, a subclass wants to initialize all the original instance variables of the base class, but then additionally wants to set a few instance variables specific to its needs.</p>
 <p>For example, consider this <code>Elephant</code> class:</p>
 <pre><code>class Elephant(Animal):
@@ -404,7 +485,7 @@ print(elly.calories_needed)</code></pre>
       <single-question-quiz-element name="elephant-variable-change">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What value would that code display?</p></div>
@@ -425,7 +506,7 @@ print(elly.calories_needed)</code></pre>
         </form>
       </single-question-quiz-element>
       
-<h3>Layers of inheritance</h3>
+<h2>Layers of inheritance</h2>
 <p>Every Python 3 class actually implicitly inherits from the global built-in <code>object</code> class.</p>
 <p><img src="../images/more-on-inheritance-object-base-class.png" alt="Tree diagram with object class at the top, then Animal, then specific animal subclasses"></p>
 <p>We could have written our <code>Animal</code> class to explicitly inherit from it, like so:</p>
@@ -457,7 +538,7 @@ class Elephant(Herbivore):
 class Vulture(Carnivore):
 class Lion(Carnivore):</code></pre>
 <p>For a class that represents an omnivorous animal, we could keep its parent class as <code>Animal</code> and not change it to one of the new subclasses.</p>
-<h3>Multiple inheritance</h3>
+<h2>Multiple inheritance</h2>
 <p>This is where things start to get a little wild. A class can actually inherit from <em>multiple</em> other classes in Python.</p>
 <p>For example, if <code>Meal</code> has a subclass of <code>Prey</code> (since, in the circle of life, animals can become meals!), an animal like <code>Rabbit</code> could inherit from both <code>Prey</code> and <code>Herbivore</code>. Poor rabbits!</p>
 <p>Here's the <code>Prey</code> class:</p>
@@ -486,10 +567,14 @@ l = Lion("Scar", 12)             # Animal __init__
 l.eat(Food("zazu", "meat"))      # Carnivore method
 l.interact_with(r)               # Predator method</code></pre>
 <p>Actually, the way that it finds attributes is even more complicated than that, since it will also look in sibling classes. We won't dive into that here, but if you're curious, search the web for "Python method resolution order (MRO").</p>
-<h3>Too much inheritance?</h3>
+<h2>Too much inheritance?</h2>
 <p>Inheritance is a great way to avoid repeated code and express the relationships between objects in your programs. However, be careful not to over-use it or take it too far. It can lead to confusing code with surprising results when there are multiple places overriding the same method.</p>
 <p>A good strategy is to start with as little inheritance as possible, perhaps with a single base class (besides <code>object</code>), and then only add more levels of inheritance when it's becoming painful <em>not</em> to add them.</p>
 <p>Another good idea is to use a "mix-in" approach to multiple inheritance: additional base classes should only add new methods, not override methods. That way, you don't have to worry about the order in which Python will look for methods on the base classes.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/9-exercise-more-on-inheritance.html">Exercise: More on inheritance</a>
+</section>
 
   </div>
 </main>
@@ -535,6 +620,56 @@ l.interact_with(r)               # Predator method</code></pre>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');

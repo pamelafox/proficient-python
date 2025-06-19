@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Conditionals</h1>
 <p>Now that we know how to write Boolean expressions, we can use them inside <strong>conditional statements</strong> to tell our programs to <em>conditionally</em> execute one block of code versus another.</p>
-<h3>Conditional statements</h3>
+<h2>Conditional statements</h2>
 <p>In Python, conditional statements always start with <code>if</code>. Here's the basic template:</p>
 <pre><code>if &lt;condition&gt;:
     &lt;statement&gt;
@@ -20,7 +20,7 @@ if temperature &lt; 32:
       <single-question-quiz-element name="if-temperature-jacket">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -94,7 +94,7 @@ if temperature &lt; 32:
         </form>
       </single-question-quiz-element>
       
-<h3>Compound conditionals</h3>
+<h2>Compound conditionals</h2>
 <p>A conditional statement can include any number of <code>elif</code> statements to check other conditions and execute different blocks of code. Other languages use <code>else if</code>, but Python decided that was just too dang long and shortened it to <code>elif</code>. 🤷🏼‍♀️</p>
 <p>Here's a template with three conditional paths:</p>
 <pre><code>if &gt;condition&lt;:
@@ -182,7 +182,7 @@ else:
 <ul><li><p>always starts with an <code>if</code> clause</p></li>
 <li><p>can have 0 or more <code>elif</code> clauses</p></li>
 <li><p>can optionally end with an <code>else</code> clause</p></li></ul>
-<h3>Using conditionals in functions</h3>
+<h2>Using conditionals in functions</h2>
 <p>A conditional statement could be just one part of a longer function, or it could be the entire function. It's common to write a function that uses a conditional to compare the input parameters and return values based on what was passed in.</p>
 <p>For example:</p>
 <pre><code>def get_number_sign(num):
@@ -214,6 +214,10 @@ get_number_sign(0)   # Returns: "neutral"</code></pre>
         return "positive"
     return "neutral"</code></pre>
 <p>When that function receives a <code>num</code> of 0, it doesn't execute either of the return statements inside the conditional, since neither condition is true. It continues on, discovers the next statement is a return statement, and executes that statement instead.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/10-exercise-conditionals.html">Exercise: Conditionals</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

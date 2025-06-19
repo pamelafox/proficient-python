@@ -10,7 +10,7 @@ temps[-1] = 55.55</code></pre>
 <p>Just like we used bracket notation to access items in a list, we can use it to change items in a list. All the indexing rules are the same, so the code above changes the third item (20.2 -> 22.22) and the final item (52.0 -> 55.55).</p>
 <p>Our code is subject to the same off-by-one errors, too. Trying to change an item past the final index results in an error:</p>
 <pre><code>temps[5] = 111.11  # 🚫 Error!</code></pre>
-<h3>Mutation vs. re-assignment</h3>
+<h2>Mutation vs. re-assignment</h2>
 <p>You might think that all the data types we've seen so far are mutable, since we could write code like:</p>
 <pre><code>x = 5
 x = 10</code></pre>
@@ -24,7 +24,7 @@ nums[0] = -1
 nums[1] = -2
 nums[2] = -3</code></pre>
 <p>It may seem like a subtle point, but once you're programming with mutable data types, your program is subject to more kinds of bugs than before. There are some languages that don't even allow mutable data types at all, to avoid those kinds of bugs.</p>
-<h3>List mutation methods</h3>
+<h2>List mutation methods</h2>
 <p>Using bracket notation is only one way to mutate a list, and it only allows us to change items at existing indices. Fortunately, there are a large number of <strong>methods</strong> that can mutate a list. A method is any function that belongs to a particular kind of object, and we call it in a slightly different way.</p>
 <p>For example, this call appends an item to the end of a list:</p>
 <pre><code>temps.append(98.6)</code></pre>
@@ -78,14 +78,14 @@ bought_food2 = groceries.pop(1)
 i = groceries.index("cheerios")
 bought_food3 = groceries.pop(i)</code></pre>
 <p>To watch for yourself how those methods mutate the original list, step through the code <a target="_blank" href="https://pythontutor.com/visualize.html#code=groceries%20%3D%20%5B%22apples%22,%20%22bananas%22%5D%0A%0Agroceries.append%28%22peanut%20butter%22%29%0Agroceries.insert%280,%20%22applesauce%22%29%0Agroceries.insert%283,%20%22cheerios%22%29%0Agroceries.remove%28%22bananas%22%29%0A%0Abought_food%20%3D%20groceries.pop%28%29%0Abought_food2%20%3D%20groceries.pop%281%29%0Ai%20%3D%20groceries.index%28%22cheerios%22%29%0Abought_food3%20%3D%20groceries.pop%28i%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">on PythonTutor</a>.</p>
-<h3>Exercise: Cities</h3>
+<h2>Exercise: Cities</h2>
 <p>Start from this code:</p>
 <pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
 
 <single-question-quiz-element name="cities-list-mutation1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -116,7 +116,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="cities-list-mutation2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -149,7 +149,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="cities-list-mutation3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -177,7 +177,7 @@ bought_food3 = groceries.pop(i)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Exercise: Planets</h3>
+<h2>Exercise: Planets</h2>
 <p>Start from this code:</p>
 <pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
     'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
@@ -185,7 +185,7 @@ bought_food3 = groceries.pop(i)</code></pre>
       <single-question-quiz-element name="planets-list-mutation">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>Write a line of code that removes the last item.</p></div>
@@ -209,7 +209,9 @@ bought_food3 = groceries.pop(i)</code></pre>
         </form>
       </single-question-quiz-element>
 
-
+<section class="next-step">
+    ➡️ Next up: <a href="/2-loops-&-lists/7b-exercise-list-mutation.html">Exercise: List mutation</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

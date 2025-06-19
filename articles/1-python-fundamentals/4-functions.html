@@ -17,7 +17,7 @@ pow(2, 10)</code></pre>
       <single-question-quiz-element name="functions-brainstorm">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🤔 Brainstorming Time</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🤔 Brainstorming Time</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -33,7 +33,7 @@ pow(2, 10)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Defining functions</h3>
+<h2>Defining functions</h2>
 <p>The most common way to define functions in Python is with a <code>def</code> statement.</p>
 <p>Here's the general template:</p>
 <pre><code>def <name>(<parameters>):
@@ -54,7 +54,7 @@ add_two(18, 69)</code></pre>
 <pre><code>def add_two(num1, num2):      # ← Function signature
     result = num1 + num2      # ← Function body
     return result             # ← Function body</code></pre>
-<h3>Parameters vs. arguments</h3>
+<h2>Parameters vs. arguments</h2>
 <p>We've now used two different terms to refer to the values that get passed into a function: <strong>parameters</strong> and <strong>arguments</strong>. Well, which is it?? Both!</p>
 <p>When we're defining a function, the parameters are the names given to the values that will eventually get passed into a function. The following function accepts two parameters, <code>num1</code> and <code>num2</code>, and the return value sums up those two parameters.</p>
 <pre><code>def add_two(num1, num2): 
@@ -62,7 +62,7 @@ add_two(18, 69)</code></pre>
 <p>However, when we're actually calling that function, we describe the values passed in as the arguments. Below, we pass in two arguments of 18 and 69.</p>
 <pre><code>add_two(18, 69)</code></pre>
 <p>The difference might seem subtle and overly pedantic, and well, as it turns out, programmers can be pedantic sometimes. 😊</p>
-<h3>Return values</h3>
+<h2>Return values</h2>
 <p>The <code>return</code> keyword returns a value to whoever calls the function. After a return statement is executed, Python exits that function immediately, executing no further code in the function.</p>
 <pre><code>def add_two(num1, num2):
     return num1 + num2
@@ -73,7 +73,7 @@ result = add_two(2, 4)</code></pre>
 <pre><code>big_sum = add_two(200, 412) + add_two(312, 256)</code></pre>
 <p>And also nest calls inside other calls:</p>
 <pre><code>huge_sum = add(add(200, 412), add(312, 256))</code></pre>
-<h3>Spot the bug! 🐞</h3>
+<h2>Spot the bug! 🐞</h2>
 <p>There's something wrong with this code... do you see the problem?</p>
 <pre><code>def add_two(num1, num2):
     return result
@@ -85,7 +85,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -105,7 +105,7 @@ result = add_two(2, 4)</code></pre>
       </single-question-quiz-element>
 
 
-<h3>Spot the bug! 🐛</h3>
+<h2>Spot the bug! 🐛</h2>
 <p>Here's some more buggy code:</p>
 <pre><code>def add_two():
     return num1 + num2
@@ -116,7 +116,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -138,7 +138,7 @@ result = add_two(2, 4)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Spot the bug! 🦟</h3>
+<h2>Spot the bug! 🦟</h2>
 <p>Here's the last bit of code that's problematic:</p>
 <pre><code>def add_two(num1, num2):
     result = num1 + num2
@@ -149,7 +149,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -170,7 +170,10 @@ result = add_two(2, 4)</code></pre>
           </div>
         </form>
       </single-question-quiz-element>
-      
+  
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

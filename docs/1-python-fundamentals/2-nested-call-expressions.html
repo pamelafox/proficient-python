@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,14 +433,16 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
   <div class="container container-md">
     
 <h1>Nested call expressions</h1>
-<h3>Anatomy of a call expression</h3>
+<h2>Anatomy of a call expression</h2>
 <p>Before we dive into more complex call expressions, let's first understand a simple call expression more deeply. Remember, a call expression is any expression that calls a function, like <code>pow(2, 100)</code>. The diagram below is for a call expression using the <code>add</code> function.</p>
 <p><img src="../images/callexpression.png">Here's how Python evaluates that call expression:</p>
 <ol><li><p>It first evaluates the <strong>operator</strong>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
@@ -371,7 +452,7 @@
 <single-question-quiz-element name="fix-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold">Is any additional code required for the above call expression to work?</p>
@@ -414,7 +495,7 @@
         </form>
       </single-question-quiz-element>
 
-<h3>Nested call expressions</h3>
+<h2>Nested call expressions</h2>
 <p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
 <p><img src="../images/callexpression_nested.png"></p>
 <p>If we were asked to evaluate that as a human, logically, we'd realize that we can't compute the outer <code>add</code> function until we know the operands, and we can't even compute that inner <code>add</code> function until we know the result of the first <code>mul</code> operation.</p>
@@ -434,7 +515,7 @@ add(        30       ,    15    )
 <single-question-quiz-element name="nested-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold">What's the final step for that call expression?</p>
@@ -511,8 +592,8 @@ add(        30       ,    15    )
           </div>
         </form>
       </single-question-quiz-element>
-      
-<h3>Exercise: Operator expressions</h3>
+
+<h2>Exercise: Operator expressions</h2>
 <p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
 <ul><li><p><code>30 + 2</code></p></li>
 <li><p><code>30 - 2</code></p></li>
@@ -529,6 +610,11 @@ add(        30       ,    15    )
 
 # After adding a call expression, run code to see if its correct
 add(30, 2)</code-exercise-element>
+
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+</section>
 
 
   </div>
@@ -575,6 +661,56 @@ add(30, 2)</code-exercise-element>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');

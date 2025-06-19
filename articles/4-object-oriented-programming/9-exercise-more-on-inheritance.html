@@ -4,7 +4,7 @@
 <h1>Exercise: More on inheritance</h1>
 <p>In these four exercises, you'll practice different ways to reuse inherited code from parent classes. Hint: expect to use <code>super()</code> a lot!</p>
 
-<h3>Exercise: Playful kitty cat</h3>
+<h2>Exercise: Playful kitty cat</h2>
 <p>Modify the <code>Cat</code> initializer method so that a cat that's less than 1 years old has a <code>play_multiplier</code> of 6, and run the doctests when you're done.</p>
 <code-exercise-element name="playful-kitty-cat" show-tests>class Animal:
     species_name = "Animal"
@@ -62,7 +62,7 @@ class Cat(Animal):
         
 </code-exercise-element>
 
-<h3>Exercise: Weighty dogs</h3>
+<h2>Exercise: Weighty dogs</h2>
 <p>The <code>Dog</code> class in the code below accepts a third argument in the <code>__init__</code> to set the weight. Implement the method so that it first calls the <code>__init__</code> of the parent class, then sets the <code>weight</code> attribute, then sets <code>calories_needed</code> to 20 times the weight. Run the doctests when done.</p>
 <code-exercise-element name="weight-dogs" show-tests>class Animal:
     species_name = "Animal"
@@ -123,7 +123,7 @@ class Dog(Animal):
     # Set calories_needed to 20x the weight
     # YOUR CODE HERE</code-exercise-element>
   
-<h3>Exercise: Cats have 9 lives?</h3>
+<h2>Exercise: Cats have 9 lives?</h2>
 <p>The program below contains a <code>Pet</code> class and a partially implemented <code>Cat</code> class that inherits from it. Read through the current code to understand what it's doing, then implement the <code>Cat</code> methods according to the comments and doctests.</p>
 <code-exercise-element name="cats-lives">class Pet():
   def __init__(self, name, owner):
@@ -182,7 +182,7 @@ class Cat(Pet):
 
 </code-exercise-element>
 
-<h3>Exercise: Herbivores and carnivores</h3>
+<h2>Exercise: Herbivores and carnivores</h2>
 <p>The program below includes classes you've seen before: <code>Animal</code>, <code>Herbivore</code>, and <code>Carnivore</code>. It also includes 2 new classes, <code>Zebra</code> and <code>Hyena</code>, that don't yet inherit from the correct parent class. Read through their doctests to determine what their parent class should be, and then change their class header as needed. The doctests should all pass if you've made the right change.</p>
 <code-exercise-element name="herbivores-carnivores" show-tests>class Animal:
     species_name = "Animal"
@@ -277,7 +277,7 @@ class Hyena(Animal):
   scientific_name = "Hyaena hyaena"
   calories_needed = 1000</code-exercise-element>
 
-<h3>Exercise: Noisy dog</h3>
+<h2>Exercise: Noisy dog</h2>
 <p>The program below includes three classes: <code>Pet</code>, <code>Dog</code>, and <code>NoisyDog</code>. Fix <code>NoisyDog</code> so that it inherits from the correct parent class, then override its <code>talk</code> method as described in the comments and doctests.</p>
 <code-exercise-element name="noisy-dog">class Pet():
   def __init__(self, name, owner):
@@ -324,7 +324,11 @@ class NoisyDog(Pet):
     # Use super() to call the relevant superclass method
     # YOUR CODE HERE</code-exercise-element>
 
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/10-composition.html">Composition</a>
+</section>
 {% endblock %}
+
 {% block footer_scripts %}
 <script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.10/dist/code-exercise.umd.min.js"></script>
 {% endblock %}

@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,7 +433,9 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
@@ -372,7 +453,7 @@
 <li><p>A <code>Customer</code> has a name and address, with a method like <code>buy(product, quantity, cc_info)</code>.</p></li>
 <li><p>An <code>Order</code> has an associated customer, product, quantity, and credit card information. Its associated methods might be <code>ship()</code> and <code>refund(reason)</code>.</p></li></ul>
 <p>To make each data type, we need to create a <strong>class</strong>. A class is a template for describing new data types, and is responsible for managing the data associated with an object (such as the name and address of a customer) and defining the associated methods (like buying a product).</p>
-<h3>Class initialization</h3>
+<h2>Class initialization</h2>
 <p>To define a new <strong>class</strong> (a new object type), we first write the <code>class</code> keyword followed by the class name and a colon.</p>
 <pre><code>class Product:</code></pre>
 <p>By convention, class names for new classes always start with a capital letter, even though many of the built-in class names are lowercase (e.g.<code>float</code>, <code>int</code>, <code>str</code>).</p>
@@ -394,7 +475,7 @@
 self.price = price
 self.nutrition_info = nutrition_info
 self.inventory = 0</code></pre>
-<h3>Instance variables</h3>
+<h2>Instance variables</h2>
 <p>An <strong>instance variable</strong> is a data attribute that describes the state of an object.</p>
 <p>An initialized <code>Product</code> object has four instance variables: <code>name</code>, <code>price</code>, <code>nutrition_info</code>, <code>inventory</code>. You can't just set instance variables by passing them into <code>__init__</code>, you have to actually set them on the object using dot notation.</p>
 <p>For example, the following initialization method only sets a single instance variable:</p>
@@ -413,7 +494,7 @@ self.inventory = 0</code></pre>
 print(pina_bar.name)
 print(pina_bar.price)
 print(f"A {pina_bar.name} bar costs {pina_bar.price}. Only {pina_bar.inventory} left!")</code></pre>
-<h3>Method definition</h3>
+<h2>Method definition</h2>
 <p>The next step is to define custom methods for the class. A method is a function that belongs to a class, so a method definition is just a function definition inside the class definition.</p>
 <p>We typically define custom methods after the <code>__init__</code> method, like so:</p>
 <pre><code>class Product:
@@ -429,7 +510,7 @@ pina_bar.increase_inventory(2) </code></pre>
 <p>In fact, if you really wanted, you could bypass the Python method magic, treat the method as a standard function, and pass <code>self</code> in directly, like this:</p>
 <pre><code>Product.increase_inventory(pina_bar, 2)</code></pre>
 <p>But it's shorter and a whole lot more convenient to simply call the method on the object itself.</p>
-<h3>Dot notation</h3>
+<h2>Dot notation</h2>
 <p>As you've now seen, dot notation is used to access all attributes of an object, both the instance variables and the methods.</p>
 <pre><code>pina_bar.name</code></pre>
 <pre><code>pina_bar.increase_inventory(2)</code></pre>
@@ -437,7 +518,7 @@ pina_bar.increase_inventory(2) </code></pre>
 <p>This code makes a list of objects, then uses bracket notation to grab a single object and dot notation after to call the object's method:</p>
 <pre><code>bars = [pina_bar, truffle_bar]
 bars[0].increase_inventory(2)</code></pre>
-<h3>The full class definition</h3>
+<h2>The full class definition</h2>
 <p>Let's put it all together now!</p>
 <p>The definition for a class with four instance variables and two custom methods:</p>
 <pre><code># Define a new type of data
@@ -467,7 +548,7 @@ truffle_bar.increase_inventory(200)</code></pre>
       <single-question-quiz-element name="chocolate-bar-object-method-call">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -497,7 +578,7 @@ truffle_bar.increase_inventory(200)</code></pre>
       <single-question-quiz-element name="chocolate-bar-instance-variable">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What is the name of the instance variable that stores 9.99?</p></div>
@@ -517,7 +598,10 @@ truffle_bar.increase_inventory(200)</code></pre>
           </div>
         </form>
       </single-question-quiz-element>
-      
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+</section>
 
   </div>
 </main>
@@ -563,6 +647,56 @@ truffle_bar.increase_inventory(200)</code></pre>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');

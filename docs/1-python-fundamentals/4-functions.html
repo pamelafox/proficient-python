@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,7 +433,9 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
@@ -376,7 +457,7 @@ pow(2, 10)</code></pre>
       <single-question-quiz-element name="functions-brainstorm">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🤔 Brainstorming Time</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🤔 Brainstorming Time</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -392,7 +473,7 @@ pow(2, 10)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Defining functions</h3>
+<h2>Defining functions</h2>
 <p>The most common way to define functions in Python is with a <code>def</code> statement.</p>
 <p>Here's the general template:</p>
 <pre><code>def <name>(<parameters>):
@@ -413,7 +494,7 @@ add_two(18, 69)</code></pre>
 <pre><code>def add_two(num1, num2):      # ← Function signature
     result = num1 + num2      # ← Function body
     return result             # ← Function body</code></pre>
-<h3>Parameters vs. arguments</h3>
+<h2>Parameters vs. arguments</h2>
 <p>We've now used two different terms to refer to the values that get passed into a function: <strong>parameters</strong> and <strong>arguments</strong>. Well, which is it?? Both!</p>
 <p>When we're defining a function, the parameters are the names given to the values that will eventually get passed into a function. The following function accepts two parameters, <code>num1</code> and <code>num2</code>, and the return value sums up those two parameters.</p>
 <pre><code>def add_two(num1, num2): 
@@ -421,7 +502,7 @@ add_two(18, 69)</code></pre>
 <p>However, when we're actually calling that function, we describe the values passed in as the arguments. Below, we pass in two arguments of 18 and 69.</p>
 <pre><code>add_two(18, 69)</code></pre>
 <p>The difference might seem subtle and overly pedantic, and well, as it turns out, programmers can be pedantic sometimes. 😊</p>
-<h3>Return values</h3>
+<h2>Return values</h2>
 <p>The <code>return</code> keyword returns a value to whoever calls the function. After a return statement is executed, Python exits that function immediately, executing no further code in the function.</p>
 <pre><code>def add_two(num1, num2):
     return num1 + num2
@@ -432,7 +513,7 @@ result = add_two(2, 4)</code></pre>
 <pre><code>big_sum = add_two(200, 412) + add_two(312, 256)</code></pre>
 <p>And also nest calls inside other calls:</p>
 <pre><code>huge_sum = add(add(200, 412), add(312, 256))</code></pre>
-<h3>Spot the bug! 🐞</h3>
+<h2>Spot the bug! 🐞</h2>
 <p>There's something wrong with this code... do you see the problem?</p>
 <pre><code>def add_two(num1, num2):
     return result
@@ -444,7 +525,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug1">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -464,7 +545,7 @@ result = add_two(2, 4)</code></pre>
       </single-question-quiz-element>
 
 
-<h3>Spot the bug! 🐛</h3>
+<h2>Spot the bug! 🐛</h2>
 <p>Here's some more buggy code:</p>
 <pre><code>def add_two():
     return num1 + num2
@@ -475,7 +556,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug2">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -497,7 +578,7 @@ result = add_two(2, 4)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h3>Spot the bug! 🦟</h3>
+<h2>Spot the bug! 🦟</h2>
 <p>Here's the last bit of code that's problematic:</p>
 <pre><code>def add_two(num1, num2):
     result = num1 + num2
@@ -508,7 +589,7 @@ result = add_two(2, 4)</code></pre>
       <single-question-quiz-element name="functions-spot-the-bug3">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold"></p>
@@ -529,7 +610,10 @@ result = add_two(2, 4)</code></pre>
           </div>
         </form>
       </single-question-quiz-element>
-      
+  
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/5-exercise-functions.html">Exercise: Functions</a>
+</section>
 
   </div>
 </main>
@@ -575,6 +659,56 @@ result = add_two(2, 4)</code></pre>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
