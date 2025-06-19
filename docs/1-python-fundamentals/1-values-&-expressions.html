@@ -13,6 +13,15 @@
     margin-bottom: 12px;
     max-width: 800px;
   }
+  
+  .next-step {
+    clear: both;
+    margin-top: 2rem;
+    border-top: 1px solid #eaecef;
+    padding-top: 1rem;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
 
   code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -75,13 +84,13 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
   }
   .site-header a {
-    color: #007bff;
+    color: #265074;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
   }
   .site-header a:hover {
-    color: #0056b3;
+    color: #265074;
     text-decoration: none;
   }
   .site-header .navbar-brand {
@@ -132,12 +141,29 @@
     color: #0056b3;
   }
   
+  /* Sidebar heading button styling */
   .sidebar-heading {
     font-size: 1.1rem;
     padding: 10px 20px;
     margin-top: 10px;
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-heading:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .sidebar-heading .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-heading[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
   }
   
   .content-wrapper {
@@ -175,13 +201,40 @@
     }
   }
   
+  /* Fix for collapsible nav items */
+  .sidebar .collapse {
+    /* Default state - hidden */
+    display: none;
+  }
+  
+  .sidebar .collapse.show {
+    /* When shown - flex column */
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  /* Ensure nav items stack properly */
+  .sidebar .nav-item {
+    width: 100%;
+  }
+  
+  /* Make collapse transitions instantaneous */
+  .sidebar .collapse,
+  .sidebar .collapsing {
+    transition: none !important;
+  }
+  
+  .sidebar .collapsing {
+    transition-duration: 0s !important;
+  }
+  
   </style>
 </head>
 <body>
 <header class="site-header fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <button id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
+      <button type="button" id="sidebarToggle" class="btn btn-outline-primary me-2" aria-label="Toggle sidebar menu">
         <i class="bi bi-list"></i>
       </button>
       <a class="navbar-brand" href="/index.html">Proficient Python</a>
@@ -193,11 +246,16 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <div class="sidebar-heading">Python Fundamentals</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 1: Python Fundamentals -->
+  <div class="unit-section" data-unit="1-python-fundamentals">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
+      Python Fundamentals <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit1Content">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/1-python-fundamentals/0-unit-overview.html">Unit Overview</a>
+        </li>
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/1-values-&-expressions.html">Values & Expressions</a>
     </li>
@@ -234,13 +292,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/1-python-fundamentals/12-project-1-algorithms-as-decision-makers.html">Project 1: Algorithms as Decision Makers</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Loops & Lists</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 2: Loops & Lists -->
+  <div class="unit-section" data-unit="2-loops-&-lists">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
+      Loops & Lists <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit2Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/2-loops-&-lists/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/1-while-loops.html">While Loops</a>
     </li>
@@ -277,13 +342,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/2-loops-&-lists/11-project-2-photo-filters.html">Project 2: Photo Filters</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Strings & Dictionaries</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 3: Strings & Dictionaries -->
+  <div class="unit-section" data-unit="3-strings-&-dictionaries">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
+      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit3Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/3-strings-&-dictionaries/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/1-string-formatting.html">String Formatting</a>
     </li>
@@ -311,13 +383,20 @@
     <li class="nav-item">
       <a class="nav-link" href="/3-strings-&-dictionaries/9-project-3-text-generator.html">Project 3: Text Generator</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
   
-  <div class="sidebar-heading">Object-Oriented Programming</div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
-    </li>
+  <!-- Unit 4: Object-Oriented Programming -->
+  <div class="unit-section" data-unit="4-object-oriented-programming">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
+      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="unit4Content">
+      <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/4-object-oriented-programming/0-unit-overview.html">Unit Overview</a>
+      </li>
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/1-object-oriented-programming.html">Object-Oriented Programming</a>
     </li>
@@ -354,14 +433,16 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <main class="content-wrapper" id="content" role="main">
   <div class="container container-md">
     
 <h1>Values & expressions</h1>
-<h3>Values</h3>
+<h2>Values</h2>
 <p>A computer program manipulates <strong>values</strong>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
 <p>In Python and most languages, each value has a certain data type. Some basic types:</p>
 <ul><li><p>An <strong>integer</strong> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
@@ -369,7 +450,7 @@
 <li><p>A <strong>Boolean</strong> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
 <li><p>A <strong>string</strong> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
 <p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in later units.</p>
-<h3>Expressions</h3>
+<h2>Expressions</h2>
 <p>Computer programs use <strong>expressions</strong> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
 <pre><code>18 + 69     # Results in 87
 
@@ -387,7 +468,7 @@
 <p>The <code>**</code> operator is the exponentiation operator; it raises the first number to the power of the second number and returns the result. In math class, this is often written like 2^100, but Python decided to use <code>**</code> instead. The <code>^</code> symbol is actually an operator in Python, but it's used for a very different operation (“bitwise exclusive or”) that we won’t dive into here.</p>
 <p>You can put together multiple operators to make longer expressions, and use parentheses to group parts of the expression you want evaluated first. Parentheses work pretty much the same in programming as they do in math.</p>
 <pre><code>24 + ((60 * 6) / 12)</code></pre>
-<h3>Exercise: Magic birthday math</h3>
+<h2>Exercise: Magic birthday math</h2>
 <p>There's a neat math trick that we used to do back in the days of calculators. After a long sequence of calculations, your birthday will come out at the end as a floating point number! Try to use Python to pull off the math trick instead, using the editor below.</p>
 <p>The instructions:</p>
 <ol><li><p>Start with the number 7</p></li>
@@ -405,7 +486,7 @@
 <code-exercise-element name="magic-birthday-math">
 # Type the expression below, and click "Run code" to see the result
 7</code-exercise-element>
-<h3>String expressions</h3>
+<h2>String expressions</h2>
 <p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
 <pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
 <p>If you want a whitespace between the strings you're concatenating, you need to explicitly put a space inside one of the strings:</p>
@@ -413,10 +494,10 @@
 <p>Or concatenate a string that is simply whitespace:</p>
 <pre><code>"oi" + " " + "galera"  # Results in "oi galera!"</code></pre>
 <p>String concatenation will soon become very useful, once we learn how to use variables and functions.</p>
-<h3>Exercise: Say my name</h3>
+<h2>Exercise: Say my name</h2>
 <p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
 <code-exercise-element name="your-name-string">"firstname" + "othername" + "lastname"</code-exercise-element>
-<h3>Call expressions</h3>
+<h2>Call expressions</h2>
 <p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
 <p>A few more handy built-ins:</p>
 <pre><code>max(50, 300)  # Results in 300
@@ -434,6 +515,11 @@ add(18, 69)</code></pre>
 
 sub(2021, 37)</code></pre>
 <p>Why would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
+
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+</section>
 
 
   </div>
@@ -480,6 +566,56 @@ sub(2021, 37)</code></pre>
     
     // Highlight active link in navbar and sidebar
     const currentPath = window.location.pathname;
+    
+    // Check if we're on the index page
+    const isIndexPage = currentPath === '/' || 
+                       currentPath === '/index.html' ||
+                       currentPath.endsWith('/index.html');
+    
+    // Determine the current unit from the URL
+    let currentUnit = null;
+    if (!isIndexPage) {
+      const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
+      if (unitMatches && unitMatches.length > 1) {
+        currentUnit = unitMatches[1];
+      }
+    }
+    
+    // Get all unit sections
+    const unitSections = document.querySelectorAll('.unit-section');
+    
+    // Collapse all units by default
+    unitSections.forEach(section => {
+      const unitId = section.getAttribute('data-unit');
+      const contentId = section.querySelector('.collapse').id;
+      const contentElement = document.getElementById(contentId);
+      
+      // Initialize Bootstrap collapse without forcing display style
+      const bsCollapse = new bootstrap.Collapse(contentElement, {
+        toggle: false
+      });
+      
+      // Disable transition animation
+      contentElement.style.transition = 'none';
+      
+      // Only expand the current unit
+      if (currentUnit && unitId === currentUnit) {
+        bsCollapse.show();
+      } else {
+        bsCollapse.hide();
+      }
+      
+      // Add click handler for unit headings to toggle chevron
+      const headingButton = section.querySelector('.sidebar-heading');
+      headingButton.addEventListener('click', function() {
+        const chevron = this.querySelector('.bi');
+        if (chevron.classList.contains('bi-chevron-down')) {
+          chevron.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        } else {
+          chevron.classList.replace('bi-chevron-up', 'bi-chevron-down');
+        }
+      });
+    });
     
     // Find all links in the navbar and sidebar
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');

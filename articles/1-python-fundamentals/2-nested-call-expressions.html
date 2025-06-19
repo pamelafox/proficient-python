@@ -2,7 +2,7 @@
 {% block title %}Nested call expressions{% endblock %}
 {% block content %}
 <h1>Nested call expressions</h1>
-<h3>Anatomy of a call expression</h3>
+<h2>Anatomy of a call expression</h2>
 <p>Before we dive into more complex call expressions, let's first understand a simple call expression more deeply. Remember, a call expression is any expression that calls a function, like <code>pow(2, 100)</code>. The diagram below is for a call expression using the <code>add</code> function.</p>
 <p><img src="../images/callexpression.png">Here's how Python evaluates that call expression:</p>
 <ol><li><p>It first evaluates the <strong>operator</strong>. In this case, it sees that it's a function named <code>add</code>, checks to see if an <code>add</code> function is accessible in the current environment, and remembers whatever function definition it finds.</p></li>
@@ -12,7 +12,7 @@
 <single-question-quiz-element name="fix-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold">Is any additional code required for the above call expression to work?</p>
@@ -55,7 +55,7 @@
         </form>
       </single-question-quiz-element>
 
-<h3>Nested call expressions</h3>
+<h2>Nested call expressions</h2>
 <p>Now let's look at a <strong>nested call expression</strong>: a call expression where the expressions themselves are <em>also</em> call expressions.</p>
 <p><img src="../images/callexpression_nested.png"></p>
 <p>If we were asked to evaluate that as a human, logically, we'd realize that we can't compute the outer <code>add</code> function until we know the operands, and we can't even compute that inner <code>add</code> function until we know the result of the first <code>mul</code> operation.</p>
@@ -75,7 +75,7 @@ add(        30       ,    15    )
 <single-question-quiz-element name="nested-call-expression">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <p class="mb-4 fw-bold">What's the final step for that call expression?</p>
@@ -152,8 +152,8 @@ add(        30       ,    15    )
           </div>
         </form>
       </single-question-quiz-element>
-      
-<h3>Exercise: Operator expressions</h3>
+
+<h2>Exercise: Operator expressions</h2>
 <p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
 <ul><li><p><code>30 + 2</code></p></li>
 <li><p><code>30 - 2</code></p></li>
@@ -170,6 +170,11 @@ add(        30       ,    15    )
 
 # After adding a call expression, run code to see if its correct
 add(30, 2)</code-exercise-element>
+
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/3-names-&-variables.html">Names & Variables</a>
+</section>
 
 {% endblock %}
 

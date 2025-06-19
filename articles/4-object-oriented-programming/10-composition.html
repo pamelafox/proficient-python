@@ -8,7 +8,7 @@
 <li><p>An animal has a mother (also another animal of the same class).</p></li>
 <li><p>An animal has children (multiple animals of the same class).</p></li></ul>
 <p>We can implement all of those examples using instance variables that either store a single object or a list of objects.</p>
-<h3>Composition with a single object</h3>
+<h2>Composition with a single object</h2>
 <p>Here, let's code a method for mating one animal with another animal:</p>
 <pre><code>class Animal:
 
@@ -21,7 +21,7 @@
 <pre><code>mr_wabbit = Rabbit("Mister Wabbit", 3)
 jane_doe = Rabbit("Jane Doe", 2)
 mr_wabbit.mate_with(jane_doe)</code></pre>
-<h3>Composition with a list</h3>
+<h2>Composition with a list</h2>
 <p>An instance variable could also store a list of objects.</p>
 <p>Read through this code that simulates rabbit reproduction:</p>
 <pre><code>class Rabbit(Animal):
@@ -42,7 +42,7 @@ jane_doe = Rabbit("Jane Doe", 2)
 mr_wabbit.mate_with(jane_doe)
 jane_doe.reproduce_like_rabbits()</code></pre>
 <p>This composition isn't perfect: a better approach might be to initialize <code>babies</code> inside <code>__init__</code>, so that a rabbit could reproduce multiple times and keep growing its list of babies each time. It also might be a good thing to add a line like <code>self.mate.babies = self.babies</code> or <code>self.mate.babies.extend(self.babies)</code> so that the mate could also keep track of the produced babies. The best implementation really depends on the use case for the compositional relationship and how the rest of the program will use that information.</p>
-<h3>Inheritance vs. composition</h3>
+<h2>Inheritance vs. composition</h2>
 <p>You've now learned two ways that classes and objects can relate to each other, composition and inheritance. Let's compare them.</p>
 <p><strong>Inheritance</strong> is best for representing "is-a" relationships.</p>
 <ul><li><p>A rabbit is a specific type of animal.</p></li>
@@ -51,4 +51,8 @@ jane_doe.reproduce_like_rabbits()</code></pre>
 <ul><li><p>A rabbit has a litter of babies.</p></li>
 <li><p>So, a <code>Rabbit</code> object has an instance variable containing other <code>Rabbit</code> objects.</p></li></ul>
 <p>When you're designing a system of classes, keep in mind how objects relate to each other so you can figure out the most appropriate way to represent that in code. Sometimes it helps to draw before you code, sketching the relationships out on paper or making a formal diagram using <a target="_blank" href="https://www.geeksforgeeks.org/unified-modeling-language-uml-introduction/">UML (Unified Modeling Language)</a>.</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/11-polymorphism.html">Polymorphism</a>
+</section>
 {% endblock %}

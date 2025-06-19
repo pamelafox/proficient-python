@@ -12,7 +12,7 @@ rand_char = chr(rand_num)
 
 print(rand_char)</code></pre>
 <p>That program first imports the <a target="_blank" href="https://docs.python.org/3/library/random.html">Python random module</a>, which contains a bunch of functions for generating randomness. It then uses <code>random.randint(start, end)</code> to generate an integer between the start and end integers (inclusive of both the start and end). Finally, it calls the global function <code>chr(int)</code> to turn that number into a Unicode character. If you're curious, you can also print out the generated <code>rand_num</code> to see what the number was before it got turned into a character.</p>
-<h3>Using randomness inside functions</h3>
+<h2>Using randomness inside functions</h2>
 <p>We sometimes write functions that can generate a random result, like a random color, a random x,y point, or even an entire shuffled deck of cards.</p>
 <p>Try running the function below a few times:</p>
 <pre><code>def random_rgb():
@@ -25,7 +25,7 @@ random_rgb()</code></pre>
 <p>I used the function above to make <a target="_blank" href="https://replit.com/@pamelafox/RandomColor#main.py">a randomized animated pixels demo</a>. The code for that demo also relies on <a target="_blank" href="https://www.pygame.org/wiki/GettingStarted">Pygame</a>, a popular library for making games in Python.</p>
 <p>A screenshot is below, but check out the link above to see the code and demo. The demo is hosted on Repl.it since Pygame doesn't work in the embedded code editor used in the articles.</p>
 <p><img src="../images/randomness-pixels.png"></p>
-<h3>Testing randomness</h3>
+<h2>Testing randomness</h2>
 <p>Before randomness, all of our functions were <strong>deterministic</strong>: for a given input, there's a predictable output.</p>
 <p>Now, a given input (or no input at all) can result in very different results each time. That makes testing harder, since we can't test for exact outputs; we can only make sure the output is within some reasonable range.</p>
 <p>Here's how we might write tests for that random color function:</p>
@@ -60,7 +60,7 @@ random_rgb()</code></pre>
     b = random.randint(0, 255)
     return [r, g, b]</code></pre>
 <p>Just make sure you don't set the seed in the function code itself, or you'll end up with very not-random output.</p>
-<h3>Random list items</h3>
+<h2>Random list items</h2>
 <p>Consider this list of random congratulations messages:</p>
 <pre><code>yays = ["You got it!", "Congrats!", "Well done!", "Nice one!"]</code></pre>
 <p>The co:rise engineers might want to generate a random message each time a student gets a quiz answer correct.</p>
@@ -69,7 +69,7 @@ random_rgb()</code></pre>
 <p>And that would totally work! But this is such a common need that Python added a function just for this, <code>random.choice(sequence)</code>.</p>
 <p>Thanks to that function, the code can become much cleaner and concise:</p>
 <pre><code>random.choice(yays)</code></pre>
-<h3>Pseudo-randomness</h3>
+<h2>Pseudo-randomness</h2>
 <p>Alright, now it's time for some real talk: none of this randomness is truly random. Sorry! The problem is, computers can't truly be random: they're built from logical circuits computing 0s and 1s, they don't know how to act on a whim.</p>
 <p>Computers instead use <a target="_blank" href="https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/random-vs-pseudorandom-number-generators"><strong>pseudo-random number generators (PRNGs)</a></strong> which generate seemingly random numbers using a sequence of mathematical computations.</p>
 <p>If for some reason a computer program needed truly random data, it would need to find a random process in nature and generate numbers based on that. The website <a target="_blank" href="http://random.org">random.org</a> claims that it actually does generate random numbers by sampling atmospheric noise, and they go into great detail about their generation and attempts to prove the true randomness of the results. Fascinating!</p>
@@ -98,4 +98,8 @@ def report_frequency(num, call_count, total_count):
 report_frequency(1, one_called, num_experiments)
 report_frequency(2, two_called, num_experiments)
 report_frequency(3, three_called, num_experiments)</code></pre>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/3-strings-&-dictionaries/8-files.html">Files</a>
+</section>
 {% endblock %}

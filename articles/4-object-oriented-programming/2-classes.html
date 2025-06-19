@@ -13,7 +13,7 @@
 <li><p>A <code>Customer</code> has a name and address, with a method like <code>buy(product, quantity, cc_info)</code>.</p></li>
 <li><p>An <code>Order</code> has an associated customer, product, quantity, and credit card information. Its associated methods might be <code>ship()</code> and <code>refund(reason)</code>.</p></li></ul>
 <p>To make each data type, we need to create a <strong>class</strong>. A class is a template for describing new data types, and is responsible for managing the data associated with an object (such as the name and address of a customer) and defining the associated methods (like buying a product).</p>
-<h3>Class initialization</h3>
+<h2>Class initialization</h2>
 <p>To define a new <strong>class</strong> (a new object type), we first write the <code>class</code> keyword followed by the class name and a colon.</p>
 <pre><code>class Product:</code></pre>
 <p>By convention, class names for new classes always start with a capital letter, even though many of the built-in class names are lowercase (e.g.<code>float</code>, <code>int</code>, <code>str</code>).</p>
@@ -35,7 +35,7 @@
 self.price = price
 self.nutrition_info = nutrition_info
 self.inventory = 0</code></pre>
-<h3>Instance variables</h3>
+<h2>Instance variables</h2>
 <p>An <strong>instance variable</strong> is a data attribute that describes the state of an object.</p>
 <p>An initialized <code>Product</code> object has four instance variables: <code>name</code>, <code>price</code>, <code>nutrition_info</code>, <code>inventory</code>. You can't just set instance variables by passing them into <code>__init__</code>, you have to actually set them on the object using dot notation.</p>
 <p>For example, the following initialization method only sets a single instance variable:</p>
@@ -54,7 +54,7 @@ self.inventory = 0</code></pre>
 print(pina_bar.name)
 print(pina_bar.price)
 print(f"A {pina_bar.name} bar costs {pina_bar.price}. Only {pina_bar.inventory} left!")</code></pre>
-<h3>Method definition</h3>
+<h2>Method definition</h2>
 <p>The next step is to define custom methods for the class. A method is a function that belongs to a class, so a method definition is just a function definition inside the class definition.</p>
 <p>We typically define custom methods after the <code>__init__</code> method, like so:</p>
 <pre><code>class Product:
@@ -70,7 +70,7 @@ pina_bar.increase_inventory(2) </code></pre>
 <p>In fact, if you really wanted, you could bypass the Python method magic, treat the method as a standard function, and pass <code>self</code> in directly, like this:</p>
 <pre><code>Product.increase_inventory(pina_bar, 2)</code></pre>
 <p>But it's shorter and a whole lot more convenient to simply call the method on the object itself.</p>
-<h3>Dot notation</h3>
+<h2>Dot notation</h2>
 <p>As you've now seen, dot notation is used to access all attributes of an object, both the instance variables and the methods.</p>
 <pre><code>pina_bar.name</code></pre>
 <pre><code>pina_bar.increase_inventory(2)</code></pre>
@@ -78,7 +78,7 @@ pina_bar.increase_inventory(2) </code></pre>
 <p>This code makes a list of objects, then uses bracket notation to grab a single object and dot notation after to call the object's method:</p>
 <pre><code>bars = [pina_bar, truffle_bar]
 bars[0].increase_inventory(2)</code></pre>
-<h3>The full class definition</h3>
+<h2>The full class definition</h2>
 <p>Let's put it all together now!</p>
 <p>The definition for a class with four instance variables and two custom methods:</p>
 <pre><code># Define a new type of data
@@ -108,7 +108,7 @@ truffle_bar.increase_inventory(200)</code></pre>
       <single-question-quiz-element name="chocolate-bar-object-method-call">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -138,7 +138,7 @@ truffle_bar.increase_inventory(200)</code></pre>
       <single-question-quiz-element name="chocolate-bar-instance-variable">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What is the name of the instance variable that stores 9.99?</p></div>
@@ -158,7 +158,10 @@ truffle_bar.increase_inventory(200)</code></pre>
           </div>
         </form>
       </single-question-quiz-element>
-      
+
+<section class="next-step">
+    ➡️ Next up: <a href="/4-object-oriented-programming/3-exercise-classes.html">Exercise: Classes</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}

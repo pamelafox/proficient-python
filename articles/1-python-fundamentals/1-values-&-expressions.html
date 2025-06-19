@@ -2,7 +2,7 @@
 {% block title %}Values & expressions{% endblock %}
 {% block content %}
 <h1>Values & expressions</h1>
-<h3>Values</h3>
+<h2>Values</h2>
 <p>A computer program manipulates <strong>values</strong>. The earliest programs were number munchers, calculating mathematical formulas more efficiently than a calculator. These days, programs deal with user data, natural language text, BIG data sets, and all sorts of interesting values.</p>
 <p>In Python and most languages, each value has a certain data type. Some basic types:</p>
 <ul><li><p>An <strong>integer</strong> is a number with nothing after the decimal. Examples: <code>2</code>, <code>44</code>, <code>-3</code></p></li>
@@ -10,7 +10,7 @@
 <li><p>A <strong>Boolean</strong> is a value that can only store two possible values, either <code>True</code> or <code>False</code>. They’ll become very important when we want to be able to make decisions in programs and take different code paths based on whether something is true or false.</p></li>
 <li><p>A <strong>string</strong> is a string of text, where that text could be anything allowed by the character encoding. We can get into that later, but for now, you should be able to use a wide range of characters, including non-English characters and even emojis! For example, <code>'¡hola!'</code> and <code>'python party 🐍'</code> are both valid strings. Strings can either be surrounded by single quotes' or "double quotes", as long as it’s the same on both sides.</p></li></ul>
 <p>There’s a lot we can do with those four types, so we’ll start with those and introduce fancier types like lists and dictionaries in later units.</p>
-<h3>Expressions</h3>
+<h2>Expressions</h2>
 <p>Computer programs use <strong>expressions</strong> to manipulate values and come up with new values. Here are some Python expressions that use arithmetic operators to do calculations:</p>
 <pre><code>18 + 69     # Results in 87
 
@@ -28,7 +28,7 @@
 <p>The <code>**</code> operator is the exponentiation operator; it raises the first number to the power of the second number and returns the result. In math class, this is often written like 2^100, but Python decided to use <code>**</code> instead. The <code>^</code> symbol is actually an operator in Python, but it's used for a very different operation (“bitwise exclusive or”) that we won’t dive into here.</p>
 <p>You can put together multiple operators to make longer expressions, and use parentheses to group parts of the expression you want evaluated first. Parentheses work pretty much the same in programming as they do in math.</p>
 <pre><code>24 + ((60 * 6) / 12)</code></pre>
-<h3>Exercise: Magic birthday math</h3>
+<h2>Exercise: Magic birthday math</h2>
 <p>There's a neat math trick that we used to do back in the days of calculators. After a long sequence of calculations, your birthday will come out at the end as a floating point number! Try to use Python to pull off the math trick instead, using the editor below.</p>
 <p>The instructions:</p>
 <ol><li><p>Start with the number 7</p></li>
@@ -46,7 +46,7 @@
 <code-exercise-element name="magic-birthday-math">
 # Type the expression below, and click "Run code" to see the result
 7</code-exercise-element>
-<h3>String expressions</h3>
+<h2>String expressions</h2>
 <p>The most basic way to manipulate string values is <strong>concatenation</strong>: combining two strings together. If you've never heard that term, it's common in programming languages and comes from Latin "con" (with) + "catena" (chain). I always just think of "cadena", the Spanish word for necklace.</p>
 <pre><code>"red" + "blue"         # Results in "redblue"</code></pre>
 <p>If you want a whitespace between the strings you're concatenating, you need to explicitly put a space inside one of the strings:</p>
@@ -54,10 +54,10 @@
 <p>Or concatenate a string that is simply whitespace:</p>
 <pre><code>"oi" + " " + "galera"  # Results in "oi galera!"</code></pre>
 <p>String concatenation will soon become very useful, once we learn how to use variables and functions.</p>
-<h3>Exercise: Say my name</h3>
+<h2>Exercise: Say my name</h2>
 <p>Use Python to write an expression that results in your full name, by concatenating different parts of your name. Different cultures vary in the number of parts that names have (some have multiple middle names, some have no middle names at all), so you may end up concatenating additional strings or removing a string from the starter expression.</p>
 <code-exercise-element name="your-name-string">"firstname" + "othername" + "lastname"</code-exercise-element>
-<h3>Call expressions</h3>
+<h2>Call expressions</h2>
 <p>Many expressions use function calls that return values. For example, instead of writing <code>2 ** 100</code>, we could opt to write <code>pow(2, 100)</code> and get the same result. The <code>pow()</code> function is one of Python’s many <a target="_blank" href="https://docs.python.org/3/library/functions.html">built-in functions</a>, which means it can be used inside any Python program anywhere.</p>
 <p>A few more handy built-ins:</p>
 <pre><code>max(50, 300)  # Results in 300
@@ -75,6 +75,11 @@ add(18, 69)</code></pre>
 
 sub(2021, 37)</code></pre>
 <p>Why would we go through the effort of using the function when we could just use the arithmetic operator? In most programs, we wouldn’t. But it’s helpful to realize that every operator in Python can actually be expressed as a function call, since we’ll encounter some situations in the future where we can only use function calls and not operators.</p>
+
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/2-nested-call-expressions.html">Nested Call Expressions</a>
+</section>
 
 {% endblock %}
 

@@ -2,7 +2,7 @@
 {% block title %}More on lists{% endblock %}
 {% block content %}
 <h1>More on lists</h1>
-<h3>More list methods</h3>
+<h2>More list methods</h2>
 <p>Here are a few more helpful methods that can be called on lists:</p>
 <table class="table table-bordered table-sm">
 <thead>
@@ -40,7 +40,7 @@
 <pre><code>scores.sort()</code></pre>
 <p>That mutates the <code>scores</code> list, so it now holds [7.3, 8.2, 9.2, 9.5, 10.0]. If you wanted that sorted in the other direction, you could call <code>reverse</code> on it after, or just set the optional argument <code>reverse</code>.</p>
 <pre><code>scores.sort(reverse=True)</code></pre>
-<h3>List functions</h3>
+<h2>List functions</h2>
 <p>Some of the Python global built-in functions can be called on lists (or any iterable object, like strings). Since these are functions, not methods, we pass the list in as an argument instead of using dot notation to call it after the list name.</p>
 <table class="table table-bordered table-sm">
 <thead>
@@ -73,7 +73,7 @@ scores2 = sorted(scores)</code></pre>
 <pre><code>max_score = max(scores)
 min_score = min(scores)</code></pre>
 <p>These three functions also take additional arguments to customize their behavior further, which you can learn more about in the documentation.</p>
-<h3>List containment</h3>
+<h2>List containment</h2>
 <p>When processing lists with unknown data, we often want to check if a value is inside a list. We can do that using the <code>in</code> operator, which evaluates to <code>True</code> if a value is in a list.</p>
 <p>For example:</p>
 <pre><code>groceries = ["apples", "bananas"]
@@ -83,4 +83,8 @@ if "bananas" in groceries:
 
 if "bleach" in groceries:
     print("☣️ Watch what you eat!")</code></pre>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/2-loops-&-lists/9-nested-lists.html">Nested lists</a>
+</section>
 {% endblock %}

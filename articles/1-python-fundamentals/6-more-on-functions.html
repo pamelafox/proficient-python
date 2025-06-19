@@ -3,7 +3,7 @@
 {% block content %}
 <h1>More on functions</h1>
 <p>Congratulations on writing your first functions! Here are a few more helpful things to understand about return values and arguments.</p>
-<h3>The None value</h3>
+<h2>The None value</h2>
 <p>The special value <code>None</code> represents nothingness in Python. Most languages have some way of representing nothingness, whether they call it <code>None</code>, <code>nil</code>, or <code>null</code>.</p>
 <p>Any function that doesn't explicitly return a value will return <code>None</code>, like this one:</p>
 <pre><code>def square_it(x):
@@ -14,7 +14,7 @@
 <p>If you then accidentally try to use a <code>None</code> value as if it were a real value like a number or a string, you'll see an error.</p>
 <p><img src="../images/more-on-functions-call-error.png" alt="A call that adds result of square_it(4) to a number, with an error"></p>
 <p>If you see an error like that when testing a function, it's a good sign that you've forgotten to actually return a value.</p>
-<h3>Side effects</h3>
+<h2>Side effects</h2>
 <p>So far, all of the functions we've seen and made ourselves are functions that return values. However, it is possible to use functions that cause <strong>side effects</strong> instead (or in addition). A side effect is some effect on the environment the code is running in, like a change to the visual display or manipulating files in the hard drive.</p>
 <p>The most common side effect is logging to the console via the built-in <code>print()</code> function.</p>
 <pre><code>print("i'm here!")</code></pre>
@@ -28,7 +28,7 @@
       <single-question-quiz-element name="functions-side-effects">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
@@ -79,7 +79,7 @@
       <single-question-quiz-element name="functions-return-values">
         <form class="bg-light rounded p-4">
           <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h2>
+            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
           </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What data type does each function return?</p></div>
@@ -166,7 +166,7 @@
         </form>
       </single-question-quiz-element>
 
-<h3>Default arguments</h3>
+<h2>Default arguments</h2>
 <p>Function parameters make a function more customizable, since they allow us to pass in more information about how to compute something.</p>
 <p>For example, the built-in <code>round</code> function accepts both the number to round <em>and</em> the number of digits that should be after the decimal point in the rounded result.</p>
 <pre><code>round(3.1415926535, 3)   # Returns 3.142
@@ -186,6 +186,10 @@ calculate_dog_age(3, 7)    # Returns 21</code></pre>
 calculate_dog_age(3, multiplier=6)   # Returns: 18</code></pre>
 <p>The first way is much shorter, but sometimes the second way is clearer, and is especially helpful when a function has multiple parameters with default values and you only want to override a subset of them.</p>
 <p>Default arguments are a great way to make functions that are more flexible while still being simple to use in the majority of cases!</p>
+
+<section class="next-step">
+    ➡️ Next up: <a href="/1-python-fundamentals/7-logical-expressions.html">Logical expressions</a>
+</section>
 {% endblock %}
 
 {% block footer_scripts %}
