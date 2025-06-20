@@ -32,9 +32,9 @@ def free_port() -> int:
 
 
 def run_server(port: int):
-    # Use subprocess to run a simple HTTP server (python3 -m http.server 8000 --directory docs
+    # Use subprocess to run a simple HTTP server (python3 -m http.server 8000 --directory build
     command = [sys.executable, "-m", "http.server",
-               str(port), "--directory", "docs"]
+               str(port), "--directory", "build"]
     subprocess.run(command, check=True)
 
 
