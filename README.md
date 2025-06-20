@@ -21,6 +21,9 @@ pip install -r requirements.txt
 
 # Build the site
 ./build.sh
+
+# Run the local server
+./start.sh
 ```
 
 The course will be available at http://localhost:8000.
