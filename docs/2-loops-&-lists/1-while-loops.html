@@ -246,10 +246,9 @@
 </header>
 
 <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
-  <!-- Unit 1: Python Fundamentals -->
   <div class="unit-section" data-unit="1-python-fundamentals">
     <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit1Content" aria-expanded="false" aria-controls="unit1Content">
-      Python Fundamentals <i class="bi bi-chevron-down"></i>
+      Unit 1: Python Fundamentals <i class="bi bi-chevron-down"></i>
     </button>
     <div class="collapse" id="unit1Content">
       <ul class="nav flex-column">
@@ -296,10 +295,9 @@
     </div>
   </div>
   
-  <!-- Unit 2: Loops & Lists -->
   <div class="unit-section" data-unit="2-loops-&-lists">
     <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit2Content" aria-expanded="false" aria-controls="unit2Content">
-      Loops & Lists <i class="bi bi-chevron-down"></i>
+      Unit 2: Loops & Lists <i class="bi bi-chevron-down"></i>
     </button>
     <div class="collapse" id="unit2Content">
       <ul class="nav flex-column">
@@ -346,10 +344,9 @@
     </div>
   </div>
   
-  <!-- Unit 3: Strings & Dictionaries -->
   <div class="unit-section" data-unit="3-strings-&-dictionaries">
     <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit3Content" aria-expanded="false" aria-controls="unit3Content">
-      Strings & Dictionaries <i class="bi bi-chevron-down"></i>
+      Unit 3: Strings & Dictionaries <i class="bi bi-chevron-down"></i>
     </button>
     <div class="collapse" id="unit3Content">
       <ul class="nav flex-column">
@@ -390,7 +387,7 @@
   <!-- Unit 4: Object-Oriented Programming -->
   <div class="unit-section" data-unit="4-object-oriented-programming">
     <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#unit4Content" aria-expanded="false" aria-controls="unit4Content">
-      Object-Oriented Programming <i class="bi bi-chevron-down"></i>
+      Unit 4: Object-Oriented Programming <i class="bi bi-chevron-down"></i>
     </button>
     <div class="collapse" id="unit4Content">
       <ul class="nav flex-column">
@@ -433,6 +430,23 @@
     <li class="nav-item">
       <a class="nav-link" href="/4-object-oriented-programming/12-project-4-oop-quiz.html">Project 4: OOP Quiz</a>
     </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Resources Section -->
+  <div class="unit-section" data-unit="resources">
+    <button class="sidebar-heading w-100 text-start border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#resourcesContent" aria-expanded="false" aria-controls="resourcesContent">
+      Resources <i class="bi bi-chevron-down"></i>
+    </button>
+    <div class="collapse" id="resourcesContent">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/resources/glossary.html">Glossary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pamelafox/proficient-python/discussions" target="_blank" rel="noopener">Discussions</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -821,6 +835,8 @@ while True:
       const unitMatches = currentPath.match(/\/(\d-[^\/]+)\//);
       if (unitMatches && unitMatches.length > 1) {
         currentUnit = unitMatches[1];
+      } else if (currentPath.startsWith('/resources/')) {
+        currentUnit = 'resources';
       }
     }
     
@@ -873,18 +889,19 @@ while True:
       if (currentPath === linkPath) {
         return true;
       }
-      
+      // Special case: root-level pages like /glossary.html
+      if (linkPath.startsWith('/') && linkPath.split('/').length === 2 && currentPath === linkPath) {
+        return true;
+      }
       // Split paths into segments to compare both section and filename
       const currentSegments = currentPath.split('/').filter(Boolean);
       const linkSegments = linkPath.split('/').filter(Boolean);
-      
       // Make sure we have enough segments to compare
       if (currentSegments.length >= 2 && linkSegments.length >= 2) {
         // Compare both the section folder and the filename
         return (currentSegments[0] === linkSegments[0] && 
                 currentSegments[currentSegments.length-1] === linkSegments[linkSegments.length-1]);
       }
-      
       return false;
     }
     
