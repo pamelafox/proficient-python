@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Proficient Python: Exercise: String operations</title>
+  <title>Proficient Python: Lectures</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
@@ -441,120 +441,33 @@
 <main class="content-wrapper" id="content" role="main">
   <div class="container container-md">
     
-<h1>Exercise: String operations</h1>
-<p>Try out different string operations and methods in the following coding exercises. You probably want to keep the previous articles open in other tabs, as well as the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#string-methods">Python string methods documentation</a>.</p>
 
-<h2>String methods</h2>
+<h1>Lectures</h1>
 
-<p>The next two exercises help you practice using string methods.</p>
+<p>If you are a teacher using this course for a classroom or online setting, you may find these lecture slides helpful.</p>
 
-<h2>Bleeper</h2>
-<p>Implement <code>bleep_out</code>, a function that looks for a particular phrase in a string and returns a new string with that phrase replaced by '***'.</p>
+<p>
+  Each lecture should take about 1 hour to present.
+  The unit lectures cover at least the first topics in a unit, but don't always cover all the topics in the unit,
+  as students are expected to work through the rest of the unit on their own.
+  The bonus lectures cover additional topics that are not covered in the articles.
+</p>
 
-<details>
-  <summary>If you'd like more guidance, expand this block.</summary>
-  <ul>
-    <li>Your function only needs a single line of code: one <strong><code>return</code></strong> statement.
-    <li>The return statement should use the <code>replace</code> method on <code>string1</code>, passing in <code>string2</code> and the literal string <code>"***"</code>.
-  </ul>
-</details>
-<code-exercise-element name="bleeper" show-tests>def bleep_out(string1, string2):
-  """Returns a version of string1 where all instances of string2
-  have been replaced by "***".
+<p>The slides are written in HTML/CSS using <a target="_blank" href="https://revealjs.com/">Reveal.JS</a>, so that they can be viewed in a web browser.
+  Download the original ones from the <a target="_blank" href="https://github.com/pamelafox/proficient-python">GitHub repository</a>
+  if you'd like to edit them.
+</p>
 
-  >>> bleep_out('i freaking love carrots', 'freaking')
-  'i *** love carrots'
-  >>> bleep_out('oh dang oh dang oh dang', 'dang')
-  'oh *** oh *** oh ***'
-  """
-  return "" # REPLACE THIS LINE
-</code-exercise-element>
+<ul>
+    <li><a target="_blank" href="unit1.html">Unit 1: Expressions & functions</a>
+    <li><a target="_blank" href="debugging.html">Bonus topic: Debugging</a>
+    <li><a target="_blank" href="unit2.html">Unit 2: Loops & Lists</a>
+    <li><a target="_blank" href="testing.html">Bonus topic: Testing</a>
+    <li><a target="_blank" href="unit3.html">Unit 3: Strings & Dictionaries</a>
+    <li><a target="_blank" href="unit4.html">Unit 4: Object Oriented Programming</a>
+    <li><a target="_blank" href="workflow.html">Bonus topic: Workflow</a>
+</ul>
 
-
-<h2>Phone number formats</h2>
-<p>Implement <code>phone_number_versions</code>, a function that turns a hyphen-separated phone number into a list containing that original number, a space-separated version of it, and a period-separated version.</p>
-
-<details>
-  <summary>If you'd like more guidance, expand this block.</summary>
-  <ul>
-    <li>As a first step, your function should split <code>phone_number</code> into parts, using the <code>split</code> method, and store the results in a list.
-    <li>Then, the function should create a new list, where some of the items are made using the <code>join</code> method.
-  </ul>
-</details>
-<code-exercise-element name="phone-number-versions" show-tests>def phone_number_versions(phone_number):
-    """
-    Accepts a hyphen-separated phone number and returns
-    a list containing the original version, a space-separated version,
-    and a period-separated version.
-    
-    >>> phone_number_versions('1-800-867-5309')
-    ['1-800-867-5309', '1 800 867 5309', '1.800.867.5309']
-    """
-    return [] # REPLACE THIS LINE
-</code-exercise-element>
-
-
-<h2>String slicing</h2>
-
-<p>The next three exercises help you practice using string slicing.</p>
-
-<h2>Mix up</h2>
-<p>Implement <code>mix_up</code>, a function that concatenates two words, but swaps out the first 2 characters of each word. For example, 'mix' and 'pod' is turned into 'pox mid'.</p>
-<code-exercise-element name="mix-up" show-tests>def mix_up(word1, word2):
-  """Returns the concatenation of word1 and word2 separated by a space,
-  with the first 2 characters of each word swapped.
-  Assumes the two words are at least 2 characters long.
-
-  >>> mix_up('mix', 'pod')
-  'pox mid'
-  >>> mix_up('dog', 'dinner')
-  'dig donner'
-  """
-  return ""  # REPLACE THIS LINE
-</code-exercise-element>
-
-<h2>Gerundio</h2>
-<p>Implement <code>gerundio</code>, a function that transforms Spanish infinite verbs (such as "cantar" or "volver") into their gerund forms ("cantando" and "volviendo"). See the docstring for the transformation rules.</p>
-<p>Once you get the initial tests passing, you can also implement this function for another language you know that has similar infinitive → gerund verb form changes. Share it with the rest of us if you do!</p>
-<code-exercise-element name="gerundio" show-tests>def gerundio(verb):
-  """Turns Spanish infinitive verbs (which end in "ar", "er", "ir")
-  into the gerund forms (which end in "ando" or "iendo).
-  When a verb ends in "ar", the "ar" is replaced with "ando".
-  When a verb ends in "er" or "ir", the end is replaced with "iendo".
-
-  >>> gerundio('cantar')
-  'cantando'
-  >>> gerundio('volver')
-  'volviendo'
-  >>> gerundio('abrir')
-  'abriendo'
-  >>> gerundio('armar')
-  'armando'
-  """
-  return '' # REPLACE THIS LINE</code-exercise-element>
-
-<h2>Not bad? Good!</h2>
-<p>Implement <code>not_bad</code>, a function that replaces a phrase in a string that starts with  "not" and ends with "bad" into the single word "good".</p>
-<code-exercise-element name="not-bad-good" show-tests>def not_bad(sentence):
-  """Returns a new string where the first substring in a sentence
-  that starts with "not" and ends with "bad" is replaced by the word "good".
-  Returns the original string if no matching substring is found.
-
-  >>> not_bad('This dinner is not that bad!')
-  'This dinner is good!'
-  >>> not_bad('This movie is not so bad!')
-  'This movie is good!'
-  >>> not_bad('This dinner is bad!')
-  'This dinner is bad!'
-  >>> not_bad('This movie is not so bad, dont you think?')
-  'This movie is good, dont you think?'
-  """
-  return '' # REPLACE THIS LINE
-</code-exercise-element>
-
-<section class="next-step">
-    ➡️ Next up: <a href="/3-strings-&-dictionaries/5-dictionaries.html">Dictionaries</a>
-</section>
 
   </div>
 </main>
@@ -737,8 +650,6 @@
     });
   });
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/python-code-exercise-element@0.1.11/dist/code-exercise.umd.min.js"></script>
 
 
 </body>
