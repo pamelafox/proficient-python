@@ -1,0 +1,323 @@
+{% extends "_base.html.jinja2" %}
+{% block title %}Python Glossary{% endblock %}
+{% block content %}
+
+  <h1>Glossary</h1>
+  
+  <p>This glossary defines key Python terms used in this course.
+    You can also consult the <a href="https://docs.python.org/3/glossary.html">Python Glossary</a> for the official definitions.</p>
+
+  <nav class="my-4">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a class="nav-link" href="#general">General</a></li>
+      <li class="nav-item"><a class="nav-link" href="#functions">Functions</a></li>
+      <li class="nav-item"><a class="nav-link" href="#logic">Logic</a></li>
+      <li class="nav-item"><a class="nav-link" href="#loops">Loops</a></li>
+      <li class="nav-item"><a class="nav-link" href="#lists">Lists</a></li>
+      <li class="nav-item"><a class="nav-link" href="#strings">Strings</a></li>
+      <li class="nav-item"><a class="nav-link" href="#dictionaries">Dictionaries</a></li>
+      <li class="nav-item"><a class="nav-link" href="#oop">OOP</a></li>
+    </ul>
+  </nav>
+
+  <section id="general" class="mb-5">
+    <h2>General</h2>
+    <dl>
+      <dt><strong>Mutable</strong></dt>
+      <dd>
+        A data value that can be changed after created. Lists and dictionaries are both mutable (i.e. you can append to a list or change the value of a key in a dictionary).
+        <pre><code class="python">names = ['Pamela', 'Amber']
+names.append('Tommy')</code></pre>
+      </dd>
+
+      <dt><strong>Immutable</strong></dt>
+      <dd>
+        A data value that <em>cannot</em> be changed after created, like a number or a string. Attempting to do so results in a runtime error. Example:
+        <pre><code class="python">name = 'pamela'
+name[0] = 'P'  # Error!</code></pre>
+      </dd>
+
+      <dt><strong>Sequence</strong></dt>
+      <dd>
+        A data type in Python that supports <a href="https://docs.python.org/3/library/stdtypes.html#typesseq-common">sequence operations</a>. Strings and lists are both sequences.
+      </dd>
+
+      <dt><strong>Method</strong></dt>
+      <dd>
+        A function that is called <em>on</em> an object, using dot notation.
+        <pre><code class="python">fruits = ['apples', 'bananas']
+fruits.append('watermelon')  # append is a method
+len(fruits)                  # len() is a function</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="functions" class="mb-5">
+    <h2>Functions</h2>
+    <dl>
+      <dt><strong>Function</strong></dt>
+      <dd>
+        A reusable block of code that takes in certain parameters and returns a value.
+      </dd>
+
+      <dt><strong>Function definition</strong></dt>
+      <dd>
+        The code that defines a function, starting with the function signature and containing the function body. A function definition only makes that function exist in memory, it does not call the function.
+        <pre><code class="python">def add(num1, num2):
+    result = num1 + num2
+    return result</code></pre>
+      </dd>
+
+      <dt><strong>Function signature/header</strong></dt>
+      <dd>
+        The first line of the function that has the name and parameters.
+        <pre><code class="python">def add(num1, num2):</code></pre>
+      </dd>
+
+      <dt><strong>Function parameters</strong></dt>
+      <dd>
+        The names inside the parentheses of the function header. When a function is called, those names are set to the values passed in, and the function body can use the names to reference them.
+        <pre><code class="python">num1, num2</code></pre>
+      </dd>
+
+      <dt><strong>Function body</strong></dt>
+      <dd>
+        Everything but the function header! - all the lines of code that are indented at least one level inside the def statement.
+        <pre><code class="python">    result = num1 + num2
+    return result</code></pre>
+      </dd>
+
+      <dt><strong>Function call</strong></dt>
+      <dd>
+        An expression that calls a function, i.e. that tells Python to actually run the code in the function body on a set of arguments.
+        <pre><code class="python">add(3, 5)</code></pre>
+      </dd>
+
+      <dt><strong>Function arguments</strong></dt>
+      <dd>
+        The values that are passed in a function call. The number of arguments in a function call needs to map the number of parameters in the function signature.
+        <pre><code class="python">3, 5</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="logic" class="mb-5">
+    <h2>Logic</h2>
+    <dl>
+      <dt><strong>Boolean value</strong></dt>
+      <dd>
+        A value that is either true or false. Written True and False in Python.
+      </dd>
+
+      <dt><strong>Boolean expression</strong></dt>
+      <dd>
+        An expression that evaluates to either true or false (or truthy/falsy), using a combination of comparison operators (>, <, ==, etc) or logical operators (and/or/not).
+      </dd>
+
+      <dt><strong>Conditional</strong></dt>
+      <dd>
+        A statement that uses if to determine whether to execute a block of code. Can optionally use elif for additional conditions, and else for fallback code.
+      </dd>
+
+      <dt><strong>Truthy</strong></dt>
+      <dd>
+        Whether a value is consider true when its inside a Boolean context (like an if). Python considers the following to be truthy: non-0 numbers, non-empty strings, non-empty lists, True. The following conditions are all considered truthy:
+        <pre><code class="python">if "yes":
+if [1, 2, 3]:
+if 10:</code></pre>
+      </dd>
+
+      <dt><strong>Falsey</strong></dt>
+      <dd>
+        Whether a value is consider false when its inside a Boolean context (like an if). Python considers the following to be falsey: 0, 0.0, empty strings, empty lists, False. The following conditions are all considered falsey:
+        <pre><code class="python">if "":
+if []:
+if 0:</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="loops" class="mb-5">
+    <h2>Loops</h2>
+    <dl>
+      <dt><strong>Loop</strong></dt>
+      <dd>
+        A way of repeating a block of code. Python has two kinds of loops, while and for.
+      </dd>
+
+      <dt><strong>While loop</strong></dt>
+      <dd>
+        A loop that repeats a block of code while a certain condition is true.
+        <pre><code class="python">x = 0
+while x < 10:
+    x += 1</code></pre>
+      </dd>
+
+      <dt><strong>Loop condition</strong></dt>
+      <dd>
+        The Boolean expression used in the header of a while loop to decide whether the loop should keep going.
+        <pre><code class="python">x < 10</code></pre>
+      </dd>
+
+      <dt><strong>For loop</strong></dt>
+      <dd>
+        A loop that calls the block of code for each item in a list/string/any iterable object.
+        <pre><code class="python">numbers = [1, 2, 3]
+for num in numbers:
+    print(num * 2)</code></pre>
+      </dd>
+
+      <dt><strong>Iteration</strong></dt>
+      <dd>
+        One repetition of a loop. For example, you could say "on each iteration, the loop increments x by 1."
+      </dd>
+
+      <dt><strong>Iterate</strong></dt>
+      <dd>
+        (verb) Using a loop to repeatedly process items in a list/string/any iterable object. For example, "this for loop will iterate through each number in this list."
+      </dd>
+
+      <dt><strong>Iterable</strong></dt>
+      <dd>
+        (adjective) Any value that can be used with a for loop, like a list or string. Python has a few other iterable values which we'll learn later.
+      </dd>
+
+      <dt><strong>Counter variable</strong></dt>
+      <dd>
+        A variable that keeps track of the number of iterations of a loop. Typically used with while loops to makes sure we only loop a certain number of times. Often named counter!
+        <pre><code class="python">counter = 0
+while counter < 10:
+    counter += 1</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="lists" class="mb-5">
+    <h2>Lists</h2>
+    <dl>
+      <dt><strong>List</strong></dt>
+      <dd>
+        A mutable data type that stores an ordered sequence of data, with each item at a particular index in the sequence.
+        <pre><code class="python">flavors = ['mint', 'chocolate', 'orange']</code></pre>
+      </dd>
+
+      <dt><strong>Index</strong></dt>
+      <dd>
+        The position of an item in a list. The first index is 0, the last index is 1 less than the length of the list.
+        <pre><code class="python">flavors = ['mint', 'chocolate', 'orange']
+# Index:     0         1          2</code></pre>
+      </dd>
+
+      <dt><strong>Zero-indexed</strong></dt>
+      <dd>
+        When lists in a language start with an index of 0. Python uses zero indexing. Other languages are one-indexed instead, where the first index is 1.
+      </dd>
+
+      <dt><strong>Bracket notation</strong></dt>
+      <dd>
+        Using square brackets to access elements of a list by specifying the index inside the brackets. Can also be used with the assignment operator to update elements.
+        <pre><code class="python">flavors = ['mint', 'chocolate', 'orange']
+print(flavors[0])  # 'mint'
+flavors[0] = 'mint choco chip'</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="strings" class="mb-5">
+    <h2>Strings</h2>
+    <dl>
+      <dt><strong>String</strong></dt>
+      <dd>
+        An immutable data type that stores an ordered sequence of characters.
+        <pre><code class="python">"superduper"</code></pre>
+      </dd>
+
+      <dt><strong>Concatenation</strong></dt>
+      <dd>
+        Combining two strings together using the + operator.
+      </dd>
+
+      <dt><strong>String literal</strong></dt>
+      <dd>
+        A string value inside quotes, versus a variable that stores a string value or an expression that evaluates to a string.
+        <pre><code class="python">"Literally a string"      # String literal
+stored = "stored string"  # String-storing variable
+("Bruno" + "no" * 3)      # Expression that evaluates to a string</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="dictionaries" class="mb-5">
+    <h2>Dictionaries</h2>
+    <dl>
+      <dt><strong>Dict(ionary)</strong></dt>
+      <dd>
+        A mutable data type that stores a mapping of keys to values.
+        <pre><code class="python">{"CA": "California"}</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="oop" class="mb-5">
+    <h2>OOP</h2>
+    <dl>
+      <dt><strong>Object</strong></dt>
+      <dd>
+        A bundle of data (instance variables) and functionality (methods). For example, a list is an object that bundles together data, a sequence of items, plus associated functionality, like appending.
+      </dd>
+
+      <dt><strong>Class</strong></dt>
+      <dd>
+        A template for defining new types of objects. A class definition looks like:
+        <pre><code class="python">class Student:
+    # class variables
+    # methods</code></pre>
+      </dd>
+
+      <dt><strong>Instance</strong></dt>
+      <dd>
+        A particular object of a class. For example, this code constructs a new instance of the Student class:
+        <pre><code class="python">pamela = Student("Pamela")</code></pre>
+      </dd>
+
+      <dt><strong>Instance variables</strong></dt>
+      <dd>
+        Data attributes that belong to a particular instance (object). Each instance has their own instance variables. Instance variables are typically initialized inside an __init__ method. For example, this class initializes two instance variables on each instance:
+        <pre><code class="python">class Student:
+    def __init__(self, name):
+        self.name = name
+        self.points = 0
+        
+pamela = Student("Pamela")
+pamela.name   # "Pamela"
+pamela.points # 0</code></pre>
+      </dd>
+
+      <dt><strong>Methods</strong></dt>
+      <dd>
+        Functions that can be called on a particular instance (object). Methods are defined in the class definition, and they typically access or change instance variables in some way. For example, this method increases an instance variable by a given amount.
+        <pre><code class="python">class Student:
+    def award_extra_credit(self, amount):
+        self.points += amount
+          
+pamela = Student("Pamela")
+pamela.points # 0
+pamela.award_extra_credit(3)
+pamela.points # 3</code></pre>
+      </dd>
+
+      <dt><strong>Class variables</strong></dt>
+      <dd>
+        Data attributes that are the same value across all instances of a particular class. For example, this Student class has a class variable of max_points:
+        <pre><code class="python">class Student:
+    max_points = 300
+    
+pamela = Student("Pamela")
+hunter = Student("Hunter")
+pamela.max_points # 300
+hunter.max_points # 300</code></pre>
+      </dd>
+    </dl>
+  </section>
+
+{% endblock %}
