@@ -213,7 +213,7 @@
           </div>
         </form>
       </single-question-quiz-element>
-
+<br>
 <p>Now implement <code>count_unread_books</code>, a function that processes a list of that form and returns the number of unread books in the list.</p>
 <code-exercise-element name="count-unread-books" show-tests>def count_unread_books(books):
     """ Accepts a list of dicts describing books
@@ -242,5 +242,6 @@
 </section>
 {% endblock %}
 {% block footer_scripts %}
+{% include "_quiz-js-include.html" %}
 {% include "_code-exercise-script.html" %}
 {% endblock %}

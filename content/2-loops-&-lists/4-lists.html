@@ -134,9 +134,6 @@ temps[-2]  # 99.0</code></pre>
 
       <single-question-quiz-element name="fav-singers2">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold"><p>Which expression(s) would evaluate to "Ben Platt"?</p></div>
             <div class="form-check">
@@ -230,5 +227,5 @@ len(attendees) # Evaluates to: 3</code></pre>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}

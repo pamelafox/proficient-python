@@ -19,15 +19,15 @@
   </ul>
 </details>
 <code-exercise-element name="bleeper" show-tests>def bleep_out(string1, string2):
-  """Returns a version of string1 where all instances of string2
-  have been replaced by "***".
+    """Returns a version of string1 where all instances of string2
+    have been replaced by "***".
 
-  >>> bleep_out('i freaking love carrots', 'freaking')
-  'i *** love carrots'
-  >>> bleep_out('oh dang oh dang oh dang', 'dang')
-  'oh *** oh *** oh ***'
-  """
-  return "" # REPLACE THIS LINE
+    >>> bleep_out('i freaking love carrots', 'freaking')
+    'i *** love carrots'
+    >>> bleep_out('oh dang oh dang oh dang', 'dang')
+    'oh *** oh *** oh ***'
+    """
+    return "" # REPLACE THIS LINE
 </code-exercise-element>
 
 
@@ -61,55 +61,55 @@
 <h2>Mix up</h2>
 <p>Implement <code>mix_up</code>, a function that concatenates two words, but swaps out the first 2 characters of each word. For example, 'mix' and 'pod' is turned into 'pox mid'.</p>
 <code-exercise-element name="mix-up" show-tests>def mix_up(word1, word2):
-  """Returns the concatenation of word1 and word2 separated by a space,
-  with the first 2 characters of each word swapped.
-  Assumes the two words are at least 2 characters long.
+    """Returns the concatenation of word1 and word2 separated by a space,
+    with the first 2 characters of each word swapped.
+    Assumes the two words are at least 2 characters long.
 
-  >>> mix_up('mix', 'pod')
-  'pox mid'
-  >>> mix_up('dog', 'dinner')
-  'dig donner'
-  """
-  return ""  # REPLACE THIS LINE
+    >>> mix_up('mix', 'pod')
+    'pox mid'
+    >>> mix_up('dog', 'dinner')
+    'dig donner'
+    """
+    return ""  # REPLACE THIS LINE
 </code-exercise-element>
 
 <h2>Gerundio</h2>
 <p>Implement <code>gerundio</code>, a function that transforms Spanish infinite verbs (such as "cantar" or "volver") into their gerund forms ("cantando" and "volviendo"). See the docstring for the transformation rules.</p>
 <p>Once you get the initial tests passing, you can also implement this function for another language you know that has similar infinitive → gerund verb form changes. Share it with the rest of us if you do!</p>
 <code-exercise-element name="gerundio" show-tests>def gerundio(verb):
-  """Turns Spanish infinitive verbs (which end in "ar", "er", "ir")
-  into the gerund forms (which end in "ando" or "iendo).
-  When a verb ends in "ar", the "ar" is replaced with "ando".
-  When a verb ends in "er" or "ir", the end is replaced with "iendo".
+    """Turns Spanish infinitive verbs (which end in "ar", "er", "ir")
+    into the gerund forms (which end in "ando" or "iendo).
+    When a verb ends in "ar", the "ar" is replaced with "ando".
+    When a verb ends in "er" or "ir", the end is replaced with "iendo".
 
-  >>> gerundio('cantar')
-  'cantando'
-  >>> gerundio('volver')
-  'volviendo'
-  >>> gerundio('abrir')
-  'abriendo'
-  >>> gerundio('armar')
-  'armando'
-  """
-  return '' # REPLACE THIS LINE</code-exercise-element>
+    >>> gerundio('cantar')
+    'cantando'
+    >>> gerundio('volver')
+    'volviendo'
+    >>> gerundio('abrir')
+    'abriendo'
+    >>> gerundio('armar')
+    'armando'
+    """
+    return '' # REPLACE THIS LINE</code-exercise-element>
 
 <h2>Not bad? Good!</h2>
 <p>Implement <code>not_bad</code>, a function that replaces a phrase in a string that starts with  "not" and ends with "bad" into the single word "good".</p>
 <code-exercise-element name="not-bad-good" show-tests>def not_bad(sentence):
-  """Returns a new string where the first substring in a sentence
-  that starts with "not" and ends with "bad" is replaced by the word "good".
-  Returns the original string if no matching substring is found.
+    """Returns a new string where the first substring in a sentence
+    that starts with "not" and ends with "bad" is replaced by the word "good".
+    Returns the original string if no matching substring is found.
 
-  >>> not_bad('This dinner is not that bad!')
-  'This dinner is good!'
-  >>> not_bad('This movie is not so bad!')
-  'This movie is good!'
-  >>> not_bad('This dinner is bad!')
-  'This dinner is bad!'
-  >>> not_bad('This movie is not so bad, dont you think?')
-  'This movie is good, dont you think?'
-  """
-  return '' # REPLACE THIS LINE
+    >>> not_bad('This dinner is not that bad!')
+    'This dinner is good!'
+    >>> not_bad('This movie is not so bad!')
+    'This movie is good!'
+    >>> not_bad('This dinner is bad!')
+    'This dinner is bad!'
+    >>> not_bad('This movie is not so bad, dont you think?')
+    'This movie is good, dont you think?'
+    """
+    return '' # REPLACE THIS LINE
 </code-exercise-element>
 
 <section class="next-step">

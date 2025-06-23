@@ -8,51 +8,51 @@
 <h3>Exercise: StudentGrade</h3>
 <p>📺 Need help with this one? Watch a <a target="_blank" href="https://www.youtube.com/watch?v=wFHKyVkn5mQ">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element name="studentgrade-class" show-tests>class StudentGrade:
-  """Represents the grade for a student in a class
-  and indicates when a grade is failing.
-  For all students, 159 points is considered a failing grade.
+    """Represents the grade for a student in a class
+    and indicates when a grade is failing.
+    For all students, 159 points is considered a failing grade.
 
-  >>> grade1 = StudentGrade("Arfur Artery", 300)
-  >>> grade1.is_failing()
-  False
-  >>> grade2 = StudentGrade("MoMo OhNo", 158)
-  >>> grade2.is_failing()
-  True
-  >>> grade1.failing_grade
-  159
-  >>> grade2.failing_grade
-  159
-  >>> StudentGrade.failing_grade
-  159
-  >>>
-  """
-  
-  def __init__(self, student_name, num_points):
-    self.student_name = student_name
-    self.num_points = num_points
+    >>> grade1 = StudentGrade("Arfur Artery", 300)
+    >>> grade1.is_failing()
+    False
+    >>> grade2 = StudentGrade("MoMo OhNo", 158)
+    >>> grade2.is_failing()
+    True
+    >>> grade1.failing_grade
+    159
+    >>> grade2.failing_grade
+    159
+    >>> StudentGrade.failing_grade
+    159
+    >>>
+    """
+    
+    def __init__(self, student_name, num_points):
+        self.student_name = student_name
+        self.num_points = num_points
 
-  def is_failing(self):
-    return self.num_points &lt; StudentGrade.failing_grade</code-exercise-element>
+    def is_failing(self):
+        return self.num_points &lt; StudentGrade.failing_grade</code-exercise-element>
 
 <h3>Exercise: Article</h3>
 <code-exercise-element name="article-class" show-tests>class Article:
-  """Represents an article on an educational website.
-  The license for all articles should be "CC-BY-NC-SA".
+    """Represents an article on an educational website.
+    The license for all articles should be "CC-BY-NC-SA".
 
-  >>> article1 = Article("Logic", "Samuel Tarín")
-  >>> article1.get_byline()
-  'By Samuel Tarín, License: CC-BY-NC-SA'
-  >>> article2 = Article("Loops", "Pamela Fox")
-  >>> article2.get_byline()
-  'By Pamela Fox, License: CC-BY-NC-SA'
-  """
+    >>> article1 = Article("Logic", "Samuel Tarín")
+    >>> article1.get_byline()
+    'By Samuel Tarín, License: CC-BY-NC-SA'
+    >>> article2 = Article("Loops", "Pamela Fox")
+    >>> article2.get_byline()
+    'By Pamela Fox, License: CC-BY-NC-SA'
+    """
 
-  def __init__(self, title, author):
-    self.title = title
-    self.author = author
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
 
-  def get_byline(self):
-    return f"By {self.author}, License: {self.license}"</code-exercise-element>
+    def get_byline(self):
+        return f"By {self.author}, License: {self.license}"</code-exercise-element>
 
 <h2>Class methods</h2>
 <h3>Exercise: Thneed Factory</h3>

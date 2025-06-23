@@ -4,9 +4,9 @@
 <h1>For loops & ranges</h1>
 <p>Now we'll learn a more specialized loop: <strong>the </strong><code>for</code> loop. The uses of a <code>for</code> loop vary by language, but in Python, a <code>for</code> loop is useful whenever we want to iterate through a sequence, like iterating through a range of numbers or through a list of items.</p>
 <p>Here's the general template of a <code>for</code> loop:</p>
-<pre><code>for <value> in <sequence>:
-    <statement>
-    <statement></code></pre>
+<pre><code>for &lt;value&gt; in &lt;sequence&gt;:
+    &lt;statement&gt;
+    &lt;statement&gt;</code></pre>
 <p>The loop below iterates through a sequence of numbers, printing their multiples of 9. Try it!</p>
 <pre><code>for num in range(1, 5):
     print(9 * num)</code></pre>
@@ -117,9 +117,6 @@ while num < 5:
 
       <single-question-quiz-element name="range-sequence2">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold">
               <p>Which call to <code>range</code> would construct the sequence 10, 11, 12, 13, 14, 15?</p>
@@ -213,9 +210,6 @@ while num < 5:
 
       <single-question-quiz-element name="range-sequence3">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question" data-shuffle>
             <div class="mb-4 fw-bold">
               <p>Which call to <code>range</code> would construct the sequence 3, 6, 9, 12, 15?</p>
@@ -311,5 +305,5 @@ while num < 5:
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}

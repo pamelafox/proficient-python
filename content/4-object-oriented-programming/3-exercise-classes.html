@@ -9,118 +9,118 @@
 <p>📺 Need help with this one? Watch a <a target="_blank" href="https://youtu.be/9d0LjvCD6GE">video walkthrough</a> of the solution. Then try it out yourself and apply what you learned to the exercises after.</p>
 <p>🧩 Or, for a different form of guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=plant">Parsons Puzzle version</a> first.</p>
 <code-exercise-element name="plant-class" show-tests>class Plant:
-  """A class used by a plant nursery to track what plants they have in inventory 
-  and how many they have of each plant.
+    """A class used by a plant nursery to track what plants they have in inventory 
+    and how many they have of each plant.
 
-  >>> milkweed = Plant("Narrow-leaf milkweed", "Asclepias fascicularis")
-  >>> milkweed.common_name
-  'Narrow-leaf milkweed'
-  >>> milkweed.latin_name
-  'Asclepias fascicularis'
-  >>> milkweed.inventory
-  0
-  >>> milkweed.update_inventory(2)
-  >>> milkweed.inventory
-  2
-  >>> milkweed.update_inventory(3)
-  >>> milkweed.inventory
-  5
-  """
+    >>> milkweed = Plant("Narrow-leaf milkweed", "Asclepias fascicularis")
+    >>> milkweed.common_name
+    'Narrow-leaf milkweed'
+    >>> milkweed.latin_name
+    'Asclepias fascicularis'
+    >>> milkweed.inventory
+    0
+    >>> milkweed.update_inventory(2)
+    >>> milkweed.inventory
+    2
+    >>> milkweed.update_inventory(3)
+    >>> milkweed.inventory
+    5
+    """
 
-  def __init__(self, common_name, latin_name):
-    self.common_name = common_name
-    # Fill out the rest of this function
-    
-  def update_inventory(self, amount):
-    # Fill out this function
-</code-exercise-element>
+    def __init__(self, common_name, latin_name):
+        self.common_name = common_name
+        # Fill out the rest of this function
+        
+    def update_inventory(self, amount):
+        # Fill out this function
+  </code-exercise-element>
 
 <h2>MoviePurchase</h2>
 <p>Finish the implementation of  <code>MoviePurchase</code>, a class that represents movie purchases on YouTube, tracking the title and costs of each movie bought, plus the number of times watched.</p>
 <p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=movie_purchase">Parsons Puzzle version</a> first.</p>
 
 <code-exercise-element name="movie-purchase-class" show-tests>class MoviePurchase:
-  """A class that represents movie purchases on YouTube,
-  tracking the title and cost of each movie bought,
-  as well as the number of times the movie is watched.
+    """A class that represents movie purchases on YouTube,
+    tracking the title and cost of each movie bought,
+    as well as the number of times the movie is watched.
 
-  >>> ponyo = MoviePurchase("Ponyo", 19.99)
-  >>> ponyo.title
-  'Ponyo'
-  >>> ponyo.cost
-  19.99
-  >>> ponyo.times_watched
-  0
-  >>> ponyo.watch()
-  >>> ponyo.watch()
-  >>> ponyo.times_watched
-  2
-  """
+    >>> ponyo = MoviePurchase("Ponyo", 19.99)
+    >>> ponyo.title
+    'Ponyo'
+    >>> ponyo.cost
+    19.99
+    >>> ponyo.times_watched
+    0
+    >>> ponyo.watch()
+    >>> ponyo.watch()
+    >>> ponyo.times_watched
+    2
+    """
 
-  def __init__(self, title, cost):
-    # Fill out this function
+    def __init__(self, title, cost):
+        # Fill out this function
 
-  def watch(self):
-    # Fill out this function</code-exercise-element>
+    def watch(self):
+        # Fill out this function</code-exercise-element>
 
 <h2>Player</h2>
 <p>Finish the implementation of <code>Player</code>, a class that represents a player in a video game, tracking their name and health.</p>
 <p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=player">Parsons Puzzle version</a> first.</p>
 
 <code-exercise-element name="player-class" show-tests>class Player:
-  """A class that represents a player in a video game,
-  tracking their name and health.
+    """A class that represents a player in a video game,
+    tracking their name and health.
 
-  >>> player = Player("Mario")
-  >>> player.name
-  'Mario'
-  >>> player.health
-  100
-  >>> player.damage(10)
-  >>> player.health
-  90
-  >>> player.boost(5)
-  >>> player.health
-  95
-  """
+    >>> player = Player("Mario")
+    >>> player.name
+    'Mario'
+    >>> player.health
+    100
+    >>> player.damage(10)
+    >>> player.health
+    90
+    >>> player.boost(5)
+    >>> player.health
+    95
+    """
 
-  def __init__(self, name):
-    # YOUR CODE HERE
+    def __init__(self, name):
+        # YOUR CODE HERE
 
-  def damage(self, amount):
-    # YOUR CODE HERE
+    def damage(self, amount):
+        # YOUR CODE HERE
 
-  def boost(self, amount):
-    # YOUR CODE HERE</code-exercise-element>
+    def boost(self, amount):
+        # YOUR CODE HERE</code-exercise-element>
 
 <h2>Clothing</h2>
 <p>Implement <code>Clothing</code>, a class that represents pieces of clothing in a closet, tracking their color, category, and clean/dirty state.</p>
 <p>🧩 For more guidance, try a <a target="_blank" href="https://pamelafox.github.io/faded-parsons-static/problem.html?name=clothing">Parsons Puzzle version</a> first.</p>
 
 <code-exercise-element name="clothing-class" show-tests>class Clothing:
-  """A class that represents pieces of clothing in a closet,
-  tracking the color, category, and clean/dirty state.
+    """A class that represents pieces of clothing in a closet,
+    tracking the color, category, and clean/dirty state.
 
-  >>> blue_shirt = Clothing("shirt", "blue")
-  >>> blue_shirt.category
-  'shirt'
-  >>> blue_shirt.color
-  'blue'
-  >>> blue_shirt.is_clean
-  True
-  >>> blue_shirt.wear()
-  >>> blue_shirt.is_clean
-  False
-  >>> blue_shirt.clean()
-  >>> blue_shirt.is_clean
-  True
-  """
+    >>> blue_shirt = Clothing("shirt", "blue")
+    >>> blue_shirt.category
+    'shirt'
+    >>> blue_shirt.color
+    'blue'
+    >>> blue_shirt.is_clean
+    True
+    >>> blue_shirt.wear()
+    >>> blue_shirt.is_clean
+    False
+    >>> blue_shirt.clean()
+    >>> blue_shirt.is_clean
+    True
+    """
 
-  # Write an __init__ method
-  
-  # Write the wear() method
+    # Write an __init__ method
+    
+    # Write the wear() method
 
-  # Write the clean() method
+    # Write the clean() method
 </code-exercise-element>
 
 <section class="next-step">

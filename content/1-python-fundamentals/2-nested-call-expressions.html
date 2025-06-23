@@ -153,7 +153,7 @@ add(        30       ,    15    )
         </form>
       </single-question-quiz-element>
 
-<h2>Exercise: Operator expressions</h2>
+<h2>Try it: Operator expressions</h2>
 <p>The following expressions are written entirely with arithmetic operators. Rewrite them using the following functions from the <code>operator</code> module: <code>add</code>, <code>sub</code>, <code>mul</code>, <code>truediv</code>, <code>floordiv</code>, and <code>mod</code>. You may find this <a target="_blank" href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">table that maps operators to functions</a> particularly helpful.</p>
 <ul><li><p><code>30 + 2</code></p></li>
 <li><p><code>30 - 2</code></p></li>
@@ -179,6 +179,6 @@ add(30, 2)</code-exercise-element>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% include "_code-exercise-script.html" %}
 {% endblock %}
