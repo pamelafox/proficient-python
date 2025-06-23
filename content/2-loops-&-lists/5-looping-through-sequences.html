@@ -34,8 +34,14 @@ for letter in letters:
 for code_point in emoji:
     print(ord(code_point))</code></pre>
 <p>How many numbers do you think that will print out? Try it and see!</p>
-<pre><code># Try some code here</code></pre>
+<code-exercise-element name="emoji-code-points">
+# Try some code here
+</code-exercise-element>
 <section class="next-step">
     ➡️ Next up: <a href="/2-loops-&-lists/6-exercise-loops-and-lists.html">Exercise: Loops and Lists</a>
 </section>
+{% endblock %}
+
+{% block footer_scripts %}
+{% include "_code-exercise-script.html" %}
 {% endblock %}

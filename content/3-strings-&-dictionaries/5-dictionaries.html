@@ -279,13 +279,13 @@ for name in insects:
 <pre><code>"CA" in states  # True
 "ZZ" in states  # False</code></pre>
 <p>There are also additional functions, operators, and methods for dicts that we won't dive into here. You can learn more in the <a target="_blank" href="https://docs.python.org/3/library/stdtypes.html#dict">Python dict documentation</a>.</p>
-<h2>Exercise: Make a recipe</h2>
+<h2>Try it: Make a recipe</h2>
 <p>In the code editor below, create a dict to hold information on your favorite recipe. It should have keys for:</p>
 <ul><li><p>title (a string)</p></li>
 <li><p>servings (a number)</p></li>
 <li><p>ingredients (a list of strings).</p></li></ul>
 <p>Once the dict is created, use bracket notation to pull value back out of the dict and print them out.</p>
-<pre><code>recipe = {
+<code-exercise-element name="my-recipe-dict">recipe = {
   # Put title key/value here - value should be a string
   # Put servings key/value here - value should be a number
   # Put ingredients key/value here - value should be a list
@@ -304,7 +304,7 @@ print(servings)
 # Store the recipe's ingredients list in this variable
 # by using bracket notation on the recipe variable
 ingredients = []
-print(ingredients)</code></pre>
+print(ingredients)</code-exercise-element>
 
 <section class="next-step">
     ➡️ Next up: <a href="/3-strings-&-dictionaries/6-exercise-dictionaries.html">Exercise: Dictionaries</a>
@@ -312,5 +312,6 @@ print(ingredients)</code></pre>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
+{% include "_code-exercise-script.html" %}
 {% endblock %}

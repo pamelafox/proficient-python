@@ -73,8 +73,9 @@ random_rgb()</code></pre>
 <p>Alright, now it's time for some real talk: none of this randomness is truly random. Sorry! The problem is, computers can't truly be random: they're built from logical circuits computing 0s and 1s, they don't know how to act on a whim.</p>
 <p>Computers instead use <a target="_blank" href="https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/random-vs-pseudorandom-number-generators"><strong>pseudo-random number generators (PRNGs)</a></strong> which generate seemingly random numbers using a sequence of mathematical computations.</p>
 <p>If for some reason a computer program needed truly random data, it would need to find a random process in nature and generate numbers based on that. The website <a target="_blank" href="http://random.org">random.org</a> claims that it actually does generate random numbers by sampling atmospheric noise, and they go into great detail about their generation and attempts to prove the true randomness of the results. Fascinating!</p>
-<p>Fortunately, the results of PRNGs are typically random enough to satisfy most use cases. Check out the program above which generates the numbers 1-3 a thousand times and measures the frequency of the results. Does it seem random enough for you?</p>
-<pre><code>import random
+<p>Fortunately, the results of PRNGs are typically random enough to satisfy most use cases. Try out the program below which generates the numbers 1-3 a thousand times and measures the frequency of the results. Does it seem random enough for you?</p>
+
+<code-exercise-element name="random-number-generator">import random
 
 num_experiments = 10000
 
@@ -97,9 +98,14 @@ def report_frequency(num, call_count, total_count):
 
 report_frequency(1, one_called, num_experiments)
 report_frequency(2, two_called, num_experiments)
-report_frequency(3, three_called, num_experiments)</code></pre>
+report_frequency(3, three_called, num_experiments)</code-exercise-element>
 
 <section class="next-step">
     ➡️ Next up: <a href="/3-strings-&-dictionaries/8-files.html">Files</a>
 </section>
+{% endblock %}
+
+
+{% block footer_scripts %}
+{% include "_code-exercise-script.html" %}
 {% endblock %}

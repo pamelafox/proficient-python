@@ -11,9 +11,9 @@ print(9 * 5)</code></pre>
 <p>This code is repetitive and variable, but the variability is sequential - it just adds one to the right-hand side number each time. In English, we could describe this as "print out the first 5 multiples of 9".</p>
 <p>We can simplify this code using a loop. There are a few kinds of loops in Python, and we'll be starting with the most generic and flexible loop, the while loop.</p>
 <p>This is the general form of a while loop:</p>
-<pre><code>while <condition>:
-    <statement>
-    <statement></code></pre>
+<pre><code>while &lt;condition&gt;:
+    &lt;statement&gt;
+    &lt;statement&gt;</code></pre>
 <p>As long as the condition is true, the statements below it are executed. That condition is the same sort of condition we've been using inside conditionals. However, conditions inside while loops get checked repeatedly, until they're finally false.</p>
 <p>We can rewrite the original code using a while loop like so:</p>
 <pre><code>multiplier = 1
@@ -54,9 +54,6 @@ while multiplier <= 5:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop1-last-number">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
             <div class="form-group">
@@ -77,9 +74,6 @@ while multiplier <= 5:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop1-number-of-iterations">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
             <div class="form-group">
@@ -131,9 +125,6 @@ while multiplier <= 10:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop2-last-number">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
             <div class="form-group">
@@ -154,9 +145,6 @@ while multiplier <= 10:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop2-number-of-iterations">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
             <div class="form-group">
@@ -211,9 +199,6 @@ while multiplier <= 10:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop3-last-number">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What will be the last number displayed?</p></div>
             <div class="form-group">
@@ -234,9 +219,6 @@ while multiplier <= 10:
       </single-question-quiz-element>
       <single-question-quiz-element name="while-loop3-number-of-iterations">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>How many times will this loop iterate?</p></div>
             <div class="form-group">
@@ -327,5 +309,5 @@ while True:
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}

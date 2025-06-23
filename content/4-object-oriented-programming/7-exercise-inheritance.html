@@ -77,11 +77,11 @@ class Cat: # &lt;- FINISH THIS LINE
   license = "Creative Commons"
 
   def __init__(self, title, author):
-    self.title = title
-    self.author = author
+      self.title = title
+      self.author = author
 
   def get_heading(self):
-    return f"{self.title} by {self.author}"
+      return f"{self.title} by {self.author}"
 
 class Video: # &lt;- FINISH THIS LINE
     """
@@ -116,113 +116,113 @@ class Article: # &lt;- FINISH THIS LINE
 <p>The <code>Character</code> class below represents a character in a video game. Finish implementing the methods in <code>Boss</code> so that they override the base class methods and behave according to the comments and doctests.</p>
 <p>📺 Need help with this one? Watch this <a target="_blank" href="https://youtu.be/8Cq-IuCFTyM">video walkthrough</a> of a partial solution. Then try it out yourself and apply what you learned to the next exercise.</p>
 <code-exercise-element name="boss-methods" show-tests>class Character:
-  """ Represents a character in a video game,
-  tracking their name and health.
+    """ Represents a character in a video game,
+    tracking their name and health.
 
-  >>> player = Character("Mario")
-  >>> player.name
-  'Mario'
-  >>> player.health
-  100
-  >>> player.damage(10)
-  >>> player.health
-  90
-  >>> player.boost(5)
-  >>> player.health
-  95
-  """
-  def __init__(self, name):
-    self.name = name
-    self.health = 100
+    >>> player = Character("Mario")
+    >>> player.name
+    'Mario'
+    >>> player.health
+    100
+    >>> player.damage(10)
+    >>> player.health
+    90
+    >>> player.boost(5)
+    >>> player.health
+    95
+    """
+    def __init__(self, name):
+        self.name = name
+        self.health = 100
 
-  def damage(self, amount):
-    self.health -= amount
+    def damage(self, amount):
+        self.health -= amount
 
-  def boost(self, amount):
-    self.health += amount
+    def boost(self, amount):
+        self.health += amount
 
 
 class Boss(Character):
-  """ Tracks a Boss character in a video game.
+    """ Tracks a Boss character in a video game.
 
-  >>> mx_boss = Boss("Mx Boss Person")
-  >>> mx_boss.damage(100)
-  >>> mx_boss.health
-  99
-  >>> mx_boss.damage(10)
-  >>> mx_boss.health
-  98
-  >>> mx_boss.boost(1)
-  >>> mx_boss.health
-  100
-  """
-  
-  def damage(self, amount):
-    # Bosses ignore the amount and instead
-    # always receive 1 unit of damage to their health
-    # YOUR CODE HERE
+    >>> mx_boss = Boss("Mx Boss Person")
+    >>> mx_boss.damage(100)
+    >>> mx_boss.health
+    99
+    >>> mx_boss.damage(10)
+    >>> mx_boss.health
+    98
+    >>> mx_boss.boost(1)
+    >>> mx_boss.health
+    100
+    """
+    
+    def damage(self, amount):
+        # Bosses ignore the amount and instead
+        # always receive 1 unit of damage to their health
+        # YOUR CODE HERE
 
-  def boost(self, amount):
-    # Bosses always receive twice the amount of boost to their health
-    # YOUR CODE HERE
+    def boost(self, amount):
+        # Bosses always receive twice the amount of boost to their health
+        # YOUR CODE HERE
 
 </code-exercise-element>
 <h2>Exercise: Clothing methods</h2>
 <p>The <code>Clothing</code> class below represents pieces of clothing in a closet, and <code>KidsClothing</code> inherits from it. Write a <code>clean</code> method that overrides the base class method according to the comment and the doctests.</p>
 <code-exercise-element name="clothing-methods" show-tests>class Clothing:
-  """ Represents clothing in a closet,
-  tracking the color, category, and clean/dirty state.
+    """ Represents clothing in a closet,
+    tracking the color, category, and clean/dirty state.
 
-  >>> blue_shirt = Clothing("shirt", "blue")
-  >>> blue_shirt.category
-  'shirt'
-  >>> blue_shirt.color
-  'blue'
-  >>> blue_shirt.is_clean
-  True
-  >>> blue_shirt.wear()
-  >>> blue_shirt.is_clean
-  False
-  >>> blue_shirt.clean()
-  >>> blue_shirt.is_clean
-  True
-  """
+    >>> blue_shirt = Clothing("shirt", "blue")
+    >>> blue_shirt.category
+    'shirt'
+    >>> blue_shirt.color
+    'blue'
+    >>> blue_shirt.is_clean
+    True
+    >>> blue_shirt.wear()
+    >>> blue_shirt.is_clean
+    False
+    >>> blue_shirt.clean()
+    >>> blue_shirt.is_clean
+    True
+    """
 
-  def __init__(self, category, color):
-    self.category = category
-    self.color = color
-    self.is_clean = True
+    def __init__(self, category, color):
+        self.category = category
+        self.color = color
+        self.is_clean = True
 
-  def wear(self):
-    self.is_clean = False
+    def wear(self):
+        self.is_clean = False
 
-  def clean(self):
-    self.is_clean = True
+    def clean(self):
+        self.is_clean = True
 
 class KidsClothing(Clothing):
-  """
-  >>> onesie = KidsClothing("onesie", "polka dots")
-  >>> onesie.wear()
-  >>> onesie.is_clean
-  False
-  >>> onesie.clean()
-  >>> onesie.is_clean
-  False
-  >>> dress = KidsClothing("dress", "rainbow")
-  >>> dress.clean()
-  >>> dress.is_clean
-  True
-  >>> dress.wear()
-  >>> dress.is_clean
-  False
-  >>> dress.clean()
-  >>> dress.is_clean
-  False
-  """
+    """
+    >>> onesie = KidsClothing("onesie", "polka dots")
+    >>> onesie.wear()
+    >>> onesie.is_clean
+    False
+    >>> onesie.clean()
+    >>> onesie.is_clean
+    False
+    >>> dress = KidsClothing("dress", "rainbow")
+    >>> dress.clean()
+    >>> dress.is_clean
+    True
+    >>> dress.wear()
+    >>> dress.is_clean
+    False
+    >>> dress.clean()
+    >>> dress.is_clean
+    False
+    """
 
-  # Override the clean() method
-  # so that kids clothing always stays dirty!
-  # YOUR CODE HERE</code-exercise-element>
+    # Override the clean() method
+    # so that kids clothing always stays dirty!
+    # YOUR CODE HERE</code-exercise-element>
 
 <section class="next-step">
     ➡️ Next up: <a href="/4-object-oriented-programming/8-more-on-inheritance.html">More on inheritance</a>

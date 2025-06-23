@@ -137,9 +137,6 @@ truffle_bar.increase_inventory(200)</code></pre>
       </single-question-quiz-element>
       <single-question-quiz-element name="chocolate-bar-instance-variable">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold"><p>What is the name of the instance variable that stores 9.99?</p></div>
             <div class="form-group">
@@ -165,5 +162,5 @@ truffle_bar.increase_inventory(200)</code></pre>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}

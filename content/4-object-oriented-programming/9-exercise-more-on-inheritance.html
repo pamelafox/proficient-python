@@ -34,32 +34,31 @@
         print(f"Yay happy fun time with {animal2.name}")
 
 class Cat(Animal):
-  """
-  >>> adult = Cat("Winston", 12)
-  >>> adult.name
-  'Winston'
-  >>> adult.age
-  12
-  >>> adult.play_multiplier
-  3
-  >>> kitty = Cat("Kurty", 0.5)
-  >>> kitty.name
-  'Kurty'
-  >>> kitty.age
-  0.5
-  >>> kitty.play_multiplier
-  6
-  """
-  species_name = "Domestic cat"
-  scientific_name = "Felis silvestris catus"
-  calories_needed = 200
-  play_multiplier = 3
+    """
+    >>> adult = Cat("Winston", 12)
+    >>> adult.name
+    'Winston'
+    >>> adult.age
+    12
+    >>> adult.play_multiplier
+    3
+    >>> kitty = Cat("Kurty", 0.5)
+    >>> kitty.name
+    'Kurty'
+    >>> kitty.age
+    0.5
+    >>> kitty.play_multiplier
+    6
+    """
+    species_name = "Domestic cat"
+    scientific_name = "Felis silvestris catus"
+    calories_needed = 200
+    play_multiplier = 3
 
-  def __init__(self, name, age):
-    # Call the super class to set name and age
-    # If age is less than 1, set play multiplier to 6
-    # YOUR CODE HERE
-        
+    def __init__(self, name, age):
+        # Call the super class to set name and age
+        # If age is less than 1, set play multiplier to 6
+        # YOUR CODE HERE
 </code-exercise-element>
 
 <h2>Exercise: Weighty dogs</h2>
@@ -93,93 +92,92 @@ class Cat(Animal):
 
 
 class Dog(Animal):
-  """
-  >>> spot = Dog("Spot", 5, 20)
-  >>> spot.name
-  'Spot'
-  >>> spot.age
-  5
-  >>> spot.weight
-  20
-  >>> spot.calories_needed
-  400
-  >>> puppy = Dog("Poppy", 1, 7)
-  >>> puppy.name
-  'Poppy'
-  >>> puppy.age
-  1
-  >>> puppy.weight
-  7
-  >>> puppy.calories_needed
-  140
-  """
-  species_name = "Domestic dog"
-  scientific_name = "Canis lupus familiaris"
-  calories_needed = 200
+    """
+    >>> spot = Dog("Spot", 5, 20)
+    >>> spot.name
+    'Spot'
+    >>> spot.age
+    5
+    >>> spot.weight
+    20
+    >>> spot.calories_needed
+    400
+    >>> puppy = Dog("Poppy", 1, 7)
+    >>> puppy.name
+    'Poppy'
+    >>> puppy.age
+    1
+    >>> puppy.weight
+    7
+    >>> puppy.calories_needed
+    140
+    """
+    species_name = "Domestic dog"
+    scientific_name = "Canis lupus familiaris"
+    calories_needed = 200
 
-  def __init__(self, name, age, weight):
-    # Call the super class to set name and age
-    # Set the weight attribute
-    # Set calories_needed to 20x the weight
-    # YOUR CODE HERE</code-exercise-element>
+    def __init__(self, name, age, weight):
+        # Call the super class to set name and age
+        # Set the weight attribute
+        # Set calories_needed to 20x the weight
+        # YOUR CODE HERE</code-exercise-element>
   
 <h2>Exercise: Cats have 9 lives?</h2>
 <p>The program below contains a <code>Pet</code> class and a partially implemented <code>Cat</code> class that inherits from it. Read through the current code to understand what it's doing, then implement the <code>Cat</code> methods according to the comments and doctests.</p>
-<code-exercise-element name="cats-lives">class Pet():
-  def __init__(self, name, owner):
-    self.is_alive = True
-    self.name = name
-    self.owner = owner
+<code-exercise-element name="cats-lives" show-tests>class Pet():
+    def __init__(self, name, owner):
+        self.is_alive = True
+        self.name = name
+        self.owner = owner
 
-  def eat(self, thing):
-    print(self.name + " ate a " + str(thing) + "!")
+    def eat(self, thing):
+        print(self.name + " ate a " + str(thing) + "!")
 
-  def talk(self):
-    print(self.name)
+    def talk(self):
+        print(self.name)
 
 class Cat(Pet):
-  """
-  >>> lizzie = Cat("Lizzie", "Hunter")
-  >>> lizzie.name
-  'Lizzie'
-  >>> lizzie.owner
-  'Hunter'
-  >>> lizzie.lives
-  9
-  >>> lizzie.is_alive
-  True
-  >>> lizzie.talk()
-  Lizzie says meow!
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lives
-  4
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lose_life()
-  >>> lizzie.lives
-  0
-  >>> lizzie.is_alive
-  False
-  """
-  def __init__(self, name, owner, lives=9):
-    # Call super class to set name and owner
-    # Set lives attribute
-    # YOUR CODE HERE
+    """
+    >>> lizzie = Cat("Lizzie", "Hunter")
+    >>> lizzie.name
+    'Lizzie'
+    >>> lizzie.owner
+    'Hunter'
+    >>> lizzie.lives
+    9
+    >>> lizzie.is_alive
+    True
+    >>> lizzie.talk()
+    Lizzie says meow!
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lives
+    4
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lose_life()
+    >>> lizzie.lives
+    0
+    >>> lizzie.is_alive
+    False
+    """
+    def __init__(self, name, owner, lives=9):
+        # Call super class to set name and owner
+        # Set lives attribute
+        # YOUR CODE HERE
 
-  def talk(self):
-    # Print out '<name> says meow!'
-    # YOUR CODE HERE
+    def talk(self):
+        # Print out '&lt;name&gt; says meow!'
+        # YOUR CODE HERE
 
-  def lose_life(self):
-    # Decrement a cat's life by 1
-    # When lives reaches zero, set is_alive to False
-    # YOUR CODE HERE
-
+    def lose_life(self):
+        # Decrement a cat's life by 1
+        # When lives reaches zero, set is_alive to False
+        # YOUR CODE HERE
 </code-exercise-element>
 
 <h2>Exercise: Herbivores and carnivores</h2>
@@ -227,102 +225,101 @@ class Carnivore(Animal):
 
 class Meal():
 
-  def __init__(self, name, kind, calories):
-    self.name = name
-    self.kind = kind
-    self.calories = calories
-
+    def __init__(self, name, kind, calories):
+        self.name = name
+        self.kind = kind
+        self.calories = calories
 
 class Zebra(Animal):
-  """
-  >>> zebby = Zebra("Zebby", 12)
-  >>> zebby.play(2)
-  WHEEE PLAY TIME!
-  >>> zebby.happiness
-  4
-  >>> zebby.eat(Meal("Broccoli", "vegetable", 100))
-  Om nom nom yummy Broccoli
-  >>> zebby.calories_eaten
-  100
-  >>> zebby.eat(Meal("Beef", "meat", 300))
-  >>> zebby.happiness
-  -1
-  >>> zebby.calories_eaten
-  100
-  """
-  species_name = "Common Zebra"
-  scientific_name = "Equus quagga"
-  calories_needed = 15000
+    """
+    >>> zebby = Zebra("Zebby", 12)
+    >>> zebby.play(2)
+    WHEEE PLAY TIME!
+    >>> zebby.happiness
+    4
+    >>> zebby.eat(Meal("Broccoli", "vegetable", 100))
+    Om nom nom yummy Broccoli
+    >>> zebby.calories_eaten
+    100
+    >>> zebby.eat(Meal("Beef", "meat", 300))
+    >>> zebby.happiness
+    -1
+    >>> zebby.calories_eaten
+    100
+    """
+    species_name = "Common Zebra"
+    scientific_name = "Equus quagga"
+    calories_needed = 15000
 
 class Hyena(Animal):
-  """
-  >>> helen = Hyena("Helen", 12)
-  >>> helen.play(2)
-  WHEEE PLAY TIME!
-  >>> helen.happiness
-  4
-  >>> helen.eat(Meal("Carrion", "meat", 300))
-  Om nom nom yummy Carrion
-  >>> helen.calories_eaten
-  300
-  >>> helen.happiness
-  4
-  >>> helen.eat(Meal("Broccoli", "vegetable", 100))
-  >>> helen.calories_eaten
-  300
-  >>> helen.happiness
-  4
-  """
-  species_name = "Striped Hyena"
-  scientific_name = "Hyaena hyaena"
-  calories_needed = 1000</code-exercise-element>
+    """
+    >>> helen = Hyena("Helen", 12)
+    >>> helen.play(2)
+    WHEEE PLAY TIME!
+    >>> helen.happiness
+    4
+    >>> helen.eat(Meal("Carrion", "meat", 300))
+    Om nom nom yummy Carrion
+    >>> helen.calories_eaten
+    300
+    >>> helen.happiness
+    4
+    >>> helen.eat(Meal("Broccoli", "vegetable", 100))
+    >>> helen.calories_eaten
+    300
+    >>> helen.happiness
+    4
+    """
+    species_name = "Striped Hyena"
+    scientific_name = "Hyaena hyaena"
+    calories_needed = 1000</code-exercise-element>
 
 <h2>Exercise: Noisy dog</h2>
 <p>The program below includes three classes: <code>Pet</code>, <code>Dog</code>, and <code>NoisyDog</code>. Fix <code>NoisyDog</code> so that it inherits from the correct parent class, then override its <code>talk</code> method as described in the comments and doctests.</p>
-<code-exercise-element name="noisy-dog">class Pet():
-  def __init__(self, name, owner):
-    self.is_alive = True
-    self.name = name
-    self.owner = owner
+<code-exercise-element name="noisy-dog" show-tests>class Pet():
+    def __init__(self, name, owner):
+        self.is_alive = True
+        self.name = name
+        self.owner = owner
 
-  def eat(self, thing):
-    print(self.name + " ate a " + str(thing) + "!")
+    def eat(self, thing):
+        print(self.name + " ate a " + str(thing) + "!")
 
-  def talk(self):
-    print(self.name)
+    def talk(self):
+        print(self.name)
 
 class Dog(Pet):
-  """
-  >>> cooper = Dog("Cooper", "Tinu")
-  >>> cooper.name
-  'Cooper'
-  >>> cooper.owner
-  'Tinu'
-  >>> cooper.talk()
-  Cooper says BARK!
-  """
+    """
+    >>> cooper = Dog("Cooper", "Tinu")
+    >>> cooper.name
+    'Cooper'
+    >>> cooper.owner
+    'Tinu'
+    >>> cooper.talk()
+    Cooper says BARK!
+    """
 
-  def talk(self):
-    print(f"{self.name} says BARK!")
+    def talk(self):
+        print(f"{self.name} says BARK!")
 
 class NoisyDog(Pet):
-  """
-  >>> roxy = NoisyDog("Roxy", "Joe")
-  >>> roxy.name
-  'Roxy'
-  >>> roxy.owner
-  'Joe'
-  >>> roxy.talk()
-  Roxy says BARK!
-  Roxy says BARK!
-  Roxy says BARK!
-  """
+    """
+    >>> roxy = NoisyDog("Roxy", "Joe")
+    >>> roxy.name
+    'Roxy'
+    >>> roxy.owner
+    'Joe'
+    >>> roxy.talk()
+    Roxy says BARK!
+    Roxy says BARK!
+    Roxy says BARK!
+    """
 
-  def talk(self):
-    # Make it so that noisy dogs say the same thing,
-    # but always say it three times!
-    # Use super() to call the relevant superclass method
-    # YOUR CODE HERE</code-exercise-element>
+    def talk(self):
+        # Make it so that noisy dogs say the same thing,
+        # but always say it three times!
+        # Use super() to call the relevant superclass method
+        # YOUR CODE HERE</code-exercise-element>
 
 <section class="next-step">
     ➡️ Next up: <a href="/4-object-oriented-programming/10-composition.html">Composition</a>

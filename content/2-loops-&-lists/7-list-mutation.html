@@ -78,7 +78,7 @@ bought_food2 = groceries.pop(1)
 i = groceries.index("cheerios")
 bought_food3 = groceries.pop(i)</code></pre>
 <p>To watch for yourself how those methods mutate the original list, step through the code <a target="_blank" href="https://pythontutor.com/visualize.html#code=groceries%20%3D%20%5B%22apples%22,%20%22bananas%22%5D%0A%0Agroceries.append%28%22peanut%20butter%22%29%0Agroceries.insert%280,%20%22applesauce%22%29%0Agroceries.insert%283,%20%22cheerios%22%29%0Agroceries.remove%28%22bananas%22%29%0A%0Abought_food%20%3D%20groceries.pop%28%29%0Abought_food2%20%3D%20groceries.pop%281%29%0Ai%20%3D%20groceries.index%28%22cheerios%22%29%0Abought_food3%20%3D%20groceries.pop%28i%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">on PythonTutor</a>.</p>
-<h2>Exercise: Cities</h2>
+<h2>Quiz: Cities</h2>
 <p>Start from this code:</p>
 <pre><code>cities = ['London', 'Constantinople', 'Sydney', 'Leningrad', 'Peking']</code></pre>
 
@@ -115,9 +115,6 @@ bought_food3 = groceries.pop(i)</code></pre>
 
       <single-question-quiz-element name="cities-list-mutation2">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
               <p>Using bracket notation, write the line of code that would change "Leningrad" to "Saint Petersburg".</p>
@@ -148,9 +145,6 @@ bought_food3 = groceries.pop(i)</code></pre>
 
       <single-question-quiz-element name="cities-list-mutation3">
         <form class="bg-light rounded p-4">
-          <div class="d-flex align-items-center mb-4">
-            <h2 class="h5 mb-0" style="font-size: smaller; text-transform: uppercase">🧠 Check Your Understanding</h1>
-          </div>
           <div class="quiz-question">
             <div class="mb-4 fw-bold">
               <p>Using bracket notation, write the line of code that would change "Peking" to "Beijing".</p>
@@ -177,7 +171,7 @@ bought_food3 = groceries.pop(i)</code></pre>
         </form>
       </single-question-quiz-element>
 
-<h2>Exercise: Planets</h2>
+<h2>Quiz: Planets</h2>
 <p>Start from this code:</p>
 <pre><code>planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
     'Jupiter', 'Saturn', 'Uranus',  'Neptune', 'Pluto']</code></pre>
@@ -215,5 +209,5 @@ bought_food3 = groceries.pop(i)</code></pre>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}

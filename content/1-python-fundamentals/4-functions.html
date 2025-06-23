@@ -98,7 +98,7 @@ result = add_two(2, 4)</code></pre>
               <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
             </div>
             <aside class="alert alert-secondary mt-3" style="display: none">
-              <p>The code after the return statement will not be executed that line belongs before the return.</p>
+              <p>The code after the return statement will not be executed; that line belongs <em>before</em> the return.</p>
             </aside>
           </div>
         </form>
@@ -177,5 +177,5 @@ result = add_two(2, 4)</code></pre>
 {% endblock %}
 
 {% block footer_scripts %}
-<script src="https://cdn.jsdelivr.net/npm/single-question-quiz-element@0.1.5/dist/single-question-quiz-element.umd.min.js"></script>
+{% include "_quiz-js-include.html" %}
 {% endblock %}
