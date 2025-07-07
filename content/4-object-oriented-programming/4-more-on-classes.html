@@ -6,7 +6,12 @@
 <p>A <strong>class variable</strong> is a data attribute that is shared across all the instances of the class (all the objects of that type).</p>
 <p>We declare a class variable by writing an assignment statement inside the class definition, before the methods:</p>
 <pre><code>class Product:
-    </code></pre>
+    sales_tax = 0.07  # class variable
+
+    def __init__(self, name, price, nutrition_info):
+        self.name = name
+        self.price = price
+        self.nutrition_info = nutrition_info</code></pre>
 <p>Note there is no <code>self</code> since it belongs to the whole class, not to any one particular object.</p>
 <p>However, when accessing the class variable inside a methods, we can use <code>self</code>:</p>
 <pre><code>class Product:
@@ -17,6 +22,8 @@
         self.price = price
         self.nutrition_info = nutrition_info
 
+    def get_total_price(self, quantity):
+        return (self.price * (1 + self.sales_tax)) * quantity
 </code></pre>
 <p>The <code>self.sales_tax</code> expression works because dot notation starts by looking for an instance variable by that name, and then if it can't find any, it looks for a class variable of that name instead.</p>
 <p>It's also possible to reference the class variable by using the class name in the dot notation, like <code>Product.sales_tax</code>. Accessing the class variable that way ensures that your code won't accidentally reference an instance variable by the same name. It's a bad idea to use the same name for both class variables and instance variables, however, unless you specifically intend for the instance variable to override the class variable.</p>
@@ -110,7 +117,7 @@ cust1 = Customer("Coco Lover",
               </aside>
             </div>
             <div class="mt-3">
-              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit answer</button>
               <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
             </div>
           </div>
@@ -192,7 +199,7 @@ cust1 = Customer("Coco Lover",
               </aside>
             </div>
             <div class="mt-3">
-              <button type="submit" class="btn btn-primary" data-action="submit">Submit Answer</button>
+              <button type="submit" class="btn btn-primary" data-action="submit">Submit answer</button>
               <button type="button" class="btn btn-secondary" style="display: none" data-action="reset">Start over</button>
             </div>
           </div>
@@ -210,7 +217,9 @@ cust1 = Customer("Coco Lover",
         self.price = price
         self.nutrition_info = nutrition_info
 
-</code></pre>
+    @classmethod
+    def make_free_bars(cls, name, nutrition_info):
+        return cls(name, 0.00, nutrition_info)</code></pre>
 <p>We call that method on the class and pass in everything but the first argument:</p>
 <pre><code>free_dark = Product.make_free_bars("Super Dark", ["200 cals", "5 g sugar"])</code></pre>
 <p>That line of code will create a new instance of the class with the given name, nutrition information, and a price of $0.00. That's because <code>cls</code> gets set to <code>Product</code>, so <code>cls(name, 0.00, nutrition_info)</code> is the same as <code>Product(name, 0.00, nutrition_info)</code>. It might seem silly to write <code>cls</code> instead of <code>Product</code>, but once we learn more features of object-oriented programming, we'll discover that using <code>cls</code> provides more flexibility than hardcoding <code>Product</code>.</p>
@@ -238,7 +247,12 @@ pina_bar.inventory = -5000</code></pre>
         self.name = name
         self.price = price
         self.nutrition_info = nutrition_info
-</code></pre>
+        self.__inventory = 0
+
+    def reduce_inventory(self, amount):
+        if (self.__inventory - amount) <= 0:
+            self.needs_restocking = True
+        self.__inventory -= amount</code></pre>
 <p>With this change, it's much more difficult for code outside of the class definition to reduce the inventory attribute. If the inventory attribute wasn't protected by the double underscores in front, another programmer might accidentally update inventory in another part of the codebase and not realize they needed to update <code>needs_restocking</code> as well. This change attempts to ensure that all inventory updates go through the restocking check.</p>
 <p>Private instance variables are often used to either add error checking, as in this example, or to hide other implementation details.</p>
 
